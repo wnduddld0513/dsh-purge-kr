@@ -128,6 +128,7 @@ test("no host layout still blocks writes with a clear message", () => {
     assert.equal(none.level, "no-host");
     assert.equal(none.patch_writes_allowed, false);
     assert.throws(() => requirePatchCompatibility(empty), /호스트 디렉터리를 찾지 못해/);
+    assert.doesNotMatch(compatibility(empty).message, /자동으로 이어서|app\.asar 를 푼/);
   } finally {
     fs.rmSync(empty, { recursive: true, force: true });
   }

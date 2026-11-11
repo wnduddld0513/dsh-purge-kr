@@ -106,6 +106,13 @@ export function StatusStrip({ info }) {
 /** 디스크 아카이브와 프로세스 진입점은 따로 표시한다. 디스크 기록만으로 런타임 로드를 추론하면 안 된다. */
 export function LayoutNotice({ info }) {
   if (!info || (!info.asar_still_sealed && !info.host_layout)) return null;
+  if (info.host_layout?.family === "tauri") {
+    return h(
+      "p",
+      { className: "dshpp-note", role: "status" },
+      info.host_layout.note,
+    );
+  }
   const sealed = info.asar_still_sealed === true;
   const note =
     info.host_layout?.note ||

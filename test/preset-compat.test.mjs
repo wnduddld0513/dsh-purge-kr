@@ -211,8 +211,28 @@ test("saved child IDs resolve after host rows move, with the same denied tools",
   assert.equal(next.policies[0].childId,p.childId);
   assert.notDeepEqual(next.policies[0].at,p.at);
   const definitions = withLegacyChildIds(next,home);
-  assert.deepEqual(definitions.find(x => x.id === oldId).plugins,next.definitions[0].plugins);
+  const alias = definitions.find(x => x.id === oldId);
+  assert.deepEqual(alias.plugins, next.definitions[0].plugins);
+  assert.match(alias.name, /이전 버전 호환/);
+  assert.equal(new Set(definitions.map(row => row.name)).size, definitions.length);
+  assert.equal(definitions[0].name, next.definitions[0].name);
   assert.equal(spawn(definitions.at(-1)).config.agentPreset,p.childId);
   spawn(def).config.toolFilter.deny.pop();
   assert.ok(!withLegacyChildIds(migratePresetDefinition(def, { stableChildIds: true }),home).some(x => x.id === oldId));
+});
+
+test("registration defers only to an effective declaration in the running profile", async () => {
+  const { profileOwnsPreset } = await import("../lib/preset-compat.js");
+  function entry(id, configId, disabled = false, owner = "include", name = "@deepseek-ai/dsh-agent-preset") {
+    return { options: { id, name, config: { id: configId } }, disabled,
+      parent: { tree: { ctx: { fiber: { entry: { id: owner } } } } } };
+  }
+  const active = [];
+  const ctx = { get: () => ({ entries: () => active.values() }) };
+  active.push(entry("preset-notes", "other"), entry("notes", "notes", true),
+    entry("nested", "notes", false, "include:other"), entry("service", "notes", false, "include", "unrelated"));
+  assert.equal(profileOwnsPreset(ctx, "notes"), false);
+  active.push(entry("arbitrary-name", "notes"));
+  assert.equal(profileOwnsPreset(ctx, "notes"), true);
+  assert.equal(profileOwnsPreset({}, "notes"), false);
 });
