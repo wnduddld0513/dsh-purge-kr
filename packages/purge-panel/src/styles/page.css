@@ -647,7 +647,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* 모의 해킹이 남은 높이를 전부 차지한다 */
+/* 드릴 콘솔이 남은 높이를 전부 차지한다 */
 .dshpp-page-drill {
   min-height: 60vh;
 }

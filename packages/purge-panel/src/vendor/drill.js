@@ -13,7 +13,7 @@ export const __dshPurgeDrill = (() => {
   const h = React.createElement;
 
   /*
-   * 모의 해킹 자체는 하나의 플로팅 창이다: position:fixed, left/top/width/height 로 배치한다.
+   * 드릴 콘솔 자체는 하나의 플로팅 창이다: position:fixed, left/top/width/height 로 배치한다.
    * 공식 frame 에 padding 을 주지 않고, 공식 입력란의 너비도 바꾸지 않는다. 정리 패널에 끼워 넣을 때는 .rt-embedded 를 쓴다.
    */
   const CSS = `
@@ -2806,7 +2806,7 @@ export const __dshPurgeDrill = (() => {
             ? h(
                 "div",
                 { className: "rt-empty" },
-                "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 한국어판 / dsh web)를 한 번 재시작해야 적용됩니다",
+                "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 커뮤니티판 / dsh web)를 한 번 재시작해야 적용됩니다",
               )
             : h("div", { className: "rt-err" }, err)
           : null,
@@ -4046,7 +4046,7 @@ export const __dshPurgeDrill = (() => {
         ? h(
             "div",
             { className: "rt-empty" },
-            "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 한국어판 / dsh web)를 한 번 재시작해야 적용됩니다",
+            "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 커뮤니티판 / dsh web)를 한 번 재시작해야 적용됩니다",
           )
         : null,
       state.error && !needRestart
@@ -6293,7 +6293,7 @@ export const __dshPurgeDrill = (() => {
             { className: "rt-err" },
             /engagement required|unknown op/i.test(err)
               ? /* 옛 host 에는 지식 베이스 인터페이스가 없다: 복구 방법을 분명히 알려준다. "engagement required" 를 보고 헤매지 않게 한다 */
-                "지식 베이스 인터페이스는 host 측이 제공합니다. 현재 호스트가 아직 옛 프로세스이므로 완전히 종료한 뒤 다시 실행하고(공식 exe / 한국어판 / dsh web 중 아무거나), 페이지를 새로고침하세요."
+                "지식 베이스 인터페이스는 host 측이 제공합니다. 현재 호스트가 아직 옛 프로세스이므로 완전히 종료한 뒤 다시 실행하고(공식 exe / 커뮤니티판 / dsh web 중 아무거나), 페이지를 새로고침하세요."
               : err,
           )
         : null,
@@ -9896,7 +9896,7 @@ export const __dshPurgeDrill = (() => {
                 marginBottom: 8,
               },
             },
-            "공격/방어 모의 해킹 대상 기관 이름을 입력하고 모의 해킹을 만들어 자산 매핑을 시작하세요.",
+            "공방 드릴 대상 기관 이름을 입력하고 드릴을 만들어 자산 매핑을 시작하세요.",
           ),
           h(
             "div",
@@ -10022,7 +10022,7 @@ export const __dshPurgeDrill = (() => {
               "div",
               { className: "rt-title" },
               h("span", { className: "rt-dot" }),
-              full ? "모의 해킹 · 전체 보기" : "모의 해킹",
+              full ? "드릴 콘솔 · 전체 보기" : "드릴 콘솔",
               full
                 ? h(
                     "span",
@@ -10094,7 +10094,7 @@ export const __dshPurgeDrill = (() => {
               "button",
               {
                 className: "rt-btn",
-                title: "새 브라우저 창에서 전체 보기를 엽니다",
+                title: "새 브라우저 창에서 전체 콘솔을 엽니다",
                 onClick: openFull,
               },
               "전체 보기",
@@ -10200,7 +10200,7 @@ export const __dshPurgeDrill = (() => {
       "button",
       {
         className: "rt-icon-btn" + (st.open ? " on" : ""),
-        title: "모의 해킹(오른쪽 사이드바 상주)",
+        title: "RedTeam 콘솔(오른쪽 사이드바 상주)",
         onClick: () => setUI({ open: !st.open }),
       },
       h("span", { style: { fontSize: 14 } }, "⛨"),
@@ -10214,14 +10214,14 @@ export const __dshPurgeDrill = (() => {
       "button",
       {
         className: "rt-hbtn" + (st.open ? " on" : ""),
-        title: "모의 해킹(오른쪽 사이드바 상주)",
+        title: "RedTeam 콘솔(오른쪽 사이드바 상주)",
         onClick: () => setUI({ open: !st.open }),
       },
       "⛨ RedTeam",
     );
   }
 
-  /** 사이드바 “전체 보기”: 새 브라우저 창에서 전체 보기를 연다(현재 창은 영향 없음). */
+  /** 사이드바 “전체 보기”: 새 브라우저 창에서 전체 콘솔을 연다(현재 창은 영향 없음). */
   function FullButton(props) {
     const open = () => {
       try {
@@ -10239,7 +10239,7 @@ export const __dshPurgeDrill = (() => {
       {
         className: "rt-icon-btn",
         title:
-          "전체 보기: 새 창에서 전체 보기를 엽니다(현재 창은 영향 없음; 새 창에서 Esc 로 종료)",
+          "전체 보기: 새 창에서 전체 콘솔을 엽니다(현재 창은 영향 없음; 새 창에서 Esc 로 종료)",
         onClick: open,
       },
       h("span", { style: { fontSize: 14 } }, "⛶"),

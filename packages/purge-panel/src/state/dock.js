@@ -178,7 +178,7 @@ export function requestDrill(kind) {
     }
     return;
   }
-  /* 미승인: 모의 해킹 탭으로 바로 전환하고 승인 창을 띄운다(정리 페이지에 머물러 "트리거되지 않음"처럼 보이는 것을 피한다) */
+  /* 미승인: 드릴 콘솔 탭으로 바로 전환하고 승인 창을 띄운다(정리 페이지에 머물러 "트리거되지 않음"처럼 보이는 것을 피한다) */
   setDock({ open: true, tab: "drill", authOpen: true, pending: pending });
 }
 

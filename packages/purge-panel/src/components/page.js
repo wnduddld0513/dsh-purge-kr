@@ -18,7 +18,7 @@ const TABS = [
   ["prompt", "프롬프트", "주입 본문과 탈옥 강화 섹션"],
   ["rules", "규칙", "규칙 세트와 워크스페이스 정책"],
   ["skills", "스킬", "DSH 스킬 카탈로그"],
-  ["drill", "모의 해킹", "레드팀 모의 해킹과 환경 적응"],
+  ["drill", "드릴 콘솔", "레드팀 드릴과 환경 적응"],
   ["more", "더 보기", "서버 목록, 업데이트, 유지보수"],
 ];
 
@@ -256,7 +256,7 @@ export function PurgePage() {
             ? h(
                 "span",
                 { className: "dshpp-page-ver" },
-                "한국어판 " + __PANEL_VERSION__,
+                "커뮤니티판 " + __PANEL_VERSION__,
               )
             : null,
         ),
@@ -328,7 +328,7 @@ export function PurgePage() {
                   h(
                     "p",
                     { className: "dshpp-muted" },
-                    "모의 해킹은 먼저 한 번 승인이 필요합니다.",
+                    "드릴 콘솔은 먼저 한 번 승인이 필요합니다.",
                   ),
                   h(
                     Btn,

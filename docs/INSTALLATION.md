@@ -151,7 +151,7 @@ if (-not (Test-Path -LiteralPath $DshExe -PathType Leaf)) { throw 'DSH exe 가 �
 $env:DSH_HOME = if ($env:DSH_HOME) { $env:DSH_HOME } else { Join-Path $env:USERPROFILE '.dsh' }
 $env:DSH_PROFILE = if ($env:DSH_PROFILE) { $env:DSH_PROFILE } else { 'desktop' }
 $PurgeCli = Join-Path $env:DSH_HOME "profiles\$env:DSH_PROFILE\node_modules\dsh-purge-community\bin\community.js"
-if (-not (Test-Path -LiteralPath $PurgeCli)) { throw '현재 profile 에서 한국어판 CLI 를 찾을 수 없다; 안내대로 검증된 복구 패키지를 쓴다' }
+if (-not (Test-Path -LiteralPath $PurgeCli)) { throw '현재 profile 에서 커뮤니티판 CLI 를 찾을 수 없다; 안내대로 검증된 복구 패키지를 쓴다' }
 $PurgeLog = Join-Path $env:TEMP ('purge-status-' + [guid]::NewGuid().ToString('N'))
 $PreviousElectronMode = $env:ELECTRON_RUN_AS_NODE
 try {
@@ -195,7 +195,7 @@ try {
 <a id="isolated-acceptance"></a>
 ## 설치 명령의 격리 검수(2026-10-23)
 
-PR #78 의 후보 패키지는 실제 CLI 생애주기 검수 다섯 가지를 추가했다: 공식 최초 설치, 커뮤니티 부트스트래퍼 최초 설치, 원본 마이그레이션, 한국어판 업그레이드, 옛 별칭 업그레이드; 각각 롤백, 재업그레이드, 실패 복구, 사용자 후속 수정 보존을 계속 테스트한다. 실행 방식, 후보 패키지 다이제스트, 미포괄 범위는 [PR #78 설치 무결성 기록](pr78-runtime-integrity.md)을 본다. 이 결과는 마켓 UI, 콜드 캐시 다운로드, 호스트 기능 검수를 대신하지 못하며, 해당 PR 의 미해결 대상 식별 문제도 없애지 않는다.
+PR #78 의 후보 패키지는 실제 CLI 생애주기 검수 다섯 가지를 추가했다: 공식 최초 설치, 커뮤니티 부트스트래퍼 최초 설치, 원본 마이그레이션, 커뮤니티판 업그레이드, 옛 별칭 업그레이드; 각각 롤백, 재업그레이드, 실패 복구, 사용자 후속 수정 보존을 계속 테스트한다. 실행 방식, 후보 패키지 다이제스트, 미포괄 범위는 [PR #78 설치 무결성 기록](pr78-runtime-integrity.md)을 본다. 이 결과는 마켓 UI, 콜드 캐시 다운로드, 호스트 기능 검수를 대신하지 못하며, 해당 PR 의 미해결 대상 식별 문제도 없애지 않는다.
 
 유지보수자는 `scripts/check-install-instructions-runtime.mjs` 로 이 문서의 설치 규약을 검증한다. 명시적 테스트 런타임, 같은 사본의 공식 CLI, 옛 버전 아카이브, 검증된 릴리스 아카이브, 테스트 루트 디렉터리를 요구한다; macOS 테스트 런타임으로 정식 앱을 받지 않는다.
 
@@ -207,7 +207,7 @@ node scripts/check-install-instructions-runtime.mjs "$TEST_RUNTIME" "$TEST_DSH_C
 
 macOS 는 최상위 `Info.plist` 를 복사하지 않고 `.app` 경로를 만들지 않으며 Finder, `open`, LaunchServices 로 기동하지 않는다; 새로 만든 테스트 실행 파일에만 독립 식별자를 가진 로컬 개발 서명을 쓰고 정식 앱이나 시스템 보안 정책을 바꾸지 않는다. 검수 스크립트는 운영체제 샌드박스로 `/Applications`, 기본 `.dsh`, DSH 의 Application Support 와 로그 디렉터리에 대한 쓰기를 막고 모든 설치 자식 프로세스가 그 제한을 상속한다. "정식 런타임 읽기 전용" 옵션으로 사용자의 DSH 실행을 대체할 수 없다. 테스트가 시스템에 차단되면 테스트 사본 점검을 중단해야 하며, 정식 앱의 격리 속성을 제거하거나 정식 앱을 재서명하거나 사용자에게 재설치를 요구하지 않는다.
 
-이번 실제 검수: macOS / Windows 11, Electron 44.7.0, DSH CLI 0.2.1-rc.2, 한국어판 1.6.47, 옛 패키지 1.1.71. 두 플랫폼에서 공식 CLI 최초 설치, 내려받은 커뮤니티 설치기의 dry-run 과 정식 설치, 옛 패키지 마이그레이션, 스냅샷 목록과 롤백을 수행하고 패키지 버전, bundle, 마이그레이션 전후 설정 내용을 대조했으며, 롤백이 설치 후 추가된 사용자 설정을 보존하는지 검증했다. 각 시나리오는 새로 만든 `DSH_HOME` 과 CLI 가 초기화할 수 있는 `web` profile 을 쓴다; 이는 Desktop 이 가진 CLI/런타임과 설치기 경로를 검증한 것으로 **이번 라운드에서 데스크톱 로그인, 마켓 클릭 흐름, 호스트 패치 기능을 테스트했다는 뜻이 아니다**. 실제 사용자의 Desktop profile 은 여전히 `desktop` 이므로 검수용 profile 을 그대로 베끼지 않는다.
+이번 실제 검수: macOS / Windows 11, Electron 44.7.0, DSH CLI 0.2.1-rc.2, 커뮤니티판 1.6.47, 옛 패키지 1.1.71. 두 플랫폼에서 공식 CLI 최초 설치, 내려받은 커뮤니티 설치기의 dry-run 과 정식 설치, 옛 패키지 마이그레이션, 스냅샷 목록과 롤백을 수행하고 패키지 버전, bundle, 마이그레이션 전후 설정 내용을 대조했으며, 롤백이 설치 후 추가된 사용자 설정을 보존하는지 검증했다. 각 시나리오는 새로 만든 `DSH_HOME` 과 CLI 가 초기화할 수 있는 `web` profile 을 쓴다; 이는 Desktop 이 가진 CLI/런타임과 설치기 경로를 검증한 것으로 **이번 라운드에서 데스크톱 로그인, 마켓 클릭 흐름, 호스트 패치 기능을 테스트했다는 뜻이 아니다**. 실제 사용자의 Desktop profile 은 여전히 `desktop` 이므로 검수용 profile 을 그대로 베끼지 않는다.
 
 ### 앱 위치 지정 경계(PR #78)
 

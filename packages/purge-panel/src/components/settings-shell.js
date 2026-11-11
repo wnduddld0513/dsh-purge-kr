@@ -106,7 +106,7 @@ export function SettingsRoot(props = {}) {
       h(
         "span",
         { className: "dshpp-native-badge" },
-        (__COMMUNITY__ ? "한국어판 " : "독립 UI ") + __PANEL_VERSION__,
+        (__COMMUNITY__ ? "커뮤니티판 " : "독립 UI ") + __PANEL_VERSION__,
       ),
     ),
     h(CompatibilityNote, { status: backendStatus }),
@@ -150,12 +150,8 @@ export function SettingsRoot(props = {}) {
       h(
         "div",
         { hidden: page !== "more", className: "dshpp-more" },
-        h("h3", null, "모의 해킹"),
-        h(
-          "p",
-          null,
-          "플러그인에 원래 있던 모의 해킹 도구와 환경 설정을 엽니다.",
-        ),
+        h("h3", null, "드릴 콘솔"),
+        h("p", null, "플러그인에 원래 있던 드릴 도구와 환경 설정을 엽니다."),
         h(
           Btn,
           {
@@ -164,7 +160,7 @@ export function SettingsRoot(props = {}) {
               requestDrill("tab");
             },
           },
-          "모의 해킹 열기",
+          "드릴 콘솔 열기",
         ),
         h(
           "p",
@@ -178,7 +174,7 @@ export function SettingsRoot(props = {}) {
         ? h(
             "div",
             { className: "dshpp-native-drill" },
-            // 모의 해킹은 자체 CSS(.rt-*)를 쓴다. 옛 버전은 dock 이 <head> 에 주입했지만 재구성 때 빠져서,
+            // 드릴 콘솔은 자체 CSS(.rt-*)를 쓴다. 옛 버전은 dock 이 <head> 에 주입했지만 재구성 때 빠져서,
             // 결과 패널이 오른쪽 사이드바에서 스타일 없이 글자가 한 열로 눌렸다. 여기서 컴포넌트와 함께 붙인다.
             __dshPurgeDrill && __dshPurgeDrill.CSS
               ? h("style", { "data-dsh-purge-drill": "1" }, __dshPurgeDrill.CSS)
@@ -195,7 +191,7 @@ export function SettingsRoot(props = {}) {
             ),
             readDrillAuth()
               ? h(__dshPurgeDrill.Panel, { embedded: true })
-              : h("p", null, "먼저 모의 해킹 승인을 마쳐야 합니다."),
+              : h("p", null, "먼저 드릴 콘솔 승인을 마쳐야 합니다."),
           )
         : null,
     ),

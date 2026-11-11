@@ -238,7 +238,7 @@ win.confirm = () => true;
     root.findAllByType("h1").some((x) => x.children.join("") === "Purge"),
     "page title renders",
   );
-  assert(root.findAllByProps({ "aria-label": "한국어판 유지보수" }).length);
+  assert(root.findAllByProps({ "aria-label": "커뮤니티판 유지보수" }).length);
   assert(
     JSON.stringify(tree.toJSON()).includes("0.2.1-rc.1"),
     "the status strip reports the host version from the backend",
