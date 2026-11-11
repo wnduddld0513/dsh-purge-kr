@@ -291,7 +291,7 @@ const test = async () => {
   console.log(
     "PASS: native registry, persistent tab, loaded values, draft preservation across tabs and refresh, no implicit writes, no legacy launchers",
   );
-  // 드릴 콘솔: 옛 버전은 바깥 dock 이 .rt-* CSS 를 <head> 에 주입했는데 리팩터링 때 사라져서, 패널이 오른쪽 사이드바에서
+  // 모의 해킹: 옛 버전은 바깥 dock 이 .rt-* CSS 를 <head> 에 주입했는데 리팩터링 때 사라져서, 패널이 오른쪽 사이드바에서
   // 완전히 스타일 없이 떴다. 이 검사는 "CSS 가 컴포넌트와 함께 나가야 한다"와 "컨테이너가 늘어나야 한다"를 지킨다.
   const bundleText = fs.readFileSync(process.env.PANEL_CLIENT, "utf8");
   assert(

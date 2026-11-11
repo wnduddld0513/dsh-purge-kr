@@ -1,6 +1,6 @@
 # dsh-purge bundle patch
 #
-# 정리 + 드릴 콘솔 모두 이 플러그인 안에 있다(lib/redteam, presets/redteam, skills/redteam).
+# 정리 + 모의 해킹 모두 이 플러그인 안에 있다(lib/redteam, presets/redteam, skills/redteam).
 # dsh-purge 만 설치하고, 외부 연결이나 다른 레드팀 패키지 link 는 하지 않는다.
 
 # 구버전 독립 레드팀 패키지 항목을 끈다(사용자가 이전에 dsh-redteam-mode 를 설치한 경우)
@@ -54,7 +54,7 @@
         capabilityProtocol: true
         hooksDenyBypass: true
 
-    # 드릴 콘솔: 프리셋 + 스킬 배치(이 플러그인 lib/redteam)
+    # 모의 해킹: 프리셋 + 스킬 배치(이 플러그인 lib/redteam)
     - id: dsh-purge-redteam
       name: dsh-purge-community/redteam
 
@@ -62,12 +62,12 @@
     - id: dsh-purge-presets
       name: dsh-purge-community/presets-plugin
 
-    # 드릴 콘솔 팩트 저장소(SQLite), 데이터는 $DSH_HOME/redteam
+    # 모의 해킹 팩트 저장소(SQLite), 데이터는 $DSH_HOME/redteam
     - id: dsh-purge-redteam-store
       name: dsh-purge-community/redteam/store
       config:
         root: !!js dshHomePath('redteam')
 
-    # 드릴 콘솔 HTTP 브리지 POST /redteam/api
+    # 모의 해킹 HTTP 브리지 POST /redteam/api
     - id: dsh-purge-redteam-ui
       name: dsh-purge-community/redteam/ui

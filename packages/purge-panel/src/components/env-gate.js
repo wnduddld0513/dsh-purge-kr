@@ -97,7 +97,7 @@ export function EnvAdaptSendGate() {
       requestDrillEnv();
       return true;
     }
-    /* 이미 승인된 경우: 간소한 환경 적응 창만 띄우고 드릴 콘솔 전체를 다시 열지 않는다 */
+    /* 이미 승인된 경우: 간소한 환경 적응 창만 띄우고 모의 해킹 전체를 다시 열지 않는다 */
     setOpen(true);
     return true;
   }, [refresh]);

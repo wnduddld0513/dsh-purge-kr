@@ -696,7 +696,7 @@ export function CommunityMaintenance() {
   }
   return h(
     "section",
-    { className: "dshpp-panel", "aria-label": "커뮤니티판 유지보수" },
+    { className: "dshpp-panel", "aria-label": "한국어판 유지보수" },
     h("h3", null, "유지보수: 업데이트와 이 컴퓨터 백업"),
     // 채널 현황 요약: 프록시가 직결인지, 키가 설정돼 있는지(키 평문은 절대 되풀이하지 않는다).
     // 진입 버튼은 여기 있지 않고 "자동 업데이트 확인"과 같은 줄에 있다.
@@ -730,7 +730,7 @@ export function CommunityMaintenance() {
       h(
         Btn,
         { disabled: busy, onClick: () => run("check") },
-        "커뮤니티판 업데이트 확인",
+        "한국어판 업데이트 확인",
       ),
       h(
         Btn,
