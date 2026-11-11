@@ -132,7 +132,7 @@ test("HTTP 200 business failure shows the update error and rereads recovery back
     return reply({ ok: false, errors: ["CLI not located"] });
   });
   const tree = await mount(h);
-  await click(tree, "커뮤니티판 업데이트 확인");
+  await click(tree, "한국어판 업데이트 확인");
   await click(tree, "선택한 버전 설치");
   assert(text(tree).includes("CLI not located"));
   assert(text(tree).includes("recovery"));
@@ -161,7 +161,7 @@ test("successful update reports its version and DSH process restart, not a backu
           }),
   );
   const tree = await mount(h);
-  await click(tree, "커뮤니티판 업데이트 확인");
+  await click(tree, "한국어판 업데이트 확인");
   await click(tree, "선택한 버전 설치");
   assert(text(tree).includes("플러그인을 설치했습니다: 1.6.4"));
   assert(
@@ -349,7 +349,7 @@ test("cached releases and failed fallbacks are visible instead of claiming lates
           ),
     );
     const tree = await mount(h);
-    await click(tree, "커뮤니티판 업데이트 확인");
+    await click(tree, "한국어판 업데이트 확인");
     assert(text(tree).includes("할당량 소진"));
     assert(text(tree).includes(failed ? "프록시 시간 초과" : "캐시 목록"));
     assert(!text(tree).includes("이미 최신 정식 버전입니다"));

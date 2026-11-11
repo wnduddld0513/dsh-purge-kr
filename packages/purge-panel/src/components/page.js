@@ -256,7 +256,7 @@ export function PurgePage() {
             ? h(
                 "span",
                 { className: "dshpp-page-ver" },
-                "커뮤니티판 " + __PANEL_VERSION__,
+                "한국어판 " + __PANEL_VERSION__,
               )
             : null,
         ),

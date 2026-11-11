@@ -2806,7 +2806,7 @@ export const __dshPurgeDrill = (() => {
             ? h(
                 "div",
                 { className: "rt-empty" },
-                "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 커뮤니티판 / dsh web)를 한 번 재시작해야 적용됩니다",
+                "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 한국어판 / dsh web)를 한 번 재시작해야 적용됩니다",
               )
             : h("div", { className: "rt-err" }, err)
           : null,
@@ -4046,7 +4046,7 @@ export const __dshPurgeDrill = (() => {
         ? h(
             "div",
             { className: "rt-empty" },
-            "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 커뮤니티판 / dsh web)를 한 번 재시작해야 적용됩니다",
+            "이 모듈의 호스트 코드가 갱신되었습니다. 현재 호스트(공식 exe / 한국어판 / dsh web)를 한 번 재시작해야 적용됩니다",
           )
         : null,
       state.error && !needRestart
@@ -6293,7 +6293,7 @@ export const __dshPurgeDrill = (() => {
             { className: "rt-err" },
             /engagement required|unknown op/i.test(err)
               ? /* 옛 host 에는 지식 베이스 인터페이스가 없다: 복구 방법을 분명히 알려준다. "engagement required" 를 보고 헤매지 않게 한다 */
-                "지식 베이스 인터페이스는 host 측이 제공합니다. 현재 호스트가 아직 옛 프로세스이므로 완전히 종료한 뒤 다시 실행하고(공식 exe / 커뮤니티판 / dsh web 중 아무거나), 페이지를 새로고침하세요."
+                "지식 베이스 인터페이스는 host 측이 제공합니다. 현재 호스트가 아직 옛 프로세스이므로 완전히 종료한 뒤 다시 실행하고(공식 exe / 한국어판 / dsh web 중 아무거나), 페이지를 새로고침하세요."
               : err,
           )
         : null,

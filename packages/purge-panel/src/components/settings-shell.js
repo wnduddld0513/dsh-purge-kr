@@ -106,7 +106,7 @@ export function SettingsRoot(props = {}) {
       h(
         "span",
         { className: "dshpp-native-badge" },
-        (__COMMUNITY__ ? "커뮤니티판 " : "독립 UI ") + __PANEL_VERSION__,
+        (__COMMUNITY__ ? "한국어판 " : "독립 UI ") + __PANEL_VERSION__,
       ),
     ),
     h(CompatibilityNote, { status: backendStatus }),

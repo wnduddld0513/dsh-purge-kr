@@ -37,7 +37,7 @@ export function compatibilityLevelText(t, level) {
 export const ko = {
   nav: "규칙 설정",
   "dock.clean": "정리",
-  "dock.drill": "드릴 콘솔",
+  "dock.drill": "모의해킹",
   "dock.toggle": "dsh-purge",
   "dock.newSession": "dsh-purge",
   "dock.inSession": "dsh-purge",
