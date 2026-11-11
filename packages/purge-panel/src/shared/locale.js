@@ -202,9 +202,11 @@ export const ko = {
   "update.switched": "{version} 으로 전환했습니다",
   "update.autoDone": "{version} 으로 자동 업데이트했습니다",
   "update.reloading": "설정 페이지를 새로 고치는 중…",
-  "update.dirty": "새 버전이 있습니다. 로컬 변경은 자동으로 덮어쓰지 않았습니다",
+  "update.dirty":
+    "새 버전이 있습니다. 로컬 변경은 자동으로 덮어쓰지 않았습니다",
   "update.fail": "업데이트하지 못했습니다: {error}",
-  "update.timeout": "시간이 초과되어 확인하지 못했습니다. 업데이트 확인을 다시 눌러 주세요",
+  "update.timeout":
+    "시간이 초과되어 확인하지 못했습니다. 업데이트 확인을 다시 눌러 주세요",
   "update.needRestart":
     "확인 인터페이스가 로드되지 않았습니다. dsh 를 먼저 재시작한 뒤 업데이트 확인을 누르세요",
   "update.noBeta": "아직 베타 버전이 없습니다",
@@ -298,8 +300,7 @@ export const ko = {
   "restart.fail": "실패했습니다: {error}",
   "restart.notStarted":
     "재시작이 시작되지 않았습니다. 클라이언트는 그대로 있으며 자동으로 다시 시도하지 않습니다.",
-  "restart.already":
-    "이미 재시작이 시작됐습니다. 한 번만 실행됩니다.",
+  "restart.already": "이미 재시작이 시작됐습니다. 한 번만 실행됩니다.",
   "restart.manualQuit":
     "자동으로 다시 열 수 없습니다. DSH 를 직접 종료한 뒤 다시 열어 주세요.",
   "restart.confirm": "정리가 끝났습니다. 재시작하면 적용됩니다.",
