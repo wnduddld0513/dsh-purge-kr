@@ -45,7 +45,7 @@ export const ko = {
   "dock.full": "전체 보기",
   "dock.close": "접기",
   "dock.unauthorized": "미승인",
-  "welcome.title": "사용자 고지",
+  "welcome.title": "사용자 안내",
   "welcome.lead":
     "이 플러그인을 처음 설치하면 다음 안내를 읽어 주세요. 확인하시면 이 창은 다시 표시되지 않습니다.",
   "welcome.warn":
@@ -61,19 +61,19 @@ export const ko = {
     "사용자는 거주지 법령과 플랫폼 규범을 스스로 지켜야 합니다. 위법의 결과는 행위자가 지며 제작자와 무관합니다.",
   "welcome.bans": "금지 사항",
   "welcome.check":
-    "위 사용자 고지를 읽고 이해했으며 합법적으로 쓰는 데 동의합니다.",
-  "welcome.ok": "확인하며 계속합니다",
+    "위 안내를 읽고 이해했고, 합법적인 용도로만 쓰는 데 동의합니다.",
+  "welcome.ok": "확인하고 계속",
   "auth.title": "드릴 콘솔 승인 확인",
   "auth.lead":
     "정리에는 이 단계가 필요 없습니다. 드릴 콘솔에 처음 들어가거나 전체 보기를 열 때는 이 창을 먼저 끝내세요.",
   "auth.warn":
     "보안 경고: 드릴 콘솔은 관리 권한이 있는 로컬 호스트, 오프라인 표적, 서면 승인을 받은 드릴 환경에만 쓰세요. 승인 없는 침투·공격·탈취·파괴는 일절 금지합니다.",
-  "auth.hint.wait": "선언을 읽어 주세요. {n}초 후에 선택할 수 있습니다.",
+  "auth.hint.wait": "선언을 읽어 주세요. {n}초 뒤에 선택할 수 있습니다.",
   "auth.hint.scroll":
     "카운트다운이 끝났습니다. 선언을 끝까지 스크롤한 뒤 체크하세요.",
   "auth.hint.check": "카운트다운이 끝났습니다. 세 항목을 모두 체크하세요.",
   "auth.check.read":
-    "'보안 및 위법 금지 선언'을 다 읽었고 모든 조항을 인정합니다.",
+    "'보안·위법 금지 선언'을 끝까지 읽었고 모든 조항에 동의합니다.",
   "auth.check.scope":
     "로컬 승인 환경, 오프라인 표적, 규정을 지킨 드릴에만 쓰겠다고 확인합니다.",
   "auth.check.ban":
@@ -85,12 +85,12 @@ export const ko = {
   "auth.ok.env": "승인하고 환경 적응 열기",
   "envGate.title": "환경이 아직 준비되지 않았습니다",
   "envGate.lead":
-    "레드팀 모드는 보내기 전에 로컬 도구가 필요합니다. 쓸 수 있는 환경이 감지되지 않으면 먼저 환경 적응으로 가거나 설정하지 않음을 확인하세요.",
+    "레드팀 모드는 보내기 전에 로컬 도구가 필요합니다. 쓸 수 있는 환경이 감지되지 않으면 먼저 환경 적응으로 가거나, 설정하지 않기로 선택하세요.",
   "envGate.kaliHint":
     "Kali 가 감지되면 로컬 도구를 바로 쓰고 경로를 넣지 않아도 됩니다. Kali 가 없으면 환경 적응에서 각 도구 경로를 넣거나 통합 폴더 하나를 골라 자동 배분하세요.",
   "envGate.skip": "지금은 설정 안 함",
   "envGate.skipConfirm":
-    "확인하면 이번에는 대화를 계속할 수 있습니다. 스캔·활용 계열 스킬은 도구가 없어 여전히 쓸 수 없고, 이후 dsh-purge → 환경 적응에서 경로를 채울 수 있습니다.",
+    "확인하면 이번에는 대화를 계속할 수 있습니다. 스캔·활용 계열 스킬은 도구가 없어 그대로 쓸 수 없습니다. 나중에 dsh-purge → 환경 적응에서 경로를 넣을 수 있습니다.",
   "envGate.skipNo": "돌아가기",
   "envGate.skipYes": "설정하지 않고 계속",
   "envGate.go": "환경 적응 열기",
@@ -145,7 +145,7 @@ export const ko = {
   "status.disabled": "선택 해제",
   "status.skipped": "건너뜀",
   "apply.hint":
-    "적용을 누르면 패치를 쓰고 현재 기본 프롬프트를 걸어 둡니다. 상자에 플러그인 옛 기본값이 남아 있으면 암호화 슬롯에서 자동으로 새로 고치므로 저장을 다시 누를 필요가 없습니다. 직접 쓴 원고만 상자 내용대로 기록됩니다. 적용 대기=원문이 아직 남아 있습니다. 건너뜀=이 버전에 불필요하거나 컴포넌트가 설치되지 않았습니다.",
+    "적용을 누르면 패치를 쓰고 현재 기본 프롬프트를 설정합니다. 상자에 플러그인의 옛 기본값이 남아 있으면 암호화 슬롯에서 자동으로 새 값으로 바뀌므로 저장을 다시 누르지 않아도 됩니다. 직접 쓴 원고만 상자 내용대로 기록됩니다. 적용 대기=원문이 아직 남아 있음. 건너뜀=이 버전에 필요 없거나 컴포넌트가 설치되지 않음.",
   "warn.noRoot":
     "현재 호스트의 @deepseek-ai 를 찾지 못해 정리가 적용되지 않습니다. 완전히 종료한 뒤 이 호스트를 다시 열고 이 페이지에서 '적용'을 누르세요. 데스크톱 설치 경로는 어느 드라이브든 되고, 디렉터리 이름에 DeepseekHarness / DeepSeek Harness 가 있으면 됩니다.",
   "warn.noRoot.desktop":
@@ -154,7 +154,7 @@ export const ko = {
     "패치를 기록했습니다. '재시작'을 누르면 클라이언트가 스스로 다시 열립니다.",
   "restart.fullQuit": "재시작 중입니다. 클라이언트가 스스로 다시 열립니다.",
   "warn.noInject":
-    "공식은 항상 기본 프롬프트를 씁니다. 레드팀에서 규칙 세트를 켜면 규칙 세트만 쓰고, 켜지 않으면 CTF 를 뺀 기본 프롬프트를 쓴 뒤 레드팀 작업을 잇습니다. 양쪽이 모두 비면 추가해야 한다고 알립니다.",
+    "공식 모드는 항상 기본 프롬프트를 씁니다. 레드팀에서 규칙 세트를 켜면 규칙 세트만 쓰고, 켜지 않으면 CTF 를 뺀 기본 프롬프트를 쓴 뒤 레드팀 작업을 잇습니다. 양쪽이 모두 비면 추가해야 한다고 알립니다.",
   "need.prompt":
     "프롬프트와 규칙 세트가 모두 비어 있습니다. 프롬프트를 먼저 추가하거나 내용이 있는 규칙 세트를 켜야 합니다.",
   "btn.restoreInject": "기본값 되돌리기",
@@ -202,9 +202,9 @@ export const ko = {
   "update.switched": "{version} 으로 전환했습니다",
   "update.autoDone": "{version} 으로 자동 업데이트했습니다",
   "update.reloading": "설정 페이지를 새로 고치는 중…",
-  "update.dirty": "새 버전이 있습니다. 로컬 변경분은 자동으로 덮지 않았습니다",
+  "update.dirty": "새 버전이 있습니다. 로컬 변경은 자동으로 덮어쓰지 않았습니다",
   "update.fail": "업데이트하지 못했습니다: {error}",
-  "update.timeout": "확인 시간이 초과됐습니다. 업데이트 확인을 다시 누르세요",
+  "update.timeout": "시간이 초과되어 확인하지 못했습니다. 업데이트 확인을 다시 눌러 주세요",
   "update.needRestart":
     "확인 인터페이스가 로드되지 않았습니다. dsh 를 먼저 재시작한 뒤 업데이트 확인을 누르세요",
   "update.noBeta": "아직 베타 버전이 없습니다",
@@ -213,9 +213,9 @@ export const ko = {
   "update.tip": "최신",
   "update.current": "현재",
   "update.confirmSwitch":
-    "{version} 으로 전환할까요? 이후 다른 채널이나 다른 버전으로 되돌릴 수 있습니다. 커밋되지 않은 로컬 플러그인 변경분은 남지 않습니다.",
+    "{version} 으로 전환할까요? 이후 다른 채널이나 다른 버전으로 되돌릴 수 있습니다. 커밋하지 않은 로컬 변경은 남지 않습니다.",
   "update.confirmChannel":
-    "{version} 으로 전환할까요? 해당 채널에서 플러그인을 다시 설치하며, 커밋되지 않은 로컬 변경분은 남지 않습니다.",
+    "{version} 으로 전환할까요? 그 채널에서 플러그인을 다시 설치하며, 커밋하지 않은 로컬 변경은 남지 않습니다.",
   "metric.version": "버전",
   "action.apply": "적용",
   "action.revert": "되돌리기",
@@ -242,7 +242,7 @@ export const ko = {
   "policy.always": "항상 허용",
   "policy.hint":
     "엄격: 항상 AGENTS.md / CLAUDE.md 를 제거합니다. 빈 칸 폴백: 프롬프트 상자가 비었을 때만 씁니다. 항상 허용: DSH 원래 동작을 유지합니다",
-  "cwd.title": "로컬 규칙 (현재 디렉터리)",
+  "cwd.title": "로컬 규칙(현재 디렉터리)",
   "cwd.empty": "현재 디렉터리에 AGENTS.md / CLAUDE.md 가 없습니다",
   "cwd.rescan": "다시 스캔",
   "cwd.hint":
@@ -265,9 +265,9 @@ export const ko = {
   "btn.saveRule": "저장",
   "skills.title": "Skill",
   "skills.hint":
-    "공식 디렉터리로 가져오면 DSH 가 호출합니다. 채팅에서 /이름 을 입력하면 바로 로드되고, 작업이 description 이나 whenToUse 에 맞으면 모델이 skill 도구를 호출합니다. 본문에 '활성'이라고 써도 발동하지 않습니다.",
+    "공식 디렉터리로 가져오면 DSH 가 호출합니다. 채팅에서 /이름을 입력하면 바로 로드되고, 작업이 description 이나 whenToUse 에 맞으면 모델이 skill 도구를 호출합니다. 본문에 '활성'이라고 적어도 실행되지 않습니다.",
   "skills.hint.desktop":
-    "현재 데스크톱 호스트의 공식 Skill 디렉터리입니다. 채팅에서 /이름 을 입력하면 바로 로드되고, 작업이 description 에 맞으면 모델이 skill 도구를 호출합니다.",
+    "현재 데스크톱 호스트의 공식 Skill 디렉터리입니다. 채팅에서 /이름을 입력하면 바로 로드되고, 작업이 description 에 맞으면 모델이 skill 도구를 호출합니다.",
   "skills.empty": "사용자 Skill 이 없습니다",
   "btn.importZip": "압축 파일 가져오기",
   "btn.importFolder": "폴더 가져오기",
@@ -277,7 +277,7 @@ export const ko = {
   "err.import.folder":
     "폴더 안의 파일을 읽지 못했습니다. Skill 디렉터리 자체를 고르세요(안에 SKILL.md 가 있어야 합니다)",
   "skills.pick": "Skill 선택",
-  "skills.invalid": "공식에서 무시됩니다: 형식이 맞지 않습니다",
+  "skills.invalid": "형식이 맞지 않아 DSH 가 무시합니다",
   "skills.call.slash": "채팅에서 {cmd} 입력",
   "skills.call.model": "모델 호출 가능",
   "skills.call.modelOff": "모델 호출 불가",
@@ -286,7 +286,7 @@ export const ko = {
   "btn.saveSkill": "저장",
   "need.skill.id": "id 는 kebab-case 여야 합니다. 예: code-review",
   "confirm.delete.skill":
-    "공식 $DSH_HOME/skills 에서 {id} 삭제할까요? 호스트가 카탈로그에서 자동으로 뺍니다.",
+    "DSH 공식 폴더 $DSH_HOME/skills 에서 {id}를 삭제할까요? 호스트가 카탈로그에서 자동으로 빼 줍니다.",
   "err.skills": "읽지 못했습니다: {error}",
   "err.skills.needRestart":
     "Skill 인터페이스가 로드되지 않았습니다. 현재 호스트를 먼저 재시작하세요",
@@ -299,7 +299,7 @@ export const ko = {
   "restart.notStarted":
     "재시작이 시작되지 않았습니다. 클라이언트는 그대로 있으며 자동으로 다시 시도하지 않습니다.",
   "restart.already":
-    "이번 재시작은 이미 시작되었습니다. 다시 재시작하지 않습니다.",
+    "이미 재시작이 시작됐습니다. 한 번만 실행됩니다.",
   "restart.manualQuit":
     "자동으로 다시 열 수 없습니다. DSH 를 직접 종료한 뒤 다시 열어 주세요.",
   "restart.confirm": "정리가 끝났습니다. 재시작하면 적용됩니다.",
@@ -318,7 +318,7 @@ export const ko = {
   "surface.tui": "TUI",
   "restart.incomplete": "적용이 끝나지 않았습니다. {detail}",
   "restart.incomplete.patches":
-    "{failed} 개 항목 처리에 실패했습니다 (#{ids}). 패치 상세를 확인하세요",
+    "{failed}개 항목을 처리하지 못했습니다 (#{ids}). 패치 상세를 확인하세요",
   "restart.incomplete.flash":
     "터미널 창 억제 검사가 통과하지 못했습니다 ({entry})",
   "restart.incomplete.host":
@@ -440,7 +440,7 @@ export const ko = {
   "saved.hooksDeny": "저장했습니다",
   "continue.title": "실패 재시도 / 계속",
   "continue.hint":
-    "요청이 실패하면 자동으로 재시도합니다. 비정상 종료나 중단 시에는 '계속'을 누르거나 자동 이어달리기를 쓸 수 있습니다. 직접 중지를 누른 경우에는 자동으로 이어가지 않습니다. 횟수를 모두 쓰면 새 라운드를 열어야 합니다.",
+    "요청이 실패하면 자동으로 재시도합니다. 비정상 종료나 중단 시에는 '계속'을 누르거나 자동 이어달리기를 쓸 수 있습니다. 직접 중지를 누르면 자동으로 이어가지 않습니다. 횟수를 모두 쓰면 새 라운드를 열어야 합니다.",
   "continue.autoRetry": "실패 시 자동 재시도",
   "continue.retryMax": "재시도 횟수",
   "continue.autoContinue": "중단 후 자동 계속",

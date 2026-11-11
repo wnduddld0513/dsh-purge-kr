@@ -136,7 +136,7 @@ test("HTTP 200 business failure shows the update error and rereads recovery back
   await click(tree, "선택한 버전 설치");
   assert(text(tree).includes("CLI not located"));
   assert(text(tree).includes("recovery"));
-  assert(!text(tree).includes("백업을 만들었다: undefined"));
+  assert(!text(tree).includes("백업을 만들었습니다: undefined"));
   assert.equal(h.calls.filter((c) => c.body?.op === "update").length, 1);
   assert.equal(
     tree.root.findByProps({ "aria-label": "롤백할 백업 선택" }).props.value,
@@ -167,7 +167,7 @@ test("successful update reports its version and DSH process restart, not a backu
   assert(
     text(tree).includes("브라우저만 새로 고치면 새 백엔드가 로드되지 않습니다"),
   );
-  assert(!text(tree).includes("백업을 만들었다: "));
+  assert(!text(tree).includes("백업을 만들었습니다: "));
   await unmount(tree);
 });
 test("no-op, backup success and partial update failure keep their own result semantics", async () => {
@@ -178,7 +178,7 @@ test("no-op, backup success and partial update failure keep their own result sem
   );
   const tree = await mount(h);
   await click(tree, "지금 백업");
-  assert(text(tree).includes("백업을 만들었다: created"));
+  assert(text(tree).includes("백업을 만들었습니다: created"));
   await unmount(tree);
   const context = { module: { exports: {} }, exports: {}, require };
   context.exports = context.module.exports;

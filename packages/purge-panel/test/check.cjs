@@ -228,7 +228,7 @@ const test = async () => {
       1,
       "first-run welcome notice is restored into the overlay",
     );
-    assert(JSON.stringify(o.toJSON()).includes("사용자 고지"));
+    assert(JSON.stringify(o.toJSON()).includes("사용자 안내"));
     assert(
       !o.root
         .findAllByType("button")
@@ -243,7 +243,7 @@ const test = async () => {
     await act(async () => {
       o.root
         .findAllByType("button")
-        .find((x) => x.children.join("") === "확인하며 계속합니다")
+        .find((x) => x.children.join("") === "확인하고 계속")
         .props.onClick();
     });
     assert.equal(dialogs().length, 0, "acknowledging closes the notice");

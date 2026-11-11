@@ -226,7 +226,7 @@ export function assertMaintenanceResult(result) {
       ? result.errors.filter(Boolean).join(" · ")
       : "";
     const partial = result.applied
-      ? " · 일부 대상은 이미 업데이트했습니다. 해당 DSH 프로세스를 재시작해 로드하세요"
+      ? " · 일부 대상은 이미 업데이트했습니다. 이 DSH 프로세스를 재시작해 불러오세요"
       : "";
     throw new Error((result.error || errors || "유지보수 작업 실패") + partial);
   }
@@ -237,7 +237,7 @@ export function maintenanceNotice(op, result) {
       throw new Error(
         "백업 작업이 백업 번호를 돌려주지 않았습니다. 목록을 새로 고쳐 결과를 확인하세요",
       );
-    return `백업을 만들었다: ${result.id}`;
+    return `백업을 만들었습니다: ${result.id}`;
   }
   if (op === "rollback")
     return (

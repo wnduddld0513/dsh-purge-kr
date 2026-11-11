@@ -1,7 +1,7 @@
 {
   "name": "dsh-purge-community",
   "version": "1.6.88",
-  "description": "AI 가 학습과 직접 해보는 실험에 더 집중하도록 돕습니다: DSH 부가 컴포넌트로 상태 자체 점검, 프롬프트·규칙 관리, 로컬 백업과 롤백을 제공합니다.",
+  "description": "AI가 학습과 스스로 해 보는 실험에 집중하도록 돕습니다. DSH 부가 기능으로 상태 자체 점검, 프롬프트·규칙 관리, 로컬 백업과 롤백을 제공합니다.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
