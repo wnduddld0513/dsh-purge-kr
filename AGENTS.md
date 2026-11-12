@@ -1,7 +1,7 @@
 # AGENTS.md — AI agent 를 위한 Purge 사용 설명서
 
 > 이 파일은 **DSH 안에서 일하는 agent** 를 위해 쓴 것이며, 마케팅 문서가 아니다.
-> 현재 버전 **1.6.88** · DSH Desktop **0.2.2-rc.1** 대응(0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 동일하게 통과)
+> 현재 버전 **1.6.93** · DSH Desktop **0.2.2-rc.2** 대응(0.2.2-rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 동일하게 통과)
 > 버전 번호는 `npm run check:docs` 와 `package.json` 이 검증하며, 릴리스 때 반드시 동기화한다.
 
 ---
@@ -133,8 +133,8 @@ purge-community probe new
 
 | 구성 요소 | 값 |
 | --- | --- |
-| 플러그인 | `dsh-purge-community` 1.6.88 |
-| 검증된 호스트 | DSH Desktop 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
+| 플러그인 | `dsh-purge-community` 1.6.93 |
+| 검증된 호스트 | DSH Desktop 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
 | 기타 호스트 | 적용은 허용되지만 `selfcheck` 가 "미검증"으로 표시한다; 먼저 `diagnose` 를 본다 |
 | Node | ≥18(데스크톱 버전 내장 런타임이면 충분); **레드팀 도구는 ≥22.5**(`node:sqlite` 에 의존하므로 낮은 버전에서는 레드팀 도구를 로드할 때 실패한다) |
 

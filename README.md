@@ -9,9 +9,9 @@ DeepSeek Harness용 자체 호스팅 제어 도구(흔히 "탈옥" 플러그인�
 [![Release](https://img.shields.io/github/v/release/wnduddld0513/dsh-purge-kr?label=release)](https://github.com/wnduddld0513/dsh-purge-kr/releases)
 [![Checks](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml/badge.svg)](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml)
 
-현재 버전 **1.6.88** · **DSH Desktop 0.2.2-rc.1** 대응 (0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 같은 방식으로 통과합니다) · [English](docs/README.en.md)
+현재 버전 **1.6.93** · **DSH Desktop 0.2.2-rc.2** 대응 (0.2.2-rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 같은 방식으로 통과합니다) · [English](docs/README.en.md)
 
-1.6.88은 Windows 유지보수 잠금이 백신 검사 구간에서 흔들릴 때 재시도하도록 보완하고, 되감기 이력 오절단(#171), Windows 밀봉 아카이브의 CLI 진입점(#181), 설정 대화상자 층위(#172), 이력 호환 프리셋 이름(#174)을 함께 담았습니다. [릴리스 노트](docs/releases/1.6.88.md)
+1.6.93은 Windows 패키지 교체에서 broker 와 도우미의 종료 코드를 분리해 기록하고, 상태 파일을 쓸 수 없을 때 원래 Windows 오류를 로그에 남깁니다(#193). 1.6.92의 DSH 0.2.2-rc.2 호환 목록, 1.6.91의 헤더 크기 패치 멱등화, 1.6.90의 rc.2 압축 번들 되감기 앵커를 함께 담았습니다. [릴리스 노트](docs/releases/1.6.93.md)
 
 **원본 프로젝트와 작성자**: [샤오양(xiaoyang) / YuJunZhiXue의 dsh-purge](https://github.com/YuJunZhiXue/dsh-purge)를 기반으로 독립적으로 유지보수합니다. 원본 저장소는 복구되었습니다. 원작자의 서명, 저작권, MIT 라이선스는 그대로 보존합니다. 이 저장소는 한국어판을 유지하며, 원작자의 공식 배포판이 아닙니다.
 
@@ -100,7 +100,7 @@ UI와 설치 프로토콜은 DSH가 제공하고, 인덱스와 플러그인은 �
 아래 명령은 **`dsh` 명령이 설치되어 있고 `web` profile을 사용하는 CLI/Web 사용자**를 위한 것입니다. macOS/Linux 터미널이나 Windows PowerShell에서 실행하세요. 데스크톱 사용자는 위 UI를 먼저 사용하시기 바랍니다. 플러그인을 설치하려고 `npx`로 다른 호스트를 내려받지 마세요.
 
 ```sh
-dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.6.88/dsh-purge-community-1.6.88.tgz"
+dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.6.93/dsh-purge-community-1.6.93.tgz"
 ```
 
 `web`은 실제로 기동한 profile과 일치해야 하고, 사용자 지정 데이터 디렉터리는 그 인스턴스의 `DSH_HOME`을 따릅니다. 이 명령은 이번 릴리스의 고정 버전 URL을 사용하며, `npm install -g`도 아니고 순수 npm 패키지 이름 설치도 아닙니다. 이 프로젝트는 GitHub 릴리스로 배포하므로 **`add dsh-purge`나 `add dsh-purge-community`로 바꾸지 마세요.** 공식 CLI 설치에는 우리 설치기의 릴리스 SHA256 대조나 마이그레이션 스냅샷이 없습니다. 그것이 필요하면 방법 3을 선택하세요. [공식 CLI 설치 안내](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/develop/basic/publish.zh.md)
@@ -202,8 +202,8 @@ sh "$PURGE_INSTALL_DIR/install.sh" --dry-run
 
 | 구성 요소 | 값 |
 | --- | --- |
-| 플러그인 | `dsh-purge-community` 1.6.88 |
-| 검증된 호스트 | DSH Desktop 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
+| 플러그인 | `dsh-purge-community` 1.6.93 |
+| 검증된 호스트 | DSH Desktop 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
 | 기타 호스트 | 설치해도 됩니다. 자체 점검이 "미검증"으로 표시하니 `diagnose`를 먼저 보세요 |
 | Node | ≥18(데스크톱 빌드에 포함된 런타임이면 충분합니다). 레드팀 도구는 ≥22.5가 필요합니다(`node:sqlite`) |
 

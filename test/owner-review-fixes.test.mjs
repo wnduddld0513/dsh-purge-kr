@@ -108,13 +108,23 @@ test("NEXT + rc.2：内核已回归，但整机不判 qualified", () => {
   assert.match(compat.message, /검증되지 않아/);
 });
 
-test("官方 bundled-host + rc.2：仍然判 qualified（回归不受影响）", () => {
+test("공식 bundled-host + rc.2: 여전히 qualified 로 판정(회귀 영향 없음)", () => {
   const resources = makeResources(path.join(TMP, "c-official"), { identity: "official" });
   const base = seedHost(path.join(resources, "app", "node_modules", "@deepseek-ai"));
 
   const compat = compatibility(base);
   assert.equal(compat.family_qualified, true);
   assert.equal(compat.kernel.qualified, true);
+  assert.equal(compat.qualified, true);
+  assert.equal(compat.level, "qualified");
+});
+
+test("공식 bundled-host + 0.2.2-rc.2: 검증 목록에 들어가면 qualified 로 판정", () => {
+  const resources = makeResources(path.join(TMP, "c-official-022rc2"), { identity: "official" });
+  const base = seedHost(path.join(resources, "app", "node_modules", "@deepseek-ai"), { version: "0.2.2-rc.2" });
+  const compat = compatibility(base);
+  assert.equal(compat.kernel.qualified, true, "0.2.2-rc.2 는 검증 목록에 있어야 한다");
+  assert.equal(compat.family_qualified, true);
   assert.equal(compat.qualified, true);
   assert.equal(compat.level, "qualified");
 });
