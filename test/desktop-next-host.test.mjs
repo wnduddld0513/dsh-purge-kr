@@ -1,12 +1,12 @@
-// NEXT 宿主家族（第三方桌面壳 dsh-desktop-next）的独立回归测试。
+// NEXT 호스트 패밀리(서드파티 데스크톱 셸 dsh-desktop-next)의 독립 회귀 테스트.
 //
-// 覆盖四项验收要求里可自动化的部分：
-//   - 身份：只认包证据；裸 exe / 别的 Electron 应用一律拒绝
-//   - 实例选择：显式选择器优先；指错就报错，绝不回落到别的安装
-//   - 换包：解包旁路 / 残留清理 / 提交与回滚 / 提交失败留 recover.json
-//   - 恢复：补丁写入失败不伪装成功，原文与备份都保持可回滚
+// 네 가지 검수 요구 중 자동화할 수 있는 부분을 다룬다:
+//   - 신원: 패키지 증거만 인정한다; 단독 exe / 다른 Electron 앱은 모두 거부한다
+//   - 인스턴스 선택: 명시적 선택자가 우선이다; 잘못 가리키면 오류를 내고 다른 설치로 되돌아가지 않는다
+//   - 교체: 언팩 우회 / 잔여물 정리 / 커밋과 롤백 / 커밋 실패 시 recover.json 남김
+//   - 복구: 패치 쓰기 실패를 성공으로 위장하지 않고, 원문과 백업 모두 롤백 가능하게 유지한다
 //
-// 运行：node --test test/desktop-next-host.test.mjs
+// 실행: node --test test/desktop-next-host.test.mjs
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -33,9 +33,9 @@ import {
   newestPreservedDir,
 } from "../lib/extract-asar.js";
 
-// realpath 归一化：macOS 的 os.tmpdir() 给的是 /var/folders/...，而实现层
-// （statSync / readdir 回来的路径）是 /private/var/folders/...。不归一化的话
-// 「预期路径 vs 实际路径」的断言会在 mac 上假失败，与实现无关。
+// realpath 정규화: macOS 의 os.tmpdir() 는 /var/folders/... 를 주지만 구현 계층
+// (statSync / readdir 이 돌려주는 경로)은 /private/var/folders/... 이다. 정규화하지 않으면
+// "기대 경로 vs 실제 경로" 단언이 mac 에서 거짓 실패하며, 구현과는 무관하다.
 const TMP = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), "dsh-purge-next-")));
 const norm = (p) => String(p).split(path.sep).join("/");
 const rm = (p) => fs.rmSync(p, { recursive: true, force: true });
@@ -46,7 +46,7 @@ function write(file, text = "") {
   return file;
 }
 
-/** 造一个 NEXT 安装：resources/app/{package.json,lib/main.js} */
+/** NEXT 설치를 하나 만든다: resources/app/{package.json,lib/main.js} */
 function makeNextInstall(root, { name = NEXT_FAMILY.id, main = "lib/main.js", withMain = true, withAiBase = false } = {}) {
   const resources = path.join(root, "resources");
   const app = path.join(resources, "app");
@@ -62,7 +62,7 @@ function makeNextInstall(root, { name = NEXT_FAMILY.id, main = "lib/main.js", wi
   return { root, resources, app, exe: path.join(root, "DSH NEXT.exe") };
 }
 
-/** 造一个官方 bundled-host 布局：resources/app/dsh/node_modules/@deepseek-ai/dsh-desktop-host */
+/** 공식 bundled-host 레이아웃을 만든다: resources/app/dsh/node_modules/@deepseek-ai/dsh-desktop-host */
 function makeOfficialInstall(root) {
   const resources = path.join(root, "resources");
   const host = path.join(resources, "app", "dsh", "node_modules", "@deepseek-ai", "dsh-desktop-host");
@@ -72,7 +72,7 @@ function makeOfficialInstall(root) {
   return { root, resources, exe: path.join(root, "DSH Desktop.exe") };
 }
 
-test("NEXT 家族：包证据齐全才认，名字不同/入口缺失都拒绝", () => {
+test("NEXT 패밀리: 패키지 증거가 갖춰져야 인정하고, 이름이 다르거나 진입점이 없으면 거부한다", () => {
   const good = makeNextInstall(path.join(TMP, "good"));
   const wrongName = makeNextInstall(path.join(TMP, "wrong-name"), { name: "some-other-electron-app" });
   const noMain = makeNextInstall(path.join(TMP, "no-main"), { withMain: false });
@@ -85,14 +85,14 @@ test("NEXT 家族：包证据齐全才认，名字不同/入口缺失都拒绝",
   assert.equal(nextIdentity({ name: "@deepseek-ai/dsh-desktop-host" }), null);
 });
 
-test("官方 bundled-host 身份不受 NEXT 支持影响", () => {
+test("공식 bundled-host 신원은 NEXT 지원에 영향받지 않는다", () => {
   const official = makeOfficialInstall(path.join(TMP, "official"));
   const found = desktopIdentity(official.resources);
   assert.equal(found.kind, "bundled-host");
   assert.equal(found.package, "@deepseek-ai/dsh-desktop-host");
 });
 
-test("isDesktopExecutable：只认包证据，裸 exe / 别的应用都拒绝", () => {
+test("isDesktopExecutable: 패키지 증거만 인정하고 단독 exe / 다른 앱은 거부한다", () => {
   const next = makeNextInstall(path.join(TMP, "exe-next"));
   const bare = path.join(TMP, "exe-bare");
   write(path.join(bare, "DSH NEXT.exe"));
@@ -104,7 +104,7 @@ test("isDesktopExecutable：只认包证据，裸 exe / 别的应用都拒绝", 
   assert.equal(isDesktopExecutable(other.exe), false);
 });
 
-test("resolveInstance：显式选择器优先，指错就报错不回落", () => {
+test("resolveInstance: 명시적 선택자가 우선이고, 잘못 가리키면 오류를 내며 되돌아가지 않는다", () => {
   const next = makeNextInstall(path.join(TMP, "resolve"), { withAiBase: true });
   const aiBase = path.join(next.app, "node_modules", "@deepseek-ai");
 
@@ -116,8 +116,10 @@ test("resolveInstance：显式选择器优先，指错就报错不回落", () =>
   const decoy = makeNextInstall(path.join(TMP, "resolve-decoy"));
   const bad = resolveInstance({ env: { DSH_BASE: decoy.root }, resourcesPath: next.resources, electron: "44.7.0", argv: [] });
   assert.equal(bad.resolved, false);
-  assert.equal(bad.host, "");
-  assert.match(bad.reason, /不是有效插件根/);
+  assert.equal(norm(bad.host), norm(decoy.root));
+  assert.equal(bad.source, "DSH_BASE");
+  assert.notEqual(norm(bad.host), norm(aiBase));
+  assert.match(bad.reason, /유효한 플러그인 루트가 아닙/);
 
   assert.throws(
     () => resolveInstance({ env: { PURGE_DSH_CLI: path.join(TMP, "nope", "dsh") }, argv: [] }),
@@ -130,14 +132,14 @@ test("resolveInstance：显式选择器优先，指错就报错不回落", () =>
   assert.equal(byEntry.family, "next");
 });
 
-test("diagnosticHost：只有部分 app.asar.unpacked 时返回预期路径，不把半成品当宿主", () => {
+test("diagnosticHost: app.asar.unpacked 일부만 있을 때 기대 경로를 반환하고, 반쯤 만들어진 것을 호스트로 취급하지 않는다", () => {
   const next = makeNextInstall(path.join(TMP, "partial"));
   fs.mkdirSync(path.join(next.resources, "app.asar.unpacked", "node_modules", "@deepseek-ai", "dsh-agent-preset"), { recursive: true });
   const host = diagnosticHost({ resourcesPath: next.resources, electron: "44.7.0", env: {}, argv: [] });
   assert.equal(norm(host), norm(path.join(next.app, "node_modules", "@deepseek-ai")));
 });
 
-test("CLI 修复：NEXT 是 notApplicable，官方失败仍然是失败", () => {
+test("CLI 수리: NEXT 는 notApplicable 이고, 공식 설치의 실패는 여전히 실패다", () => {
   const next = makeNextInstall(path.join(TMP, "cli"));
   const verdict = repairOfficialCliAfterUnpack(next.exe);
   assert.equal(verdict.ok, false);
@@ -154,7 +156,7 @@ test("CLI 修复：NEXT 是 notApplicable，官方失败仍然是失败", () => 
   assert.deepEqual(nextAiBaseCandidates(next.resources).length, 2);
 });
 
-test("换包闸门：只有 notApplicable / 真修好 / 未封包才放行", () => {
+test("교체 게이트: notApplicable / 실제 수리 완료 / 미봉인 상태만 통과시킨다", () => {
   const nextVerdict = { ok: false, notApplicable: true };
   assert.equal(cliRepairBlocksApply({ handoff: {}, sealed: true, cliRepair: nextVerdict }), false);
   assert.equal(cliRepairBlocksApply({ handoff: {}, sealed: true, cliRepair: { ok: true } }), false);
@@ -163,7 +165,7 @@ test("换包闸门：只有 notApplicable / 真修好 / 未封包才放行", () 
   assert.equal(cliRepairBlocksApply({ handoff: {}, sealed: false, cliRepair: null }), false);
 });
 
-/* ---------------- 换包 / 恢复 ---------------- */
+/* ---------------- 교체 / 복구 ---------------- */
 function buildAsar(target, entries, unpacked = {}) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   const files = {};
@@ -196,7 +198,7 @@ function buildAsar(target, entries, unpacked = {}) {
   for (const [rel, buf] of Object.entries(unpacked)) write(path.join(target + ".unpacked", rel), buf);
 }
 
-test("换包：解包旁路 / 残留清理 / overlay / 提交保留旧目录", () => {
+test("교체: 언팩 우회 / 잔여물 정리 / overlay / 커밋 시 옛 디렉터리 보존", () => {
   const root = path.join(TMP, "swap");
   const asar = path.join(root, "app.asar");
   buildAsar(
@@ -222,9 +224,9 @@ test("换包：解包旁路 / 残留清理 / overlay / 提交保留旧目录", (
   assert.match(fs.readFileSync(path.join(committed.prev, "package.json"), "utf8"), /OLD/);
 });
 
-test("换包：提交失败留 recover.json，旧目录不丢，新目录可重试", (t) => {
+test("교체: 커밋 실패 시 recover.json 을 남기고 옛 디렉터리를 잃지 않으며 새 디렉터리로 재시도할 수 있다", (t) => {
   const otherVolume = ["D:/", "E:/"].find((d) => fs.existsSync(d));
-  if (!otherVolume) return t.skip("需要第二个卷来制造 EXDEV");
+  if (!otherVolume) return t.skip("EXDEV 를 만들려면 두 번째 볼륨이 필요하다");
   const root = path.join(TMP, "commit-fail");
   const dest = path.join(root, "resources", "app");
   write(path.join(dest, "keep.txt"), "original");
@@ -241,7 +243,7 @@ test("换包：提交失败留 recover.json，旧目录不丢，新目录可重�
   rm(nextDir);
 });
 
-test("换包：中断后能从 .dshpurge-prev 还原", () => {
+test("교체: 중단 후에도 .dshpurge-prev 에서 복원할 수 있다", () => {
   const app = path.join(TMP, "restore", "app");
   const prev = app + ".dshpurge-prev";
   write(path.join(prev, "package.json"), JSON.stringify({ version: "PREV" }));
@@ -250,7 +252,7 @@ test("换包：中断后能从 .dshpurge-prev 还原", () => {
   assert.match(fs.readFileSync(path.join(app, "package.json"), "utf8"), /PREV/);
 });
 
-test("换包：归档改名保留 app.asar.bak", () => {
+test("교체: 아카이브 이름을 바꿔 app.asar.bak 을 보존한다", () => {
   const asar = path.join(TMP, "rename", "app.asar");
   write(asar, "ARCHIVE");
   const moved = renameAsarAside(asar);
@@ -259,8 +261,8 @@ test("换包：归档改名保留 app.asar.bak", () => {
   assert.equal(fs.readFileSync(moved.bak, "utf8"), "ARCHIVE");
 });
 
-/* ---------------- 补丁失败恢复 ---------------- */
-test("补丁：写失败显式报错，原文与备份都可回滚，恢复后能重试", async () => {
+/* ---------------- 패치 실패 복구 ---------------- */
+test("패치: 쓰기 실패는 명시적으로 오류를 내고, 원문과 백업 모두 롤백할 수 있으며, 복구 후 재시도할 수 있다", async () => {
   const home = path.join(TMP, "home");
   write(path.join(home, "profiles", "desktop", "package.json"), JSON.stringify({ name: "dsh-profile-desktop" }));
   const savedHome = process.env.DSH_HOME;
@@ -287,12 +289,12 @@ test("补丁：写失败显式报错，原文与备份都可回滚，恢复后�
     assert.equal((reverted.errors || []).length, 0);
     assert.equal(fs.readFileSync(target, "utf8"), original);
 
-    // 注入写入失败：把目标文件换成同名目录。
-    // 不用 chmod(0o444) —— POSIX 下 rename 只看目录权限，文件位拦不住替换，
-    // 那样注入实际会返回 applied，属于夹具失效而不是断言太松。
-    // revertAll 回滚后会清掉备份，先重新应用一次把可回滚的原文造出来。
+    // 주입 쓰기 실패를 만든다: 대상 파일을 같은 이름의 디렉터리로 바꾼다.
+    // chmod(0o444) 는 쓰지 않는다 — POSIX 에서 rename 은 디렉터리 권한만 보므로 파일 비트로는 교체를 막을 수 없고,
+    // 그러면 주입이 실제로는 applied 를 반환해 픽스처가 무효가 되지, 단언이 느슨해서가 아니다.
+    // revertAll 로 롤백하면 백업이 지워지므로, 먼저 한 번 다시 적용해 롤백 가능한 원문을 만들어 둔다.
     await core.applyPatchesAllHosts([patch1], {});
-    assert.ok(fs.existsSync(target + ".dshpurge.bak"), "失败注入前必须已有可回滚的备份");
+    assert.ok(fs.existsSync(target + ".dshpurge.bak"), "실패를 주입하기 전에 롤백 가능한 백업이 이미 있어야 한다");
     fs.rmSync(target);
     fs.mkdirSync(target);
     let failed = null;
@@ -303,10 +305,10 @@ test("补丁：写失败显式报错，原文与备份都可回滚，恢复后�
       failed = { status: "throw:" + (error.code || error.message) };
     }
     assert.notEqual(failed.status, "applied");
-    assert.equal(fs.statSync(target).isDirectory(), true, "写失败不得改动目标现状");
-    assert.equal(fs.readFileSync(target + ".dshpurge.bak", "utf8"), original, "备份必须是可回滚的原文");
+    assert.equal(fs.statSync(target).isDirectory(), true, "쓰기 실패는 대상의 현재 상태를 바꾸지 않아야 한다");
+    assert.equal(fs.readFileSync(target + ".dshpurge.bak", "utf8"), original, "백업은 롤백 가능한 원문이어야 한다");
 
-    // 恢复成未应用状态，重试必须真的写进去（而不是 already）
+    // 미적용 상태로 되돌린 뒤 재시도하면 실제로 써져야 한다(already 가 아니라)
     fs.rmdirSync(target);
     fs.writeFileSync(target, original);
     const retried = await core.applyPatchesAllHosts([patch1], {});
@@ -314,5 +316,24 @@ test("补丁：写失败显式报错，原文与备份都可回滚，恢复后�
   } finally {
     if (savedHome === undefined) delete process.env.DSH_HOME; else process.env.DSH_HOME = savedHome;
     if (savedBase === undefined) delete process.env.DSH_BASE; else process.env.DSH_BASE = savedBase;
+  }
+});
+
+test("유효한 DSH_BASE 에는 디렉터리를 다시 설정하라는 제안을 하지 않는다", () => {
+  const base = path.join(TMP, "validated-base", "@deepseek-ai");
+  fs.mkdirSync(path.join(base, "dsh-agent-instructions", "lib"), { recursive: true });
+  const before = { DSH_BASE: process.env.DSH_BASE, DSH_SURFACE: process.env.DSH_SURFACE };
+  try {
+    process.env.DSH_BASE = base;
+    process.env.DSH_SURFACE = "web";
+    const message = core.missingAiBaseMessage();
+    assert.match(message, /검증을 통과/);
+    assert.match(message, /web/);
+    assert.doesNotMatch(message, /set DSH_BASE/);
+  } finally {
+    for (const [key, value] of Object.entries(before)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
   }
 });

@@ -1,6 +1,6 @@
 # 유지보수, 마이그레이션 및 복구
 
-현재 버전 **1.6.93**. 패키지 이름은 `dsh-purge-community`이며, 배포 출처는 이 저장소의 정식 GitHub Releases 뿐이다; 내부 Cordis ID `dsh-purge`, HTTP `/dsh-purge/*` 및 사용자 데이터 디렉터리는 유지한다. 주요 설치 단계와 미러 장애 결정 트리는 [설치 안내](INSTALLATION.md)에 통합되어 있다; [AGENTS.md](../AGENTS.md)는 Agent 운영 설명서다.
+현재 버전 **1.6.97**. 패키지 이름은 `dsh-purge-community`이며, 배포 출처는 이 저장소의 정식 GitHub Releases 뿐이다; 내부 Cordis ID `dsh-purge`, HTTP `/dsh-purge/*` 및 사용자 데이터 디렉터리는 유지한다. 주요 설치 단계와 미러 장애 결정 트리는 [설치 안내](INSTALLATION.md)에 통합되어 있다; [AGENTS.md](../AGENTS.md)는 Agent 운영 설명서다.
 
 ## 호환과 운영 경계
 

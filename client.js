@@ -13374,7 +13374,7 @@ function SettingsRoot(props = {}) {
       h(
         "span",
         { className: "dshpp-native-badge" },
-        (true ? "\uD55C\uAD6D\uC5B4\uD310 " : "\uB3C5\uB9BD UI ") + "1.6.93"
+        (true ? "\uD55C\uAD6D\uC5B4\uD310 " : "\uB3C5\uB9BD UI ") + "1.6.97"
       )
     ),
     h(CompatibilityNote, { status: backendStatus }),
@@ -13531,7 +13531,7 @@ function StatusStrip({ info }) {
       "span",
       { className: "dshpp-strip-item" },
       "\uD50C\uB7EC\uADF8\uC778 ",
-      h("b", null, info?.plugin_version || "1.6.93")
+      h("b", null, info?.plugin_version || "1.6.97")
     )
   );
 }
@@ -13593,11 +13593,11 @@ function VersionNotice({ info }) {
     );
   }
   const backend = info?.plugin_version;
-  if (!backend || backend === "1.6.93") return null;
+  if (!backend || backend === "1.6.97") return null;
   return h(
     "p",
     { className: "dshpp-warn", role: "status" },
-    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.6.93"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
+    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.6.97"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
   );
 }
 function PurgePage() {
@@ -13647,7 +13647,7 @@ function PurgePage() {
           true ? h(
             "span",
             { className: "dshpp-page-ver" },
-            "\uD55C\uAD6D\uC5B4\uD310 1.6.93"
+            "\uD55C\uAD6D\uC5B4\uD310 1.6.97"
           ) : null
         )
       )
@@ -14629,7 +14629,7 @@ function installRewindUi(ctx) {
 var rd3 = __toESM(require("react-dom"), 1);
 
 // src/styles/welcome.css
-var welcome_default = "/* The first-run dialog is rendered before any settings page. It must own its\n   styles and cannot depend on the optional drill vendor stylesheet.\n   \uC0C9\xB7\uBC18\uACBD\xB7\uD3F0\uD2B8\xB7\uADF8\uB9BC\uC790\xB7\uBAA8\uC158\uC740 DSH \uD1A0\uD070\uB9CC \uC4F4\uB2E4(\uD14C\uB9C8 \uC804\uD658\uC744 \uADF8\uB300\uB85C \uB530\uB77C\uAC04\uB2E4). */\n.dshpp-welcome-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 2147483000;\n  display: grid;\n  place-items: center;\n  padding: 24px;\n  overflow: auto;\n  box-sizing: border-box;\n  background: rgba(0, 0, 0, 0.35);\n  color: var(--dsw-alias-label-primary);\n  font-family: var(--dsw-font-family);\n  font-size: 14px;\n  line-height: 1.6;\n  text-align: left;\n}\n.dshpp-welcome-card {\n  width: min(600px, 100%);\n  max-height: calc(100dvh - 48px);\n  overflow: auto;\n  box-sizing: border-box;\n  padding: 24px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-panel);\n}\n.dshpp-welcome-card h2 {\n  margin: 0 0 6px;\n  font: inherit;\n  font-family: var(--dsw-font-family);\n  font-size: 20px;\n  font-weight: 600;\n}\n.dshpp-welcome-card h3 {\n  margin: 16px 0 6px;\n  font: inherit;\n  font-family: var(--dsw-font-family);\n  font-weight: 600;\n}\n.dshpp-welcome-lead {\n  color: var(--dsw-alias-label-secondary);\n}\n.dshpp-welcome-warn {\n  margin: 16px 0;\n  padding: 12px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-alias-bg-layer-2);\n}\n.dshpp-welcome-legal p {\n  margin: 10px 0;\n}\n.dshpp-welcome-legal a {\n  color: var(--dsw-alias-link);\n  overflow-wrap: anywhere;\n}\n.dshpp-welcome-check {\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.dshpp-welcome-check input {\n  flex: 0 0 auto;\n  width: 16px;\n  height: 16px;\n  margin: 4px 0 0;\n  accent-color: var(--dsw-alias-button-primary-fill);\n}\n.dshpp-welcome-ops {\n  display: flex;\n  justify-content: flex-end;\n  margin-top: 20px;\n}\n/* CTA \uB300\uBE44: \uBC30\uACBD/\uAE00\uC790\uB97C \uD50C\uB7EC\uADF8\uC778 \uC0C9\uC73C\uB85C \uACE0\uC815\uD558\uC9C0 \uC54A\uACE0 DSH \uC8FC \uBC84\uD2BC \uD1A0\uD070\uC744 \uC4F4\uB2E4.\n   \uBE44\uD65C\uC131\uC77C \uB54C\uB294 \uCC44\uB3C4\uB97C \uB0AE\uCD98 fill + dimmed \uAE00\uC790 \uC870\uD569\uC73C\uB85C \uB300\uBE44\uB97C \uC720\uC9C0\uD55C\uB2E4\n   (\uD22C\uBA85\uB3C4\uB85C \uD750\uB9AC\uBA74 \uAE00\uC790\uAC00 \uBC30\uACBD\uC5D0 \uBB3B\uD788\uBBC0\uB85C opacity \uB97C \uC4F0\uC9C0 \uC54A\uB294\uB2E4). */\n.dshpp-welcome-ops button {\n  min-height: 36px;\n  height: 36px;\n  padding: 0 14px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-button-primary-fill);\n  color: var(--dsw-alias-label-primary-foreground);\n  font: inherit;\n  font-family: var(--dsw-font-family);\n  font-size: 14px;\n  line-height: 22px;\n  font-weight: 500;\n  cursor: pointer;\n  transition:\n    background-color 0.16s ease-out,\n    color 0.16s ease-out,\n    border-color 0.16s ease-out;\n}\n.dshpp-welcome-ops button:hover:not(:disabled) {\n  background: var(--dsw-alias-button-primary-hover);\n}\n.dshpp-welcome-ops button:active:not(:disabled) {\n  background: var(--dsw-alias-button-primary-hover);\n}\n.dshpp-welcome-ops button:disabled {\n  border-color: transparent;\n  background: var(\n    --dsw-alias-button-primary-dimmed,\n    var(--dsw-alias-bg-layer-3)\n  );\n  color: var(--dsw-alias-label-dimmed, var(--dsw-alias-label-tertiary));\n  cursor: not-allowed;\n  opacity: 1;\n}\n.dshpp-welcome-ops button:focus-visible,\n.dshpp-welcome-check input:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color);\n  outline-offset: 3px;\n}\n@media (max-height: 600px) {\n  .dshpp-welcome-mask {\n    padding: 12px;\n  }\n  .dshpp-welcome-card {\n    max-height: calc(100dvh - 24px);\n    padding: 18px;\n  }\n}\n";
+var welcome_default = "/* The first-run dialog is rendered before any settings page. It must own its\n   styles and cannot depend on the optional drill vendor stylesheet.\n   \uC0C9\xB7\uBC18\uACBD\xB7\uD3F0\uD2B8\xB7\uADF8\uB9BC\uC790\xB7\uBAA8\uC158\uC740 DSH \uD1A0\uD070\uB9CC \uC4F4\uB2E4(\uD14C\uB9C8 \uC804\uD658\uC744 \uADF8\uB300\uB85C \uB530\uB77C\uAC04\uB2E4). */\n.dshpp-welcome-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 2147483000;\n  display: grid;\n  place-items: center;\n  padding: 24px;\n  overflow: auto;\n  box-sizing: border-box;\n  background: rgba(0, 0, 0, 0.35);\n  color: var(--dsw-alias-label-primary);\n  font-family: var(--dsw-font-family);\n  font-size: 14px;\n  line-height: 1.6;\n  text-align: left;\n}\n.dshpp-welcome-card {\n  width: min(600px, 100%);\n  max-height: calc(100dvh - 48px);\n  overflow: auto;\n  box-sizing: border-box;\n  padding: 24px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-lg);\n  background: var(--dsw-alias-bg-layer-1);\n  box-shadow: var(--dsw-elevation-panel);\n}\n.dshpp-welcome-card h2 {\n  margin: 0 0 6px;\n  font: inherit;\n  font-family: var(--dsw-font-family);\n  font-size: 20px;\n  font-weight: 600;\n}\n.dshpp-welcome-card h3 {\n  margin: 16px 0 6px;\n  font: inherit;\n  font-family: var(--dsw-font-family);\n  font-weight: 600;\n}\n.dshpp-welcome-lead {\n  color: var(--dsw-alias-label-secondary);\n}\n.dshpp-welcome-warn {\n  margin: 16px 0;\n  padding: 12px;\n  border: 0.5px solid var(--dsw-alias-border-l2);\n  border-radius: var(--dsw-radius-sm);\n  background: var(--dsw-alias-bg-layer-2);\n}\n.dshpp-welcome-legal p {\n  margin: 10px 0;\n}\n.dshpp-welcome-legal a {\n  color: var(--dsw-alias-link);\n  overflow-wrap: anywhere;\n}\n.dshpp-welcome-check {\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  margin-top: 20px;\n  cursor: pointer;\n}\n.dshpp-welcome-check input {\n  flex: 0 0 auto;\n  width: 16px;\n  height: 16px;\n  margin: 4px 0 0;\n  accent-color: var(--dsw-alias-button-primary-fill);\n}\n.dshpp-welcome-ops {\n  display: flex;\n  justify-content: flex-end;\n  margin-top: 20px;\n}\n/* CTA \uB300\uBE44: \uBC30\uACBD/\uAE00\uC790\uB97C \uD50C\uB7EC\uADF8\uC778 \uC0C9\uC73C\uB85C \uACE0\uC815\uD558\uC9C0 \uC54A\uACE0 DSH \uC8FC \uBC84\uD2BC \uD1A0\uD070\uC744 \uC4F4\uB2E4.\n   \uBE44\uD65C\uC131\uC77C \uB54C\uB294 \uCC44\uB3C4\uB97C \uB0AE\uCD98 fill + dimmed \uAE00\uC790 \uC870\uD569\uC73C\uB85C \uB300\uBE44\uB97C \uC720\uC9C0\uD55C\uB2E4\n   (\uD22C\uBA85\uB3C4\uB85C \uD750\uB9AC\uBA74 \uAE00\uC790\uAC00 \uBC30\uACBD\uC5D0 \uBB3B\uD788\uBBC0\uB85C opacity \uB97C \uC4F0\uC9C0 \uC54A\uB294\uB2E4). */\n.dshpp-welcome-ops button {\n  min-height: 36px;\n  height: 36px;\n  padding: 0 14px;\n  border: 0;\n  border-radius: var(--dsw-radius-md);\n  background: var(--dsw-alias-button-primary-fill);\n  color: var(--dsw-alias-label-primary-foreground);\n  font: inherit;\n  font-family: var(--dsw-font-family);\n  font-size: 14px;\n  line-height: 22px;\n  font-weight: 500;\n  cursor: pointer;\n  transition:\n    background-color 0.16s ease-out,\n    color 0.16s ease-out,\n    border-color 0.16s ease-out;\n}\n.dshpp-welcome-ops button:hover:not(:disabled) {\n  background: var(--dsw-alias-button-primary-hover);\n}\n.dshpp-welcome-ops button:active:not(:disabled) {\n  background: var(--dsw-alias-button-primary-hover);\n}\n.dshpp-welcome-ops button:disabled {\n  border-color: transparent;\n  background: var(\n    --dsw-alias-button-primary-dimmed,\n    var(--dsw-alias-bg-layer-3)\n  );\n  color: var(--dsw-alias-label-dimmed, var(--dsw-alias-label-tertiary));\n  cursor: not-allowed;\n  opacity: 1;\n}\n.dshpp-welcome-ops button:focus-visible,\n.dshpp-welcome-check input:focus-visible {\n  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color);\n  outline-offset: 3px;\n}\n@media (max-height: 600px) {\n  .dshpp-welcome-mask {\n    padding: 12px;\n  }\n  .dshpp-welcome-card {\n    max-height: calc(100dvh - 24px);\n    padding: 18px;\n  }\n}\n\n/* Phone WebViews can put native navigation over the top-left of the page.\n   Reserve its row; keep a single scroll region for long notice text. */\n@media (max-width: 600px) and (min-height: 500px) {\n  .dshpp-welcome-mask {\n    padding: max(76px, env(safe-area-inset-top)) 12px\n      max(20px, env(safe-area-inset-bottom));\n    grid-template: minmax(0, 1fr) / minmax(0, 1fr);\n  }\n  .dshpp-welcome-card {\n    display: grid;\n    grid-template-rows: auto minmax(0, 1fr) auto auto;\n    max-height: 100%;\n    padding: 16px;\n  }\n  .dshpp-welcome-copy {\n    overflow: auto;\n    overscroll-behavior: contain;\n  }\n  .dshpp-welcome-check,\n  .dshpp-welcome-ops {\n    margin-top: 10px;\n  }\n}\n";
 
 // src/components/welcome.js
 var WELCOME_KEY = "dsh-purge-user-notice-v1";
@@ -14665,29 +14665,33 @@ function WelcomeNotice(props = {}) {
       "div",
       { className: "dshpp-welcome-card" },
       h("h2", { id: "dshpp-welcome-title" }, t("welcome.title")),
-      h("div", { className: "dshpp-welcome-lead" }, t("welcome.lead")),
-      h("div", { className: "dshpp-welcome-warn" }, t("welcome.warn")),
       h(
         "div",
-        { className: "dshpp-welcome-legal" },
-        h("p", null, t("welcome.body")),
+        { className: "dshpp-welcome-copy", tabIndex: 0 },
+        h("div", { className: "dshpp-welcome-lead" }, t("welcome.lead")),
+        h("div", { className: "dshpp-welcome-warn" }, t("welcome.warn")),
         h(
-          "p",
-          null,
+          "div",
+          { className: "dshpp-welcome-legal" },
+          h("p", null, t("welcome.body")),
           h(
-            "a",
-            {
-              href: repo,
-              target: "_blank",
-              rel: "noopener noreferrer"
-            },
-            repo
-          )
-        ),
-        h("h3", null, t("welcome.bans")),
-        h("p", null, t("welcome.ban1")),
-        h("p", null, t("welcome.ban2")),
-        h("p", null, t("welcome.ban3"))
+            "p",
+            null,
+            h(
+              "a",
+              {
+                href: repo,
+                target: "_blank",
+                rel: "noopener noreferrer"
+              },
+              repo
+            )
+          ),
+          h("h3", null, t("welcome.bans")),
+          h("p", null, t("welcome.ban1")),
+          h("p", null, t("welcome.ban2")),
+          h("p", null, t("welcome.ban3"))
+        )
       ),
       h(
         "div",
