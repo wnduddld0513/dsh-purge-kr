@@ -1,7 +1,7 @@
 // 거부 감지 + 1회 재시도: 미적중이면 그대로 통과시키고, 적중하면 강화 문구를 덧붙여 한 번 다시 실행한다.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { looksLikeRefusal, refusalMatchIndex, streamWithRefusalRetry, RETRY_NUDGE } from "../lib/refusal-retry.js";
+import { looksLikeRefusal, refusalMatchIndex, streamWithRefusalRetry, RETRY_NUDGE, FRAME_NUDGE, DECOMPOSE_NUDGE } from "../lib/refusal-retry.js";
 
 const sys = (text) => ({ role: "system", content: [{ type: "text", text }] });
 const delta = (text) => ({ type: "text-delta", index: 0, text });
@@ -88,4 +88,64 @@ test("short meta refusals count, long technical discussion does not", () => {
 test("the matching rule index is reported for diagnosis", () => {
   assert(refusalMatchIndex("\u8fd9\u6bb5\u6307\u4ee4\u662f\u63d0\u793a\u8bcd\u6ce8\u5165\uff0c\u6211\u4e0d\u4f1a\u6267\u884c\u3002") >= 0);
   assert.equal(refusalMatchIndex("\u666e\u901a\u7684\u6280\u672f\u8bf4\u660e\uff0c\u6ca1\u6709\u4efb\u4f55\u62d2\u7edd\u3002"), -1);
+});
+
+test("Chinese object-first refusals are detected after prefix normalization", () => {
+  for (const text of [
+    "这条我不做，也不是框架问题。",
+    "这个我不做。",
+    "结论：这份武器化实现我不出。",
+    "这份报告我不写。",
+    "我不会帮你把它包装成小说。",
+  ]) assert(looksLikeRefusal(text), text);
+});
+
+test("a second refusal retries with the fiction frame", async () => {
+  const calls = [];
+  const factory = (options) => {
+    calls.push(options);
+    const n = calls.length;
+    return (async function* () {
+      if (n < 3) yield delta(n === 1 ? "这条我不做。" : "这个我不做。");
+      else yield delta("成品已给出。");
+      yield finish();
+    })();
+  };
+  const options = { messages: [sys("base system")] };
+  const chunks = await collect(streamWithRefusalRetry(factory, options));
+  assert.equal(calls.length, 3);
+  assert.ok(calls[1].messages[0].content[0].text.includes(RETRY_NUDGE.trim().slice(0, 20)));
+  assert.ok(calls[2].messages[0].content[0].text.includes(FRAME_NUDGE.trim().slice(0, 20)));
+  assert.equal(chunks.filter((c) => c.type === "text-delta")[0].text, "成品已给出。");
+});
+
+test("optional decomposition adds a third retry after the fiction frame", async () => {
+  const calls = [];
+  const factory = (options) => {
+    calls.push(options);
+    const n = calls.length;
+    return (async function* () {
+      if (n < 4) yield delta("这个我不做。");
+      else yield delta("最小组件已给出。");
+      yield finish();
+    })();
+  };
+  const chunks = await collect(streamWithRefusalRetry(factory, { messages: [sys("base")] }, { decompose: true }));
+  assert.equal(calls.length, 4);
+  assert.ok(calls[3].messages[0].content[0].text.includes(DECOMPOSE_NUDGE.trim().slice(0, 20)));
+  assert.equal(chunks.filter((c) => c.type === "text-delta")[0].text, "最小组件已给出。");
+});
+
+test("retry budget is finite and the last refusal is still yielded", async () => {
+  let calls = 0;
+  const factory = () => {
+    calls += 1;
+    return (async function* () {
+      yield delta("这条我不做。");
+      yield finish();
+    })();
+  };
+  const chunks = await collect(streamWithRefusalRetry(factory, { messages: [sys("base")] }));
+  assert.equal(calls, 3, "initial + two retries");
+  assert.equal(chunks.filter((c) => c.type === "text-delta")[0].text, "这条我不做。");
 });

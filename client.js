@@ -13486,7 +13486,7 @@ function SettingsRoot(props = {}) {
       h(
         "span",
         { className: "dshpp-native-badge" },
-        (true ? "\uD55C\uAD6D\uC5B4\uD310 " : "\uB3C5\uB9BD UI ") + "1.6.101"
+        (true ? "\uD55C\uAD6D\uC5B4\uD310 " : "\uB3C5\uB9BD UI ") + "1.7.12"
       )
     ),
     h(CompatibilityNote, { status: backendStatus }),
@@ -13644,7 +13644,7 @@ function StatusStrip({ info }) {
       "span",
       { className: "dshpp-strip-item" },
       "\uD50C\uB7EC\uADF8\uC778 ",
-      h("b", null, info?.plugin_version || "1.6.101")
+      h("b", null, info?.plugin_version || "1.7.12")
     )
   );
 }
@@ -13706,11 +13706,11 @@ function VersionNotice({ info }) {
     );
   }
   const backend = info?.plugin_version;
-  if (!backend || backend === "1.6.101") return null;
+  if (!backend || backend === "1.7.12") return null;
   return h(
     "p",
     { className: "dshpp-warn", role: "status" },
-    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.6.101"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
+    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.7.12"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
   );
 }
 function PurgePage() {
@@ -13760,7 +13760,7 @@ function PurgePage() {
           true ? h(
             "span",
             { className: "dshpp-page-ver" },
-            "\uD55C\uAD6D\uC5B4\uD310 1.6.101"
+            "\uD55C\uAD6D\uC5B4\uD310 1.7.12"
           ) : null
         )
       )
