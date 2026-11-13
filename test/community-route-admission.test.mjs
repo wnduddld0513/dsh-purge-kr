@@ -53,14 +53,14 @@ test("루프백과 비루프백 바인딩 주소 외의 Host 는 모두 거부�
  * apply() 는 호스트 서비스 몇 개에 더 의존한다; 여기서는 web 부분이 라우트를 걸 수 있으면 된다.
  * 나머지 서비스가 없으면 apply 가 예외를 던지지만 라우트는 대개 이미 등록된 뒤다 — 그래서 try 로 감싼다.
  */
-async function bootRoutes(t) {
+async function bootRoutes(t, hostEntries = []) {
   const home = fs.mkdtempSync(path.join(os.tmpdir(), "purge-community-route-"));
   const savedHome = process.env.DSH_HOME;
   const savedTrusted = process.env.PURGE_TRUSTED_HOSTS;
   process.env.DSH_HOME = home;
   delete process.env.PURGE_TRUSTED_HOSTS;
 
-  const { apply } = await import("../lib/index.js");
+  const { apply, installWebServer } = await import("../lib/index.js");
 
   class Web extends Service {
     constructor(ctx) {
@@ -76,8 +76,16 @@ async function bootRoutes(t) {
   }
 
   const ctx = new Context();
+  class Connection extends Service {
+    constructor(ctx) {
+      super(ctx, "connection");
+      this.trustedHosts = hostEntries;
+    }
+  }
+  await ctx.plugin(Connection);
   await ctx.plugin(Web);
   try { apply(ctx, { enabled: false }); } catch { /* web 라우트가 걸렸는지만 본다 */ }
+  if (hostEntries.length) installWebServer(ctx, {});
   await new Promise((resolve) => setTimeout(resolve, 200));
 
   t.after(async () => {
@@ -132,4 +140,17 @@ test("/dsh-purge/community 는 여전히 DNS rebinding 을 거부한다", async 
     "sec-fetch-site": "same-origin",
   });
   assert.equal(result.code, 403);
+});
+
+test("registered routes use the same host and environment allowlists", async (t) => {
+  const {call} = await bootRoutes(t, ["host.example"]);
+  process.env.PURGE_TRUSTED_HOSTS = "one.example,two.example";
+  for (const route of ["/dsh-purge/community", "/dsh-purge/skills", "/dsh-purge/rules"]) {
+    for (const host of ["one.example", "two.example", "host.example"]) {
+      const result = await call(route, {host, origin: "https://" + host});
+      assert.ok(result.registered, route);
+      assert.ok(result.code >= 200 && result.code !== 403, JSON.stringify({route, host, result}));
+    }
+    assert.equal((await call(route, {host: "unknown.example"})).code, 403);
+  }
 });

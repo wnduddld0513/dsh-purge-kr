@@ -196,3 +196,52 @@ test("malformed port or bracket suffix does not identify a local listener", () =
     assert.equal(decide({ host }).allowed, false, host);
   }
 });
+
+test("호스트의 --trusted-host 도메인은 패널에 들어올 수 있다(DSH 본체와 같은 기준)", () => {
+  // 배포에서 `--trusted-host dsh.example.com` 을 주면 DSH 본체는 이 도메인을 받아들이는데,
+  // 패널은 루프백과 수신 주소만 인정해서 같은 기기에서 "호스트는 들어가고 패널은 403" 이 됐다.
+  // 호스트 연결 서비스가 주는 목록을 합치면 양쪽 판정이 같아진다.
+  const trusted = new Set(["dsh.example.com"]);
+  assert.equal(
+    decide({ host: "dsh.example.com", origin: "https://dsh.example.com", "sec-fetch-site": "same-origin" }, trusted).allowed,
+    true,
+  );
+  // 합친다고 느슨해지는 것은 아니다: 목록에 없는 도메인은 그대로 거부한다.
+  assert.equal(
+    decide({ host: "other.example.com", origin: "https://other.example.com", "sec-fetch-site": "same-origin" }, trusted).allowed,
+    false,
+  );
+});
+
+test("호스트 신뢰 목록은 Origin 동일 출처와 cross-site 검사를 우회하지 못한다", () => {
+  const trusted = new Set(["dsh.example.com"]);
+  // Host 는 신뢰되었지만 Origin 이 공격자를 가리키면 → 거부한다.
+  assert.equal(
+    decide({ host: "dsh.example.com", origin: "https://evil.example", "sec-fetch-site": "same-origin" }, trusted).allowed,
+    false,
+  );
+  // cross-site 의 우선순위가 더 높다.
+  assert.equal(
+    decide({ host: "dsh.example.com", origin: "https://dsh.example.com", "sec-fetch-site": "cross-site" }, trusted).allowed,
+    false,
+  );
+  // Origin: null 은 그대로 거부한다.
+  assert.equal(decide({ host: "dsh.example.com", origin: "null" }, trusted).allowed, false);
+});
+
+test("a host deployment and the environment can each allow additional same-origin names", async (t) => {
+  const { trustedHostnames } = await import("../lib/index.js");
+  const previous = process.env.PURGE_TRUSTED_HOSTS;
+  t.after(() => {
+    if (previous === undefined) delete process.env.PURGE_TRUSTED_HOSTS;
+    else process.env.PURGE_TRUSTED_HOSTS = previous;
+  });
+  process.env.PURGE_TRUSTED_HOSTS = "a.example,b.example; c.example d.example";
+  const trusted = trustedHostnames("0.0.0.0", ["host.example"]);
+  for (const host of ["a.example", "b.example", "c.example", "d.example", "host.example"]) {
+    assert.equal(decide({ host, origin: "https://" + host }, trusted).allowed, true, host);
+  }
+  assert.equal(decide({host: "unknown.example"}, trusted).allowed, false);
+  assert.equal(decide({host: "host.example", origin: "https://a.example"}, trusted).allowed, false);
+  assert.equal(decide({host: "a.example", "sec-fetch-site": "cross-site"}, trusted).allowed, false);
+});

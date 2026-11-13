@@ -151,9 +151,9 @@ if (LEGACY[op]) {
     const sub = (argument || "status").toLowerCase();
     if (sub === "on" || sub === "off") {
       const next = writeTuning({ rewind: sub === "on" });
-      result = { ok: true, rewind: next.rewind, restart_required: true };
+      result = { ok: true, rewind: next.rewind, restart_required: false, effective: "page-refresh" };
     } else {
-      result = { ok: true, rewind: readTuning(home).rewind !== false, hint: "purge-community rewind on|off" };
+      result = { ok: true, rewind: readTuning(home).rewind === true, hint: "purge-community rewind on|off" };
     }
   } else if (op === "inject") {
     // 주입 위치: head / tail / both. 바꾸면 다음 대화 라운드부터 적용된다(section 이 매 라운드 tuning 을 다시 읽는다).

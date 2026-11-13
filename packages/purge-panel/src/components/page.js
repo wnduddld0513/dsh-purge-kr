@@ -4,6 +4,7 @@
 import { h, useState, useEffect, useCallback } from "../shared/react.js";
 import { PURGE_CSS, NATIVE_CSS, PAGE_CSS } from "../styles/index.js";
 import { compatibilityLevelText, useT } from "../shared/locale.js";
+import { RewindSetting } from "./rewind-setting.js";
 import { apiJson, unavailableStatus } from "../api/client.js";
 import { Btn, HelpTip } from "./primitives.js";
 import { PurgifySection } from "./settings-form.js";
@@ -19,7 +20,7 @@ const TABS = [
   ["rules", "규칙", "규칙 세트와 워크스페이스 정책"],
   ["skills", "스킬", "DSH 스킬 카탈로그"],
   ["drill", "모의해킹", "레드팀 모의해킹과 환경 적응"],
-  ["more", "더 보기", "서버 목록, 업데이트, 유지보수"],
+  ["more", "더 보기", "세션 모양과 서버 설정"],
 ];
 
 function PurgeGlyph({ size = 18 } = {}) {
@@ -262,7 +263,6 @@ export function PurgePage() {
         ),
       ),
     ),
-    h(StatusStrip, { info }),
     h(VersionNotice, { info }),
     h(LayoutNotice, { info }),
     h(
@@ -289,6 +289,7 @@ export function PurgePage() {
       h(
         "div",
         { hidden: tab !== "status", className: "dshpp-sec" },
+        h(StatusStrip, { info }),
         h(PurgifySection, { page: "status", onStatus: mergeInfo }),
         h(StatusExtras),
         h(CommunityMaintenance),
@@ -311,6 +312,7 @@ export function PurgePage() {
       h(
         "div",
         { hidden: tab !== "more", className: "dshpp-sec" },
+        __COMMUNITY__ && tab === "more" ? h(RewindSetting) : null,
         visited.more ? h(PurgifySection, { page: "more" }) : null,
       ),
       tab === "drill"

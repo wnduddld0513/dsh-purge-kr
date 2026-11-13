@@ -1,6 +1,6 @@
 # 설치, 업그레이드 및 장애 점검
 
-현재 버전 **1.6.97**. 사용자와 설치를 돕는 Agent 를 위한 문서다. 지원 설치기 환경: Linux CLI/Web; macOS Desktop; Windows 11 의 PowerShell 5.1/7. Windows 호스트 패치 및 UI 전체 검수는 설치기 테스트와 분리되며, 설치가 통과했다고 전체 기능이 정상이라고 주장할 수 없다.
+현재 버전 **1.6.101**. 사용자와 설치를 돕는 Agent 를 위한 문서다. 지원 설치기 환경: Linux CLI/Web; macOS Desktop; Windows 11 의 PowerShell 5.1/7. Windows 호스트 패치 및 UI 전체 검수는 설치기 테스트와 분리되며, 설치가 통과했다고 전체 기능이 정상이라고 주장할 수 없다.
 
 ## 설치 전
 
