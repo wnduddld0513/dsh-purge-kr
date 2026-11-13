@@ -117,7 +117,7 @@ test("/dsh-purge/community 는 비루프백 바인딩에서도 더 이상 403 �
 
   const result = await call("/dsh-purge/community", { host: `${BIND}:43120` });
   // 401/403 은 접근 거부다; 그 밖의 상태 코드(비즈니스 계층의 400/500 포함)는 handler 까지 통과했다는 뜻이다.
-  assert.notEqual(result.code, 403, "바인딩 주소로 community 라우트에 접근할 때 접근 거부되면 안 된다");
+  assert.notEqual(result.code, 403, "바인딩 주소로 community 라우트에 접근할 때 접근이 거부되면 안 된다");
   assert.notEqual(result.code, 401);
 });
 
