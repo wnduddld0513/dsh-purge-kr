@@ -51,7 +51,7 @@ test("127/8 은 모두 루프백으로 보고, 비루프백 공인 주소는 그
   assert.equal(decide({ host: "localhost.evil.example:3080" }).allowed, false);
 });
 
-test("IPv6 루프백, IPv4-mapped 형식 포함", () => {
+test("IPv6 루프백은 IPv4-mapped 형식도 포함한다", () => {
   // 호스트의 isLoopbackHost() 는 range() === "loopback" 을 쓰므로 mapped 형식도 루프백으로 본다.
   for (const host of ["[::1]:43120", "[::1]", "[0:0:0:0:0:0:0:1]:43120"]) {
     assert.equal(decide({ host }).allowed, true, host);
