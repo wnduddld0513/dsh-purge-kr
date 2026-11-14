@@ -4,7 +4,6 @@ import { PURGE_CSS } from "./styles/index.js";
 import { useDock, startGrantSync } from "./state/dock.js";
 import { AuthGate } from "./components/auth.js";
 import { setTranslate, translate } from "./shared/locale.js";
-import { SettingsRoot } from "./components/settings-shell.js";
 import { PurgePage, PurgeGlyph } from "./components/page.js";
 import { bindSessionContext } from "./state/session-context.js";
 import { bindPresetMenu } from "./state/preset-menu.js";
@@ -39,6 +38,13 @@ function PurgeGlyphIcon({ size = 16 } = {}) {
   return h(PurgeGlyph, { size });
 }
 
+// The host also renders the row contribution as a compact list item.
+function DetailSettings({ view } = {}) {
+  if (view === "summary")
+    return h("span", null, "Purge · " + __PANEL_VERSION__);
+  return h("div", { className: "dshpp-detail-settings" }, h(PurgePage));
+}
+
 export function PanelOverlays() {
   const st = useDock();
   return h(
@@ -49,7 +55,7 @@ export function PanelOverlays() {
     // and the red-team environment gate next to the dock.
     h(WelcomeNotice, {
       repo: __COMMUNITY__
-        ? "https://github.com/wnduddld0513/dsh-purge-kr"
+        ? "https://github.com/kingcharleslzy-ai/dsh-purge"
         : undefined,
     }),
     h(EnvAdaptSendGate),
@@ -73,9 +79,6 @@ export function apply(ctx) {
   ctx.inject(["sessions", "uiWorkspace", "conversation"], (host) =>
     installRewindUi(host),
   );
-  // 호스트 locale 카탈로그에 언어를 추가하거나 사전을 등록하지 않는다.
-  // (전역 언어 목록 오염과, 공식/서드파티 한국어 언어팩과의 "ko" 중복 충돌을 막는다.)
-  // 패널 문구는 번들 안의 사전으로 해석하므로 클라이언트 언어와 무관하게 항상 한국어다.
   setTranslate(translate);
   const t = translate;
   ctx.slots.inject("shell.overlay", () =>
@@ -88,7 +91,7 @@ export function apply(ctx) {
       PanelOverlays,
     ),
   );
-  // 왼쪽 사이드바 진입점: 아이콘 + 전체 페이지. 오른쪽 드로어는 중복을 피하기 위해 더 이상 등록하지 않는다.
+  // 왼쪽 사이드바 진입점: 아이콘 + 전체 페이지. 오른쪽 드로어는 중복을 피하려고 다시 등록하지 않는다.
   ctx.slots.inject("sidebar.panellist", () =>
     ctx.slots.register(
       {
@@ -118,7 +121,17 @@ export function apply(ctx) {
         key: __COMMUNITY__ ? "dsh-purge-community" : "dsh-purge-panel",
         inject: () => ({ t }),
       },
-      SettingsRoot,
+      DetailSettings,
+    ),
+  );
+  ctx.slots.inject("plugins.row.config", () =>
+    ctx.slots.register(
+      {
+        name: "plugins.row.config",
+        key: name + "#" + (__COMMUNITY__ ? "dsh-purge" : "dsh-purge-panel"),
+        inject: () => ({ t }),
+      },
+      DetailSettings,
     ),
   );
 }

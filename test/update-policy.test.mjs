@@ -105,8 +105,8 @@ test("all updater results suppress automatic restart and client reload requests"
 });
 
 test("an uninstalled file: dependency is reported as skipped, not silently ignored", async () => {
-  // issue #118 的真实症状：profile 里有 file:<tgz> 依赖但没落地时，
-  // 旧 planUpdates() 直接 continue，面板看起来"更新成功但什么都没变"。
+  // issue #118 의 실제 증상: profile 에 file:<tgz> 의존성이 있지만 설치되지 않았을 때,
+  // 옛 planUpdates() 는 그냥 continue 해서 패널이 "업데이트 성공했는데 아무것도 안 바뀐" 것처럼 보였다.
   const home = fs.mkdtempSync(path.join(os.tmpdir(), "purge-plan-"));
   const prev = process.env.DSH_HOME;
   try {
@@ -149,7 +149,7 @@ function tempHome() {
   };
 }
 const readRaw = (f) => JSON.parse(fs.readFileSync(f.prefs, "utf8"));
-// 通道凭据单独落盘，密钥相关断言必须读这个文件。
+// 채널 자격 증명은 따로 기록되므로, 키 관련 단언은 이 파일을 읽어야 한다.
 const readChannel = (f) => JSON.parse(fs.readFileSync(f.channel, "utf8"));
 
 test("updateEnv exposes only the channel proxy and token, never the host environment", () => {
@@ -251,4 +251,34 @@ test('malformed channel credentials produce a redacted error rather than JSON pa
     fs.writeFileSync(path.join(home,'dsh-purge','update-channel.json'),'SENSITIVE_FAKE_TOKEN_NOT_JSON');
     assert.throws(()=>preferences(home),e=>/JSON/.test(e.message)&&!e.message.includes('SENSITIVE'));
   }finally{fs.rmSync(home,{recursive:true,force:true});}
+});
+
+test("an unsuccessful or stale check cannot replace last confirmed metadata or trigger installation", async () => {
+  let result = { ok: true, hasUpdate: true, remoteVersion: "1.7.11" };
+  const f = setup({ check: async () => {
+    if (result instanceof Error) throw result;
+    return result;
+  } });
+  try {
+    f.c.start();
+    await f.c.run();
+    savePreferences(f.home, { autoInstall: true });
+    for (const failure of [
+      { ok: false, error: "배포 목록이 너무 큽니다; 대체 소스 실패" },
+      { ok: true, stale: true, hasUpdate: true, remoteVersion: "1.6.99", degraded: "대체 소스 시간 초과, 캐시만 있음" },
+      new Error("배포 목록 읽기 시간 초과"),
+    ]) {
+      result = failure;
+      await f.c.run();
+      const state = updateStatus(f.home);
+      assert.equal(state.hasUpdate, null);
+      assert.equal(state.availableVersion, "1.7.11");
+      assert.match(state.error, /큽니다|시간 초과/);
+      assert.equal(f.counts().installs, 0);
+    }
+    result = { ok: true, hasUpdate: false, remoteVersion: "1.7.11" };
+    await f.c.run();
+    assert.equal(updateStatus(f.home).error, "");
+    assert.equal(updateStatus(f.home).hasUpdate, false);
+  } finally { f.close(); }
 });

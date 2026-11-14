@@ -2,46 +2,19 @@ name: Community release
 on:
   push:
     tags: ['v*']
-  workflow_dispatch:
 permissions:
   contents: write
 concurrency:
   group: community-release-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  # 태그를 다시 밀거나 같은 버전으로 dispatch 하면 이미 있는 릴리스를 또 만들려다 실패한다.
-  # 먼저 확인해서 이미 있으면 나머지 잡을 건너뛴다(건너뛴 실행은 실패가 아니라 성공으로 기록된다).
-  preflight:
-    if: github.repository == 'wnduddld0513/dsh-purge-kr'
-    runs-on: ubuntu-latest
-    outputs:
-      skip: ${{ steps.state.outputs.skip }}
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-      - name: Skip when this version is already released
-        id: state
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          version="$(node -p "require('./package.json').version")"
-          if gh release view "v$version" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::v$version 은 이미 릴리스되어 있습니다 — 설치 검증과 자산 생성을 건너뜁니다."
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
-
   release:
-    needs: [preflight, installer]
-    if: github.repository == 'wnduddld0513/dsh-purge-kr' && needs.preflight.outputs.skip != 'true'
+    needs: installer
+    if: github.repository == 'kingcharleslzy-ai/dsh-purge'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -58,47 +31,33 @@ jobs:
           version="$(node -p "require('./package.json').version")"
           test "$GITHUB_REF_NAME" = "v$version"
           test "$(head -n 1 release-notes.md)" = "# $version"
+          notes="docs/releases/$version.md"
+          test "$(head -n 1 "$notes")" = "# $version"
+          test "$(grep -cE '^# [0-9]+\.[0-9]+\.[0-9]+' "$notes")" = 1
+          test -n "$(tail -n +2 "$notes" | tr -d '[:space:]')"
           test "$(node -p "require('./package.json').name")" = "dsh-purge-community"
           npm pack --ignore-scripts
-          sha256sum "dsh-purge-community-$version.tgz" > SHA256SUMS.txt
+          cp "dsh-purge-community-$version.tgz" dsh-purge-community.tgz
+          sha256sum "dsh-purge-community-$version.tgz" dsh-purge-community.tgz > SHA256SUMS.txt
       - name: Publish community release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           version="$(node -p "require('./package.json').version")"
-          # 발행 본문에는 이번 버전 구간만 넣는다. 과거 버전 기록은 release-notes.md 에 그대로 남는다.
-          awk 'NR==1{print;next} /^# /{exit} {print}' release-notes.md > release-body.md
-          test -s release-body.md
-          gh release create "$GITHUB_REF_NAME" "dsh-purge-community-$version.tgz" SHA256SUMS.txt --verify-tag --title "dsh-purge Community $version" --notes-file release-body.md
+          gh release create "$GITHUB_REF_NAME" "dsh-purge-community-$version.tgz" dsh-purge-community.tgz SHA256SUMS.txt --verify-tag --title "dsh-purge Community $version" --notes-file "docs/releases/$version.md"
 
   installer:
-    needs: preflight
-    if: needs.preflight.outputs.skip != 'true'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm ci --ignore-scripts --legacy-peer-deps
-      # 이 워크플로는 릴리스 자산을 마지막에 만든다. 그러니 설치 검증은 아직 없는 이번 버전이 아니라
-      # "이미 공개된 최신 릴리스"를 내려받아야 한다(없으면 package.json 버전으로 폴백).
-      - name: Resolve the released version for download checks
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          tag="$(gh release list --repo wnduddld0513/dsh-purge-kr --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || true)"
-          if [ -n "$tag" ]; then
-            echo "PURGE_RELEASE_VERSION=${tag#v}" >> "$GITHUB_ENV"
-          else
-            echo "::warning::공개된 릴리스가 없습니다 — package.json 버전으로 내려받기 검증을 시도합니다."
-          fi
       - name: Full test suite
         if: runner.os != 'Windows'
         run: npm test

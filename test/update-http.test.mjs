@@ -80,3 +80,57 @@ test('SOCKS handshake rejects unoffered authentication, invalid versions, abort 
  await assert.rejects(socksTunnel(new URL('socks5://'+ 'a'.repeat(256)+':p@127.0.0.1:1'),'api.github.com',443,new AbortController().signal),/길이/);
  await assert.rejects(socksTunnel(new URL('socks5://%zz:p@127.0.0.1:1'),'api.github.com',443,new AbortController().signal),/인코딩/);
 });
+
+test("oversized and slow release lists retain both source errors and cannot confirm a version", async t => {
+  const { listForkReleases, checkUpdate } = await import('../lib/update.js');
+  const { download } = await import('../lib/community.js');
+  const { LIST_BUDGET_MS } = await import('../lib/update-net.js');
+  const url = 'https://api.github.com/repos/example/test/releases?per_page=20';
+  const primary = () => download(url, 2 * 1024 * 1024, async () =>
+    new Response(Buffer.alloc(2 * 1024 * 1024 + 1))).then(() => []);
+  const atom = async () => ({ tags: [], error: '대체 소스 시간 초과' });
+  const large = await listForkReleases({fresh:true, services:{releases:primary, atom}});
+  assert.match([large.error, large.degraded].join(' '), /상한 2097152 B, 응답 최소 2097153 B/);
+  assert.match(large.degraded, /대체 소스 시간 초과/);
+  t.mock.timers.enable({apis:['setTimeout']});
+  const pending = listForkReleases({fresh:true, services:{releases:()=>new Promise(()=>{}), atom}});
+  t.mock.timers.tick(LIST_BUDGET_MS);
+  const slow = await pending;
+  assert.match([slow.error, slow.degraded].join(' '), /배포 목록 읽기 시간 초과/);
+  assert.match(slow.degraded, /대체 소스 시간 초과/);
+  for (const listing of [large, slow]) {
+    const result = await checkUpdate({listVersions:async()=>({
+      versions:[], releases:[], error:listing.error, degraded:listing.degraded, stale:listing.stale,
+    }), installSites:()=>[], readPublishedVersion:async()=>"1.7.11"});
+    assert.equal(result.ok, false);
+    assert.equal(result.hasUpdate, null);
+    assert.match(result.error, /대체 소스 시간 초과/);
+    assert.equal(result.publishedVersion, "1.7.11");
+    assert.deepEqual(result.releases, []);
+  }
+});
+
+
+test('oversized Content-Length is reported before reading the release body', async () => {
+  const headers = { 'content-length': '3000000' };
+  await assert.rejects(requestUpdate('https://api.github.com/x', {
+    maxBytes: 2097152,
+    fetch: async () => new Response('short fixture', { headers }),
+  }), /상한 2097152 B, 응답 최소 3000000 B/);
+});
+
+test('metadata-only version check requires the official published tag and never follows redirects', async () => {
+  const { readPublishedVersion } = await import('../lib/update.js');
+  const { REPOSITORY: repo } = await import('../lib/community.js');
+  const release = { tag_name:'v1.7.11', draft:false, prerelease:false, html_url:`https://github.com/${repo}/releases/tag/v1.7.11` };
+  const fetch = override => async url => {
+    assert.equal(url.href, `https://api.github.com/repos/${repo}/releases/latest`);
+    return Response.json({...release,...override});
+  };
+  assert.equal(await readPublishedVersion(fetch({})), '1.7.11');
+  for (const override of [{draft:true},{prerelease:true},{html_url:'https://example.com/release'},{tag_name:'main'}])
+    await assert.rejects(readPublishedVersion(fetch(override)), /메타데이터가 일치하지 않습니다/);
+  let calls=0;
+  await assert.rejects(readPublishedVersion(async()=>{ calls++; return Response.redirect('https://example.com'); }));
+  assert.equal(calls,1);
+});

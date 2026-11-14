@@ -30,6 +30,17 @@ if (!agents.includes(`\`dsh-purge-community\` ${version}`)) {
   problems.push(`AGENTS.md §9 버전 표가 ${version} 로 동기화되지 않았다`);
 }
 
+// 2b. 1.7.13 부터 릴리스 본문은 docs/releases/<version>.md 한 벌로만 발행하며, 버전 하나의 요약 상한은 8 KiB 다.
+//     넘으면 릴리스하지 않는다(상세 기록은 링크로 넘긴다).
+{
+  const releaseSummary = `docs/releases/${version}.md`;
+  if (!has(releaseSummary)) {
+    problems.push(`${releaseSummary} 에 이번 버전 릴리스 요약이 없다`);
+  } else if (fs.statSync(releaseSummary).size > 8 * 1024) {
+    problems.push(`${releaseSummary} 이 8 KiB 를 넘는다. 이번 버전의 변경과 알려진 제한만 남기고 상세 기록은 링크로 바꾼다`);
+  }
+}
+
 // 3. 유지보수·설치 문서의 현재 버전.
 for (const file of ["docs/MAINTENANCE.md", "docs/INSTALLATION.md"]) {
   if (!has(file)) {

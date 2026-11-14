@@ -9,9 +9,9 @@ Self-hosted controls for DeepSeek Harness (usually called a "jailbreak" plugin) 
 [![Release](https://img.shields.io/github/v/release/wnduddld0513/dsh-purge-kr?label=release)](https://github.com/wnduddld0513/dsh-purge-kr/releases)
 [![Checks](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml/badge.svg)](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml)
 
-Current version **1.7.12** · Matches **DSH Desktop 0.2.2-rc.3** (0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 pass in the same way) · [한국어](../README.md)
+Current version **1.7.14** · Matches **DSH Desktop 0.2.2-rc.3** (0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 pass in the same way) · [한국어](../README.md)
 
-1.7.12 hardening refusal detection for Korean and Chinese, including post-positioned object patterns; the second retry uses `FRAME_NUDGE` and an optional third stage asks for the minimal deliverable. Trigger words that safety classifiers flag were removed from the boost section. It keeps the `tuning.json` integrity guard, shared atomic writes and the 1.7.x version scheme from 1.7.11. [Release notes](docs/releases/1.7.12.md).
+1.7.14 makes the sidebar and the plugin detail share one settings source, syncs the update interval both ways, and restores the value from disk when the detail row remounts. It keeps the 1.7.13 unknown-state update checks, the split between a published version and an installable update, and the 8 KiB per-version release body cap. [Release notes](docs/releases/1.7.14.md).
 
 **Original project and author**: Maintained independently on top of [xiaoyang / YuJunZhiXue's dsh-purge](https://github.com/YuJunZhiXue/dsh-purge). The original repository has been restored. The original author's signature, copyright, and MIT license are preserved as they were. This repository maintains the community edition, and it is not an official release by the original author.
 
@@ -99,7 +99,7 @@ DSH provides the UI and the install protocol; the community maintains the index 
 The command below is for **CLI/Web users who have the `dsh` command installed and use the `web` profile**. Run it in a macOS/Linux terminal or in Windows PowerShell. Desktop users should use the UI above first. Do not download another host with `npx` just to install the plugin.
 
 ```sh
-dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.7.12/dsh-purge-community-1.7.12.tgz"
+dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.7.14/dsh-purge-community-1.7.14.tgz"
 ```
 
 `web` must match the profile you actually started, and a custom data directory follows that instance's `DSH_HOME`. This command uses this release's pinned-version URL; it is neither `npm install -g` nor a bare npm package-name install. This project ships through GitHub releases, so **do not change it to `add dsh-purge` or `add dsh-purge-community`**. An official CLI install does not run our installer's Release SHA256 comparison or migration snapshot. If you need those, choose method 3. [Official CLI install guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/develop/basic/publish.zh.md)
@@ -201,7 +201,7 @@ Set "auto-check" and "auto-install" separately on the maintenance page. The defa
 
 | Component | Value |
 | --- | --- |
-| Plugin | `dsh-purge-community` 1.7.12 |
+| Plugin | `dsh-purge-community` 1.7.14 |
 | Verified hosts | DSH Desktop 0.2.2-rc.3 / 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
 | Other hosts | Installation is allowed. The self-check marks them "unverified"; look at `diagnose` first |
 | Node | ≥18 (the runtime bundled with the desktop build is enough); the red-team tools need ≥22.5 (`node:sqlite`) |

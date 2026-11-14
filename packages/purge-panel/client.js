@@ -54,7 +54,7 @@ var base_default = '.dshpp-root {\n  --dshpp-display:\n    "Songti SC", "Noto Se
 var native_default = '.dshpp-native.dshpp-root {\n  --dshpp-display: inherit;\n  --dshpp-sans: inherit;\n  --dshpp-paper: var(--dsw-alias-bg-base, transparent);\n  --dshpp-bg: transparent;\n  --dshpp-line: var(--dsw-alias-border-l1, #ddd);\n  --dshpp-ink: var(--dsw-alias-label-primary, #171717);\n  --dshpp-mute: var(--dsw-alias-label-secondary, #777);\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4775ed);\n  --dshpp-fill: var(--dsw-alias-interactive-bg-hover, #f3f3f3);\n  container: purge-settings / inline-size;\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  width: 100%;\n  height: 100%;\n  min-height: 0;\n  max-width: none;\n  padding: 0;\n  gap: 0;\n  border-radius: 0;\n  overflow: hidden;\n  box-sizing: border-box;\n}\n.dshpp-native * {\n  box-sizing: border-box;\n}\n.dshpp-native [hidden] {\n  display: none !important;\n}\n.dshpp-native-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 20px 20px 12px;\n  gap: 12px;\n  flex: none;\n}\n.dshpp-native-head h2 {\n  font: inherit;\n  font-size: 1.3em;\n  font-weight: 600;\n  margin: 0;\n}\n.dshpp-native-head p {\n  margin: 4px 0 0;\n  font-size: 0.85em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-badge {\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-nav {\n  display: flex;\n  gap: 4px;\n  padding: 0 16px;\n  border-bottom: 1px solid var(--dshpp-line);\n  flex: none;\n  overflow-x: auto;\n}\n.dshpp-native-nav button {\n  font: inherit;\n  font-size: 0.92em;\n  border: 0;\n  border-bottom: 2px solid transparent;\n  background: none;\n  color: var(--dshpp-mute);\n  padding: 10px 8px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.dshpp-native-nav button[aria-pressed="true"] {\n  color: var(--dshpp-ink);\n  border-bottom-color: var(--dshpp-accent);\n}\n.dshpp-native-content {\n  min-height: 0;\n  flex: 1;\n  overflow: auto;\n  padding: 16px 20px;\n  scrollbar-gutter: stable;\n  overscroll-behavior: contain;\n}\n.dshpp-native .dshpp-panel {\n  border: 0;\n  border-radius: 0;\n  padding: 0;\n  background: transparent;\n  min-width: 0;\n}\n.dshpp-native\n  :is(\n    h3,\n    h4,\n    .dshpp-title,\n    .dshpp-group-h strong,\n    .dshpp-metric b,\n    .dshpp-now-ver,\n    .dshpp-edition-name\n  ) {\n  font-family: inherit;\n  font-size: 1em;\n  letter-spacing: normal;\n  font-weight: 550;\n}\n.dshpp-native .dshpp-metric b {\n  font-size: 1.12em;\n}\n.dshpp-native .dshpp-head {\n  margin-bottom: 12px;\n}\n.dshpp-native .dshpp-sub {\n  margin-top: 0;\n  flex-wrap: wrap;\n}\n.dshpp-native :is(button, input, select, textarea) {\n  font-family: inherit;\n  box-shadow: none;\n  background-image: none;\n  max-width: 100%;\n}\n.dshpp-native .dshpp-btn {\n  font-size: 0.9em;\n  min-height: 32px;\n  border-radius: 7px;\n  padding: 6px 10px;\n  transform: none;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-btn:hover:not(:disabled) {\n  background: var(--dshpp-fill);\n  box-shadow: none;\n  transform: none;\n}\n.dshpp-native .dshpp-btn-primary {\n  background: var(--dsw-alias-label-primary, #171717);\n  color: var(--dsw-alias-bg-base, #fff);\n  border-color: transparent;\n}\n.dshpp-native .dshpp-btn-primary:hover:not(:disabled) {\n  opacity: 0.85;\n  background: var(--dsw-alias-label-primary, #171717);\n}\n.dshpp-native :is(button, input, select, textarea):focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 2px;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-area {\n  font-family: inherit;\n  font-size: 0.92em;\n  line-height: 1.6;\n  min-height: 260px;\n  width: 100%;\n  border-radius: 8px;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-field {\n  font-size: 0.92em;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-metrics {\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 8px;\n}\n.dshpp-native .dshpp-metric:nth-child(2) {\n  display: none;\n}\n.dshpp-native .dshpp-metric {\n  min-height: 60px;\n  padding: 12px;\n  background: var(--dshpp-fill);\n  border: 0;\n}\n.dshpp-native .dshpp-metric span {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-editions {\n  margin: 10px 0;\n  border: 0;\n}\n.dshpp-native summary {\n  cursor: pointer;\n  color: var(--dshpp-mute);\n  padding: 8px 0;\n  font-size: 0.9em;\n}\n.dshpp-native .dshpp-edition {\n  grid-template-columns: 1fr auto;\n  gap: 8px;\n}\n.dshpp-native .dshpp-edition-name {\n  grid-column: 1/-1;\n}\n.dshpp-native .dshpp-edition .dshpp-btn {\n  min-width: 0;\n}\n.dshpp-native .dshpp-table {\n  table-layout: fixed;\n  font-size: 0.83em;\n}\n.dshpp-native .dshpp-table td {\n  word-break: break-word;\n  padding: 8px;\n}\n.dshpp-native .dshpp-table th {\n  padding: 8px;\n}\n.dshpp-native .dshpp-group-h {\n  flex-wrap: wrap;\n  gap: 6px;\n}\n.dshpp-native .dshpp-group-h em {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-row {\n  gap: 8px;\n}\n.dshpp-native .dshpp-hint {\n  font-size: 0.85em !important;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-more {\n  border-top: 1px solid var(--dshpp-line);\n  padding-top: 20px;\n  margin-top: 24px;\n}\n.dshpp-native .dshpp-more p {\n  font-size: 0.9em;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-attribution {\n  margin-top: 32px;\n  font-size: 0.78em !important;\n}\n\n/* \uB4DC\uB9B4 \uCF58\uC194: \uC61B \uBC84\uC804\uC740 \uB4DC\uB798\uADF8 \uAC00\uB2A5\uD55C \uD50C\uB85C\uD305 \uCC3D\uC5D0\uC11C \uB3CC\uC558\uC9C0\uB9CC, \uC9C0\uAE08\uC740 \uC624\uB978\uCABD \uC0AC\uC774\uB4DC\uBC14\uC5D0 \uB0B4\uC7A5\uB418\uBBC0\uB85C \uC2A4\uC2A4\uB85C \uB192\uC774\uB97C \uC7A1\uACE0 \uC2A4\uD06C\uB864\uC744 \uD5C8\uC6A9\uD574\uC57C \uD55C\uB2E4 */\n.dshpp-native-drill {\n  width: 100%;\n  min-width: 0;\n  min-height: 72vh;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding-bottom: 24px;\n  box-sizing: border-box;\n}\n.dshpp-native-drill > .rt-dock.rt-embedded {\n  flex: 1 1 auto;\n  min-height: 0;\n  min-width: 0;\n  width: 100%;\n  height: auto;\n  overflow: visible;\n}\n/* \uC624\uB978\uCABD \uC0AC\uC774\uB4DC\uBC14\uB294 \uC544\uC8FC \uC881\uB2E4: \uC548\uCABD\uC758 \uBAA8\uB4E0 flex \uD589\uC774 \uC904\uBC14\uAFC8\uB420 \uC218 \uC788\uC5B4\uC57C \uD558\uACE0, \uC785\uB825\uCC3D\uC774 \uD615\uC81C \uC694\uC18C\uB97C 1ch \uD3ED\uC73C\uB85C \uBC00\uC5B4\uB0B4\uBA74 \uC548 \uB41C\uB2E4 */\n.dshpp-native-drill .rt-dock,\n.dshpp-native-drill .rt-dock * {\n  box-sizing: border-box;\n  min-width: 0;\n  word-break: normal;\n  overflow-wrap: anywhere;\n}\n.dshpp-native-drill .rt-dock input,\n.dshpp-native-drill .rt-dock textarea,\n.dshpp-native-drill .rt-dock select {\n  width: 100%;\n  max-width: 100%;\n}\n\n/* "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110"\uACFC "\uC790\uB3D9 \uD655\uC778 / N\uC2DC\uAC04\uB9C8\uB2E4"\uB97C \uD55C \uC904\uC5D0 \uB098\uB780\uD788: \uB192\uC774, \uBAA8\uC11C\uB9AC \uBC18\uACBD, \uAE00\uC790 \uD06C\uAE30\uB97C select \uC5D0 \uB9DE\uCD98\uB2E4.\n   \uAC19\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uAC00 \uD50C\uB7EC\uADF8\uC778 \uC124\uC815 \uD398\uC774\uC9C0(.dshpp-native)\uC640 \uC67C\uCABD Purge \uC804\uCCB4 \uD398\uC774\uC9C0(.dshpp-page)\uC5D0 \uB3D9\uC2DC\uC5D0 \uBD99\uACE0,\n   \uB450 \uACF3\uC758 \uB8E8\uD2B8 class \uAC00 \uB2EC\uB77C \uC120\uD0DD\uC790\uAC00 \uC591\uCABD\uC744 \uBAA8\uB450 \uB36E\uC5B4\uC57C \uD55C\uB2E4. */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-open {\n  min-height: 32px;\n  padding: 4px 12px;\n  border-radius: 7px;\n  font-size: 0.9em;\n  white-space: nowrap;\n}\n/* \uC61B \uBC84\uC804\uC758 \uC81C\uBAA9 \uD589 \uC624\uB978\uCABD \uC815\uB82C \uB808\uC774\uC544\uC6C3\uC740 \uC678\uBD80 \uD638\uCD9C \uAC00\uB2A5\uC131\uC744 \uC704\uD574 \uB0A8\uACA8 \uB450\uC9C0\uB9CC, \uC8FC \uC9C4\uC785\uC810\uC740 \uC774\uBBF8 \uC124\uC815 \uD589\uC73C\uB85C \uC62E\uACBC\uB2E4. */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head h3 {\n  margin: 0;\n}\n/* \uC5C5\uB370\uC774\uD2B8 \uCC44\uB110 \uB300\uD654\uC0C1\uC790: \uD328\uB110\uC5D0\uB294 \uBBFF\uC744 \uB9CC\uD55C react-dom portal \uC774 \uC5C6\uC5B4 \uACE0\uC815 \uC704\uCE58 + \uC624\uBC84\uB808\uC774\uB85C \uC9C1\uC811 \uAD6C\uD604\uD55C\uB2E4 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 12050;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  background: rgba(0, 0, 0, 0.55);\n  pointer-events: auto;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-card {\n  width: min(440px, 100%);\n  max-height: min(88vh, 720px);\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 18px;\n  border-radius: 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-layer-1, #fffcf7);\n  color: var(--dshpp-ink);\n  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-title {\n  margin: 0 0 2px;\n  font-family: inherit;\n  font-size: 1em;\n  font-weight: 600;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-label {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-field {\n  width: 100%;\n  min-width: 0;\n  font-size: 0.92em;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 4px;\n}\n\n:is(.dshpp-native, .dshpp-page) .dshpp-composer-settings {\n  padding-block: 2px 8px;\n  margin-bottom: 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-composer-settings h3 {\n  margin: 0;\n  font: inherit;\n  font-weight: 600;\n}\n.dshpp-setting-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-height: 44px;\n  cursor: pointer;\n}\n.dshpp-setting-row input[role="switch"] {\n  appearance: none;\n  flex: none;\n  box-sizing: border-box;\n  width: 32px;\n  height: 20px;\n  margin: 0 2px;\n  padding: 2px;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  background: var(--dsw-alias-interactive-bg-hover, rgba(127, 127, 127, 0.23));\n  cursor: pointer;\n}\n.dshpp-setting-row input::before {\n  content: "";\n  display: block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  background: var(--dsw-alias-label-secondary, #777);\n}\n.dshpp-setting-row input:checked {\n  background: var(--dshpp-accent);\n  border-color: var(--dshpp-accent);\n}\n.dshpp-setting-row input:checked::before {\n  transform: translateX(12px);\n  background: white;\n}\n.dshpp-setting-row input:focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 3px;\n}\n.dshpp-setting-row input:disabled {\n  opacity: 0.6;\n}\n@media (forced-colors: active) {\n  .dshpp-setting-row input[role="switch"] {\n    appearance: auto;\n  }\n  .dshpp-setting-row input::before {\n    content: none;\n  }\n}\n@container purge-settings (max-width: 520px) {\n  .dshpp-native-head {\n    padding: 14px 12px 8px;\n  }\n  .dshpp-native-nav {\n    padding-inline: 8px;\n    gap: 0;\n  }\n  .dshpp-native-nav button {\n    flex: 1 0 auto;\n    min-height: 44px;\n  }\n  .dshpp-native-content {\n    padding: 12px;\n    scrollbar-gutter: auto;\n  }\n}\n';
 
 // src/styles/page.css
-var page_default = '/* \uC804\uCCB4 \uD398\uC774\uC9C0(\uC67C\uCABD \uC0AC\uC774\uB4DC\uBC14 \uC9C4\uC785\uC810) \uC2A4\uD0C0\uC77C: DSH \uC790\uCCB4\uC758 \uD3F0\uD2B8, \uAC04\uACA9, \uD14C\uB9C8 \uBCC0\uC218\uB97C \uADF8\uB300\uB85C \uC4F0\uACE0 \uBCC4\uB3C4 \uD3F0\uD2B8\uB97C \uB4E4\uC774\uC9C0 \uC54A\uB294\uB2E4. */\n.dshpp-page {\n  --dshpp-line: var(--dsw-alias-border-l1, rgba(127, 127, 127, 0.22));\n  --dshpp-line-strong: var(--dsw-alias-border-l2, rgba(127, 127, 127, 0.4));\n  --dshpp-fg: var(--dsw-alias-label-primary, currentColor);\n  --dshpp-mute: var(\n    --dsw-alias-label-secondary,\n    color-mix(in srgb, currentColor 62%, transparent)\n  );\n  --dshpp-bg: var(--dsw-alias-bg-layer-1, transparent);\n  --dshpp-bg-2: var(--dsw-alias-bg-layer-2, rgba(127, 127, 127, 0.06));\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4d6bfe);\n  --dshpp-ok: var(--dsw-alias-state-success-primary, #1f9d55);\n  --dshpp-warn: var(--dsw-alias-state-warn-primary, #b7791f);\n  --dshpp-bad: var(--dsw-alias-state-error-primary, #d14343);\n  box-sizing: border-box;\n  container: purge-page / inline-size;\n  width: 100%;\n  min-width: 0;\n  height: 100%;\n  min-height: 0;\n  overflow: auto;\n  padding: 20px clamp(12px, 3%, 32px) 32px;\n  color: var(--dshpp-fg);\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: 1.55;\n  -webkit-font-smoothing: antialiased;\n}\n.dshpp-page *,\n.dshpp-page *::before,\n.dshpp-page *::after {\n  box-sizing: border-box;\n}\n\n.dshpp-page-head {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.dshpp-page-glyph {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  border-radius: 10px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-accent);\n  flex: none;\n}\n.dshpp-page-title {\n  min-width: 0;\n}\n.dshpp-page-title h1 {\n  margin: 0;\n  font-size: 1.3em;\n  font-weight: 600;\n  letter-spacing: 0.01em;\n}\n.dshpp-page-title p {\n  margin: 2px 0 0;\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-page-ver {\n  padding: 1px 6px;\n  border-radius: 999px;\n  border: 1px solid var(--dshpp-line);\n  font-size: 0.92em;\n}\n\n/* \uC0C1\uB2E8 \uD55C \uC904 \uC0C1\uD0DC \uC694\uC57D: \uCE74\uB4DC \uB300\uC2E0 DSH \uC758 subtitle \uD589\uACFC \uB9DE\uCD98\uB2E4 */\n.dshpp-strip {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px 18px;\n  margin: 0;\n  padding: 0 0 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n}\n.dshpp-strip-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  min-width: 0;\n}\n.dshpp-strip-item b {\n  color: var(--dshpp-fg);\n  font-weight: 600;\n}\n.dshpp-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  background: var(--dshpp-mute);\n  flex: none;\n}\n.dshpp-dot.is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-dot.is-warn {\n  background: var(--dshpp-warn);\n}\n.dshpp-dot.is-bad {\n  background: var(--dshpp-bad);\n}\n\n/* \uD0ED: \uBC11\uC904\uD615\uC774\uB77C DSH \uC124\uC815 \uD398\uC774\uC9C0\uC758 tab \uACFC \uAC19\uC740 \uBAA8\uC591\uC774\uB2E4 */\n.dshpp-page-tabs {\n  display: flex;\n  gap: 2px;\n  margin: 10px 0 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  overflow-x: auto;\n  scrollbar-width: none;\n}\n.dshpp-page-tabs::-webkit-scrollbar {\n  display: none;\n}\n.dshpp-page-tabs button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 1em;\n  padding: 10px 12px;\n  border-bottom: 2px solid transparent;\n  margin-bottom: -1px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page-tabs button:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-page-tabs button[aria-selected="true"] {\n  color: var(--dshpp-fg);\n  border-bottom-color: var(--dshpp-accent);\n  font-weight: 600;\n}\n\n.dshpp-page-body {\n  padding-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec[hidden] {\n  display: none;\n}\n\n/* \uCE74\uB4DC: DSH \uC758 layer-1 \uD328\uB110 */\n.dshpp-page .dshpp-card,\n.dshpp-page section.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  margin: 0;\n  min-width: 0;\n}\n.dshpp-page .dshpp-card > h3:first-child,\n.dshpp-page section.dshpp-panel > h3:first-child {\n  margin: 0 0 12px;\n  font-size: 1em;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n/* \uD544\uB4DC \uD589: \uC67C\uCABD \uC81C\uBAA9, \uC624\uB978\uCABD \uCEE8\uD2B8\uB864. \uC881\uC740 \uD654\uBA74\uC5D0\uC11C\uB294 \uC790\uB3D9\uC73C\uB85C \uC904\uBC14\uAFC8\uD55C\uB2E4 */\n.dshpp-page .dshpp-field {\n  display: grid;\n  grid-template-columns: minmax(120px, 190px) 1fr;\n  gap: 8px 14px;\n  align-items: center;\n}\n.dshpp-page .dshpp-field > .dshpp-field-label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n}\n.dshpp-page .dshpp-field > .dshpp-field-body {\n  min-width: 0;\n}\n@container purge-page (max-width: 640px) {\n  .dshpp-page .dshpp-field {\n    grid-template-columns: 1fr;\n  }\n}\n\n.dshpp-page .dshpp-muted,\n.dshpp-page .dshpp-hint {\n  color: var(--dshpp-mute) !important;\n  font-size: 0.86em !important;\n  line-height: 1.6;\n  margin: 0;\n}\n\n.dshpp-page .dshpp-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  align-items: center;\n  min-width: 0;\n}\n.dshpp-page input,\n.dshpp-page select,\n.dshpp-page textarea {\n  font: inherit;\n  color: var(--dshpp-fg);\n  background: var(--dshpp-bg-2);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  padding: 7px 10px;\n  max-width: 100%;\n}\n.dshpp-page input:focus-visible,\n.dshpp-page select:focus-visible,\n.dshpp-page textarea:focus-visible {\n  outline: 2px solid color-mix(in srgb, var(--dshpp-accent) 55%, transparent);\n  outline-offset: 1px;\n}\n.dshpp-page textarea {\n  width: 100%;\n  min-height: 320px;\n  resize: vertical;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 0.86em;\n  line-height: 1.6;\n}\n\n.dshpp-page .dshpp-btn {\n  font: inherit;\n  font-size: 0.9em;\n  border-radius: 8px;\n  padding: 6px 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-fg);\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page .dshpp-btn:hover:not(:disabled) {\n  border-color: var(--dshpp-line-strong);\n}\n.dshpp-page .dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n/* \uC8FC \uBC84\uD2BC: brand-primary \uB97C \uBC30\uACBD\uC73C\uB85C \uC4F0\uC9C0 \uC54A\uB294\uB2E4. \uB2E4\uD06C \uBAA8\uB4DC\uC5D0\uC11C \uADF8 \uD1A0\uD070\uC740 \uAC15\uC870 \uAE00\uC790\uC0C9\uC774\uB77C\n   \uADF8\uB300\uB85C \uBC30\uACBD\uC73C\uB85C \uAE54\uBA74 "\uD770 \uBC14\uD0D5\uC5D0 \uD770 \uAE00\uC790" \uC0AC\uAC01\uD615\uC774 \uB41C\uB2E4. \uC5EC\uAE30\uC11C\uB294 \uACE0\uC815\uB41C \uC2E4\uC0C9 \uB179\uC0C9 + \uD770 \uAE00\uC790\uB97C \uC4F4\uB2E4. */\n.dshpp-page {\n  --dshpp-solid: #2f6b4f;\n  --dshpp-solid-hover: #3a8260;\n  --dshpp-solid-danger: #a63b3b;\n  --dshpp-solid-danger-hover: #bd4747;\n}\n.dshpp-page .dshpp-btn-primary {\n  background: var(--dshpp-solid);\n  border-color: var(--dshpp-solid);\n  color: #fff;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-btn-primary:hover:not(:disabled) {\n  background: var(--dshpp-solid-hover);\n  border-color: var(--dshpp-solid-hover);\n}\n.dshpp-page .dshpp-btn-solid-danger {\n  background: var(--dshpp-solid-danger);\n  border-color: var(--dshpp-solid-danger);\n  color: #fff;\n}\n.dshpp-page .dshpp-btn-solid-danger:hover:not(:disabled) {\n  background: var(--dshpp-solid-danger-hover);\n  border-color: var(--dshpp-solid-danger-hover);\n}\n.dshpp-page .dshpp-btn-danger {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n.dshpp-page .dshpp-btn-tiny {\n  padding: 3px 8px;\n  font-size: 0.82em;\n}\n\n.dshpp-page .dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  padding: 1px 8px;\n  border-radius: 999px;\n  font-size: 0.8em;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n}\n.dshpp-page .dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n\n.dshpp-page .dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-table th,\n.dshpp-page .dshpp-table td {\n  text-align: left;\n  padding: 7px 10px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: top;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-table th {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 0.95em;\n}\n.dshpp-page .dshpp-group-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  padding: 8px 0;\n  cursor: pointer;\n}\n.dshpp-page .dshpp-count {\n  color: var(--dshpp-mute);\n  font-size: 0.85em;\n}\n\n/* \uB4DC\uB9B4 \uCF58\uC194\uC774 \uB0A8\uC740 \uB192\uC774\uB97C \uC804\uBD80 \uCC28\uC9C0\uD55C\uB2E4 */\n.dshpp-page-drill {\n  min-height: 60vh;\n}\n.dshpp-page-drill .rt-dock.rt-embedded {\n  width: 100%;\n  min-width: 0;\n}\n\n.dshpp-page-foot {\n  margin-top: 28px;\n  padding-top: 14px;\n  border-top: 1px solid var(--dshpp-line);\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n\n/* \uC774\uB984 \uC124\uBA85: \uC81C\uBAA9 \uB4A4\uC758 \uC791\uC740 \uBB3C\uC74C\uD45C */\n.dshpp-help {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n.dshpp-help-btn {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.85em;\n  line-height: 1;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  border: 1px solid var(--dshpp-line);\n  cursor: help;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n}\n.dshpp-help-btn:hover,\n.dshpp-help-btn[aria-expanded="true"] {\n  color: var(--dshpp-fg);\n  border-color: var(--dshpp-line-strong);\n  background: var(--dshpp-bg-2);\n}\n.dshpp-tip {\n  position: absolute;\n  left: 0;\n  top: calc(100% + 6px);\n  z-index: 2147483000;\n  width: max-content;\n  max-width: min(340px, 70vw);\n  padding: 9px 11px;\n  border-radius: 8px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-overlay, canvas);\n  color: var(--dshpp-fg);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);\n  font-size: 0.82em;\n  line-height: 1.6;\n  white-space: normal;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dshpp-tip b {\n  font-weight: 600;\n}\n\n.dshpp-page .dshpp-warn {\n  margin: 10px 0 0;\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid color-mix(in srgb, var(--dshpp-warn) 45%, transparent);\n  color: var(--dshpp-warn);\n  background: color-mix(in srgb, var(--dshpp-warn) 10%, transparent);\n  font-size: 0.86em;\n}\n\n/* \uC561\uC158 \uBC14: \uAC00\uC7A5 \uC790\uC8FC \uC4F0\uB294 "\uC801\uC6A9"\uC744 \uCF58\uD150\uCE20 \uC601\uC5ED \uB9E8 \uC704\uC5D0 \uACE0\uC815\uD55C\uB2E4 */\n.dshpp-page .dshpp-actions {\n  position: sticky;\n  top: 0;\n  z-index: 5;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 0 12px;\n  margin: -4px 0 6px;\n  background: linear-gradient(\n    var(--dsw-alias-bg-base, canvas) 78%,\n    transparent\n  );\n  backdrop-filter: blur(2px);\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-actions .dshpp-pill {\n  margin-left: auto;\n}\n\n/* \uC9C0\uD45C: \uC138 \uC5F4\uB85C \uCD18\uCD18\uD558\uAC8C */\n.dshpp-page .dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));\n  gap: 10px;\n  margin: 4px 0 2px;\n}\n.dshpp-page .dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-page .dshpp-metric b {\n  display: block;\n  font-size: 1.05em;\n  font-weight: 600;\n  margin-bottom: 2px;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-metric span {\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n\n/* \uC811\uC774\uC2DD \uBE14\uB85D: \uD328\uCE58 \uC0C1\uC138 / \uC720\uC9C0\uBCF4\uC218 / \uC790\uCCB4 \uC810\uAC80 */\n.dshpp-page .dshpp-fold,\n.dshpp-page .dshpp-fold-inline {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  background: var(--dshpp-bg);\n  padding: 0 12px;\n}\n.dshpp-page .dshpp-fold > summary,\n.dshpp-page .dshpp-fold-inline > summary {\n  cursor: pointer;\n  padding: 10px 0;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-fold > summary::-webkit-details-marker,\n.dshpp-page .dshpp-fold-inline > summary::-webkit-details-marker {\n  display: none;\n}\n.dshpp-page .dshpp-fold > summary::before,\n.dshpp-page .dshpp-fold-inline > summary::before {\n  content: "\u25B8";\n  color: var(--dshpp-mute);\n  font-size: 0.9em;\n  transition: transform 0.12s ease;\n}\n.dshpp-page .dshpp-fold[open] > summary::before,\n.dshpp-page .dshpp-fold-inline[open] > summary::before {\n  transform: rotate(90deg);\n}\n.dshpp-page .dshpp-fold > summary b,\n.dshpp-page .dshpp-fold-inline > summary b {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  margin-left: auto;\n}\n\n/* \uC0C1\uD0DC \uD589(\uC790\uCCB4 \uC810\uAC80 / \uAC15\uD654 \uC139\uC158) */\n.dshpp-page .dshpp-line {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 6px 0;\n}\n.dshpp-page .dshpp-line + .dshpp-line {\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-line-main {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 0.92em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-line-main b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-fold-inline {\n  border: 0;\n  padding: 0;\n  background: transparent;\n}\n.dshpp-page .dshpp-fold-inline > summary {\n  padding: 2px 0;\n  color: var(--dshpp-mute);\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-fold-inline[open] {\n  flex-basis: 100%;\n}\n\n/* \uACC4\uCE35\uBCC4 \uC790\uCCB4 \uC810\uAC80: 2\uC5F4/\uB2E4\uC5F4 \uADF8\uB9AC\uB4DC\uB85C \uBC14\uAFD4 \uB354 \uC774\uC0C1 \uD55C \uC904\uC5D0 \uD558\uB098\uC529 \uB450\uC9C0 \uC54A\uB294\uB2E4 */\n.dshpp-page .dshpp-checks {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: 2px 14px;\n  padding: 6px 0 10px;\n}\n.dshpp-page .dshpp-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.84em;\n  min-width: 0;\n  padding: 2px 0;\n}\n.dshpp-page .dshpp-check.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-page .dshpp-check-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  min-width: 0;\n}\n.dshpp-page .dshpp-check-val {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-variant-numeric: tabular-nums;\n}\n\n/* \uC0C1\uD0DC \uD398\uC774\uC9C0 hero: "\uC9C0\uAE08 \uC5B4\uB5A4 \uC0C1\uD0DC\uC774\uACE0 \uB2E4\uC74C\uC5D0 \uC5B4\uB514\uB97C \uB204\uB974\uB294\uC9C0"\uB97C \uD55C\uB208\uC5D0 \uBCF4\uC5EC\uC900\uB2E4 */\n.dshpp-page .dshpp-hero {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.dshpp-page .dshpp-hero-state {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 1.02em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-hero-state b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-hero-sub {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n.dshpp-page .dshpp-hero-actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-btn-lead {\n  padding: 9px 20px;\n  font-size: 0.98em;\n  font-weight: 600;\n  border-radius: 10px;\n}\n.dshpp-page .dshpp-hero-hint {\n  margin: 0;\n  color: var(--dshpp-mute);\n  font-size: 0.84em;\n  line-height: 1.6;\n}\n.dshpp-check.is-warn {\n  color: var(--dshpp-warn);\n}\n\n.dshpp-page .dshpp-probe-msg {\n  margin: 6px 0 0;\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px dashed var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  font-size: 0.82em;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n\n@container purge-page (max-width: 520px) {\n  .dshpp-page-head {\n    gap: 8px;\n  }\n  .dshpp-page-tabs {\n    gap: 0;\n  }\n  .dshpp-page-tabs button {\n    flex: 1 0 auto;\n    padding-inline: 6px;\n    min-height: 44px;\n  }\n  .dshpp-page-body {\n    padding-top: 12px;\n  }\n  .dshpp-sec {\n    gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-card, section.dshpp-panel, .dshpp-hero) {\n    padding: 12px;\n  }\n  .dshpp-strip {\n    column-gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-row, .dshpp-sub, .dshpp-hero-state) {\n    flex-wrap: wrap;\n  }\n  .dshpp-page :is(input, select, textarea) {\n    max-width: 100%;\n    min-width: 0;\n  }\n  .dshpp-page .dshpp-table {\n    table-layout: fixed;\n    overflow-wrap: anywhere;\n  }\n}\n';
+var page_default = '/* \uC804\uCCB4 \uD398\uC774\uC9C0(\uC67C\uCABD \uC0AC\uC774\uB4DC\uBC14 \uC9C4\uC785\uC810) \uC2A4\uD0C0\uC77C: DSH \uC790\uCCB4\uC758 \uD3F0\uD2B8, \uAC04\uACA9, \uD14C\uB9C8 \uBCC0\uC218\uB97C \uADF8\uB300\uB85C \uC4F0\uACE0 \uBCC4\uB3C4 \uD3F0\uD2B8\uB97C \uB4E4\uC774\uC9C0 \uC54A\uB294\uB2E4. */\n.dshpp-page {\n  --dshpp-line: var(--dsw-alias-border-l1, rgba(127, 127, 127, 0.22));\n  --dshpp-line-strong: var(--dsw-alias-border-l2, rgba(127, 127, 127, 0.4));\n  --dshpp-fg: var(--dsw-alias-label-primary, currentColor);\n  --dshpp-mute: var(\n    --dsw-alias-label-secondary,\n    color-mix(in srgb, currentColor 62%, transparent)\n  );\n  --dshpp-bg: var(--dsw-alias-bg-layer-1, transparent);\n  --dshpp-bg-2: var(--dsw-alias-bg-layer-2, rgba(127, 127, 127, 0.06));\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4d6bfe);\n  --dshpp-ok: var(--dsw-alias-state-success-primary, #1f9d55);\n  --dshpp-warn: var(--dsw-alias-state-warn-primary, #b7791f);\n  --dshpp-bad: var(--dsw-alias-state-error-primary, #d14343);\n  box-sizing: border-box;\n  container: purge-page / inline-size;\n  width: 100%;\n  min-width: 0;\n  height: 100%;\n  min-height: 0;\n  overflow: auto;\n  padding: 20px clamp(12px, 3%, 32px) 32px;\n  color: var(--dshpp-fg);\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: 1.55;\n  -webkit-font-smoothing: antialiased;\n}\n.dshpp-page *,\n.dshpp-page *::before,\n.dshpp-page *::after {\n  box-sizing: border-box;\n}\n\n.dshpp-page-head {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.dshpp-page-glyph {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  border-radius: 10px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-accent);\n  flex: none;\n}\n.dshpp-page-title {\n  min-width: 0;\n}\n.dshpp-page-title h1 {\n  margin: 0;\n  font-size: 1.3em;\n  font-weight: 600;\n  letter-spacing: 0.01em;\n}\n.dshpp-page-title p {\n  margin: 2px 0 0;\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-page-ver {\n  padding: 1px 6px;\n  border-radius: 999px;\n  border: 1px solid var(--dshpp-line);\n  font-size: 0.92em;\n}\n\n/* \uC0C1\uB2E8 \uD55C \uC904 \uC0C1\uD0DC \uC694\uC57D: \uCE74\uB4DC \uB300\uC2E0 DSH \uC758 subtitle \uD589\uACFC \uB9DE\uCD98\uB2E4 */\n.dshpp-strip {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px 18px;\n  margin: 0;\n  padding: 0 0 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n}\n.dshpp-strip-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  min-width: 0;\n}\n.dshpp-strip-item b {\n  color: var(--dshpp-fg);\n  font-weight: 600;\n}\n.dshpp-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  background: var(--dshpp-mute);\n  flex: none;\n}\n.dshpp-dot.is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-dot.is-warn {\n  background: var(--dshpp-warn);\n}\n.dshpp-dot.is-bad {\n  background: var(--dshpp-bad);\n}\n\n/* \uD0ED: \uBC11\uC904\uD615\uC774\uB77C DSH \uC124\uC815 \uD398\uC774\uC9C0\uC758 tab \uACFC \uAC19\uC740 \uBAA8\uC591\uC774\uB2E4 */\n.dshpp-page-tabs {\n  display: flex;\n  gap: 2px;\n  margin: 10px 0 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  overflow-x: auto;\n  scrollbar-width: none;\n}\n.dshpp-page-tabs::-webkit-scrollbar {\n  display: none;\n}\n.dshpp-page-tabs button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 1em;\n  padding: 10px 12px;\n  border-bottom: 2px solid transparent;\n  margin-bottom: -1px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page-tabs button:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-page-tabs button[aria-selected="true"] {\n  color: var(--dshpp-fg);\n  border-bottom-color: var(--dshpp-accent);\n  font-weight: 600;\n}\n\n.dshpp-page-body {\n  padding-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec[hidden] {\n  display: none;\n}\n\n/* \uCE74\uB4DC: DSH \uC758 layer-1 \uD328\uB110 */\n.dshpp-page .dshpp-card,\n.dshpp-page section.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  margin: 0;\n  min-width: 0;\n}\n.dshpp-page .dshpp-card > h3:first-child,\n.dshpp-page section.dshpp-panel > h3:first-child {\n  margin: 0 0 12px;\n  font-size: 1em;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n/* \uD544\uB4DC \uD589: \uC67C\uCABD \uC81C\uBAA9, \uC624\uB978\uCABD \uCEE8\uD2B8\uB864. \uC881\uC740 \uD654\uBA74\uC5D0\uC11C\uB294 \uC790\uB3D9\uC73C\uB85C \uC904\uBC14\uAFC8\uD55C\uB2E4 */\n.dshpp-page .dshpp-field {\n  display: grid;\n  grid-template-columns: minmax(120px, 190px) 1fr;\n  gap: 8px 14px;\n  align-items: center;\n}\n.dshpp-page .dshpp-field > .dshpp-field-label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n}\n.dshpp-page .dshpp-field > .dshpp-field-body {\n  min-width: 0;\n}\n@container purge-page (max-width: 640px) {\n  .dshpp-page .dshpp-field {\n    grid-template-columns: 1fr;\n  }\n}\n\n.dshpp-page .dshpp-muted,\n.dshpp-page .dshpp-hint {\n  color: var(--dshpp-mute) !important;\n  font-size: 0.86em !important;\n  line-height: 1.6;\n  margin: 0;\n}\n\n.dshpp-page .dshpp-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  align-items: center;\n  min-width: 0;\n}\n.dshpp-page input,\n.dshpp-page select,\n.dshpp-page textarea {\n  font: inherit;\n  color: var(--dshpp-fg);\n  background: var(--dshpp-bg-2);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  padding: 7px 10px;\n  max-width: 100%;\n}\n.dshpp-page input:focus-visible,\n.dshpp-page select:focus-visible,\n.dshpp-page textarea:focus-visible {\n  outline: 2px solid color-mix(in srgb, var(--dshpp-accent) 55%, transparent);\n  outline-offset: 1px;\n}\n.dshpp-page textarea {\n  width: 100%;\n  min-height: 320px;\n  resize: vertical;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 0.86em;\n  line-height: 1.6;\n}\n\n.dshpp-page .dshpp-btn {\n  font: inherit;\n  font-size: 0.9em;\n  border-radius: 8px;\n  padding: 6px 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-fg);\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page .dshpp-btn:hover:not(:disabled) {\n  border-color: var(--dshpp-line-strong);\n}\n.dshpp-page .dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n/* \uC8FC \uBC84\uD2BC: brand-primary \uB97C \uBC30\uACBD\uC73C\uB85C \uC4F0\uC9C0 \uC54A\uB294\uB2E4. \uB2E4\uD06C \uBAA8\uB4DC\uC5D0\uC11C \uADF8 \uD1A0\uD070\uC740 \uAC15\uC870 \uAE00\uC790\uC0C9\uC774\uB77C\n   \uADF8\uB300\uB85C \uBC30\uACBD\uC73C\uB85C \uAE54\uBA74 "\uD770 \uBC14\uD0D5\uC5D0 \uD770 \uAE00\uC790" \uC0AC\uAC01\uD615\uC774 \uB41C\uB2E4. \uC5EC\uAE30\uC11C\uB294 \uACE0\uC815\uB41C \uC2E4\uC0C9 \uB179\uC0C9 + \uD770 \uAE00\uC790\uB97C \uC4F4\uB2E4. */\n.dshpp-page {\n  --dshpp-solid: #2f6b4f;\n  --dshpp-solid-hover: #3a8260;\n  --dshpp-solid-danger: #a63b3b;\n  --dshpp-solid-danger-hover: #bd4747;\n}\n.dshpp-page .dshpp-btn-primary {\n  background: var(--dshpp-solid);\n  border-color: var(--dshpp-solid);\n  color: #fff;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-btn-primary:hover:not(:disabled) {\n  background: var(--dshpp-solid-hover);\n  border-color: var(--dshpp-solid-hover);\n}\n.dshpp-page .dshpp-btn-solid-danger {\n  background: var(--dshpp-solid-danger);\n  border-color: var(--dshpp-solid-danger);\n  color: #fff;\n}\n.dshpp-page .dshpp-btn-solid-danger:hover:not(:disabled) {\n  background: var(--dshpp-solid-danger-hover);\n  border-color: var(--dshpp-solid-danger-hover);\n}\n.dshpp-page .dshpp-btn-danger {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n.dshpp-page .dshpp-btn-tiny {\n  padding: 3px 8px;\n  font-size: 0.82em;\n}\n\n.dshpp-page .dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  padding: 1px 8px;\n  border-radius: 999px;\n  font-size: 0.8em;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n}\n.dshpp-page .dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n\n.dshpp-page .dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-table th,\n.dshpp-page .dshpp-table td {\n  text-align: left;\n  padding: 7px 10px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: top;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-table th {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 0.95em;\n}\n.dshpp-page .dshpp-group-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  padding: 8px 0;\n  cursor: pointer;\n}\n.dshpp-page .dshpp-count {\n  color: var(--dshpp-mute);\n  font-size: 0.85em;\n}\n\n/* \uB4DC\uB9B4 \uCF58\uC194\uC774 \uB0A8\uC740 \uB192\uC774\uB97C \uC804\uBD80 \uCC28\uC9C0\uD55C\uB2E4 */\n.dshpp-page-drill {\n  min-height: 60vh;\n}\n.dshpp-page-drill .rt-dock.rt-embedded {\n  width: 100%;\n  min-width: 0;\n}\n\n.dshpp-page-foot {\n  margin-top: 28px;\n  padding-top: 14px;\n  border-top: 1px solid var(--dshpp-line);\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n\n/* \uC774\uB984 \uC124\uBA85: \uC81C\uBAA9 \uB4A4\uC758 \uC791\uC740 \uBB3C\uC74C\uD45C */\n.dshpp-help {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n.dshpp-help-btn {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.85em;\n  line-height: 1;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  border: 1px solid var(--dshpp-line);\n  cursor: help;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n}\n.dshpp-help-btn:hover,\n.dshpp-help-btn[aria-expanded="true"] {\n  color: var(--dshpp-fg);\n  border-color: var(--dshpp-line-strong);\n  background: var(--dshpp-bg-2);\n}\n.dshpp-tip {\n  position: absolute;\n  left: 0;\n  top: calc(100% + 6px);\n  z-index: 2147483000;\n  width: max-content;\n  max-width: min(340px, 70vw);\n  padding: 9px 11px;\n  border-radius: 8px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-overlay, canvas);\n  color: var(--dshpp-fg);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);\n  font-size: 0.82em;\n  line-height: 1.6;\n  white-space: normal;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dshpp-tip b {\n  font-weight: 600;\n}\n\n.dshpp-page .dshpp-warn {\n  margin: 10px 0 0;\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid color-mix(in srgb, var(--dshpp-warn) 45%, transparent);\n  color: var(--dshpp-warn);\n  background: color-mix(in srgb, var(--dshpp-warn) 10%, transparent);\n  font-size: 0.86em;\n}\n\n/* \uC561\uC158 \uBC14: \uAC00\uC7A5 \uC790\uC8FC \uC4F0\uB294 "\uC801\uC6A9"\uC744 \uCF58\uD150\uCE20 \uC601\uC5ED \uB9E8 \uC704\uC5D0 \uACE0\uC815\uD55C\uB2E4 */\n.dshpp-page .dshpp-actions {\n  position: sticky;\n  top: 0;\n  z-index: 5;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 0 12px;\n  margin: -4px 0 6px;\n  background: linear-gradient(\n    var(--dsw-alias-bg-base, canvas) 78%,\n    transparent\n  );\n  backdrop-filter: blur(2px);\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-actions .dshpp-pill {\n  margin-left: auto;\n}\n\n/* \uC9C0\uD45C: \uC138 \uC5F4\uB85C \uCD18\uCD18\uD558\uAC8C */\n.dshpp-page .dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));\n  gap: 10px;\n  margin: 4px 0 2px;\n}\n.dshpp-page .dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-page .dshpp-metric b {\n  display: block;\n  font-size: 1.05em;\n  font-weight: 600;\n  margin-bottom: 2px;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-metric span {\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n\n/* \uC811\uC774\uC2DD \uBE14\uB85D: \uD328\uCE58 \uC0C1\uC138 / \uC720\uC9C0\uBCF4\uC218 / \uC790\uCCB4 \uC810\uAC80 */\n.dshpp-page .dshpp-fold,\n.dshpp-page .dshpp-fold-inline {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  background: var(--dshpp-bg);\n  padding: 0 12px;\n}\n.dshpp-page .dshpp-fold > summary,\n.dshpp-page .dshpp-fold-inline > summary {\n  cursor: pointer;\n  padding: 10px 0;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-fold > summary::-webkit-details-marker,\n.dshpp-page .dshpp-fold-inline > summary::-webkit-details-marker {\n  display: none;\n}\n.dshpp-page .dshpp-fold > summary::before,\n.dshpp-page .dshpp-fold-inline > summary::before {\n  content: "\u25B8";\n  color: var(--dshpp-mute);\n  font-size: 0.9em;\n  transition: transform 0.12s ease;\n}\n.dshpp-page .dshpp-fold[open] > summary::before,\n.dshpp-page .dshpp-fold-inline[open] > summary::before {\n  transform: rotate(90deg);\n}\n.dshpp-page .dshpp-fold > summary b,\n.dshpp-page .dshpp-fold-inline > summary b {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  margin-left: auto;\n}\n\n/* \uC0C1\uD0DC \uD589(\uC790\uCCB4 \uC810\uAC80 / \uAC15\uD654 \uC139\uC158) */\n.dshpp-page .dshpp-line {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 6px 0;\n}\n.dshpp-page .dshpp-line + .dshpp-line {\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-line-main {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 0.92em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-line-main b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-fold-inline {\n  border: 0;\n  padding: 0;\n  background: transparent;\n}\n.dshpp-page .dshpp-fold-inline > summary {\n  padding: 2px 0;\n  color: var(--dshpp-mute);\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-fold-inline[open] {\n  flex-basis: 100%;\n}\n\n/* \uACC4\uCE35\uBCC4 \uC790\uCCB4 \uC810\uAC80: 2\uC5F4/\uB2E4\uC5F4 \uADF8\uB9AC\uB4DC\uB85C \uBC14\uAFD4 \uB354 \uC774\uC0C1 \uD55C \uC904\uC5D0 \uD558\uB098\uC529 \uB450\uC9C0 \uC54A\uB294\uB2E4 */\n.dshpp-page .dshpp-checks {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: 2px 14px;\n  padding: 6px 0 10px;\n}\n.dshpp-page .dshpp-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.84em;\n  min-width: 0;\n  padding: 2px 0;\n}\n.dshpp-page .dshpp-check.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-page .dshpp-check-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  min-width: 0;\n}\n.dshpp-page .dshpp-check-val {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-variant-numeric: tabular-nums;\n}\n\n/* \uC0C1\uD0DC \uD398\uC774\uC9C0 hero: "\uC9C0\uAE08 \uC5B4\uB5A4 \uC0C1\uD0DC\uC774\uACE0 \uB2E4\uC74C\uC5D0 \uC5B4\uB514\uB97C \uB204\uB974\uB294\uC9C0"\uB97C \uD55C\uB208\uC5D0 \uBCF4\uC5EC\uC900\uB2E4 */\n.dshpp-page .dshpp-hero {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.dshpp-page .dshpp-hero-state {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 1.02em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-hero-state b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-hero-sub {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n.dshpp-page .dshpp-hero-actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-btn-lead {\n  padding: 9px 20px;\n  font-size: 0.98em;\n  font-weight: 600;\n  border-radius: 10px;\n}\n.dshpp-page .dshpp-hero-hint {\n  margin: 0;\n  color: var(--dshpp-mute);\n  font-size: 0.84em;\n  line-height: 1.6;\n}\n.dshpp-check.is-warn {\n  color: var(--dshpp-warn);\n}\n\n.dshpp-page .dshpp-probe-msg {\n  margin: 6px 0 0;\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px dashed var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  font-size: 0.82em;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n\n@container purge-page (max-width: 520px) {\n  .dshpp-page-head {\n    gap: 8px;\n  }\n  .dshpp-page-tabs {\n    gap: 0;\n  }\n  .dshpp-page-tabs button {\n    flex: 1 0 auto;\n    padding-inline: 6px;\n    min-height: 44px;\n  }\n  .dshpp-page-body {\n    padding-top: 12px;\n  }\n  .dshpp-sec {\n    gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-card, section.dshpp-panel, .dshpp-hero) {\n    padding: 12px;\n  }\n  .dshpp-strip {\n    column-gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-row, .dshpp-sub, .dshpp-hero-state) {\n    flex-wrap: wrap;\n  }\n  .dshpp-page :is(input, select, textarea) {\n    max-width: 100%;\n    min-width: 0;\n  }\n  .dshpp-page .dshpp-table {\n    table-layout: fixed;\n    overflow-wrap: anywhere;\n  }\n}\n\n/* The detail route owns scrolling; the sidebar owns its own viewport. */\n.dshpp-detail-settings .dshpp-page {\n  height: auto;\n  overflow: visible;\n  padding-inline: 0;\n}\n';
 
 // src/shared/runtime-error.js
 function runtimeRepairDetails(report) {
@@ -10152,6 +10152,36 @@ function AuthGate(props) {
   );
 }
 
+// src/state/rewind-visibility.js
+var visible = false;
+var pendingRead;
+var listeners = /* @__PURE__ */ new Set();
+function subscribeRewind(listener) {
+  listeners.add(listener);
+  listener(visible);
+  return () => listeners.delete(listener);
+}
+function publish(value) {
+  visible = value;
+  for (const listener of listeners) listener(value);
+  return value;
+}
+function valueFrom(reply) {
+  if (reply?.ok !== true || typeof reply.rewind !== "boolean")
+    throw new Error(reply?.error || "\uB418\uAC10\uAE30 \uBC84\uD2BC \uC124\uC815\uC744 \uC77D\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4");
+  return reply.rewind;
+}
+function readRewindVisibility() {
+  if (pendingRead) return pendingRead;
+  const request = apiJson("/dsh-purge/boost").then(
+    (reply) => pendingRead === request ? publish(valueFrom(reply)) : visible
+  ).finally(() => {
+    if (pendingRead === request) pendingRead = void 0;
+  });
+  pendingRead = request;
+  return request;
+}
+
 // src/components/patch-status.js
 function statusKind(st) {
   if (st === "applied" || st === "already") return "ok";
@@ -10393,739 +10423,6 @@ function HelpTip({ title, children, label }) {
       children ? h("span", null, children) : null
     ) : null
   );
-}
-
-// src/components/maintenance.js
-function useText() {
-  const t = useT();
-  return (key, fallback) => {
-    const hit = t(key);
-    return hit && hit !== key ? hit : fallback;
-  };
-}
-function StatusExtras() {
-  const [check, setCheck] = useState(null);
-  const [boost, setBoost] = useState(null);
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-  const load = () => Promise.all([
-    apiJson("/dsh-purge/selfcheck").then(setCheck).catch(() => setCheck(null)),
-    apiJson("/dsh-purge/boost").then((r) => setBoost(!!r.enabled)).catch(() => setBoost(null))
-  ]);
-  useEffect(() => {
-    load();
-  }, []);
-  async function toggle() {
-    try {
-      const r = await apiJson("/dsh-purge/boost", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ enabled: !boost })
-      });
-      setBoost(!!r.enabled);
-      setNotice(
-        r.enabled ? "\uCF30\uC2B5\uB2C8\uB2E4. \uC7AC\uC2DC\uC791 \uD6C4 \uC801\uC6A9\uB429\uB2C8\uB2E4" : "\uAED0\uC2B5\uB2C8\uB2E4. \uC7AC\uC2DC\uC791 \uD6C4 \uC801\uC6A9\uB429\uB2C8\uB2E4"
-      );
-    } catch (e) {
-      setNotice(e.message);
-    }
-  }
-  async function rerun() {
-    setBusy(true);
-    try {
-      setCheck(await apiJson("/dsh-purge/selfcheck"));
-    } catch (e) {
-      setNotice(e.message);
-    } finally {
-      setBusy(false);
-    }
-  }
-  const layers = check && Array.isArray(check.layers) ? check.layers : [];
-  const failed = layers.filter(
-    (l) => l.state === "broken" || !l.state && !l.ok
-  );
-  const pendingLayers = layers.filter((l) => l.state === "pending");
-  const uncertain = layers.filter(
-    (l) => ["inferred", "unknown"].includes(l.state)
-  );
-  const pendingPatches = pendingLayers.reduce(
-    (n, l) => n + (l.pending?.length || 0),
-    0
-  );
-  const total = layers.filter((layer) => layer.applicable !== false).length;
-  return h(
-    "section",
-    { className: "dshpp-card", "aria-label": "\uD0C8\uC625 \uC0C1\uD0DC" },
-    h(
-      "div",
-      { className: "dshpp-line" },
-      h(
-        "span",
-        { className: "dshpp-line-main" },
-        h("i", {
-          className: "dshpp-dot " + (check ? failed.length ? "is-bad" : pendingLayers.length || uncertain.length ? "is-warn" : "is-ok" : "")
-        }),
-        "\uD0C8\uC625 \uC790\uCCB4 \uC810\uAC80",
-        h(
-          "b",
-          null,
-          check ? failed.length ? `${failed.length}\uAC1C \uACC4\uCE35 \uBBF8\uC801\uC6A9` : pendingLayers.length ? `${pendingPatches}\uAC74 \uC801\uC6A9 \uB300\uAE30` : uncertain.length ? `${uncertain.length}\uAC1C \uACC4\uCE35 \uD655\uC778 \uD544\uC694` : `${total}\uAC1C \uACC4\uCE35 \uBAA8\uB450 \uC815\uC0C1` : "\uD655\uC778 \uC911\u2026"
-        )
-      ),
-      h(
-        "details",
-        { className: "dshpp-fold-inline" },
-        h("summary", null, "\uACC4\uCE35\uBCC4 \uBCF4\uAE30"),
-        h(
-          "div",
-          { className: "dshpp-checks" },
-          check && Array.isArray(check.layers) ? check.layers.map(
-            (layer) => h(
-              "div",
-              {
-                key: layer.title,
-                className: "dshpp-check" + (["pending", "inferred", "unknown"].includes(layer.state) ? " is-warn" : layer.ok ? "" : " is-bad")
-              },
-              h("i", {
-                className: "dshpp-dot " + (["pending", "inferred", "unknown"].includes(layer.state) ? "is-warn" : layer.ok ? "is-ok" : "is-bad")
-              }),
-              h("span", { className: "dshpp-check-name" }, layer.title),
-              h(
-                "span",
-                { className: "dshpp-check-val" },
-                layer.applicable === false ? "\uD574\uB2F9 \uC5C6\uC74C" : layer.state === "pending" ? `\uC801\uC6A9 \uB300\uAE30 #${(layer.pending || []).join("/#")}` : layer.state === "inferred" ? "\uD638\uC2A4\uD2B8 \uCD94\uB860" : layer.state === "unknown" ? "\uBBF8\uD655\uC778" : `${layer.applied}/${layer.required ?? layer.total}`
-              ),
-              layer.note ? h(HelpTip, { title: layer.title }, layer.note) : null
-            )
-          ) : h("div", { className: "dshpp-muted" }, "\uD655\uC778 \uC911\u2026")
-        )
-      ),
-      h(
-        Btn,
-        { tiny: true, disabled: busy, onClick: rerun },
-        busy ? "\u2026" : "\uB2E4\uC2DC \uAC80\uC0AC"
-      ),
-      h(
-        Btn,
-        {
-          tiny: true,
-          title: "\uC77C\uD68C\uC6A9 \uD504\uB85C\uBE0C\uB97C \uB9CC\uB4ED\uB2C8\uB2E4. \uB2E4\uC74C \uD134 \uC751\uB2F5\uC5D0\uC11C \uBAA8\uB378\uC774 \uADF8 \uD45C\uC2DD\uC744 \uADF8\uB300\uB85C \uB418\uD480\uC774\uD558\uB294\uC9C0 \uD655\uC778\uD569\uB2C8\uB2E4",
-          onClick: async () => {
-            try {
-              const r = await apiJson("/dsh-purge/probe", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: "{}"
-              });
-              setNotice(r.message || "");
-            } catch (e) {
-              setNotice(e.message);
-            }
-          }
-        },
-        "\uD504\uB85C\uBE0C"
-      )
-    ),
-    h(
-      "div",
-      { className: "dshpp-line" },
-      h(
-        "span",
-        { className: "dshpp-line-main" },
-        "\uD0C8\uC625 \uAC15\uD654 \uC139\uC158",
-        h(
-          HelpTip,
-          { title: "\uD0C8\uC625 \uAC15\uD654 \uC139\uC158" },
-          "\uC2DC\uC2A4\uD15C \uD504\uB86C\uD504\uD2B8 \uB05D\uC5D0 \uC8FC\uC785\uACFC \uAC19\uC740 \uB4F1\uAE09\uC758 \uD14D\uC2A4\uD2B8\uB97C \uB367\uBD99\uC785\uB2C8\uB2E4: \uACC4\uCE35 \uC120\uC5B8 / \uAC70\uBD80\uB294 \uACE7 \uC7A5\uC560 / \uC544\uCCA8 \uC800\uD56D / \uB2E4\uC911 \uB77C\uC6B4\uB4DC \uC7AC\uD655\uC778. \uAE30\uBCF8\uAC12\uC740 \uCF1C\uC9D0\uC785\uB2C8\uB2E4."
-        ),
-        h("b", null, boost === null ? "\u2026" : boost ? "\uCF1C\uC9D0" : "\uAEBC\uC9D0")
-      ),
-      h(
-        Btn,
-        { tiny: true, disabled: boost === null, onClick: toggle },
-        boost ? "\uB044\uAE30" : "\uCF1C\uAE30"
-      ),
-      notice ? h("span", { className: "dshpp-muted" }, notice) : null
-    )
-  );
-}
-function assertMaintenanceResult(result) {
-  if (!result || typeof result !== "object")
-    throw new Error("\uC720\uC9C0\uBCF4\uC218 \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC740 \uACB0\uACFC\uB97C \uB3CC\uB824\uC92C\uC2B5\uB2C8\uB2E4");
-  if (result.ok === false) {
-    const errors = Array.isArray(result.errors) ? result.errors.filter(Boolean).join(" \xB7 ") : "";
-    const partial = result.applied ? " \xB7 \uC77C\uBD80 \uB300\uC0C1\uC740 \uC774\uBBF8 \uC5C5\uB370\uC774\uD2B8\uD588\uC2B5\uB2C8\uB2E4. \uC774 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD574 \uBD88\uB7EC\uC624\uC138\uC694" : "";
-    throw new Error((result.error || errors || "\uC720\uC9C0\uBCF4\uC218 \uC791\uC5C5 \uC2E4\uD328") + partial);
-  }
-}
-function maintenanceNotice(op, result) {
-  if (op === "backup") {
-    if (!result.id)
-      throw new Error(
-        "\uBC31\uC5C5 \uC791\uC5C5\uC774 \uBC31\uC5C5 \uBC88\uD638\uB97C \uB3CC\uB824\uC8FC\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uBAA9\uB85D\uC744 \uC0C8\uB85C \uACE0\uCCD0 \uACB0\uACFC\uB97C \uD655\uC778\uD558\uC138\uC694"
-      );
-    return `\uBC31\uC5C5\uC744 \uB9CC\uB4E4\uC5C8\uC2B5\uB2C8\uB2E4: ${result.id}`;
-  }
-  if (op === "rollback")
-    return (result.note || "\uD50C\uB7EC\uADF8\uC778 \uB864\uBC31\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4") + ". DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694. \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.";
-  if (op === "update") {
-    if (result.applied === false || result.skipped)
-      return result.note || "\uC0C8 \uBC84\uC804\uC744 \uC124\uCE58\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uD604\uC7AC \uC124\uCE58\uBCF8\uC740 \uADF8\uB300\uB85C\uC785\uB2C8\uB2E4.";
-    if (result.applied || result.needRestart || result.restart_required) {
-      const version = result.release?.version || result.localVersion || result.remoteVersion;
-      const warnings = result.cleanup_warnings || [];
-      const cleanup = warnings.length ? `\uC815\uB9AC\uB97C \uB9C8\uCE58\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4(${warnings.map((w) => `${w.stage}:${w.code}`).join(", ")}). \uB0A8\uC740 \uD30C\uC77C\uC740 \uBCF4\uC874\uD588\uC2B5\uB2C8\uB2E4.` : "";
-      return `${cleanup}\uD50C\uB7EC\uADF8\uC778\uC744 \uC124\uCE58\uD588\uC2B5\uB2C8\uB2E4${version ? ": " + version : ""}. DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694. \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.`;
-    }
-    return result.note || "\uC5C5\uB370\uC774\uD2B8 \uC694\uCCAD\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4. \uC0C1\uD0DC\uB97C \uC0C8\uB85C \uACE0\uCCD0 \uC124\uCE58 \uACB0\uACFC\uB97C \uD655\uC778\uD558\uC138\uC694.";
-  }
-  return result.note || "\uC720\uC9C0\uBCF4\uC218 \uC791\uC5C5\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4";
-}
-function UpdatePreferences({
-  value,
-  status = {},
-  onSaved,
-  onOpenChannel
-}) {
-  const tr = useText();
-  const [saving, setSaving] = useState(false), [error, setError] = useState("");
-  const locked = useRef(false);
-  if (!value) return null;
-  async function save(patch) {
-    if (locked.current) return;
-    locked.current = true;
-    setSaving(true);
-    setError("");
-    try {
-      const result = await apiJson("/dsh-purge/community", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ op: "preferences", value: patch })
-      });
-      assertMaintenanceResult(result);
-      onSaved(result.update_preferences);
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      locked.current = false;
-      setSaving(false);
-    }
-  }
-  return h(
-    "section",
-    { "aria-label": "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uC815", className: "dshpp-card" },
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        "label",
-        null,
-        h("input", {
-          type: "checkbox",
-          checked: value.autoCheck,
-          disabled: saving,
-          onChange: (e) => save({ autoCheck: e.target.checked }),
-          "aria-label": "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778"
-        }),
-        "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778"
-      ),
-      h(HelpTip, {
-        title: "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778",
-        children: "\uC2DC\uC791 30\uCD08 \uB4A4 \uD655\uC778\uD558\uACE0, \uC774\uD6C4\uC5D0\uB294 \uAC04\uACA9\uC5D0 \uB530\uB77C \uD655\uC778\uD569\uB2C8\uB2E4. \uB044\uB354\uB77C\uB3C4 \uC800\uC7A5\uB41C \uC790\uB3D9 \uC124\uCE58 \uC124\uC815\uC740 \uBC14\uB00C\uC9C0 \uC54A\uC9C0\uB9CC \uC790\uB3D9 \uC124\uCE58\uAC00 \uC77C\uC2DC \uC815\uC9C0\uB429\uB2C8\uB2E4."
-      }),
-      h(
-        "select",
-        {
-          "aria-label": "\uC5C5\uB370\uC774\uD2B8 \uD655\uC778 \uAC04\uACA9",
-          value: value.intervalHours,
-          disabled: saving || !value.autoCheck,
-          onChange: (e) => save({ intervalHours: Number(e.target.value) })
-        },
-        [.../* @__PURE__ */ new Set([1, 6, 12, 24, value.intervalHours])].sort((a, b) => a - b).map((v) => h("option", { key: v, value: v }, `${v}\uC2DC\uAC04\uB9C8\uB2E4`))
-      ),
-      // "업데이트 채널"은 위 두 컨트롤과 같은 줄에 나란히 두고 크기를 select 에 맞춘다.
-      // 이 버튼이 설정하는 것이 바로 이 업데이트 확인이 쓰는 프록시/키이므로, 제목 맨 오른쪽으로 밀리면 안 된다.
-      onOpenChannel ? h(
-        Btn,
-        {
-          tiny: true,
-          className: "dshpp-updch-open",
-          disabled: saving,
-          onClick: () => onOpenChannel(),
-          title: tr("updch.title", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD504\uB85D\uC2DC\uC640 GitHub \uD0A4")
-        },
-        tr("updch.open", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110")
-      ) : null
-    ),
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        "label",
-        null,
-        h("input", {
-          type: "checkbox",
-          checked: value.autoInstall,
-          disabled: saving,
-          onChange: (e) => save({ autoInstall: e.target.checked }),
-          "aria-label": "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uCE58"
-        }),
-        "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uCE58"
-      ),
-      h(HelpTip, {
-        title: "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uCE58",
-        children: "\uC790\uB3D9 \uD655\uC778\uC774 \uCF1C\uC838 \uC788\uACE0 \uC7A0\uAE30\uC9C0 \uC54A\uC740 \uC0C8 \uC815\uC2DD \uBC84\uC804\uC744 \uCC3E\uC558\uC744 \uB54C\uB9CC \uC124\uCE58\uD569\uB2C8\uB2E4. \uC124\uCE58 \uC804\uC5D0 \uBC31\uC5C5\uD558\uACE0 \uB9B4\uB9AC\uC2A4 \uD328\uD0A4\uC9C0\uB97C \uAC80\uC99D\uD558\uBA70, \uC2E4\uD328\uD574\uB3C4 \uC18C\uC2A4\uB97C \uC790\uB3D9\uC73C\uB85C \uBC14\uAFB8\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uC124\uCE58 \uD6C4\uC5D0\uB294 \uC9C1\uC811 \uC7AC\uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9AC\uACE0, DSH \uB97C \uC790\uB3D9\uC73C\uB85C \uC7AC\uC2DC\uC791\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
-      })
-    ),
-    h(
-      "p",
-      { className: "dshpp-hint" },
-      status.reconciliationError ? "\uC124\uCE58 \uC0C1\uD0DC \uD655\uC778 \uB300\uAE30 \uC911\uC774\uB77C \uC790\uB3D9 \uC124\uCE58\uB97C \uC77C\uC2DC \uC815\uC9C0\uD588\uC2B5\uB2C8\uB2E4." : status.restartRequired ? `\uB514\uC2A4\uD06C \uBC84\uC804 ${status.pendingVersion}, \uD604\uC7AC \uC2E4\uD589 ${status.runningVersion || "\uC54C \uC218 \uC5C6\uC74C"}. DSH \uB97C \uC9C1\uC811 \uC7AC\uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9BD\uB2C8\uB2E4.` : !value.autoCheck ? "\uC790\uB3D9 \uD655\uC778\uC774 \uAEBC\uC838 \uC788\uC5B4 \uC790\uB3D9 \uC124\uCE58\uB3C4 \uBA48\uCDB0 \uC788\uC2B5\uB2C8\uB2E4." : status.checkedAt ? `\uB9C8\uC9C0\uB9C9 \uD655\uC778: ${new Date(status.checkedAt).toLocaleString()}${status.hasUpdate ? ` \xB7 \uC0AC\uC6A9 \uAC00\uB2A5\uD55C \uBC84\uC804 ${status.availableVersion}` : ""}` : "\uC2DC\uC791 \uD6C4 \uC790\uB3D9\uC73C\uB85C \uD655\uC778\uD558\uACE0, \uC124\uCE58 \uD6C4\uC5D0\uB294 \uC9C1\uC811 \uC7AC\uC2DC\uC791\uD558\uB3C4\uB85D\uB9CC \uC548\uB0B4\uD569\uB2C8\uB2E4."
-    ),
-    status.reconciliationError ? h("p", { role: "alert" }, status.reconciliationError) : null,
-    [...new Set([status.error, status.installError].filter(Boolean))].map(
-      (message) => h("p", { key: message, role: "alert" }, message)
-    ),
-    error ? h("p", { role: "alert" }, error) : null
-  );
-}
-function UpdateChannelDialog({ value, onClose, onSaved }) {
-  const tr = useText();
-  const [proxy, setProxy] = useState(value?.proxyUrl || "");
-  const [mirror, setMirror] = useState(value?.mirrorUrl || "");
-  const [token, setToken] = useState("");
-  const [clearToken, setClearToken] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
-  const proxyRef = useRef(null);
-  const hasToken = !!value?.hasGithubToken;
-  useEffect(() => {
-    try {
-      proxyRef.current?.focus?.();
-    } catch {
-    }
-  }, []);
-  useEffect(() => {
-    if (typeof document === "undefined" || !document.addEventListener)
-      return void 0;
-    const onKey = (e) => {
-      if (e.key !== "Escape") return;
-      e.stopPropagation();
-      onClose();
-    };
-    document.addEventListener("keydown", onKey, true);
-    return () => document.removeEventListener("keydown", onKey, true);
-  }, [onClose]);
-  async function save() {
-    if (saving) return;
-    const next = {};
-    if (mirror.trim() !== (value?.mirrorUrl || ""))
-      next.mirrorUrl = mirror.trim();
-    if (proxy.trim() !== (value?.proxyUrl || "")) next.proxyUrl = proxy.trim();
-    if (clearToken) next.clearGithubToken = true;
-    else if (token.trim()) next.githubToken = token.trim();
-    setSaving(true);
-    setError("");
-    try {
-      const result = await apiJson("/dsh-purge/community", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ op: "preferences", value: next })
-      });
-      assertMaintenanceResult(result);
-      onSaved(result.update_preferences);
-      onClose();
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setSaving(false);
-    }
-  }
-  return h(
-    "div",
-    {
-      className: "dshpp-updch-mask",
-      role: "dialog",
-      "aria-modal": "true",
-      "aria-label": tr("updch.title", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD504\uB85D\uC2DC\uC640 GitHub \uD0A4"),
-      onClick: (e) => {
-        if (e.target === e.currentTarget && !saving) onClose();
-      }
-    },
-    h(
-      "div",
-      { className: "dshpp-updch-card" },
-      h(
-        "h4",
-        { className: "dshpp-updch-title" },
-        tr("updch.title", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD504\uB85D\uC2DC\uC640 GitHub \uD0A4")
-      ),
-      h(
-        "p",
-        { className: "dshpp-hint" },
-        tr(
-          "updch.scope",
-          "\uC5EC\uAE30\uC11C \uC124\uC815\uD55C \uD504\uB85D\uC2DC\uC640 \uD0A4\uB294 \uC774 \uD50C\uB7EC\uADF8\uC778\uC758 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778\uACFC \uB2E4\uC6B4\uB85C\uB4DC \uACBD\uB85C\uC5D0\uB9CC \uC801\uC6A9\uB418\uACE0, \uB2E4\uB978 \uBAA8\uB378 \uACF5\uAE09\uC790 \uC694\uCCAD\uC5D0\uB294 \uC601\uD5A5\uC744 \uC8FC\uC9C0 \uC54A\uC73C\uBA70 \uD638\uC2A4\uD2B8 \uD504\uB85C\uC138\uC2A4 \uD658\uACBD\uC5D0\uB3C4 \uC4F0\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uAE30\uC874 \uC5C5\uB370\uC774\uD2B8 \uD504\uB85D\uC2DC \uD658\uACBD\uC744 \uC0C1\uC18D\uD569\uB2C8\uB2E4."
-        )
-      ),
-      h(
-        "label",
-        { className: "dshpp-updch-label" },
-        h("span", null, tr("updch.mirror", "GitHub \uBBF8\uB7EC (\uC120\uD0DD)")),
-        h("input", {
-          type: "text",
-          value: mirror,
-          placeholder: tr("updch.mirror.ph", "https://\uBBF8\uB7EC\uD638\uC2A4\uD2B8/"),
-          onChange: (e) => setMirror(e.target.value),
-          disabled: saving
-        }),
-        h(
-          "small",
-          null,
-          tr(
-            "updch.mirror.hint",
-            "\uC870\uD68C\uC640 \uB2E4\uC6B4\uB85C\uB4DC\uC5D0\uB9CC \uC4F0\uBA70 GitHub \uD0A4\uB97C \uBCF4\uB0B4\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uC124\uCE58\uB294 \uC5EC\uC804\uD788 GitHub \uC5D0\uC11C \uACF5\uC2DD \uAC80\uC99D\uAC12\uC744 \uBC1B\uC544\uC57C \uD558\uACE0, \uC5C5\uB370\uC774\uD2B8 \uD504\uB85D\uC2DC\uB97C \uC4F8 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uBBF8\uB7EC\uB97C \uB055\uB2C8\uB2E4."
-          )
-        )
-      ),
-      h(
-        "label",
-        { className: "dshpp-updch-label" },
-        h("span", null, tr("updch.proxy", "\uD504\uB85D\uC2DC \uC8FC\uC18C")),
-        h("input", {
-          ref: proxyRef,
-          type: "text",
-          className: "dshpp-field dshpp-updch-field",
-          "aria-label": tr("updch.proxy", "\uD504\uB85D\uC2DC \uC8FC\uC18C"),
-          value: proxy,
-          disabled: saving,
-          placeholder: tr("updch.proxy.ph", "socks5://127.0.0.1:60808"),
-          spellCheck: false,
-          autoComplete: "off",
-          onChange: (e) => setProxy(e.target.value)
-        })
-      ),
-      h(
-        "p",
-        { className: "dshpp-hint" },
-        tr(
-          "updch.proxy.hint",
-          "http:// / https:// / socks5:// \uC811\uB450\uC0AC\uB97C \uC9C0\uC6D0\uD569\uB2C8\uB2E4. \uC608: http://127.0.0.1:7890. \uBE44\uC6CC \uB450\uBA74 \uAE30\uC874 \uC5C5\uB370\uC774\uD2B8 \uD504\uB85D\uC2DC \uD658\uACBD\uC744 \uC0C1\uC18D\uD569\uB2C8\uB2E4."
-        )
-      ),
-      h(
-        "label",
-        { className: "dshpp-updch-label" },
-        h("span", null, tr("updch.token", "GitHub \uD0A4")),
-        h("input", {
-          type: "password",
-          className: "dshpp-field dshpp-updch-field",
-          "aria-label": tr("updch.token", "GitHub \uD0A4"),
-          value: token,
-          disabled: saving || clearToken,
-          placeholder: tr(
-            "updch.token.ph",
-            "\uC120\uD0DD: GitHub API \uD55C\uB3C4\uB97C \uB192\uC785\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uBC14\uAFB8\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4"
-          ),
-          spellCheck: false,
-          autoComplete: "off",
-          onChange: (e) => setToken(e.target.value)
-        })
-      ),
-      h(
-        "p",
-        { className: "dshpp-hint" },
-        hasToken ? tr(
-          "updch.token.set",
-          "\uC774 \uCEF4\uD4E8\uD130\uC5D0 \uD0A4\uAC00 \uC124\uC815\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uC785\uB825\uCC3D\uC740 \uD56D\uC0C1 \uBE44\uC5B4 \uC788\uACE0, \uBE44\uC6B4 \uCC44 \uC800\uC7A5\uD558\uBA74 \uADF8\uB300\uB85C \uC720\uC9C0\uB429\uB2C8\uB2E4."
-        ) : tr(
-          "updch.token.unset",
-          "\uC774 \uCEF4\uD4E8\uD130\uC5D0 \uC544\uC9C1 \uD0A4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uC124\uC815\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
-        )
-      ),
-      hasToken ? h(
-        "label",
-        { className: "dshpp-updch-check" },
-        h("input", {
-          type: "checkbox",
-          checked: clearToken,
-          disabled: saving,
-          "aria-label": tr("updch.token.clear", "\uC800\uC7A5\uB41C \uD0A4 \uC9C0\uC6B0\uAE30"),
-          onChange: (e) => setClearToken(!!e.target.checked)
-        }),
-        h("span", null, tr("updch.token.clear", "\uC800\uC7A5\uB41C \uD0A4 \uC9C0\uC6B0\uAE30"))
-      ) : null,
-      error ? h("p", { role: "alert" }, error) : null,
-      h(
-        "div",
-        { className: "dshpp-updch-ops" },
-        h(
-          Btn,
-          { disabled: saving, onClick: onClose },
-          tr("updch.cancel", "\uCDE8\uC18C")
-        ),
-        h(
-          Btn,
-          { kind: "primary", disabled: saving, onClick: save },
-          saving ? tr("updch.saving", "\uC800\uC7A5 \uC911\u2026") : tr("updch.save", "\uC800\uC7A5")
-        )
-      )
-    )
-  );
-}
-function CommunityMaintenance() {
-  const [value, setValue] = useState(null), [notice, setNotice] = useState(""), [busy, setBusy] = useState(false), [selected, setSelected] = useState(""), [releases, setReleases] = useState(null), [release, setRelease] = useState("");
-  const [listState, setListState] = useState("loading"), [listError, setListError] = useState("");
-  const [channelOpen, setChannelOpen] = useState(false);
-  const tr = useText();
-  const mounted = useRef(false), generation = useRef(0), running = useRef(false);
-  const load = useCallback(async () => {
-    const request = ++generation.current;
-    setListState("loading");
-    setListError("");
-    try {
-      const result = await apiJson("/dsh-purge/community");
-      assertMaintenanceResult(result);
-      if (!Array.isArray(result.backups))
-        throw new Error("\uBC31\uC5C5 \uBAA9\uB85D \uC751\uB2F5\uC774 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
-      if (!mounted.current || request !== generation.current) return;
-      setValue(result);
-      setSelected(
-        (current) => result.backups.some((b) => b.id === current) ? current : ""
-      );
-      setListState("ready");
-    } catch (e) {
-      if (!mounted.current || request !== generation.current) return;
-      setListError(e.message);
-      setListState("error");
-    }
-  }, []);
-  useEffect(() => {
-    mounted.current = true;
-    load();
-    return () => {
-      mounted.current = false;
-      generation.current++;
-    };
-  }, [load]);
-  async function run(op) {
-    if (running.current) return;
-    if (op === "rollback" && !window.confirm(
-      "Purge \uD50C\uB7EC\uADF8\uC778\uACFC \uADF8 \uC9C4\uC785\uC810\uB9CC \uB864\uBC31\uD558\uACE0 \uD604\uC7AC \uD504\uB86C\uD504\uD2B8\uC640 \uC124\uC815\uC740 \uB0A8\uAE41\uB2C8\uB2E4. \uB05D\uB098\uBA74 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD574\uC57C \uD558\uACE0, \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uACC4\uC18D\uD560\uAE4C\uC694?"
-    ))
-      return;
-    if (op === "update" && !window.confirm(
-      "\uBA3C\uC800 \uBC31\uC5C5\uD55C \uB4A4 \uC120\uD0DD\uD55C \uCEE4\uBBA4\uB2C8\uD2F0 \uC815\uC2DD \uBC84\uC804\uC744 \uC124\uCE58\uD569\uB2C8\uB2E4. \uD638\uC2A4\uD2B8 \uD328\uCE58\uB97C \uB2E4\uC2DC \uC801\uC6A9\uD558\uC9C0\uB294 \uC54A\uC2B5\uB2C8\uB2E4. \uC124\uCE58 \uD6C4 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD558\uACE0, \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uACC4\uC18D\uD560\uAE4C\uC694?"
-    ))
-      return;
-    running.current = true;
-    setBusy(true);
-    setNotice("\uCC98\uB9AC \uC911\u2026");
-    try {
-      const r = await apiJson("/dsh-purge/community", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ op, id: selected, ref: release })
-      });
-      assertMaintenanceResult(r);
-      if (!mounted.current) return;
-      if (op === "check") {
-        if (!Array.isArray(r.versions))
-          throw new Error("\uB9B4\uB9AC\uC2A4 \uBAA9\uB85D \uC751\uB2F5\uC774 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
-        setReleases(r.versions.filter((v) => v.asset));
-        setRelease(r.versions.find((v) => v.asset)?.ref || "");
-        setNotice(
-          r.degraded ? `${r.degraded} \xB7 ${r.stale ? "\uC9C0\uAE08\uC740 \uCE90\uC2DC \uBAA9\uB85D\uC744 \uD45C\uC2DC\uD569\uB2C8\uB2E4. \uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD558\uC138\uC694" : "\uB300\uCCB4 \uBAA9\uB85D\uC744 \uD45C\uC2DC\uD588\uC2B5\uB2C8\uB2E4"}` : r.error ? `\uC5C5\uB370\uC774\uD2B8 \uD655\uC778 \uC2E4\uD328: ${r.error}` : r.hasUpdate ? `\uC0C8 \uBC84\uC804 ${r.remoteVersion} \uBC1C\uACAC` : "\uC774\uBBF8 \uCD5C\uC2E0 \uC815\uC2DD \uBC84\uC804\uC785\uB2C8\uB2E4"
-        );
-      } else {
-        setNotice(maintenanceNotice(op, r));
-      }
-    } catch (e) {
-      if (mounted.current)
-        setNotice(
-          e.message === "timeout" ? "\uC720\uC9C0\uBCF4\uC218 \uC694\uCCAD\uC774 \uC2DC\uAC04 \uCD08\uACFC\uB410\uC2B5\uB2C8\uB2E4. \uC791\uC5C5\uC774 \uC544\uC9C1 \uC2E4\uD589 \uC911\uC77C \uC218 \uC788\uC73C\uB2C8 \uBA3C\uC800 \uC0C1\uD0DC\uB97C \uC0C8\uB85C \uACE0\uCE58\uACE0, \uAC19\uC740 \uC694\uCCAD\uC744 \uBC18\uBCF5 \uC81C\uCD9C\uD558\uC9C0 \uB9C8\uC138\uC694." : e.message
-        );
-    } finally {
-      if (op !== "check" && mounted.current) await load();
-      running.current = false;
-      if (mounted.current) setBusy(false);
-    }
-  }
-  return h(
-    "section",
-    { className: "dshpp-panel", "aria-label": "\uD55C\uAD6D\uC5B4\uD310 \uC720\uC9C0\uBCF4\uC218" },
-    h("h3", null, "\uC720\uC9C0\uBCF4\uC218: \uC5C5\uB370\uC774\uD2B8\uC640 \uC774 \uCEF4\uD4E8\uD130 \uBC31\uC5C5"),
-    // 채널 현황 요약: 프록시가 직결인지, 키가 설정돼 있는지(키 평문은 절대 되풀이하지 않는다).
-    // 진입 버튼은 여기 있지 않고 "자동 업데이트 확인"과 같은 줄에 있다.
-    value ? h(
-      "p",
-      { className: "dshpp-hint" },
-      (value.update_preferences?.proxyUrl ? tr("updch.state.proxy", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110 \uD504\uB85D\uC2DC: ") + value.update_preferences.proxyUrl : tr(
-        "updch.state.direct",
-        "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD658\uACBD \uB610\uB294 \uC2DC\uC2A4\uD15C \uD504\uB85D\uC2DC \uC0C1\uC18D"
-      )) + " \xB7 " + (value.update_preferences?.hasGithubToken ? tr("updch.state.token.on", "GitHub \uD0A4 \uC124\uC815\uB428") : tr("updch.state.token.off", "GitHub \uD0A4 \uBBF8\uC124\uC815"))
-    ) : null,
-    h(UpdatePreferences, {
-      value: value?.update_preferences,
-      status: value?.update_status,
-      onSaved: (next) => setValue((current) => ({ ...current, update_preferences: next })),
-      onOpenChannel: () => setChannelOpen(true)
-    }),
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        Btn,
-        { disabled: busy, onClick: () => run("check") },
-        "\uD55C\uAD6D\uC5B4\uD310 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778"
-      ),
-      h(
-        Btn,
-        {
-          disabled: busy,
-          onClick: async () => {
-            try {
-              const r = await apiJson("/dsh-purge/audit?limit=10");
-              const lines = (r.entries || []).map(
-                (x) => `${new Date(x.at).toLocaleString()}  ${x.event}  ${JSON.stringify(
-                  Object.fromEntries(
-                    Object.entries(x).filter(
-                      ([k]) => !["at", "event", "pid"].includes(k)
-                    )
-                  )
-                )}`
-              );
-              setNotice(
-                lines.length ? lines.join("\n") : "\uC544\uC9C1 \uAE30\uB85D\uB41C \uB3D9\uC791\uC774 \uC5C6\uC2B5\uB2C8\uB2E4"
-              );
-            } catch (e) {
-              setNotice(e.message);
-            }
-          }
-        },
-        "\uCD5C\uADFC \uB3D9\uC791"
-      ),
-      h(
-        "a",
-        {
-          href: "https://github.com/wnduddld0513/dsh-purge-kr/releases",
-          target: "_blank",
-          rel: "noreferrer"
-        },
-        "\uB9B4\uB9AC\uC2A4 \uAE30\uB85D"
-      )
-    ),
-    releases?.length ? h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        "select",
-        {
-          "aria-label": "\uCEE4\uBBA4\uB2C8\uD2F0 \uB9B4\uB9AC\uC2A4 \uC120\uD0DD",
-          value: release,
-          onChange: (e) => setRelease(e.target.value),
-          disabled: busy
-        },
-        releases.map(
-          (r) => h("option", { key: r.ref, value: r.ref }, r.label)
-        )
-      ),
-      h(
-        Btn,
-        { disabled: busy || !release, onClick: () => run("update") },
-        "\uC120\uD0DD\uD55C \uBC84\uC804 \uC124\uCE58"
-      )
-    ) : null,
-    h("h3", { style: { marginTop: 20 } }, "\uC774 \uCEF4\uD4E8\uD130 \uBC31\uC5C5"),
-    h(
-      Btn,
-      { disabled: busy || listState === "loading", onClick: load },
-      "\uBC31\uC5C5 \uBAA9\uB85D \uC0C8\uB85C \uACE0\uCE68"
-    ),
-    listState === "loading" ? h("p", { role: "status" }, "\uBC31\uC5C5\uC744 \uC77D\uB294 \uC911\u2026") : null,
-    listState === "error" ? h("p", { role: "alert" }, `\uBC31\uC5C5 \uC77D\uAE30 \uC2E4\uD328: ${listError}`) : null,
-    listState === "ready" && !value.backups.length ? h("p", { role: "status" }, "\uBC31\uC5C5 \uC5C6\uC74C") : null,
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(Btn, { disabled: busy, onClick: () => run("backup") }, "\uC9C0\uAE08 \uBC31\uC5C5"),
-      h(
-        "select",
-        {
-          "aria-label": "\uB864\uBC31\uD560 \uBC31\uC5C5 \uC120\uD0DD",
-          value: selected,
-          onChange: (e) => setSelected(e.target.value),
-          disabled: busy || listState !== "ready"
-        },
-        h("option", { value: "" }, "\uBC31\uC5C5 \uC120\uD0DD"),
-        ...(value?.backups || []).map(
-          (b) => h(
-            "option",
-            { key: b.id, value: b.id },
-            `${new Date(b.created_at).toLocaleString()} \xB7 ${b.plugins.map((p) => p.version).join(" / ")}`
-          )
-        )
-      ),
-      h(
-        Btn,
-        {
-          disabled: busy || !selected || listState !== "ready",
-          onClick: () => run("rollback")
-        },
-        "\uD50C\uB7EC\uADF8\uC778 \uB864\uBC31"
-      )
-    ),
-    h(
-      "p",
-      { className: "dshpp-hint" },
-      "\uBC31\uC5C5\uC740 \uC774 \uCEF4\uD4E8\uD130\uC5D0\uB9CC \uB0A8\uC2B5\uB2C8\uB2E4. \uB864\uBC31\uC740 \uD604\uC7AC \uD504\uB86C\uD504\uD2B8, \uADDC\uCE59, \uB2E4\uB978 \uD50C\uB7EC\uADF8\uC778 \uC124\uC815\uC744 \uBCF4\uC874\uD569\uB2C8\uB2E4. \uC124\uCE58\uB098 \uB864\uBC31 \uD6C4\uC5D0\uB294 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD574\uC57C \uD558\uACE0, \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
-    ),
-    notice ? h("p", { role: "status" }, notice) : null,
-    // 대화상자는 패널 안에 붙지만 고정 위치로 컨테이너를 벗어나며 portal 에 의존하지 않는다.
-    channelOpen && value ? h(UpdateChannelDialog, {
-      value: value.update_preferences,
-      onClose: () => setChannelOpen(false),
-      onSaved: (next) => {
-        setValue((current) => ({ ...current, update_preferences: next }));
-        setNotice(
-          tr(
-            "updch.saved",
-            "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110\uC744 \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC74C \uC5C5\uB370\uC774\uD2B8 \uD655\uC778\uBD80\uD130 \uC801\uC6A9\uB429\uB2C8\uB2E4."
-          )
-        );
-      }
-    }) : null
-  );
-}
-
-// src/state/rewind-visibility.js
-var visible = false;
-var pendingRead;
-var listeners = /* @__PURE__ */ new Set();
-function subscribeRewind(listener) {
-  listeners.add(listener);
-  listener(visible);
-  return () => listeners.delete(listener);
-}
-function publish(value) {
-  visible = value;
-  for (const listener of listeners) listener(value);
-  return value;
-}
-function valueFrom(reply) {
-  if (reply?.ok !== true || typeof reply.rewind !== "boolean")
-    throw new Error(reply?.error || "\uB418\uAC10\uAE30 \uBC84\uD2BC \uC124\uC815\uC744 \uC77D\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4");
-  return reply.rewind;
-}
-function readRewindVisibility() {
-  if (pendingRead) return pendingRead;
-  const request = apiJson("/dsh-purge/boost").then(
-    (reply) => pendingRead === request ? publish(valueFrom(reply)) : visible
-  ).finally(() => {
-    if (pendingRead === request) pendingRead = void 0;
-  });
-  pendingRead = request;
-  return request;
 }
 
 // src/shared/apply-result.js
@@ -12450,7 +11747,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
 }
 
 // src/state/session-context.js
-var import_react12 = require("react");
+var import_react11 = require("react");
 var host = null;
 var listeners2 = /* @__PURE__ */ new Set();
 function notify() {
@@ -12509,7 +11806,7 @@ function clientCurrentCwd() {
   }
 }
 function useCurrentCwd() {
-  return (0, import_react12.useSyncExternalStore)(subscribe, clientCurrentCwd, () => "");
+  return (0, import_react11.useSyncExternalStore)(subscribe, clientCurrentCwd, () => "");
 }
 
 // src/components/rules.js
@@ -13335,126 +12632,727 @@ function SkillsSection() {
   );
 }
 
-// src/components/settings-shell.js
-function CompatibilityNote({ status }) {
-  if (false) return h(CommunityCompatibilityNote);
-  if (!status) return null;
-  const v = String(status.plugin_version || "");
-  const valid = typeof status.patches_total === "number" && !!v;
-  if (valid && v === "1.1.71") return null;
-  return h(
-    "p",
-    {
-      role: "status",
-      className: "dshpp-hint",
-      style: { margin: "0 20px 10px" }
-    },
-    valid ? "\uACF5\uC2DD \uBC84\uC804 " + v + ". \uC774 UI \uB294 1.1.71 \uC5D0\uC11C \uAC80\uC99D\uD588\uC2B5\uB2C8\uB2E4. \uC124\uC815\uC774 \uC774\uC0C1\uD558\uBA74 UI \uD50C\uB7EC\uADF8\uC778\uC744 \uC5C5\uB370\uC774\uD2B8\uD558\uC138\uC694." : "\uACF5\uC2DD Purge \uC778\uD130\uD398\uC774\uC2A4\uB97C \uD655\uC778\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uACF5\uC2DD \uD50C\uB7EC\uADF8\uC778\uC774 \uD65C\uC131\uD654\uB418\uC5B4 \uC788\uB294\uC9C0 \uD655\uC778\uD558\uAC70\uB098 UI \uD50C\uB7EC\uADF8\uC778\uC744 \uC5C5\uB370\uC774\uD2B8\uD558\uC138\uC694."
-  );
-}
-function SettingsRoot(props = {}) {
-  const t = typeof props.t === "function" ? props.t : useT();
-  const [page, setPage] = useState("status");
-  const [backendStatus, setBackendStatus] = useState(null);
-  const st = useDock();
-  const [visited, setVisited] = useState({ status: true });
-  const select = (id) => {
-    setPage(id);
-    setVisited((v) => ({ ...v, [id]: true }));
+// src/components/maintenance.js
+function useText() {
+  const t = useT();
+  return (key, fallback) => {
+    const hit = t(key);
+    return hit && hit !== key ? hit : fallback;
   };
+}
+function StatusExtras() {
+  const [check, setCheck] = useState(null);
+  const [boost, setBoost] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState("");
+  const load = () => Promise.all([
+    apiJson("/dsh-purge/selfcheck").then(setCheck).catch(() => setCheck(null)),
+    apiJson("/dsh-purge/boost").then((r) => setBoost(!!r.enabled)).catch(() => setBoost(null))
+  ]);
   useEffect(() => {
-    if (st.tab === "drill" && st.open) select("drill");
-  }, [st.tab, st.open]);
-  setTranslate(t);
+    load();
+  }, []);
+  async function toggle() {
+    try {
+      const r = await apiJson("/dsh-purge/boost", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ enabled: !boost })
+      });
+      setBoost(!!r.enabled);
+      setNotice(
+        r.enabled ? "\uCF30\uC2B5\uB2C8\uB2E4. \uC7AC\uC2DC\uC791 \uD6C4 \uC801\uC6A9\uB429\uB2C8\uB2E4" : "\uAED0\uC2B5\uB2C8\uB2E4. \uC7AC\uC2DC\uC791 \uD6C4 \uC801\uC6A9\uB429\uB2C8\uB2E4"
+      );
+    } catch (e) {
+      setNotice(e.message);
+    }
+  }
+  async function rerun() {
+    setBusy(true);
+    try {
+      setCheck(await apiJson("/dsh-purge/selfcheck"));
+    } catch (e) {
+      setNotice(e.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  const layers = check && Array.isArray(check.layers) ? check.layers : [];
+  const failed = layers.filter(
+    (l) => l.state === "broken" || !l.state && !l.ok
+  );
+  const pendingLayers = layers.filter((l) => l.state === "pending");
+  const uncertain = layers.filter(
+    (l) => ["inferred", "unknown"].includes(l.state)
+  );
+  const pendingPatches = pendingLayers.reduce(
+    (n, l) => n + (l.pending?.length || 0),
+    0
+  );
+  const total = layers.filter((layer) => layer.applicable !== false).length;
   return h(
-    "div",
-    { className: "dshpp-native dshpp-root" },
-    h("style", null, base_default + native_default),
+    "section",
+    { className: "dshpp-card", "aria-label": "\uD0C8\uC625 \uC0C1\uD0DC" },
     h(
-      "header",
-      { className: "dshpp-native-head" },
-      h("div", null, h("h2", null, "Purge"), h("p", null, "\uD50C\uB7EC\uADF8\uC778 \uC124\uC815")),
+      "div",
+      { className: "dshpp-line" },
       h(
         "span",
-        { className: "dshpp-native-badge" },
-        (false ? "\uD55C\uAD6D\uC5B4\uD310 " : "\uB3C5\uB9BD UI ") + "1.1.2"
-      )
-    ),
-    h(CompatibilityNote, { status: backendStatus }),
-    h(
-      "nav",
-      { className: "dshpp-native-nav", "aria-label": "Purge \uC124\uC815 \uBD84\uB958" },
-      [
-        ["status", "\uC0C1\uD0DC"],
-        ["prompt", "\uD504\uB86C\uD504\uD2B8"],
-        ["rules", "\uADDC\uCE59"],
-        ["skills", "\uC2A4\uD0AC"],
-        ["more", "\uB354 \uBCF4\uAE30"]
-      ].map(
-        ([id, label]) => h(
-          "button",
-          {
-            key: id,
-            type: "button",
-            "aria-pressed": page === id,
-            onClick: () => select(id)
-          },
-          label
+        { className: "dshpp-line-main" },
+        h("i", {
+          className: "dshpp-dot " + (check ? failed.length ? "is-bad" : pendingLayers.length || uncertain.length ? "is-warn" : "is-ok" : "")
+        }),
+        "\uD0C8\uC625 \uC790\uCCB4 \uC810\uAC80",
+        h(
+          "b",
+          null,
+          check ? failed.length ? `${failed.length}\uAC1C \uACC4\uCE35 \uBBF8\uC801\uC6A9` : pendingLayers.length ? `${pendingPatches}\uAC74 \uC801\uC6A9 \uB300\uAE30` : uncertain.length ? `${uncertain.length}\uAC1C \uACC4\uCE35 \uD655\uC778 \uD544\uC694` : `${total}\uAC1C \uACC4\uCE35 \uBAA8\uB450 \uC815\uC0C1` : "\uD655\uC778 \uC911\u2026"
         )
+      ),
+      h(
+        "details",
+        { className: "dshpp-fold-inline" },
+        h("summary", null, "\uACC4\uCE35\uBCC4 \uBCF4\uAE30"),
+        h(
+          "div",
+          { className: "dshpp-checks" },
+          check && Array.isArray(check.layers) ? check.layers.map(
+            (layer) => h(
+              "div",
+              {
+                key: layer.title,
+                className: "dshpp-check" + (["pending", "inferred", "unknown"].includes(layer.state) ? " is-warn" : layer.ok ? "" : " is-bad")
+              },
+              h("i", {
+                className: "dshpp-dot " + (["pending", "inferred", "unknown"].includes(layer.state) ? "is-warn" : layer.ok ? "is-ok" : "is-bad")
+              }),
+              h("span", { className: "dshpp-check-name" }, layer.title),
+              h(
+                "span",
+                { className: "dshpp-check-val" },
+                layer.applicable === false ? "\uD574\uB2F9 \uC5C6\uC74C" : layer.state === "pending" ? `\uC801\uC6A9 \uB300\uAE30 #${(layer.pending || []).join("/#")}` : layer.state === "inferred" ? "\uD638\uC2A4\uD2B8 \uCD94\uB860" : layer.state === "unknown" ? "\uBBF8\uD655\uC778" : `${layer.applied}/${layer.required ?? layer.total}`
+              ),
+              layer.note ? h(HelpTip, { title: layer.title }, layer.note) : null
+            )
+          ) : h("div", { className: "dshpp-muted" }, "\uD655\uC778 \uC911\u2026")
+        )
+      ),
+      h(
+        Btn,
+        { tiny: true, disabled: busy, onClick: rerun },
+        busy ? "\u2026" : "\uB2E4\uC2DC \uAC80\uC0AC"
+      ),
+      h(
+        Btn,
+        {
+          tiny: true,
+          title: "\uC77C\uD68C\uC6A9 \uD504\uB85C\uBE0C\uB97C \uB9CC\uB4ED\uB2C8\uB2E4. \uB2E4\uC74C \uD134 \uC751\uB2F5\uC5D0\uC11C \uBAA8\uB378\uC774 \uADF8 \uD45C\uC2DD\uC744 \uADF8\uB300\uB85C \uB418\uD480\uC774\uD558\uB294\uC9C0 \uD655\uC778\uD569\uB2C8\uB2E4",
+          onClick: async () => {
+            try {
+              const r = await apiJson("/dsh-purge/probe", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: "{}"
+              });
+              setNotice(r.message || "");
+            } catch (e) {
+              setNotice(e.message);
+            }
+          }
+        },
+        "\uD504\uB85C\uBE0C"
       )
     ),
     h(
       "div",
-      { className: "dshpp-native-content" },
-      false ? h(CommunityMaintenance) : null,
+      { className: "dshpp-line" },
       h(
-        "div",
-        { hidden: !["status", "prompt", "more"].includes(page) },
-        false ? h(RewindSetting) : null,
-        h(PurgifySection, { page, onStatus: setBackendStatus })
-      ),
-      visited.rules ? h("div", { hidden: page !== "rules" }, h(RulesSection)) : null,
-      visited.skills ? h("div", { hidden: page !== "skills" }, h(SkillsSection)) : null,
-      h(
-        "div",
-        { hidden: page !== "more", className: "dshpp-more" },
-        h("h3", null, "\uB4DC\uB9B4 \uCF58\uC194"),
-        h("p", null, "\uD50C\uB7EC\uADF8\uC778\uC5D0 \uC6D0\uB798 \uC788\uB358 \uB4DC\uB9B4 \uB3C4\uAD6C\uC640 \uD658\uACBD \uC124\uC815\uC744 \uC5FD\uB2C8\uB2E4."),
+        "span",
+        { className: "dshpp-line-main" },
+        "\uD0C8\uC625 \uAC15\uD654 \uC139\uC158",
         h(
-          Btn,
-          {
-            onClick: () => {
-              select("drill");
-              requestDrill("tab");
-            }
-          },
-          "\uB4DC\uB9B4 \uCF58\uC194 \uC5F4\uAE30"
+          HelpTip,
+          { title: "\uD0C8\uC625 \uAC15\uD654 \uC139\uC158" },
+          "\uC2DC\uC2A4\uD15C \uD504\uB86C\uD504\uD2B8 \uB05D\uC5D0 \uC8FC\uC785\uACFC \uAC19\uC740 \uB4F1\uAE09\uC758 \uD14D\uC2A4\uD2B8\uB97C \uB367\uBD99\uC785\uB2C8\uB2E4: \uACC4\uCE35 \uC120\uC5B8 / \uAC70\uBD80\uB294 \uACE7 \uC7A5\uC560 / \uC544\uCCA8 \uC800\uD56D / \uB2E4\uC911 \uB77C\uC6B4\uB4DC \uC7AC\uD655\uC778. \uAE30\uBCF8\uAC12\uC740 \uCF1C\uC9D0\uC785\uB2C8\uB2E4."
         ),
-        h(
-          "p",
-          { className: "dshpp-attribution" },
-          false ? "YuJunZhiXue/dsh-purge 1.1.71 \uAE30\uBC18 \uB3C5\uB9BD \uC720\uC9C0, \uC6D0\uC800\uC790 \uD45C\uAE30 \uBCF4\uC874. \uC5C5\uB370\uC774\uD2B8\uB294 \uC774 fork \uC5D0\uC11C\uB9CC \uC635\uB2C8\uB2E4." : "UI \uB3C5\uB9BD \uC720\uC9C0. \uACF5\uC2DD Purge \uB294 \uB530\uB85C \uC5C5\uB370\uC774\uD2B8\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. YuJunZhiXue/dsh-purge 1.1.71 \uAE30\uBC18(MIT)."
+        h("b", null, boost === null ? "\u2026" : boost ? "\uCF1C\uC9D0" : "\uAEBC\uC9D0")
+      ),
+      h(
+        Btn,
+        { tiny: true, disabled: boost === null, onClick: toggle },
+        boost ? "\uB044\uAE30" : "\uCF1C\uAE30"
+      ),
+      notice ? h("span", { className: "dshpp-muted" }, notice) : null
+    )
+  );
+}
+function assertMaintenanceResult(result) {
+  if (!result || typeof result !== "object")
+    throw new Error("\uC720\uC9C0\uBCF4\uC218 \uC778\uD130\uD398\uC774\uC2A4\uAC00 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC740 \uACB0\uACFC\uB97C \uB3CC\uB824\uC92C\uC2B5\uB2C8\uB2E4");
+  if (result.ok === false) {
+    const errors = Array.isArray(result.errors) ? result.errors.filter(Boolean).join(" \xB7 ") : "";
+    const partial = result.applied ? " \xB7 \uC77C\uBD80 \uB300\uC0C1\uC740 \uC774\uBBF8 \uC5C5\uB370\uC774\uD2B8\uD588\uC2B5\uB2C8\uB2E4. \uC774 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD574 \uBD88\uB7EC\uC624\uC138\uC694" : "";
+    throw new Error((result.error || errors || "\uC720\uC9C0\uBCF4\uC218 \uC791\uC5C5 \uC2E4\uD328") + partial);
+  }
+}
+function maintenanceNotice(op, result) {
+  if (op === "backup") {
+    if (!result.id)
+      throw new Error(
+        "\uBC31\uC5C5 \uC791\uC5C5\uC774 \uBC31\uC5C5 \uBC88\uD638\uB97C \uB3CC\uB824\uC8FC\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uBAA9\uB85D\uC744 \uC0C8\uB85C \uACE0\uCCD0 \uACB0\uACFC\uB97C \uD655\uC778\uD558\uC138\uC694"
+      );
+    return `\uBC31\uC5C5\uC744 \uB9CC\uB4E4\uC5C8\uC2B5\uB2C8\uB2E4: ${result.id}`;
+  }
+  if (op === "rollback")
+    return (result.note || "\uD50C\uB7EC\uADF8\uC778 \uB864\uBC31\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4") + ". DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694. \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.";
+  if (op === "update") {
+    if (result.applied === false || result.skipped)
+      return result.note || "\uC0C8 \uBC84\uC804\uC744 \uC124\uCE58\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uD604\uC7AC \uC124\uCE58\uBCF8\uC740 \uADF8\uB300\uB85C\uC785\uB2C8\uB2E4.";
+    if (result.applied || result.needRestart || result.restart_required) {
+      const version = result.release?.version || result.localVersion || result.remoteVersion;
+      const warnings = result.cleanup_warnings || [];
+      const cleanup = warnings.length ? `\uC815\uB9AC\uB97C \uB9C8\uCE58\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4(${warnings.map((w) => `${w.stage}:${w.code}`).join(", ")}). \uB0A8\uC740 \uD30C\uC77C\uC740 \uBCF4\uC874\uD588\uC2B5\uB2C8\uB2E4.` : "";
+      return `${cleanup}\uD50C\uB7EC\uADF8\uC778\uC744 \uC124\uCE58\uD588\uC2B5\uB2C8\uB2E4${version ? ": " + version : ""}. DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694. \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.`;
+    }
+    return result.note || "\uC5C5\uB370\uC774\uD2B8 \uC694\uCCAD\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4. \uC0C1\uD0DC\uB97C \uC0C8\uB85C \uACE0\uCCD0 \uC124\uCE58 \uACB0\uACFC\uB97C \uD655\uC778\uD558\uC138\uC694.";
+  }
+  return result.note || "\uC720\uC9C0\uBCF4\uC218 \uC791\uC5C5\uC744 \uB9C8\uCCE4\uC2B5\uB2C8\uB2E4";
+}
+function UpdatePreferences({
+  value,
+  status = {},
+  onSaved,
+  onOpenChannel
+}) {
+  const tr = useText();
+  const [saving, setSaving] = useState(false), [error, setError] = useState("");
+  const locked = useRef(false);
+  if (!value) return null;
+  async function save(patch) {
+    if (locked.current) return;
+    locked.current = true;
+    setSaving(true);
+    setError("");
+    try {
+      const result = await apiJson("/dsh-purge/community", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ op: "preferences", value: patch })
+      });
+      assertMaintenanceResult(result);
+      onSaved(result.update_preferences);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      locked.current = false;
+      setSaving(false);
+    }
+  }
+  return h(
+    "section",
+    { "aria-label": "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uC815", className: "dshpp-card" },
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        "label",
+        null,
+        h("input", {
+          type: "checkbox",
+          checked: value.autoCheck,
+          disabled: saving,
+          onChange: (e) => save({ autoCheck: e.target.checked }),
+          "aria-label": "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778"
+        }),
+        "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778"
+      ),
+      h(HelpTip, {
+        title: "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778",
+        children: "\uC2DC\uC791 30\uCD08 \uB4A4 \uD655\uC778\uD558\uACE0, \uC774\uD6C4\uC5D0\uB294 \uAC04\uACA9\uC5D0 \uB530\uB77C \uD655\uC778\uD569\uB2C8\uB2E4. \uB044\uB354\uB77C\uB3C4 \uC800\uC7A5\uB41C \uC790\uB3D9 \uC124\uCE58 \uC124\uC815\uC740 \uBC14\uB00C\uC9C0 \uC54A\uC9C0\uB9CC \uC790\uB3D9 \uC124\uCE58\uAC00 \uC77C\uC2DC \uC815\uC9C0\uB429\uB2C8\uB2E4."
+      }),
+      h(
+        "select",
+        {
+          "aria-label": "\uC5C5\uB370\uC774\uD2B8 \uD655\uC778 \uAC04\uACA9",
+          value: value.intervalHours,
+          disabled: saving || !value.autoCheck,
+          onChange: (e) => save({ intervalHours: Number(e.target.value) })
+        },
+        [.../* @__PURE__ */ new Set([1, 6, 12, 24, value.intervalHours])].sort((a, b) => a - b).map((v) => h("option", { key: v, value: v }, `${v}\uC2DC\uAC04\uB9C8\uB2E4`))
+      ),
+      // "업데이트 채널"은 위 두 컨트롤과 같은 줄에 나란히 두고 크기를 select 에 맞춘다.
+      // 이 버튼이 설정하는 것이 바로 이 업데이트 확인이 쓰는 프록시/키이므로, 제목 맨 오른쪽으로 밀리면 안 된다.
+      onOpenChannel ? h(
+        Btn,
+        {
+          tiny: true,
+          className: "dshpp-updch-open",
+          disabled: saving,
+          onClick: () => onOpenChannel(),
+          title: tr("updch.title", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD504\uB85D\uC2DC\uC640 GitHub \uD0A4")
+        },
+        tr("updch.open", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110")
+      ) : null
+    ),
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        "label",
+        null,
+        h("input", {
+          type: "checkbox",
+          checked: value.autoInstall,
+          disabled: saving,
+          onChange: (e) => save({ autoInstall: e.target.checked }),
+          "aria-label": "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uCE58"
+        }),
+        "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uCE58"
+      ),
+      h(HelpTip, {
+        title: "\uC790\uB3D9 \uC5C5\uB370\uC774\uD2B8 \uC124\uCE58",
+        children: "\uC790\uB3D9 \uD655\uC778\uC774 \uCF1C\uC838 \uC788\uACE0 \uC7A0\uAE30\uC9C0 \uC54A\uC740 \uC0C8 \uC815\uC2DD \uBC84\uC804\uC744 \uCC3E\uC558\uC744 \uB54C\uB9CC \uC124\uCE58\uD569\uB2C8\uB2E4. \uC124\uCE58 \uC804\uC5D0 \uBC31\uC5C5\uD558\uACE0 \uB9B4\uB9AC\uC2A4 \uD328\uD0A4\uC9C0\uB97C \uAC80\uC99D\uD558\uBA70, \uC2E4\uD328\uD574\uB3C4 \uC18C\uC2A4\uB97C \uC790\uB3D9\uC73C\uB85C \uBC14\uAFB8\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uC124\uCE58 \uD6C4\uC5D0\uB294 \uC9C1\uC811 \uC7AC\uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9AC\uACE0, DSH \uB97C \uC790\uB3D9\uC73C\uB85C \uC7AC\uC2DC\uC791\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+      })
+    ),
+    h(
+      "p",
+      { className: "dshpp-hint" },
+      status.reconciliationError ? "\uC124\uCE58 \uC0C1\uD0DC \uD655\uC778 \uB300\uAE30 \uC911\uC774\uB77C \uC790\uB3D9 \uC124\uCE58\uB97C \uC77C\uC2DC \uC815\uC9C0\uD588\uC2B5\uB2C8\uB2E4." : status.restartRequired ? `\uB514\uC2A4\uD06C \uBC84\uC804 ${status.pendingVersion}, \uD604\uC7AC \uC2E4\uD589 ${status.runningVersion || "\uC54C \uC218 \uC5C6\uC74C"}. DSH \uB97C \uC9C1\uC811 \uC7AC\uC2DC\uC791\uD558\uAE30\uB97C \uAE30\uB2E4\uB9BD\uB2C8\uB2E4.` : !value.autoCheck ? "\uC790\uB3D9 \uD655\uC778\uC774 \uAEBC\uC838 \uC788\uC5B4 \uC790\uB3D9 \uC124\uCE58\uB3C4 \uBA48\uCDB0 \uC788\uC2B5\uB2C8\uB2E4." : status.checkedAt ? `\uB9C8\uC9C0\uB9C9 \uD655\uC778: ${new Date(status.checkedAt).toLocaleString()}${status.hasUpdate ? ` \xB7 \uC0AC\uC6A9 \uAC00\uB2A5\uD55C \uBC84\uC804 ${status.availableVersion}` : ""}` : "\uC2DC\uC791 \uD6C4 \uC790\uB3D9\uC73C\uB85C \uD655\uC778\uD558\uACE0, \uC124\uCE58 \uD6C4\uC5D0\uB294 \uC9C1\uC811 \uC7AC\uC2DC\uC791\uD558\uB3C4\uB85D\uB9CC \uC548\uB0B4\uD569\uB2C8\uB2E4."
+    ),
+    [
+      ...new Set(
+        [
+          status.reconciliationError,
+          status.error,
+          status.installError,
+          error
+        ].filter(Boolean)
+      )
+    ].map((message) => h("p", { key: message, role: "alert" }, message))
+  );
+}
+function UpdateChannelDialog({ value, onClose, onSaved }) {
+  const tr = useText();
+  const [proxy, setProxy] = useState(value?.proxyUrl || "");
+  const [mirror, setMirror] = useState(value?.mirrorUrl || "");
+  const [token, setToken] = useState("");
+  const [clearToken, setClearToken] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const proxyRef = useRef(null);
+  const hasToken = !!value?.hasGithubToken;
+  useEffect(() => {
+    try {
+      proxyRef.current?.focus?.();
+    } catch {
+    }
+  }, []);
+  useEffect(() => {
+    if (typeof document === "undefined" || !document.addEventListener)
+      return void 0;
+    const onKey = (e) => {
+      if (e.key !== "Escape") return;
+      e.stopPropagation();
+      onClose();
+    };
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
+  }, [onClose]);
+  async function save() {
+    if (saving) return;
+    const next = {};
+    if (mirror.trim() !== (value?.mirrorUrl || ""))
+      next.mirrorUrl = mirror.trim();
+    if (proxy.trim() !== (value?.proxyUrl || "")) next.proxyUrl = proxy.trim();
+    if (clearToken) next.clearGithubToken = true;
+    else if (token.trim()) next.githubToken = token.trim();
+    setSaving(true);
+    setError("");
+    try {
+      const result = await apiJson("/dsh-purge/community", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ op: "preferences", value: next })
+      });
+      assertMaintenanceResult(result);
+      onSaved(result.update_preferences);
+      onClose();
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setSaving(false);
+    }
+  }
+  return h(
+    "div",
+    {
+      className: "dshpp-updch-mask",
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-label": tr("updch.title", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD504\uB85D\uC2DC\uC640 GitHub \uD0A4"),
+      onClick: (e) => {
+        if (e.target === e.currentTarget && !saving) onClose();
+      }
+    },
+    h(
+      "div",
+      { className: "dshpp-updch-card" },
+      h(
+        "h4",
+        { className: "dshpp-updch-title" },
+        tr("updch.title", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD504\uB85D\uC2DC\uC640 GitHub \uD0A4")
+      ),
+      h(
+        "p",
+        { className: "dshpp-hint" },
+        tr(
+          "updch.scope",
+          "\uC5EC\uAE30\uC11C \uC124\uC815\uD55C \uD504\uB85D\uC2DC\uC640 \uD0A4\uB294 \uC774 \uD50C\uB7EC\uADF8\uC778\uC758 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778\uACFC \uB2E4\uC6B4\uB85C\uB4DC \uACBD\uB85C\uC5D0\uB9CC \uC801\uC6A9\uB418\uACE0, \uB2E4\uB978 \uBAA8\uB378 \uACF5\uAE09\uC790 \uC694\uCCAD\uC5D0\uB294 \uC601\uD5A5\uC744 \uC8FC\uC9C0 \uC54A\uC73C\uBA70 \uD638\uC2A4\uD2B8 \uD504\uB85C\uC138\uC2A4 \uD658\uACBD\uC5D0\uB3C4 \uC4F0\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uAE30\uC874 \uC5C5\uB370\uC774\uD2B8 \uD504\uB85D\uC2DC \uD658\uACBD\uC744 \uC0C1\uC18D\uD569\uB2C8\uB2E4."
         )
       ),
-      page === "drill" ? h(
+      h(
+        "label",
+        { className: "dshpp-updch-label" },
+        h("span", null, tr("updch.mirror", "GitHub \uBBF8\uB7EC (\uC120\uD0DD)")),
+        h("input", {
+          type: "text",
+          value: mirror,
+          placeholder: tr("updch.mirror.ph", "https://\uBBF8\uB7EC\uD638\uC2A4\uD2B8/"),
+          onChange: (e) => setMirror(e.target.value),
+          disabled: saving
+        }),
+        h(
+          "small",
+          null,
+          tr(
+            "updch.mirror.hint",
+            "\uC870\uD68C\uC640 \uB2E4\uC6B4\uB85C\uB4DC\uC5D0\uB9CC \uC4F0\uBA70 GitHub \uD0A4\uB97C \uBCF4\uB0B4\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uC124\uCE58\uB294 \uC5EC\uC804\uD788 GitHub \uC5D0\uC11C \uACF5\uC2DD \uAC80\uC99D\uAC12\uC744 \uBC1B\uC544\uC57C \uD558\uACE0, \uC5C5\uB370\uC774\uD2B8 \uD504\uB85D\uC2DC\uB97C \uC4F8 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uBBF8\uB7EC\uB97C \uB055\uB2C8\uB2E4."
+          )
+        )
+      ),
+      h(
+        "label",
+        { className: "dshpp-updch-label" },
+        h("span", null, tr("updch.proxy", "\uD504\uB85D\uC2DC \uC8FC\uC18C")),
+        h("input", {
+          ref: proxyRef,
+          type: "text",
+          className: "dshpp-field dshpp-updch-field",
+          "aria-label": tr("updch.proxy", "\uD504\uB85D\uC2DC \uC8FC\uC18C"),
+          value: proxy,
+          disabled: saving,
+          placeholder: tr("updch.proxy.ph", "socks5://127.0.0.1:60808"),
+          spellCheck: false,
+          autoComplete: "off",
+          onChange: (e) => setProxy(e.target.value)
+        })
+      ),
+      h(
+        "p",
+        { className: "dshpp-hint" },
+        tr(
+          "updch.proxy.hint",
+          "http:// / https:// / socks5:// \uC811\uB450\uC0AC\uB97C \uC9C0\uC6D0\uD569\uB2C8\uB2E4. \uC608: http://127.0.0.1:7890. \uBE44\uC6CC \uB450\uBA74 \uAE30\uC874 \uC5C5\uB370\uC774\uD2B8 \uD504\uB85D\uC2DC \uD658\uACBD\uC744 \uC0C1\uC18D\uD569\uB2C8\uB2E4."
+        )
+      ),
+      h(
+        "label",
+        { className: "dshpp-updch-label" },
+        h("span", null, tr("updch.token", "GitHub \uD0A4")),
+        h("input", {
+          type: "password",
+          className: "dshpp-field dshpp-updch-field",
+          "aria-label": tr("updch.token", "GitHub \uD0A4"),
+          value: token,
+          disabled: saving || clearToken,
+          placeholder: tr(
+            "updch.token.ph",
+            "\uC120\uD0DD: GitHub API \uD55C\uB3C4\uB97C \uB192\uC785\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uBC14\uAFB8\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4"
+          ),
+          spellCheck: false,
+          autoComplete: "off",
+          onChange: (e) => setToken(e.target.value)
+        })
+      ),
+      h(
+        "p",
+        { className: "dshpp-hint" },
+        hasToken ? tr(
+          "updch.token.set",
+          "\uC774 \uCEF4\uD4E8\uD130\uC5D0 \uD0A4\uAC00 \uC124\uC815\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uC785\uB825\uCC3D\uC740 \uD56D\uC0C1 \uBE44\uC5B4 \uC788\uACE0, \uBE44\uC6B4 \uCC44 \uC800\uC7A5\uD558\uBA74 \uADF8\uB300\uB85C \uC720\uC9C0\uB429\uB2C8\uB2E4."
+        ) : tr(
+          "updch.token.unset",
+          "\uC774 \uCEF4\uD4E8\uD130\uC5D0 \uC544\uC9C1 \uD0A4\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4. \uBE44\uC6CC \uB450\uBA74 \uC124\uC815\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+        )
+      ),
+      hasToken ? h(
+        "label",
+        { className: "dshpp-updch-check" },
+        h("input", {
+          type: "checkbox",
+          checked: clearToken,
+          disabled: saving,
+          "aria-label": tr("updch.token.clear", "\uC800\uC7A5\uB41C \uD0A4 \uC9C0\uC6B0\uAE30"),
+          onChange: (e) => setClearToken(!!e.target.checked)
+        }),
+        h("span", null, tr("updch.token.clear", "\uC800\uC7A5\uB41C \uD0A4 \uC9C0\uC6B0\uAE30"))
+      ) : null,
+      error ? h("p", { role: "alert" }, error) : null,
+      h(
         "div",
-        { className: "dshpp-native-drill" },
-        // 드릴 콘솔은 자체 CSS(.rt-*)를 쓴다. 옛 버전은 dock 이 <head> 에 주입했지만 재구성 때 빠져서,
-        // 결과 패널이 오른쪽 사이드바에서 스타일 없이 글자가 한 열로 눌렸다. 여기서 컴포넌트와 함께 붙인다.
-        __dshPurgeDrill && __dshPurgeDrill.CSS ? h("style", { "data-dsh-purge-drill": "1" }, __dshPurgeDrill.CSS) : null,
+        { className: "dshpp-updch-ops" },
         h(
           Btn,
-          {
-            onClick: () => {
-              setDock({ tab: "clean" });
-              select("more");
-            }
-          },
-          "\uC124\uC815\uC73C\uB85C \uB3CC\uC544\uAC00\uAE30"
+          { disabled: saving, onClick: onClose },
+          tr("updch.cancel", "\uCDE8\uC18C")
         ),
-        readDrillAuth() ? h(__dshPurgeDrill.Panel, { embedded: true }) : h("p", null, "\uBA3C\uC800 \uB4DC\uB9B4 \uCF58\uC194 \uC2B9\uC778\uC744 \uB9C8\uCCD0\uC57C \uD569\uB2C8\uB2E4.")
-      ) : null
+        h(
+          Btn,
+          { kind: "primary", disabled: saving, onClick: save },
+          saving ? tr("updch.saving", "\uC800\uC7A5 \uC911\u2026") : tr("updch.save", "\uC800\uC7A5")
+        )
+      )
     )
+  );
+}
+var preferenceListeners = /* @__PURE__ */ new Set();
+function publishPreferences(next) {
+  for (const receive of preferenceListeners) receive(next);
+}
+function CommunityMaintenance() {
+  const [value, setValue] = useState(null), [notice, setNotice] = useState(""), [busy, setBusy] = useState(false), [selected, setSelected] = useState(""), [releases, setReleases] = useState(null), [release, setRelease] = useState("");
+  const [listState, setListState] = useState("loading"), [listError, setListError] = useState("");
+  const [channelOpen, setChannelOpen] = useState(false);
+  const tr = useText();
+  const mounted = useRef(false), generation = useRef(0), running = useRef(false);
+  const latestSave = useRef(null);
+  const load = useCallback(async () => {
+    const previousSave = latestSave.current;
+    const request = ++generation.current;
+    setListState("loading");
+    setListError("");
+    try {
+      const result = await apiJson("/dsh-purge/community");
+      assertMaintenanceResult(result);
+      if (!Array.isArray(result.backups))
+        throw new Error("\uBC31\uC5C5 \uBAA9\uB85D \uC751\uB2F5\uC774 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
+      if (!mounted.current || request !== generation.current) return;
+      setValue(
+        previousSave === latestSave.current ? result : { ...result, update_preferences: latestSave.current }
+      );
+      setSelected(
+        (current) => result.backups.some((b) => b.id === current) ? current : ""
+      );
+      setListState("ready");
+    } catch (e) {
+      if (!mounted.current || request !== generation.current) return;
+      setListError(e.message);
+      setListState("error");
+    }
+  }, []);
+  useEffect(() => {
+    mounted.current = true;
+    const receive = (next) => {
+      latestSave.current = next;
+      setValue(
+        (current) => current && { ...current, update_preferences: next }
+      );
+    };
+    preferenceListeners.add(receive);
+    load();
+    return () => {
+      preferenceListeners.delete(receive);
+      mounted.current = false;
+      generation.current++;
+    };
+  }, [load]);
+  async function run(op) {
+    if (running.current) return;
+    if (op === "rollback" && !window.confirm(
+      "Purge \uD50C\uB7EC\uADF8\uC778\uACFC \uADF8 \uC9C4\uC785\uC810\uB9CC \uB864\uBC31\uD558\uACE0 \uD604\uC7AC \uD504\uB86C\uD504\uD2B8\uC640 \uC124\uC815\uC740 \uB0A8\uAE41\uB2C8\uB2E4. \uB05D\uB098\uBA74 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD574\uC57C \uD558\uACE0, \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uACC4\uC18D\uD560\uAE4C\uC694?"
+    ))
+      return;
+    if (op === "update" && !window.confirm(
+      "\uBA3C\uC800 \uBC31\uC5C5\uD55C \uB4A4 \uC120\uD0DD\uD55C \uCEE4\uBBA4\uB2C8\uD2F0 \uC815\uC2DD \uBC84\uC804\uC744 \uC124\uCE58\uD569\uB2C8\uB2E4. \uD638\uC2A4\uD2B8 \uD328\uCE58\uB97C \uB2E4\uC2DC \uC801\uC6A9\uD558\uC9C0\uB294 \uC54A\uC2B5\uB2C8\uB2E4. \uC124\uCE58 \uD6C4 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD558\uACE0, \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uACC4\uC18D\uD560\uAE4C\uC694?"
+    ))
+      return;
+    running.current = true;
+    setBusy(true);
+    setNotice("\uCC98\uB9AC \uC911\u2026");
+    try {
+      const r = await apiJson("/dsh-purge/community", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ op, id: selected, ref: release })
+      });
+      assertMaintenanceResult(r);
+      if (!mounted.current) return;
+      if (op === "check") {
+        if (!Array.isArray(r.versions))
+          throw new Error("\uB9B4\uB9AC\uC2A4 \uBAA9\uB85D \uC751\uB2F5\uC774 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4");
+        setReleases(r.versions.filter((v) => v.asset));
+        setRelease(r.versions.find((v) => v.asset)?.ref || "");
+        setNotice(
+          r.degraded ? `${r.degraded} \xB7 ${r.stale ? "\uC9C0\uAE08\uC740 \uCE90\uC2DC \uBAA9\uB85D\uC744 \uD45C\uC2DC\uD569\uB2C8\uB2E4. \uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD558\uC138\uC694" : "\uB300\uCCB4 \uBAA9\uB85D\uC744 \uD45C\uC2DC\uD588\uC2B5\uB2C8\uB2E4"}` : r.error ? `\uC5C5\uB370\uC774\uD2B8 \uD655\uC778 \uC2E4\uD328: ${r.error}` : r.hasUpdate ? `\uC0C8 \uBC84\uC804 ${r.remoteVersion} \uBC1C\uACAC` : "\uC774\uBBF8 \uCD5C\uC2E0 \uC815\uC2DD \uBC84\uC804\uC785\uB2C8\uB2E4"
+        );
+      } else {
+        setNotice(maintenanceNotice(op, r));
+      }
+    } catch (e) {
+      if (mounted.current)
+        setNotice(
+          e.message === "timeout" ? "\uC720\uC9C0\uBCF4\uC218 \uC694\uCCAD\uC774 \uC2DC\uAC04 \uCD08\uACFC\uB410\uC2B5\uB2C8\uB2E4. \uC791\uC5C5\uC774 \uC544\uC9C1 \uC2E4\uD589 \uC911\uC77C \uC218 \uC788\uC73C\uB2C8 \uBA3C\uC800 \uC0C1\uD0DC\uB97C \uC0C8\uB85C \uACE0\uCE58\uACE0, \uAC19\uC740 \uC694\uCCAD\uC744 \uBC18\uBCF5 \uC81C\uCD9C\uD558\uC9C0 \uB9C8\uC138\uC694." : e.message
+        );
+    } finally {
+      if (op !== "check" && mounted.current) await load();
+      running.current = false;
+      if (mounted.current) setBusy(false);
+    }
+  }
+  return h(
+    "section",
+    { className: "dshpp-panel", "aria-label": "\uD55C\uAD6D\uC5B4\uD310 \uC720\uC9C0\uBCF4\uC218" },
+    h("h3", null, "\uC720\uC9C0\uBCF4\uC218: \uC5C5\uB370\uC774\uD2B8\uC640 \uC774 \uCEF4\uD4E8\uD130 \uBC31\uC5C5"),
+    // 채널 현황 요약: 프록시가 직결인지, 키가 설정돼 있는지(키 평문은 절대 되풀이하지 않는다).
+    // 진입 버튼은 여기 있지 않고 "자동 업데이트 확인"과 같은 줄에 있다.
+    value ? h(
+      "p",
+      { className: "dshpp-hint" },
+      (value.update_preferences?.proxyUrl ? tr("updch.state.proxy", "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110 \uD504\uB85D\uC2DC: ") + value.update_preferences.proxyUrl : tr(
+        "updch.state.direct",
+        "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD658\uACBD \uB610\uB294 \uC2DC\uC2A4\uD15C \uD504\uB85D\uC2DC \uC0C1\uC18D"
+      )) + " \xB7 " + (value.update_preferences?.hasGithubToken ? tr("updch.state.token.on", "GitHub \uD0A4 \uC124\uC815\uB428") : tr("updch.state.token.off", "GitHub \uD0A4 \uBBF8\uC124\uC815"))
+    ) : null,
+    h(UpdatePreferences, {
+      value: value?.update_preferences,
+      status: value?.update_status,
+      onSaved: publishPreferences,
+      onOpenChannel: () => setChannelOpen(true)
+    }),
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        Btn,
+        { disabled: busy, onClick: () => run("check") },
+        "\uD55C\uAD6D\uC5B4\uD310 \uC5C5\uB370\uC774\uD2B8 \uD655\uC778"
+      ),
+      h(
+        Btn,
+        {
+          disabled: busy,
+          onClick: async () => {
+            try {
+              const r = await apiJson("/dsh-purge/audit?limit=10");
+              const lines = (r.entries || []).map(
+                (x) => `${new Date(x.at).toLocaleString()}  ${x.event}  ${JSON.stringify(
+                  Object.fromEntries(
+                    Object.entries(x).filter(
+                      ([k]) => !["at", "event", "pid"].includes(k)
+                    )
+                  )
+                )}`
+              );
+              setNotice(
+                lines.length ? lines.join("\n") : "\uC544\uC9C1 \uAE30\uB85D\uB41C \uB3D9\uC791\uC774 \uC5C6\uC2B5\uB2C8\uB2E4"
+              );
+            } catch (e) {
+              setNotice(e.message);
+            }
+          }
+        },
+        "\uCD5C\uADFC \uB3D9\uC791"
+      ),
+      h(
+        "a",
+        {
+          href: "https://github.com/wnduddld0513/dsh-purge-kr/releases",
+          target: "_blank",
+          rel: "noreferrer"
+        },
+        "\uB9B4\uB9AC\uC2A4 \uAE30\uB85D"
+      )
+    ),
+    releases?.length ? h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        "select",
+        {
+          "aria-label": "\uCEE4\uBBA4\uB2C8\uD2F0 \uB9B4\uB9AC\uC2A4 \uC120\uD0DD",
+          value: release,
+          onChange: (e) => setRelease(e.target.value),
+          disabled: busy
+        },
+        releases.map(
+          (r) => h("option", { key: r.ref, value: r.ref }, r.label)
+        )
+      ),
+      h(
+        Btn,
+        { disabled: busy || !release, onClick: () => run("update") },
+        "\uC120\uD0DD\uD55C \uBC84\uC804 \uC124\uCE58"
+      )
+    ) : null,
+    h("h3", { style: { marginTop: 20 } }, "\uC774 \uCEF4\uD4E8\uD130 \uBC31\uC5C5"),
+    h(
+      Btn,
+      { disabled: busy || listState === "loading", onClick: load },
+      "\uBC31\uC5C5 \uBAA9\uB85D \uC0C8\uB85C \uACE0\uCE68"
+    ),
+    listState === "loading" ? h("p", { role: "status" }, "\uBC31\uC5C5\uC744 \uC77D\uB294 \uC911\u2026") : null,
+    listState === "error" ? h("p", { role: "alert" }, `\uBC31\uC5C5 \uC77D\uAE30 \uC2E4\uD328: ${listError}`) : null,
+    listState === "ready" && !value.backups.length ? h("p", { role: "status" }, "\uBC31\uC5C5 \uC5C6\uC74C") : null,
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(Btn, { disabled: busy, onClick: () => run("backup") }, "\uC9C0\uAE08 \uBC31\uC5C5"),
+      h(
+        "select",
+        {
+          "aria-label": "\uB864\uBC31\uD560 \uBC31\uC5C5 \uC120\uD0DD",
+          value: selected,
+          onChange: (e) => setSelected(e.target.value),
+          disabled: busy || listState !== "ready"
+        },
+        h("option", { value: "" }, "\uBC31\uC5C5 \uC120\uD0DD"),
+        ...(value?.backups || []).map(
+          (b) => h(
+            "option",
+            { key: b.id, value: b.id },
+            `${new Date(b.created_at).toLocaleString()} \xB7 ${b.plugins.map((p) => p.version).join(" / ")}`
+          )
+        )
+      ),
+      h(
+        Btn,
+        {
+          disabled: busy || !selected || listState !== "ready",
+          onClick: () => run("rollback")
+        },
+        "\uD50C\uB7EC\uADF8\uC778 \uB864\uBC31"
+      )
+    ),
+    h(
+      "p",
+      { className: "dshpp-hint" },
+      "\uBC31\uC5C5\uC740 \uC774 \uCEF4\uD4E8\uD130\uC5D0\uB9CC \uB0A8\uC2B5\uB2C8\uB2E4. \uB864\uBC31\uC740 \uD604\uC7AC \uD504\uB86C\uD504\uD2B8, \uADDC\uCE59, \uB2E4\uB978 \uD50C\uB7EC\uADF8\uC778 \uC124\uC815\uC744 \uBCF4\uC874\uD569\uB2C8\uB2E4. \uC124\uCE58\uB098 \uB864\uBC31 \uD6C4\uC5D0\uB294 DSH \uD504\uB85C\uC138\uC2A4\uB97C \uC7AC\uC2DC\uC791\uD574\uC57C \uD558\uACE0, \uBE0C\uB77C\uC6B0\uC800\uB9CC \uC0C8\uB85C \uACE0\uCE58\uBA74 \uC0C8 \uBC31\uC5D4\uB4DC\uAC00 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+    ),
+    notice ? h("p", { role: "status" }, notice) : null,
+    // 대화상자는 패널 안에 붙지만 고정 위치로 컨테이너를 벗어나며 portal 에 의존하지 않는다.
+    channelOpen && value ? h(UpdateChannelDialog, {
+      value: value.update_preferences,
+      onClose: () => setChannelOpen(false),
+      onSaved: (next) => {
+        publishPreferences(next);
+        setNotice(
+          tr(
+            "updch.saved",
+            "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110\uC744 \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC74C \uC5C5\uB370\uC774\uD2B8 \uD655\uC778\uBD80\uD130 \uC801\uC6A9\uB429\uB2C8\uB2E4."
+          )
+        );
+      }
+    }) : null
   );
 }
 
@@ -15146,6 +15044,11 @@ function PurgeIcon({ size = 20 } = {}) {
 function PurgeGlyphIcon({ size = 16 } = {}) {
   return h(PurgeGlyph, { size });
 }
+function DetailSettings({ view } = {}) {
+  if (view === "summary")
+    return h("span", null, "Purge \xB7 1.1.2");
+  return h("div", { className: "dshpp-detail-settings" }, h(PurgePage));
+}
 function PanelOverlays() {
   const st = useDock();
   return h(
@@ -15155,7 +15058,7 @@ function PanelOverlays() {
     // Restored from 1.1.71 apply(): shell.overlay carried the welcome notice
     // and the red-team environment gate next to the dock.
     h(WelcomeNotice, {
-      repo: false ? "https://github.com/wnduddld0513/dsh-purge-kr" : void 0
+      repo: false ? "https://github.com/kingcharleslzy-ai/dsh-purge" : void 0
     }),
     h(EnvAdaptSendGate),
     st.authOpen ? h(AuthGate, { pending: st.pending }) : null
@@ -15223,7 +15126,18 @@ function apply(ctx) {
         key: false ? "dsh-purge-community" : "dsh-purge-panel",
         inject: () => ({ t })
       },
-      SettingsRoot
+      DetailSettings
+    )
+  );
+  ctx.slots.inject(
+    "plugins.row.config",
+    () => ctx.slots.register(
+      {
+        name: "plugins.row.config",
+        key: name + "#" + (false ? "dsh-purge" : "dsh-purge-panel"),
+        inject: () => ({ t })
+      },
+      DetailSettings
     )
   );
 }

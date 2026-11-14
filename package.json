@@ -1,6 +1,6 @@
 {
   "name": "dsh-purge-community",
-  "version": "1.7.12",
+  "version": "1.7.14",
   "description": "AI가 학습과 스스로 해 보는 실험에 집중하도록 돕습니다. DSH 부가 기능으로 상태 자체 점검, 프롬프트·규칙 관리, 로컬 백업과 롤백을 제공합니다.",
   "type": "module",
   "main": "lib/index.js",
@@ -31,6 +31,8 @@
     "client.js",
     "cordis.patch.yml",
     "screenshots.json",
+    "locale",
+    "icon.png",
     "README.md",
     "LICENSE",
     "NOTICE.md",
@@ -94,7 +96,7 @@
     },
     "install": {
       "preferred": "tarball",
-      "tarball": "https://github.com/kingcharleslzy-ai/dsh-purge/releases/download/v1.7.12/dsh-purge-community-1.7.12.tgz",
+      "tarball": "https://github.com/kingcharleslzy-ai/dsh-purge/releases/download/v1.7.14/dsh-purge-community-1.7.14.tgz",
       "git": "https://github.com/kingcharleslzy-ai/dsh-purge.git"
     },
     "compatibility": {
