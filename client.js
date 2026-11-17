@@ -13829,7 +13829,9 @@ function CommunityMaintenance({ localVersion = "" } = {}) {
                   )
                 )}`
               );
-              setNotice(lines.length ? lines.join("\n") : "\uC544\uC9C1 \uAE30\uB85D\uB41C \uB3D9\uC791\uC774 \uC5C6\uC2B5\uB2C8\uB2E4");
+              setNotice(
+                lines.length ? lines.join("\n") : "\uC544\uC9C1 \uAE30\uB85D\uB41C \uB3D9\uC791\uC774 \uC5C6\uC2B5\uB2C8\uB2E4"
+              );
             } catch (e) {
               setNotice(e.message);
             }
