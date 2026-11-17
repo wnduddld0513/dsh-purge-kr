@@ -601,7 +601,7 @@ function publishPreferences(next) {
   for (const receive of preferenceListeners) receive(next);
 }
 
-export function CommunityMaintenance() {
+export function CommunityMaintenance({ localVersion = "" } = {}) {
   const [value, setValue] = useState(null),
     [notice, setNotice] = useState(""),
     [busy, setBusy] = useState(false),
@@ -720,7 +720,19 @@ export function CommunityMaintenance() {
   return h(
     "section",
     { className: "dshpp-panel", "aria-label": "한국어판 유지보수" },
-    h("h3", null, "유지보수: 업데이트와 이 컴퓨터 백업"),
+    h(
+      "div",
+      { className: "dshpp-maint-head" },
+      h("h3", null, "유지보수: 업데이트와 이 컴퓨터 백업"),
+      localVersion
+        ? h(
+            "span",
+            { className: "dshpp-maint-ver" },
+            "이 컴퓨터 v" + localVersion,
+            h("b", null, "현재"),
+          )
+        : null,
+    ),
     // 채널 현황 요약: 프록시가 직결인지, 키가 설정돼 있는지(키 평문은 절대 되풀이하지 않는다).
     // 진입 버튼은 여기 있지 않고 "자동 업데이트 확인"과 같은 줄에 있다.
     value

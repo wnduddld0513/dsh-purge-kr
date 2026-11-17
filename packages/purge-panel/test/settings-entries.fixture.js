@@ -31,7 +31,9 @@ async function until(check, label) {
 window.testEntries = async () => {
   const root = createRoot(document.querySelector("main"));
   const select = (id) =>
-    document.querySelector("#" + id + ' select[aria-label="업데이트 확인 간격"]');
+    document.querySelector(
+      "#" + id + ' select[aria-label="업데이트 확인 간격"]',
+    );
   const entry = (id, key) =>
     React.createElement(
       "div",

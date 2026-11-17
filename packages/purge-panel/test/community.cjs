@@ -244,7 +244,9 @@ win.confirm = () => true;
     "the status strip reports the host version from the backend",
   );
   assert(
-    button("새로 고침"),
+    root
+      .findAllByType("button")
+      .some((x) => String(x.props.className || "").includes("dshpp-scan")),
     "original status page renders in the community build",
   );
   assert(

@@ -337,3 +337,87 @@ test("유효한 DSH_BASE 에는 디렉터리를 다시 설정하라는 제안을
     }
   }
 });
+
+// ---------------------------------------------------------------------------
+// 회귀: 실제 NEXT 아카이브에는 @deepseek-ai/dsh(커널)가 함께 들어 있다.
+// 위의 makeNextInstall 은 이 패키지를 기본으로 쓰지 않으므로 identity() 가 bundled-cli
+// 분기에 닿지 않았고, 그래서 스위트가 계속 초록이었다 — 결함이 오래 살아남은 이유다.
+// ---------------------------------------------------------------------------
+
+/** 이미 있는 설치에 커널 패키지를 채워 넣는다: node_modules/@deepseek-ai/dsh (bin 은 실제 파일을 가리킨다) */
+function withKernelPackage(install) {
+  const dshRoot = path.join(install.app, "node_modules", "@deepseek-ai", "dsh");
+  write(path.join(dshRoot, "package.json"), JSON.stringify({
+    name: "@deepseek-ai/dsh",
+    version: "0.2.2-rc.3",
+    bin: { dsh: "lib/bin.js" },
+  }));
+  write(path.join(dshRoot, "lib", "bin.js"), "// kernel bin");
+  return install;
+}
+
+test("NEXT: 아카이브에 커널 패키지가 함께 있어도 여전히 next 로 판정하고, bundled-cli 에 뺏기지 않는다", () => {
+  const inst = withKernelPackage(makeNextInstall(path.join(TMP, "next-kernel")));
+  // 수정 전에는 반드시 실패한다: bundled-cli 분기가 먼저 걸려서 kind 가 "bundled-cli" 가 된다.
+  assert.equal(desktopIdentity(inst.resources).kind, "next");
+});
+
+test("공식 bundled-host: 아카이브에 커널 패키지가 함께 있어도 여전히 bundled-host 로 판정한다", () => {
+  // Review 요구: "CLI 를 똑같이 품은 공식 셸"도 덮어야 한다. NEXT 판정이 앞당겨진 뒤에도 공식 셸을 빼앗으면 안 된다.
+  const inst = makeOfficialInstall(path.join(TMP, "official-kernel"));
+  withKernelPackage({ app: path.join(inst.resources, "app") });
+  const found = desktopIdentity(inst.resources);
+  assert.equal(found.kind, "bundled-host");
+  assert.equal(found.package, "@deepseek-ai/dsh-desktop-host");
+});
+
+test("알 수 없는 셸: 커널 패키지가 있어도 신원이 알려진 패밀리에 없으면 여전히 bundled-cli 로 판정한다", () => {
+  // Review 요구: "알 수 없는 셸"도 덮어야 한다. ordering 변경은 NEXT 만 앞당겼으므로 다른 셸의 결론은 그대로여야 한다.
+  const inst = makeNextInstall(path.join(TMP, "unknown-shell"), { name: "some-other-electron-app" });
+  withKernelPackage(inst);
+  assert.equal(desktopIdentity(inst.resources).kind, "bundled-cli");
+});
+
+test("알 수 없는 셸: 알려진 신원도 커널 패키지도 없으면 여전히 null 을 반환한다", () => {
+  const inst = makeNextInstall(path.join(TMP, "unknown-bare"), { name: "some-other-electron-app" });
+  assert.equal(desktopIdentity(inst.resources), null);
+});
+
+test("NEXT: 커널 패키지가 있어도 CLI 게이트가 패키지 교체를 막아서는 안 된다", () => {
+  const inst = withKernelPackage(makeNextInstall(path.join(TMP, "next-gate")));
+  const verdict = repairOfficialCliAfterUnpack(inst.exe);
+  assert.equal(verdict.notApplicable, true, "NEXT 에는 공식 runtime/cli shim 이 없으므로 notApplicable 로 보고해야 한다");
+  assert.equal(verdict.reason, "next_family_has_no_runtime_cli");
+  // 밀봉 패키지 + handoff 일 때 notApplicable 은 반드시 통과해야 한다; 수정 전에는 not_official 을 받아 true 를 반환했다.
+  assert.equal(
+    cliRepairBlocksApply({
+      handoff: { exe: inst.exe, asar: path.join(inst.resources, "app.asar"), swapAsar: true },
+      sealed: true,
+      cliRepair: verdict,
+    }),
+    false,
+  );
+});
+
+test("패밀리 프로브 디렉터리와 패치 기록 디렉터리는 같은 곳이어야 한다", () => {
+  // Review 요구: 대상 인스턴스는 현재 resources 디렉터리와 일치해야 한다.
+  // probe 는 process.resourcesPath 로 물러날 수 있지만, 공식 경로에 패치를 쓸 때 그것을 그대로 쓰면 안 된다.
+  const inst = withKernelPackage(makeNextInstall(path.join(TMP, "probe-same")));
+  const before = process.resourcesPath;
+  try {
+    // process.resourcesPath 를 완전히 무관한 디렉터리로 돌린다:
+    // 구현이 probe 디렉터리를 기록 경로로 흘리면 여기서 엉뚱한 곳을 고치게 된다.
+    Object.defineProperty(process, "resourcesPath", {
+      value: path.join(TMP, "decoy-resources"),
+      configurable: true,
+    });
+    const verdict = repairOfficialCliAfterUnpack(inst.exe);
+    // NEXT 패밀리는 notApplicable 로 가므로 shim 을 전혀 쓰지 않는다; 결론은 inst 자신에서 나와야 한다.
+    assert.equal(verdict.notApplicable, true);
+    assert.equal(verdict.reason, "next_family_has_no_runtime_cli");
+    // 그리고 유인 디렉터리는 만들어지거나 기록되어서는 안 된다.
+    assert.equal(fs.existsSync(path.join(TMP, "decoy-resources")), false);
+  } finally {
+    Object.defineProperty(process, "resourcesPath", { value: before, configurable: true });
+  }
+});

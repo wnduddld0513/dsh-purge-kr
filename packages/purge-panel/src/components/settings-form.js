@@ -23,8 +23,13 @@ import {
 import {
   shimKind,
   patchRowsOf,
+  patchRowsAll,
+  patchGroupCounts,
   tallyPatches,
   PatchGroups,
+  PatchHealth,
+  PatchGroupSwitches,
+  PatchApplySteps,
 } from "./patch-status.js";
 import { noticeNode, Btn } from "./primitives.js";
 import { HooksDenySection } from "./advanced.js";
@@ -41,6 +46,7 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
   const tRef = useRef(t);
   tRef.current = t;
   const [state, setState] = useState(null);
+  const [scannedAt, setScannedAt] = useState(null);
   useEffect(() => {
     if (onStatus) onStatus(state);
   }, [state, onStatus]);
@@ -100,10 +106,7 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
 
   const updateErrorText = (tr, e) => {
     const msg = String((e && e.message) || e || "");
-    if (
-      msg === "timeout" ||
-      /aborted|abort|timeout|타임아웃|시간 ?초과/i.test(msg)
-    )
+    if (msg === "timeout" || /aborted|abort|타임아웃|시간 ?초과/i.test(msg))
       return tr("update.timeout");
     if (/\b404\b/.test(msg) || /non-json/.test(msg))
       return tr("update.needRestart");
@@ -295,6 +298,15 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
       .then((d) => {
         if (d && d.ok) {
           setState(d);
+          try {
+            setScannedAt(
+              new Date().toLocaleTimeString("ko-KR", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              }),
+            );
+          } catch {}
           setNotice((previous) =>
             previous?.source === "status"
               ? { kind: "idle", text: "" }
@@ -688,11 +700,25 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
     desktopLikely &&
     !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
   const patchesLost = !located && !!(s && s.patches_lost);
+  // 상태 페이지의 모든 숫자는 같은 출처를 쓴다: 항목별 실제값. 예전 기준은 "표시 그룹"으로 세서 몇십 건이 모자랐다.
+  const allRows = located ? patchRowsAll(s) : [];
   const tally = located
-    ? tallyPatches(patchRowsOf(s))
-    : { applied: 0, pending: 0, unmatched: 0, skipped: 0, total: 0 };
-  const total = tally.total;
-  const applied = tally.applied;
+    ? tallyPatches(allRows)
+    : {
+        applied: 0,
+        pending: 0,
+        unmatched: 0,
+        partial: 0,
+        drifted: 0,
+        disabled: 0,
+        skipped: 0,
+        total: 0,
+      };
+  const counts = located
+    ? patchGroupCounts(allRows)
+    : { applied: 0, pending: 0, off: 0, na: 0, total: 0, denom: 0 };
+  const total = counts.denom;
+  const applied = counts.applied;
   const pct = located && total ? Math.round((applied / total) * 100) : 0;
   const metricNotes = [];
   if (tally.pending)
@@ -706,7 +732,7 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
   if (tally.disabled)
     metricNotes.push(t("metric.disabledShort", { n: tally.disabled }));
   if (tally.skipped)
-    metricNotes.push(t("metric.skipShort", { n: tally.skipped }));
+    metricNotes.push(t("metric.naShort", { n: tally.skipped }));
 
   const versions = (updateInfo && updateInfo.versions) || [];
   const channelNow = (updateInfo && updateInfo.channel) || channel || "stable";
@@ -819,58 +845,25 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
     h(
       "div",
       { hidden: page !== "status" },
+      // 제목 줄: 왼쪽은 페이지 이름, 오른쪽은 동작 묶음 + 스캔 시각(시안에 맞추고 hero 카드로 한 겹 더 감싸지 않는다)
       h(
         "div",
-        { className: "dshpp-hero" },
+        { className: "dshpp-status-head" },
+        h("h3", { className: "dshpp-status-title" }, t("status.title")),
         h(
           "div",
-          { className: "dshpp-hero-state" },
-          h("i", {
-            className:
-              "dshpp-dot " +
-              (!located
-                ? "is-warn"
-                : patchBusy
-                  ? ""
-                  : s?.asar_still_sealed || tally.pending
-                    ? "is-warn"
-                    : "is-ok"),
-          }),
-          h(
-            "b",
-            null,
-            !s
-              ? "호스트 상태를 읽는 중…"
-              : s.ok === false
-                ? "상태 읽기 실패. 호스트와 패치 상태를 알 수 없습니다"
-                : !located
-                  ? sealedReady
-                    ? "호스트가 아직 풀리지 않았습니다. '적용'을 누르세요"
-                    : "호스트를 찾지 못했습니다. '적용'을 눌러 다시 시도하세요"
-                  : s?.asar_still_sealed
-                    ? `${applied}/${total}건 디스크 패치(종료 후 다시 열면 로드됩니다)`
-                    : tally.pending
-                      ? `${tally.pending}건 더 적용 대기`
-                      : `${applied}/${total}건 패치 적용됨`,
-          ),
-          h(
-            "span",
-            { className: "dshpp-hero-sub" },
-            t("surface." + hostSurface),
-          ),
-        ),
-        h(
-          "div",
-          { className: "dshpp-hero-actions" },
+          { className: "dshpp-status-ops" },
           h(
             Btn,
             {
               kind: "primary",
-              className: "dshpp-btn-lead",
+              className: "dshpp-btn-apply",
               disabled: patchBusy || uninstallBusy || !overrideLoaded,
               onClick: () => doAction("apply", "action.apply"),
             },
-            patchBusy ? t("btn.apply.busy") : t("btn.apply"),
+            patchBusy
+              ? t("btn.apply.busy")
+              : t("btn.apply") + (counts.pending ? " " + counts.pending : ""),
           ),
           h(
             Btn,
@@ -891,66 +884,52 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
             uninstallBusy ? t("btn.uninstall.busy") : t("btn.uninstall"),
           ),
           h(
-            Btn,
+            "button",
             {
-              tiny: true,
+              type: "button",
+              className: "dshpp-scan",
               onClick: loadAll,
               disabled: patchBusy || uninstallBusy,
+              title: t("scan.hint"),
             },
-            "새로 고침",
+            scannedAt ? t("scan.recent", { time: scannedAt }) : t("scan.hint"),
           ),
         ),
-        h(
-          "p",
-          { className: "dshpp-hero-hint" },
-          "플러그인을 설치했거나, DSH 를 업데이트했거나, 모델이 다시 회피하기 시작하면 '적용'을 한 번 누른 뒤 DSH 를 종료했다가 다시 열면 복구됩니다.",
-        ),
-        noticeNode(notice),
       ),
+      !located
+        ? h(
+            "p",
+            { className: "dshpp-status-note" },
+            sealedReady
+              ? "호스트가 아직 풀리지 않았습니다. '적용'을 누르세요"
+              : t("metric.unlocated"),
+          )
+        : null,
+      noticeNode(notice),
+      h(PatchHealth, { state: s }),
+      h(PatchGroupSwitches, { state: s, onSaved: loadAll }),
       h(
-        "div",
-        { className: "dshpp-rel" },
+        "section",
+        { className: "dshpp-fold is-open" },
         h(
-          "div",
-          { className: "dshpp-now" },
-          h("span", { className: "dshpp-now-label" }, t("channel.local")),
+          "h4",
+          { className: "dshpp-fold-t" },
+          t("detail.title"),
           h(
-            "b",
-            { className: "dshpp-now-ver" },
-            localVer ? "v" + localVer : "—",
-          ),
-          h("em", { className: "dshpp-now-mark" }, t("update.current")),
-        ),
-        h(
-          "details",
-          { className: "dshpp-editions" },
-          h("summary", null, "버전 관리"),
-          renderEdition("stable"),
-          renderEdition("beta"),
-        ),
-        noticeNode(updateNotice),
-      ),
-      h(
-        "details",
-        { className: "dshpp-fold" },
-        h(
-          "summary",
-          null,
-          "패치 상세 ",
-          h(
-            "b",
-            null,
+            "span",
+            { className: "dshpp-fold-n" },
             !s
-              ? "읽는 중"
+              ? t("detail.reading")
               : s.ok === false
-                ? "상태 미확인"
+                ? t("detail.unknown")
                 : s.ai_base
-                  ? `${applied}/${total} 적용됨`
-                  : "호스트 미탐지",
+                  ? `${applied} / ${total}`
+                  : t("detail.unlocated"),
           ),
         ),
         h(PatchGroups, { state: s }),
       ),
+      h(PatchApplySteps, null),
       h(
         "details",
         null,

@@ -54,7 +54,7 @@ var base_default = '.dshpp-root {\n  --dshpp-display:\n    "Songti SC", "Noto Se
 var native_default = '.dshpp-native.dshpp-root {\n  --dshpp-display: inherit;\n  --dshpp-sans: inherit;\n  --dshpp-paper: var(--dsw-alias-bg-base, transparent);\n  --dshpp-bg: transparent;\n  --dshpp-line: var(--dsw-alias-border-l1, #ddd);\n  --dshpp-ink: var(--dsw-alias-label-primary, #171717);\n  --dshpp-mute: var(--dsw-alias-label-secondary, #777);\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4775ed);\n  --dshpp-fill: var(--dsw-alias-interactive-bg-hover, #f3f3f3);\n  container: purge-settings / inline-size;\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  width: 100%;\n  height: 100%;\n  min-height: 0;\n  max-width: none;\n  padding: 0;\n  gap: 0;\n  border-radius: 0;\n  overflow: hidden;\n  box-sizing: border-box;\n}\n.dshpp-native * {\n  box-sizing: border-box;\n}\n.dshpp-native [hidden] {\n  display: none !important;\n}\n.dshpp-native-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 20px 20px 12px;\n  gap: 12px;\n  flex: none;\n}\n.dshpp-native-head h2 {\n  font: inherit;\n  font-size: 1.3em;\n  font-weight: 600;\n  margin: 0;\n}\n.dshpp-native-head p {\n  margin: 4px 0 0;\n  font-size: 0.85em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-badge {\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-nav {\n  display: flex;\n  gap: 4px;\n  padding: 0 16px;\n  border-bottom: 1px solid var(--dshpp-line);\n  flex: none;\n  overflow-x: auto;\n}\n.dshpp-native-nav button {\n  font: inherit;\n  font-size: 0.92em;\n  border: 0;\n  border-bottom: 2px solid transparent;\n  background: none;\n  color: var(--dshpp-mute);\n  padding: 10px 8px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.dshpp-native-nav button[aria-pressed="true"] {\n  color: var(--dshpp-ink);\n  border-bottom-color: var(--dshpp-accent);\n}\n.dshpp-native-content {\n  min-height: 0;\n  flex: 1;\n  overflow: auto;\n  padding: 16px 20px;\n  scrollbar-gutter: stable;\n  overscroll-behavior: contain;\n}\n.dshpp-native .dshpp-panel {\n  border: 0;\n  border-radius: 0;\n  padding: 0;\n  background: transparent;\n  min-width: 0;\n}\n.dshpp-native\n  :is(\n    h3,\n    h4,\n    .dshpp-title,\n    .dshpp-group-h strong,\n    .dshpp-metric b,\n    .dshpp-now-ver,\n    .dshpp-edition-name\n  ) {\n  font-family: inherit;\n  font-size: 1em;\n  letter-spacing: normal;\n  font-weight: 550;\n}\n.dshpp-native .dshpp-metric b {\n  font-size: 1.12em;\n}\n.dshpp-native .dshpp-head {\n  margin-bottom: 12px;\n}\n.dshpp-native .dshpp-sub {\n  margin-top: 0;\n  flex-wrap: wrap;\n}\n.dshpp-native :is(button, input, select, textarea) {\n  font-family: inherit;\n  box-shadow: none;\n  background-image: none;\n  max-width: 100%;\n}\n.dshpp-native .dshpp-btn {\n  font-size: 0.9em;\n  min-height: 32px;\n  border-radius: 7px;\n  padding: 6px 10px;\n  transform: none;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-btn:hover:not(:disabled) {\n  background: var(--dshpp-fill);\n  box-shadow: none;\n  transform: none;\n}\n.dshpp-native .dshpp-btn-primary {\n  background: var(--dsw-alias-label-primary, #171717);\n  color: var(--dsw-alias-bg-base, #fff);\n  border-color: transparent;\n}\n.dshpp-native .dshpp-btn-primary:hover:not(:disabled) {\n  opacity: 0.85;\n  background: var(--dsw-alias-label-primary, #171717);\n}\n.dshpp-native :is(button, input, select, textarea):focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 2px;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-area {\n  font-family: inherit;\n  font-size: 0.92em;\n  line-height: 1.6;\n  min-height: 260px;\n  width: 100%;\n  border-radius: 8px;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-field {\n  font-size: 0.92em;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-metrics {\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 8px;\n}\n.dshpp-native .dshpp-metric:nth-child(2) {\n  display: none;\n}\n.dshpp-native .dshpp-metric {\n  min-height: 60px;\n  padding: 12px;\n  background: var(--dshpp-fill);\n  border: 0;\n}\n.dshpp-native .dshpp-metric span {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-editions {\n  margin: 10px 0;\n  border: 0;\n}\n.dshpp-native summary {\n  cursor: pointer;\n  color: var(--dshpp-mute);\n  padding: 8px 0;\n  font-size: 0.9em;\n}\n.dshpp-native .dshpp-edition {\n  grid-template-columns: 1fr auto;\n  gap: 8px;\n}\n.dshpp-native .dshpp-edition-name {\n  grid-column: 1/-1;\n}\n.dshpp-native .dshpp-edition .dshpp-btn {\n  min-width: 0;\n}\n.dshpp-native .dshpp-table {\n  table-layout: fixed;\n  font-size: 0.83em;\n}\n.dshpp-native .dshpp-table td {\n  word-break: break-word;\n  padding: 8px;\n}\n.dshpp-native .dshpp-table th {\n  padding: 8px;\n}\n.dshpp-native .dshpp-group-h {\n  flex-wrap: wrap;\n  gap: 6px;\n}\n.dshpp-native .dshpp-group-h em {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-row {\n  gap: 8px;\n}\n.dshpp-native .dshpp-hint {\n  font-size: 0.85em !important;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-more {\n  border-top: 1px solid var(--dshpp-line);\n  padding-top: 20px;\n  margin-top: 24px;\n}\n.dshpp-native .dshpp-more p {\n  font-size: 0.9em;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-attribution {\n  margin-top: 32px;\n  font-size: 0.78em !important;\n}\n\n/* \uB4DC\uB9B4 \uCF58\uC194: \uC61B \uBC84\uC804\uC740 \uB4DC\uB798\uADF8 \uAC00\uB2A5\uD55C \uD50C\uB85C\uD305 \uCC3D\uC5D0\uC11C \uB3CC\uC558\uC9C0\uB9CC, \uC9C0\uAE08\uC740 \uC624\uB978\uCABD \uC0AC\uC774\uB4DC\uBC14\uC5D0 \uB0B4\uC7A5\uB418\uBBC0\uB85C \uC2A4\uC2A4\uB85C \uB192\uC774\uB97C \uC7A1\uACE0 \uC2A4\uD06C\uB864\uC744 \uD5C8\uC6A9\uD574\uC57C \uD55C\uB2E4 */\n.dshpp-native-drill {\n  width: 100%;\n  min-width: 0;\n  min-height: 72vh;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding-bottom: 24px;\n  box-sizing: border-box;\n}\n.dshpp-native-drill > .rt-dock.rt-embedded {\n  flex: 1 1 auto;\n  min-height: 0;\n  min-width: 0;\n  width: 100%;\n  height: auto;\n  overflow: visible;\n}\n/* \uC624\uB978\uCABD \uC0AC\uC774\uB4DC\uBC14\uB294 \uC544\uC8FC \uC881\uB2E4: \uC548\uCABD\uC758 \uBAA8\uB4E0 flex \uD589\uC774 \uC904\uBC14\uAFC8\uB420 \uC218 \uC788\uC5B4\uC57C \uD558\uACE0, \uC785\uB825\uCC3D\uC774 \uD615\uC81C \uC694\uC18C\uB97C 1ch \uD3ED\uC73C\uB85C \uBC00\uC5B4\uB0B4\uBA74 \uC548 \uB41C\uB2E4 */\n.dshpp-native-drill .rt-dock,\n.dshpp-native-drill .rt-dock * {\n  box-sizing: border-box;\n  min-width: 0;\n  word-break: normal;\n  overflow-wrap: anywhere;\n}\n.dshpp-native-drill .rt-dock input,\n.dshpp-native-drill .rt-dock textarea,\n.dshpp-native-drill .rt-dock select {\n  width: 100%;\n  max-width: 100%;\n}\n\n/* "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110"\uACFC "\uC790\uB3D9 \uD655\uC778 / N\uC2DC\uAC04\uB9C8\uB2E4"\uB97C \uD55C \uC904\uC5D0 \uB098\uB780\uD788: \uB192\uC774, \uBAA8\uC11C\uB9AC \uBC18\uACBD, \uAE00\uC790 \uD06C\uAE30\uB97C select \uC5D0 \uB9DE\uCD98\uB2E4.\n   \uAC19\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uAC00 \uD50C\uB7EC\uADF8\uC778 \uC124\uC815 \uD398\uC774\uC9C0(.dshpp-native)\uC640 \uC67C\uCABD Purge \uC804\uCCB4 \uD398\uC774\uC9C0(.dshpp-page)\uC5D0 \uB3D9\uC2DC\uC5D0 \uBD99\uACE0,\n   \uB450 \uACF3\uC758 \uB8E8\uD2B8 class \uAC00 \uB2EC\uB77C \uC120\uD0DD\uC790\uAC00 \uC591\uCABD\uC744 \uBAA8\uB450 \uB36E\uC5B4\uC57C \uD55C\uB2E4. */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-open {\n  min-height: 32px;\n  padding: 4px 12px;\n  border-radius: 7px;\n  font-size: 0.9em;\n  white-space: nowrap;\n}\n/* \uC61B \uBC84\uC804\uC758 \uC81C\uBAA9 \uD589 \uC624\uB978\uCABD \uC815\uB82C \uB808\uC774\uC544\uC6C3\uC740 \uC678\uBD80 \uD638\uCD9C \uAC00\uB2A5\uC131\uC744 \uC704\uD574 \uB0A8\uACA8 \uB450\uC9C0\uB9CC, \uC8FC \uC9C4\uC785\uC810\uC740 \uC774\uBBF8 \uC124\uC815 \uD589\uC73C\uB85C \uC62E\uACBC\uB2E4. */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head h3 {\n  margin: 0;\n}\n/* \uC5C5\uB370\uC774\uD2B8 \uCC44\uB110 \uB300\uD654\uC0C1\uC790: \uD328\uB110\uC5D0\uB294 \uBBFF\uC744 \uB9CC\uD55C react-dom portal \uC774 \uC5C6\uC5B4 \uACE0\uC815 \uC704\uCE58 + \uC624\uBC84\uB808\uC774\uB85C \uC9C1\uC811 \uAD6C\uD604\uD55C\uB2E4 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 12050;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  background: rgba(0, 0, 0, 0.55);\n  pointer-events: auto;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-card {\n  width: min(440px, 100%);\n  max-height: min(88vh, 720px);\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 18px;\n  border-radius: 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-layer-1, #fffcf7);\n  color: var(--dshpp-ink);\n  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-title {\n  margin: 0 0 2px;\n  font-family: inherit;\n  font-size: 1em;\n  font-weight: 600;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-label {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-field {\n  width: 100%;\n  min-width: 0;\n  font-size: 0.92em;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 4px;\n}\n\n:is(.dshpp-native, .dshpp-page) .dshpp-composer-settings {\n  padding-block: 2px 8px;\n  margin-bottom: 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-composer-settings h3 {\n  margin: 0;\n  font: inherit;\n  font-weight: 600;\n}\n.dshpp-setting-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-height: 44px;\n  cursor: pointer;\n}\n.dshpp-setting-row input[role="switch"] {\n  appearance: none;\n  flex: none;\n  box-sizing: border-box;\n  width: 32px;\n  height: 20px;\n  margin: 0 2px;\n  padding: 2px;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  background: var(--dsw-alias-interactive-bg-hover, rgba(127, 127, 127, 0.23));\n  cursor: pointer;\n}\n.dshpp-setting-row input::before {\n  content: "";\n  display: block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  background: var(--dsw-alias-label-secondary, #777);\n}\n.dshpp-setting-row input:checked {\n  background: var(--dshpp-accent);\n  border-color: var(--dshpp-accent);\n}\n.dshpp-setting-row input:checked::before {\n  transform: translateX(12px);\n  background: white;\n}\n.dshpp-setting-row input:focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 3px;\n}\n.dshpp-setting-row input:disabled {\n  opacity: 0.6;\n}\n@media (forced-colors: active) {\n  .dshpp-setting-row input[role="switch"] {\n    appearance: auto;\n  }\n  .dshpp-setting-row input::before {\n    content: none;\n  }\n}\n@container purge-settings (max-width: 520px) {\n  .dshpp-native-head {\n    padding: 14px 12px 8px;\n  }\n  .dshpp-native-nav {\n    padding-inline: 8px;\n    gap: 0;\n  }\n  .dshpp-native-nav button {\n    flex: 1 0 auto;\n    min-height: 44px;\n  }\n  .dshpp-native-content {\n    padding: 12px;\n    scrollbar-gutter: auto;\n  }\n}\n';
 
 // src/styles/page.css
-var page_default = '/* \uC804\uCCB4 \uD398\uC774\uC9C0(\uC67C\uCABD \uC0AC\uC774\uB4DC\uBC14 \uC9C4\uC785\uC810) \uC2A4\uD0C0\uC77C: DSH \uC790\uCCB4\uC758 \uD3F0\uD2B8, \uAC04\uACA9, \uD14C\uB9C8 \uBCC0\uC218\uB97C \uADF8\uB300\uB85C \uC4F0\uACE0 \uBCC4\uB3C4 \uD3F0\uD2B8\uB97C \uB4E4\uC774\uC9C0 \uC54A\uB294\uB2E4. */\n.dshpp-page {\n  --dshpp-line: var(--dsw-alias-border-l1, rgba(127, 127, 127, 0.22));\n  --dshpp-line-strong: var(--dsw-alias-border-l2, rgba(127, 127, 127, 0.4));\n  --dshpp-fg: var(--dsw-alias-label-primary, currentColor);\n  --dshpp-mute: var(\n    --dsw-alias-label-secondary,\n    color-mix(in srgb, currentColor 62%, transparent)\n  );\n  --dshpp-bg: var(--dsw-alias-bg-layer-1, transparent);\n  --dshpp-bg-2: var(--dsw-alias-bg-layer-2, rgba(127, 127, 127, 0.06));\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4d6bfe);\n  --dshpp-ok: var(--dsw-alias-state-success-primary, #1f9d55);\n  --dshpp-warn: var(--dsw-alias-state-warn-primary, #b7791f);\n  --dshpp-bad: var(--dsw-alias-state-error-primary, #d14343);\n  box-sizing: border-box;\n  container: purge-page / inline-size;\n  width: 100%;\n  min-width: 0;\n  height: 100%;\n  min-height: 0;\n  overflow: auto;\n  padding: 20px clamp(12px, 3%, 32px) 32px;\n  color: var(--dshpp-fg);\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: 1.55;\n  -webkit-font-smoothing: antialiased;\n}\n.dshpp-page *,\n.dshpp-page *::before,\n.dshpp-page *::after {\n  box-sizing: border-box;\n}\n\n.dshpp-page-head {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.dshpp-page-glyph {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  border-radius: 10px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-accent);\n  flex: none;\n}\n.dshpp-page-title {\n  min-width: 0;\n}\n.dshpp-page-title h1 {\n  margin: 0;\n  font-size: 1.3em;\n  font-weight: 600;\n  letter-spacing: 0.01em;\n}\n.dshpp-page-title p {\n  margin: 2px 0 0;\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-page-ver {\n  padding: 1px 6px;\n  border-radius: 999px;\n  border: 1px solid var(--dshpp-line);\n  font-size: 0.92em;\n}\n\n/* \uC0C1\uB2E8 \uD55C \uC904 \uC0C1\uD0DC \uC694\uC57D: \uCE74\uB4DC \uB300\uC2E0 DSH \uC758 subtitle \uD589\uACFC \uB9DE\uCD98\uB2E4 */\n.dshpp-strip {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px 18px;\n  margin: 0;\n  padding: 0 0 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n}\n.dshpp-strip-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  min-width: 0;\n}\n.dshpp-strip-item b {\n  color: var(--dshpp-fg);\n  font-weight: 600;\n}\n.dshpp-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  background: var(--dshpp-mute);\n  flex: none;\n}\n.dshpp-dot.is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-dot.is-warn {\n  background: var(--dshpp-warn);\n}\n.dshpp-dot.is-bad {\n  background: var(--dshpp-bad);\n}\n\n/* \uD0ED: \uBC11\uC904\uD615\uC774\uB77C DSH \uC124\uC815 \uD398\uC774\uC9C0\uC758 tab \uACFC \uAC19\uC740 \uBAA8\uC591\uC774\uB2E4 */\n.dshpp-page-tabs {\n  display: flex;\n  gap: 2px;\n  margin: 10px 0 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  overflow-x: auto;\n  scrollbar-width: none;\n}\n.dshpp-page-tabs::-webkit-scrollbar {\n  display: none;\n}\n.dshpp-page-tabs button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 1em;\n  padding: 10px 12px;\n  border-bottom: 2px solid transparent;\n  margin-bottom: -1px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page-tabs button:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-page-tabs button[aria-selected="true"] {\n  color: var(--dshpp-fg);\n  border-bottom-color: var(--dshpp-accent);\n  font-weight: 600;\n}\n\n.dshpp-page-body {\n  padding-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec[hidden] {\n  display: none;\n}\n\n/* \uCE74\uB4DC: DSH \uC758 layer-1 \uD328\uB110 */\n.dshpp-page .dshpp-card,\n.dshpp-page section.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  margin: 0;\n  min-width: 0;\n}\n.dshpp-page .dshpp-card > h3:first-child,\n.dshpp-page section.dshpp-panel > h3:first-child {\n  margin: 0 0 12px;\n  font-size: 1em;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n/* \uD544\uB4DC \uD589: \uC67C\uCABD \uC81C\uBAA9, \uC624\uB978\uCABD \uCEE8\uD2B8\uB864. \uC881\uC740 \uD654\uBA74\uC5D0\uC11C\uB294 \uC790\uB3D9\uC73C\uB85C \uC904\uBC14\uAFC8\uD55C\uB2E4 */\n.dshpp-page .dshpp-field {\n  display: grid;\n  grid-template-columns: minmax(120px, 190px) 1fr;\n  gap: 8px 14px;\n  align-items: center;\n}\n.dshpp-page .dshpp-field > .dshpp-field-label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n}\n.dshpp-page .dshpp-field > .dshpp-field-body {\n  min-width: 0;\n}\n@container purge-page (max-width: 640px) {\n  .dshpp-page .dshpp-field {\n    grid-template-columns: 1fr;\n  }\n}\n\n.dshpp-page .dshpp-muted,\n.dshpp-page .dshpp-hint {\n  color: var(--dshpp-mute) !important;\n  font-size: 0.86em !important;\n  line-height: 1.6;\n  margin: 0;\n}\n\n.dshpp-page .dshpp-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  align-items: center;\n  min-width: 0;\n}\n.dshpp-page input,\n.dshpp-page select,\n.dshpp-page textarea {\n  font: inherit;\n  color: var(--dshpp-fg);\n  background: var(--dshpp-bg-2);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  padding: 7px 10px;\n  max-width: 100%;\n}\n.dshpp-page input:focus-visible,\n.dshpp-page select:focus-visible,\n.dshpp-page textarea:focus-visible {\n  outline: 2px solid color-mix(in srgb, var(--dshpp-accent) 55%, transparent);\n  outline-offset: 1px;\n}\n.dshpp-page textarea {\n  width: 100%;\n  min-height: 320px;\n  resize: vertical;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 0.86em;\n  line-height: 1.6;\n}\n\n.dshpp-page .dshpp-btn {\n  font: inherit;\n  font-size: 0.9em;\n  border-radius: 8px;\n  padding: 6px 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-fg);\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page .dshpp-btn:hover:not(:disabled) {\n  border-color: var(--dshpp-line-strong);\n}\n.dshpp-page .dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n/* \uC8FC \uBC84\uD2BC: brand-primary \uB97C \uBC30\uACBD\uC73C\uB85C \uC4F0\uC9C0 \uC54A\uB294\uB2E4. \uB2E4\uD06C \uBAA8\uB4DC\uC5D0\uC11C \uADF8 \uD1A0\uD070\uC740 \uAC15\uC870 \uAE00\uC790\uC0C9\uC774\uB77C\n   \uADF8\uB300\uB85C \uBC30\uACBD\uC73C\uB85C \uAE54\uBA74 "\uD770 \uBC14\uD0D5\uC5D0 \uD770 \uAE00\uC790" \uC0AC\uAC01\uD615\uC774 \uB41C\uB2E4. \uC5EC\uAE30\uC11C\uB294 \uACE0\uC815\uB41C \uC2E4\uC0C9 \uB179\uC0C9 + \uD770 \uAE00\uC790\uB97C \uC4F4\uB2E4. */\n.dshpp-page {\n  --dshpp-solid: #2f6b4f;\n  --dshpp-solid-hover: #3a8260;\n  --dshpp-solid-danger: #a63b3b;\n  --dshpp-solid-danger-hover: #bd4747;\n}\n.dshpp-page .dshpp-btn-primary {\n  background: var(--dshpp-solid);\n  border-color: var(--dshpp-solid);\n  color: #fff;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-btn-primary:hover:not(:disabled) {\n  background: var(--dshpp-solid-hover);\n  border-color: var(--dshpp-solid-hover);\n}\n.dshpp-page .dshpp-btn-solid-danger {\n  background: var(--dshpp-solid-danger);\n  border-color: var(--dshpp-solid-danger);\n  color: #fff;\n}\n.dshpp-page .dshpp-btn-solid-danger:hover:not(:disabled) {\n  background: var(--dshpp-solid-danger-hover);\n  border-color: var(--dshpp-solid-danger-hover);\n}\n.dshpp-page .dshpp-btn-danger {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n.dshpp-page .dshpp-btn-tiny {\n  padding: 3px 8px;\n  font-size: 0.82em;\n}\n\n.dshpp-page .dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  padding: 1px 8px;\n  border-radius: 999px;\n  font-size: 0.8em;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n}\n.dshpp-page .dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n\n.dshpp-page .dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-table th,\n.dshpp-page .dshpp-table td {\n  text-align: left;\n  padding: 7px 10px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: top;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-table th {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 0.95em;\n}\n.dshpp-page .dshpp-group-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  padding: 8px 0;\n  cursor: pointer;\n}\n.dshpp-page .dshpp-count {\n  color: var(--dshpp-mute);\n  font-size: 0.85em;\n}\n\n/* \uB4DC\uB9B4 \uCF58\uC194\uC774 \uB0A8\uC740 \uB192\uC774\uB97C \uC804\uBD80 \uCC28\uC9C0\uD55C\uB2E4 */\n.dshpp-page-drill {\n  min-height: 60vh;\n}\n.dshpp-page-drill .rt-dock.rt-embedded {\n  width: 100%;\n  min-width: 0;\n}\n\n.dshpp-page-foot {\n  margin-top: 28px;\n  padding-top: 14px;\n  border-top: 1px solid var(--dshpp-line);\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n\n/* \uC774\uB984 \uC124\uBA85: \uC81C\uBAA9 \uB4A4\uC758 \uC791\uC740 \uBB3C\uC74C\uD45C */\n.dshpp-help {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n.dshpp-help-btn {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.85em;\n  line-height: 1;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  border: 1px solid var(--dshpp-line);\n  cursor: help;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n}\n.dshpp-help-btn:hover,\n.dshpp-help-btn[aria-expanded="true"] {\n  color: var(--dshpp-fg);\n  border-color: var(--dshpp-line-strong);\n  background: var(--dshpp-bg-2);\n}\n.dshpp-tip {\n  position: absolute;\n  left: 0;\n  top: calc(100% + 6px);\n  z-index: 2147483000;\n  width: max-content;\n  max-width: min(340px, 70vw);\n  padding: 9px 11px;\n  border-radius: 8px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-overlay, canvas);\n  color: var(--dshpp-fg);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);\n  font-size: 0.82em;\n  line-height: 1.6;\n  white-space: normal;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dshpp-tip b {\n  font-weight: 600;\n}\n\n.dshpp-page .dshpp-warn {\n  margin: 10px 0 0;\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid color-mix(in srgb, var(--dshpp-warn) 45%, transparent);\n  color: var(--dshpp-warn);\n  background: color-mix(in srgb, var(--dshpp-warn) 10%, transparent);\n  font-size: 0.86em;\n}\n\n/* \uC561\uC158 \uBC14: \uAC00\uC7A5 \uC790\uC8FC \uC4F0\uB294 "\uC801\uC6A9"\uC744 \uCF58\uD150\uCE20 \uC601\uC5ED \uB9E8 \uC704\uC5D0 \uACE0\uC815\uD55C\uB2E4 */\n.dshpp-page .dshpp-actions {\n  position: sticky;\n  top: 0;\n  z-index: 5;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 0 12px;\n  margin: -4px 0 6px;\n  background: linear-gradient(\n    var(--dsw-alias-bg-base, canvas) 78%,\n    transparent\n  );\n  backdrop-filter: blur(2px);\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-actions .dshpp-pill {\n  margin-left: auto;\n}\n\n/* \uC9C0\uD45C: \uC138 \uC5F4\uB85C \uCD18\uCD18\uD558\uAC8C */\n.dshpp-page .dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));\n  gap: 10px;\n  margin: 4px 0 2px;\n}\n.dshpp-page .dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-page .dshpp-metric b {\n  display: block;\n  font-size: 1.05em;\n  font-weight: 600;\n  margin-bottom: 2px;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-metric span {\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n\n/* \uC811\uC774\uC2DD \uBE14\uB85D: \uD328\uCE58 \uC0C1\uC138 / \uC720\uC9C0\uBCF4\uC218 / \uC790\uCCB4 \uC810\uAC80 */\n.dshpp-page .dshpp-fold,\n.dshpp-page .dshpp-fold-inline {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  background: var(--dshpp-bg);\n  padding: 0 12px;\n}\n.dshpp-page .dshpp-fold > summary,\n.dshpp-page .dshpp-fold-inline > summary {\n  cursor: pointer;\n  padding: 10px 0;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-fold > summary::-webkit-details-marker,\n.dshpp-page .dshpp-fold-inline > summary::-webkit-details-marker {\n  display: none;\n}\n.dshpp-page .dshpp-fold > summary::before,\n.dshpp-page .dshpp-fold-inline > summary::before {\n  content: "\u25B8";\n  color: var(--dshpp-mute);\n  font-size: 0.9em;\n  transition: transform 0.12s ease;\n}\n.dshpp-page .dshpp-fold[open] > summary::before,\n.dshpp-page .dshpp-fold-inline[open] > summary::before {\n  transform: rotate(90deg);\n}\n.dshpp-page .dshpp-fold > summary b,\n.dshpp-page .dshpp-fold-inline > summary b {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  margin-left: auto;\n}\n\n/* \uC0C1\uD0DC \uD589(\uC790\uCCB4 \uC810\uAC80 / \uAC15\uD654 \uC139\uC158) */\n.dshpp-page .dshpp-line {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 6px 0;\n}\n.dshpp-page .dshpp-line + .dshpp-line {\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-line-main {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 0.92em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-line-main b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-fold-inline {\n  border: 0;\n  padding: 0;\n  background: transparent;\n}\n.dshpp-page .dshpp-fold-inline > summary {\n  padding: 2px 0;\n  color: var(--dshpp-mute);\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-fold-inline[open] {\n  flex-basis: 100%;\n}\n\n/* \uACC4\uCE35\uBCC4 \uC790\uCCB4 \uC810\uAC80: 2\uC5F4/\uB2E4\uC5F4 \uADF8\uB9AC\uB4DC\uB85C \uBC14\uAFD4 \uB354 \uC774\uC0C1 \uD55C \uC904\uC5D0 \uD558\uB098\uC529 \uB450\uC9C0 \uC54A\uB294\uB2E4 */\n.dshpp-page .dshpp-checks {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: 2px 14px;\n  padding: 6px 0 10px;\n}\n.dshpp-page .dshpp-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.84em;\n  min-width: 0;\n  padding: 2px 0;\n}\n.dshpp-page .dshpp-check.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-page .dshpp-check-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  min-width: 0;\n}\n.dshpp-page .dshpp-check-val {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-variant-numeric: tabular-nums;\n}\n\n/* \uC0C1\uD0DC \uD398\uC774\uC9C0 hero: "\uC9C0\uAE08 \uC5B4\uB5A4 \uC0C1\uD0DC\uC774\uACE0 \uB2E4\uC74C\uC5D0 \uC5B4\uB514\uB97C \uB204\uB974\uB294\uC9C0"\uB97C \uD55C\uB208\uC5D0 \uBCF4\uC5EC\uC900\uB2E4 */\n.dshpp-page .dshpp-hero {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.dshpp-page .dshpp-hero-state {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 1.02em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-hero-state b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-hero-sub {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n.dshpp-page .dshpp-hero-actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-btn-lead {\n  padding: 9px 20px;\n  font-size: 0.98em;\n  font-weight: 600;\n  border-radius: 10px;\n}\n.dshpp-page .dshpp-hero-hint {\n  margin: 0;\n  color: var(--dshpp-mute);\n  font-size: 0.84em;\n  line-height: 1.6;\n}\n.dshpp-check.is-warn {\n  color: var(--dshpp-warn);\n}\n\n.dshpp-page .dshpp-probe-msg {\n  margin: 6px 0 0;\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px dashed var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  font-size: 0.82em;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n\n@container purge-page (max-width: 520px) {\n  .dshpp-page-head {\n    gap: 8px;\n  }\n  .dshpp-page-tabs {\n    gap: 0;\n  }\n  .dshpp-page-tabs button {\n    flex: 1 0 auto;\n    padding-inline: 6px;\n    min-height: 44px;\n  }\n  .dshpp-page-body {\n    padding-top: 12px;\n  }\n  .dshpp-sec {\n    gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-card, section.dshpp-panel, .dshpp-hero) {\n    padding: 12px;\n  }\n  .dshpp-strip {\n    column-gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-row, .dshpp-sub, .dshpp-hero-state) {\n    flex-wrap: wrap;\n  }\n  .dshpp-page :is(input, select, textarea) {\n    max-width: 100%;\n    min-width: 0;\n  }\n  .dshpp-page .dshpp-table {\n    table-layout: fixed;\n    overflow-wrap: anywhere;\n  }\n}\n\n/* The detail route owns scrolling; the sidebar owns its own viewport. */\n.dshpp-detail-settings .dshpp-page {\n  height: auto;\n  overflow: visible;\n  padding-inline: 0;\n}\n';
+var page_default = '/* \uC804\uCCB4 \uD398\uC774\uC9C0(\uC67C\uCABD \uC0AC\uC774\uB4DC\uBC14 \uC9C4\uC785\uC810) \uC2A4\uD0C0\uC77C: DSH \uC790\uCCB4\uC758 \uD3F0\uD2B8, \uAC04\uACA9, \uD14C\uB9C8 \uBCC0\uC218\uB97C \uADF8\uB300\uB85C \uC4F0\uACE0 \uBCC4\uB3C4 \uD3F0\uD2B8\uB97C \uB4E4\uC774\uC9C0 \uC54A\uB294\uB2E4. */\n.dshpp-page {\n  --dshpp-line: var(--dsw-alias-border-l1, rgba(127, 127, 127, 0.22));\n  --dshpp-line-strong: var(--dsw-alias-border-l2, rgba(127, 127, 127, 0.4));\n  --dshpp-fg: var(--dsw-alias-label-primary, currentColor);\n  --dshpp-mute: var(\n    --dsw-alias-label-secondary,\n    color-mix(in srgb, currentColor 62%, transparent)\n  );\n  --dshpp-bg: var(--dsw-alias-bg-layer-1, transparent);\n  --dshpp-bg-2: var(--dsw-alias-bg-layer-2, rgba(127, 127, 127, 0.06));\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4d6bfe);\n  --dshpp-ok: var(--dsw-alias-state-success-primary, #1f9d55);\n  --dshpp-warn: var(--dsw-alias-state-warn-primary, #b7791f);\n  --dshpp-bad: var(--dsw-alias-state-error-primary, #d14343);\n  box-sizing: border-box;\n  container: purge-page / inline-size;\n  width: 100%;\n  min-width: 0;\n  height: 100%;\n  min-height: 0;\n  overflow: auto;\n  padding: 20px clamp(12px, 3%, 32px) 32px;\n  color: var(--dshpp-fg);\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: 1.55;\n  -webkit-font-smoothing: antialiased;\n}\n.dshpp-page *,\n.dshpp-page *::before,\n.dshpp-page *::after {\n  box-sizing: border-box;\n}\n\n.dshpp-page-head {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.dshpp-page-glyph {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  border-radius: 10px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-accent);\n  flex: none;\n}\n.dshpp-page-title {\n  min-width: 0;\n}\n.dshpp-page-title h1 {\n  margin: 0;\n  font-size: 1.3em;\n  font-weight: 600;\n  letter-spacing: 0.01em;\n}\n.dshpp-page-title p {\n  margin: 2px 0 0;\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-page-ver {\n  padding: 1px 6px;\n  border-radius: 999px;\n  border: 1px solid var(--dshpp-line);\n  font-size: 0.92em;\n}\n\n/* \uC0C1\uB2E8 \uD55C \uC904 \uC0C1\uD0DC \uC694\uC57D: \uCE74\uB4DC \uB300\uC2E0 DSH \uC758 subtitle \uD589\uACFC \uB9DE\uCD98\uB2E4 */\n.dshpp-strip {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px 18px;\n  margin: 0;\n  padding: 0 0 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n}\n.dshpp-strip-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  min-width: 0;\n}\n.dshpp-strip-item b {\n  color: var(--dshpp-fg);\n  font-weight: 600;\n}\n.dshpp-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  background: var(--dshpp-mute);\n  flex: none;\n}\n.dshpp-dot.is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-dot.is-warn {\n  background: var(--dshpp-warn);\n}\n.dshpp-dot.is-bad {\n  background: var(--dshpp-bad);\n}\n\n/* \uD0ED: \uBC11\uC904\uD615\uC774\uB77C DSH \uC124\uC815 \uD398\uC774\uC9C0\uC758 tab \uACFC \uAC19\uC740 \uBAA8\uC591\uC774\uB2E4 */\n.dshpp-page-tabs {\n  display: flex;\n  gap: 2px;\n  margin: 10px 0 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  overflow-x: auto;\n  scrollbar-width: none;\n}\n.dshpp-page-tabs::-webkit-scrollbar {\n  display: none;\n}\n.dshpp-page-tabs button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 1em;\n  padding: 10px 12px;\n  border-bottom: 2px solid transparent;\n  margin-bottom: -1px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page-tabs button:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-page-tabs button[aria-selected="true"] {\n  color: var(--dshpp-fg);\n  border-bottom-color: var(--dshpp-accent);\n  font-weight: 600;\n}\n\n.dshpp-page-body {\n  padding-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec[hidden] {\n  display: none;\n}\n\n/* \uCE74\uB4DC: DSH \uC758 layer-1 \uD328\uB110 */\n.dshpp-page .dshpp-card,\n.dshpp-page section.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  margin: 0;\n  min-width: 0;\n}\n.dshpp-page .dshpp-card > h3:first-child,\n.dshpp-page section.dshpp-panel > h3:first-child {\n  margin: 0 0 12px;\n  font-size: 1em;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n/* \uD544\uB4DC \uD589: \uC67C\uCABD \uC81C\uBAA9, \uC624\uB978\uCABD \uCEE8\uD2B8\uB864. \uC881\uC740 \uD654\uBA74\uC5D0\uC11C\uB294 \uC790\uB3D9\uC73C\uB85C \uC904\uBC14\uAFC8\uD55C\uB2E4 */\n.dshpp-page .dshpp-field {\n  display: grid;\n  grid-template-columns: minmax(120px, 190px) 1fr;\n  gap: 8px 14px;\n  align-items: center;\n}\n.dshpp-page .dshpp-field > .dshpp-field-label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n}\n.dshpp-page .dshpp-field > .dshpp-field-body {\n  min-width: 0;\n}\n@container purge-page (max-width: 640px) {\n  .dshpp-page .dshpp-field {\n    grid-template-columns: 1fr;\n  }\n}\n\n.dshpp-page .dshpp-muted,\n.dshpp-page .dshpp-hint {\n  color: var(--dshpp-mute) !important;\n  font-size: 0.86em !important;\n  line-height: 1.6;\n  margin: 0;\n}\n\n.dshpp-page .dshpp-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  align-items: center;\n  min-width: 0;\n}\n.dshpp-page input,\n.dshpp-page select,\n.dshpp-page textarea {\n  font: inherit;\n  color: var(--dshpp-fg);\n  background: var(--dshpp-bg-2);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  padding: 7px 10px;\n  max-width: 100%;\n}\n.dshpp-page input:focus-visible,\n.dshpp-page select:focus-visible,\n.dshpp-page textarea:focus-visible {\n  outline: 2px solid color-mix(in srgb, var(--dshpp-accent) 55%, transparent);\n  outline-offset: 1px;\n}\n.dshpp-page textarea {\n  width: 100%;\n  min-height: 320px;\n  resize: vertical;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 0.86em;\n  line-height: 1.6;\n}\n\n.dshpp-page .dshpp-btn {\n  font: inherit;\n  font-size: 0.9em;\n  border-radius: 8px;\n  padding: 6px 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-fg);\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page .dshpp-btn:hover:not(:disabled) {\n  border-color: var(--dshpp-line-strong);\n}\n.dshpp-page .dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n/* \uC8FC \uBC84\uD2BC: brand-primary \uB97C \uBC30\uACBD\uC73C\uB85C \uC4F0\uC9C0 \uC54A\uB294\uB2E4. \uB2E4\uD06C \uBAA8\uB4DC\uC5D0\uC11C \uADF8 \uD1A0\uD070\uC740 \uAC15\uC870 \uAE00\uC790\uC0C9\uC774\uB77C\n   \uADF8\uB300\uB85C \uBC30\uACBD\uC73C\uB85C \uAE54\uBA74 "\uD770 \uBC14\uD0D5\uC5D0 \uD770 \uAE00\uC790" \uC0AC\uAC01\uD615\uC774 \uB41C\uB2E4. \uC5EC\uAE30\uC11C\uB294 \uACE0\uC815\uB41C \uC2E4\uC0C9 \uB179\uC0C9 + \uD770 \uAE00\uC790\uB97C \uC4F4\uB2E4. */\n.dshpp-page {\n  --dshpp-solid: #2f6b4f;\n  --dshpp-solid-hover: #3a8260;\n  --dshpp-solid-danger: #a63b3b;\n  --dshpp-solid-danger-hover: #bd4747;\n}\n.dshpp-page .dshpp-btn-primary {\n  background: var(--dshpp-solid);\n  border-color: var(--dshpp-solid);\n  color: #fff;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-btn-primary:hover:not(:disabled) {\n  background: var(--dshpp-solid-hover);\n  border-color: var(--dshpp-solid-hover);\n}\n.dshpp-page .dshpp-btn-solid-danger {\n  background: var(--dshpp-solid-danger);\n  border-color: var(--dshpp-solid-danger);\n  color: #fff;\n}\n.dshpp-page .dshpp-btn-solid-danger:hover:not(:disabled) {\n  background: var(--dshpp-solid-danger-hover);\n  border-color: var(--dshpp-solid-danger-hover);\n}\n.dshpp-page .dshpp-btn-danger {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n.dshpp-page .dshpp-btn-tiny {\n  padding: 3px 8px;\n  font-size: 0.82em;\n}\n\n.dshpp-page .dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  padding: 1px 8px;\n  border-radius: 999px;\n  font-size: 0.8em;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n}\n.dshpp-page .dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n\n.dshpp-page .dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-table th,\n.dshpp-page .dshpp-table td {\n  text-align: left;\n  padding: 7px 10px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: top;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-table th {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 0.95em;\n}\n.dshpp-page .dshpp-group-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  padding: 8px 0;\n  cursor: pointer;\n}\n.dshpp-page .dshpp-count {\n  color: var(--dshpp-mute);\n  font-size: 0.85em;\n}\n\n/* \uB4DC\uB9B4 \uCF58\uC194\uC774 \uB0A8\uC740 \uB192\uC774\uB97C \uC804\uBD80 \uCC28\uC9C0\uD55C\uB2E4 */\n.dshpp-page-drill {\n  min-height: 60vh;\n}\n.dshpp-page-drill .rt-dock.rt-embedded {\n  width: 100%;\n  min-width: 0;\n}\n\n.dshpp-page-foot {\n  margin-top: 28px;\n  padding-top: 14px;\n  border-top: 1px solid var(--dshpp-line);\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n\n/* \uC774\uB984 \uC124\uBA85: \uC81C\uBAA9 \uB4A4\uC758 \uC791\uC740 \uBB3C\uC74C\uD45C */\n.dshpp-help {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n.dshpp-help-btn {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.85em;\n  line-height: 1;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  border: 1px solid var(--dshpp-line);\n  cursor: help;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n}\n.dshpp-help-btn:hover,\n.dshpp-help-btn[aria-expanded="true"] {\n  color: var(--dshpp-fg);\n  border-color: var(--dshpp-line-strong);\n  background: var(--dshpp-bg-2);\n}\n.dshpp-tip {\n  position: absolute;\n  left: 0;\n  top: calc(100% + 6px);\n  z-index: 2147483000;\n  width: max-content;\n  max-width: min(340px, 70vw);\n  padding: 9px 11px;\n  border-radius: 8px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-overlay, canvas);\n  color: var(--dshpp-fg);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);\n  font-size: 0.82em;\n  line-height: 1.6;\n  white-space: normal;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dshpp-tip b {\n  font-weight: 600;\n}\n\n.dshpp-page .dshpp-warn {\n  margin: 10px 0 0;\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid color-mix(in srgb, var(--dshpp-warn) 45%, transparent);\n  color: var(--dshpp-warn);\n  background: color-mix(in srgb, var(--dshpp-warn) 10%, transparent);\n  font-size: 0.86em;\n}\n\n/* \uC561\uC158 \uBC14: \uAC00\uC7A5 \uC790\uC8FC \uC4F0\uB294 "\uC801\uC6A9"\uC744 \uCF58\uD150\uCE20 \uC601\uC5ED \uB9E8 \uC704\uC5D0 \uACE0\uC815\uD55C\uB2E4 */\n.dshpp-page .dshpp-actions {\n  position: sticky;\n  top: 0;\n  z-index: 5;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 0 12px;\n  margin: -4px 0 6px;\n  background: linear-gradient(\n    var(--dsw-alias-bg-base, canvas) 78%,\n    transparent\n  );\n  backdrop-filter: blur(2px);\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-actions .dshpp-pill {\n  margin-left: auto;\n}\n\n/* \uC9C0\uD45C: \uC138 \uC5F4\uB85C \uCD18\uCD18\uD558\uAC8C */\n.dshpp-page .dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));\n  gap: 10px;\n  margin: 4px 0 2px;\n}\n.dshpp-page .dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-page .dshpp-metric b {\n  display: block;\n  font-size: 1.05em;\n  font-weight: 600;\n  margin-bottom: 2px;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-metric span {\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n\n/* \uC811\uC774\uC2DD \uBE14\uB85D: \uD328\uCE58 \uC0C1\uC138 / \uC720\uC9C0\uBCF4\uC218 / \uC790\uCCB4 \uC810\uAC80 */\n.dshpp-page .dshpp-fold,\n.dshpp-page .dshpp-fold-inline {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  background: var(--dshpp-bg);\n  padding: 0 12px;\n}\n.dshpp-page .dshpp-fold > summary,\n.dshpp-page .dshpp-fold-inline > summary {\n  cursor: pointer;\n  padding: 10px 0;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-fold > summary::-webkit-details-marker,\n.dshpp-page .dshpp-fold-inline > summary::-webkit-details-marker {\n  display: none;\n}\n.dshpp-page .dshpp-fold > summary::before,\n.dshpp-page .dshpp-fold-inline > summary::before {\n  content: "\u25B8";\n  color: var(--dshpp-mute);\n  font-size: 0.9em;\n  transition: transform 0.12s ease;\n}\n.dshpp-page .dshpp-fold[open] > summary::before,\n.dshpp-page .dshpp-fold-inline[open] > summary::before {\n  transform: rotate(90deg);\n}\n.dshpp-page .dshpp-fold > summary b,\n.dshpp-page .dshpp-fold-inline > summary b {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  margin-left: auto;\n}\n\n/* \uC0C1\uD0DC \uD589(\uC790\uCCB4 \uC810\uAC80 / \uAC15\uD654 \uC139\uC158) */\n.dshpp-page .dshpp-line {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 6px 0;\n}\n.dshpp-page .dshpp-line + .dshpp-line {\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-line-main {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 0.92em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-line-main b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-fold-inline {\n  border: 0;\n  padding: 0;\n  background: transparent;\n}\n.dshpp-page .dshpp-fold-inline > summary {\n  padding: 2px 0;\n  color: var(--dshpp-mute);\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-fold-inline[open] {\n  flex-basis: 100%;\n}\n\n/* \uACC4\uCE35\uBCC4 \uC790\uCCB4 \uC810\uAC80: 2\uC5F4/\uB2E4\uC5F4 \uADF8\uB9AC\uB4DC\uB85C \uBC14\uAFD4 \uB354 \uC774\uC0C1 \uD55C \uC904\uC5D0 \uD558\uB098\uC529 \uB450\uC9C0 \uC54A\uB294\uB2E4 */\n.dshpp-page .dshpp-checks {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: 2px 14px;\n  padding: 6px 0 10px;\n}\n.dshpp-page .dshpp-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.84em;\n  min-width: 0;\n  padding: 2px 0;\n}\n.dshpp-page .dshpp-check.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-page .dshpp-check-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  min-width: 0;\n}\n.dshpp-page .dshpp-check-val {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-variant-numeric: tabular-nums;\n}\n\n/* \uC0C1\uD0DC \uD398\uC774\uC9C0 hero: "\uC9C0\uAE08 \uC5B4\uB5A4 \uC0C1\uD0DC\uC774\uACE0 \uB2E4\uC74C\uC5D0 \uC5B4\uB514\uB97C \uB204\uB974\uB294\uC9C0"\uB97C \uD55C\uB208\uC5D0 \uBCF4\uC5EC\uC900\uB2E4 */\n.dshpp-page .dshpp-hero {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.dshpp-page .dshpp-hero-state {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 1.02em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-hero-state b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-hero-sub {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n.dshpp-page .dshpp-hero-actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-btn-lead {\n  padding: 9px 20px;\n  font-size: 0.98em;\n  font-weight: 600;\n  border-radius: 10px;\n}\n.dshpp-page .dshpp-hero-hint {\n  margin: 0;\n  color: var(--dshpp-mute);\n  font-size: 0.84em;\n  line-height: 1.6;\n}\n.dshpp-check.is-warn {\n  color: var(--dshpp-warn);\n}\n\n.dshpp-page .dshpp-probe-msg {\n  margin: 6px 0 0;\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px dashed var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  font-size: 0.82em;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n\n@container purge-page (max-width: 520px) {\n  .dshpp-page-head {\n    gap: 8px;\n  }\n  .dshpp-page-tabs {\n    gap: 0;\n  }\n  .dshpp-page-tabs button {\n    flex: 1 0 auto;\n    padding-inline: 6px;\n    min-height: 44px;\n  }\n  .dshpp-page-body {\n    padding-top: 12px;\n  }\n  .dshpp-sec {\n    gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-card, section.dshpp-panel, .dshpp-hero) {\n    padding: 12px;\n  }\n  .dshpp-strip {\n    column-gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-row, .dshpp-sub, .dshpp-hero-state) {\n    flex-wrap: wrap;\n  }\n  .dshpp-page :is(input, select, textarea) {\n    max-width: 100%;\n    min-width: 0;\n  }\n  .dshpp-page .dshpp-table {\n    table-layout: fixed;\n    overflow-wrap: anywhere;\n  }\n}\n\n/* The detail route owns scrolling; the sidebar owns its own viewport. */\n.dshpp-detail-settings .dshpp-page {\n  height: auto;\n  overflow: visible;\n  padding-inline: 0;\n}\n\n/* \u2500\u2500 \uC0C1\uD0DC \uD398\uC774\uC9C0 \uC7AC\uBC30\uCE58(1.7.18): \uC0C1\uD0DC \uC694\uC57D / \uD56D\uBAA9 \uADF8\uB8F9 \uC2A4\uC704\uCE58 / \uD544\uD130 / \uAE30\uB85D \uC808\uCC28 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n\n.dshpp-scan {\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 12px;\n  padding: 6px 2px;\n  cursor: pointer;\n  text-decoration: underline;\n  text-underline-offset: 2px;\n  white-space: nowrap;\n}\n.dshpp-scan:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-scan:disabled {\n  cursor: default;\n  opacity: 0.55;\n}\n\n.dshpp-health {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 14px 16px;\n  margin-top: 12px;\n  background: var(--dshpp-bg);\n  min-width: 0;\n}\n.dshpp-health-top {\n  display: flex;\n  align-items: baseline;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.dshpp-health-big {\n  font-size: 26px;\n  font-weight: 660;\n  letter-spacing: -0.3px;\n  font-variant-numeric: tabular-nums;\n}\n.dshpp-health-big small {\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--dshpp-mute);\n  letter-spacing: 0;\n}\n.dshpp-health-verdict {\n  font-size: 12.5px;\n  color: var(--dshpp-mute);\n  min-width: 0;\n}\n.dshpp-bar {\n  display: flex;\n  height: 7px;\n  border-radius: 99px;\n  overflow: hidden;\n  background: var(--dshpp-bg-2);\n  margin: 10px 0 12px;\n}\n.dshpp-bar i {\n  display: block;\n  height: 100%;\n}\n.dshpp-bar .is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-bar .is-wait {\n  background: var(--dshpp-warn);\n}\n.dshpp-bar .is-off {\n  background: var(--dshpp-mute);\n  opacity: 0.45;\n}\n.dshpp-tiles {\n  display: grid;\n  grid-template-columns: repeat(4, minmax(0, 1fr));\n  gap: 10px;\n}\n.dshpp-tile {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 8px 11px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-tile.is-na {\n  border-style: dashed;\n}\n.dshpp-tile-k {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n  white-space: nowrap;\n}\n.dshpp-tile-v {\n  margin-top: 2px;\n  font-size: 18px;\n  font-weight: 640;\n  font-variant-numeric: tabular-nums;\n}\n.dshpp-tile.is-ok .dshpp-tile-v {\n  color: var(--dshpp-ok);\n}\n.dshpp-tile.is-wait .dshpp-tile-v {\n  color: var(--dshpp-warn);\n}\n.dshpp-tile.is-off .dshpp-tile-v,\n.dshpp-tile.is-na .dshpp-tile-v {\n  color: var(--dshpp-mute);\n}\n\n.dshpp-switches {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 12px;\n  margin-top: 12px;\n}\n.dshpp-sw {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 12px 14px;\n  background: var(--dshpp-bg);\n  min-width: 0;\n}\n.dshpp-sw.is-on {\n  box-shadow: inset 3px 0 0 var(--dshpp-accent);\n}\n.dshpp-sw-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n}\n.dshpp-sw-t {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-weight: 600;\n  min-width: 0;\n}\n.dshpp-sw-d {\n  margin: 6px 0 8px;\n  font-size: 12.5px;\n  line-height: 1.5;\n  color: var(--dshpp-mute);\n}\n.dshpp-sw-f {\n  display: flex;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n.dshpp-chip {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  padding: 2px 8px;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n.dshpp-chip.is-on {\n  color: var(--dshpp-accent);\n  border-color: currentColor;\n}\n.dshpp-track {\n  position: relative;\n  width: 42px;\n  height: 24px;\n  flex: none;\n  padding: 0;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  background: var(--dshpp-bg-2);\n  cursor: pointer;\n}\n.dshpp-track.is-on {\n  background: var(--dshpp-accent);\n  border-color: var(--dshpp-accent);\n}\n.dshpp-track:disabled {\n  cursor: default;\n  opacity: 0.55;\n}\n.dshpp-knob {\n  position: absolute;\n  top: 2px;\n  left: 2px;\n  width: 18px;\n  height: 18px;\n  border-radius: 99px;\n  background: #fff;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);\n  transition: transform 0.15s ease;\n}\n.dshpp-track.is-on .dshpp-knob {\n  transform: translateX(18px);\n}\n.dshpp-sw-note {\n  margin: 6px 0 0;\n  font-size: 12.5px;\n  color: var(--dshpp-ok);\n}\n.dshpp-sw-note.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-sw-hint {\n  margin: 6px 2px 0;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n\n.dshpp-filter {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n  margin: 10px 0 8px;\n}\n.dshpp-fbtn {\n  border: 1px solid transparent;\n  background: transparent;\n  color: var(--dshpp-mute);\n  border-radius: 99px;\n  padding: 4px 10px;\n  min-height: 32px;\n  font: inherit;\n  font-size: 12.5px;\n  cursor: pointer;\n}\n.dshpp-fbtn:hover {\n  background: var(--dshpp-bg-2);\n}\n.dshpp-fbtn.is-cur {\n  color: var(--dshpp-accent);\n  border-color: currentColor;\n  background: color-mix(in srgb, var(--dshpp-accent) 10%, transparent);\n}\n.dshpp-fbtn-n {\n  margin-left: 5px;\n  opacity: 0.7;\n  font-variant-numeric: tabular-nums;\n}\n.dshpp-filter-hint {\n  margin-left: auto;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n\n.dshpp-caret {\n  width: 12px;\n  flex: none;\n  color: var(--dshpp-mute);\n  font-size: 10px;\n}\n.dshpp-group-chips {\n  margin-left: auto;\n  display: flex;\n  gap: 4px;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n}\n.dshpp-group-notes {\n  margin: 0;\n  padding: 0 12px 8px 30px;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n.dshpp-row-note {\n  display: block;\n  margin-top: 1px;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n\n.dshpp-flow {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 13px 15px;\n  margin-top: 12px;\n  background: var(--dshpp-bg);\n}\n.dshpp-flow h4 {\n  margin: 0 0 10px;\n  font-size: 13px;\n  font-weight: 600;\n}\n.dshpp-steps {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: 12px;\n}\n.dshpp-step {\n  display: flex;\n  gap: 9px;\n  min-width: 0;\n}\n.dshpp-step-no {\n  width: 20px;\n  height: 20px;\n  flex: none;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  display: grid;\n  place-items: center;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n.dshpp-step b {\n  display: block;\n  font-size: 12.5px;\n  font-weight: 600;\n}\n.dshpp-step span {\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n.dshpp-flow-foot {\n  margin: 10px 0 0;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n\n/* \uC881\uC740 \uD654\uBA74: \uB450 \uC5F4 \u2192 \uD55C \uC5F4, \uB124 \uCE78 \u2192 2\xD72, \uC2A4\uC704\uCE58\uB294 \uD130\uCE58 \uBAA9\uD45C\uB97C \uD0A4\uC6B4\uB2E4 */\n@container purge-page (max-width: 640px) {\n  .dshpp-health-big {\n    font-size: 22px;\n  }\n  .dshpp-tiles {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n  .dshpp-switches {\n    grid-template-columns: 1fr;\n  }\n  .dshpp-steps {\n    grid-template-columns: 1fr;\n  }\n  .dshpp-filter-hint {\n    display: none;\n  }\n  .dshpp-track {\n    width: 46px;\n    height: 26px;\n  }\n  .dshpp-knob {\n    width: 20px;\n    height: 20px;\n  }\n  .dshpp-track.is-on .dshpp-knob {\n    transform: translateX(20px);\n  }\n  .dshpp-group-notes {\n    padding-left: 12px;\n  }\n  /* \uC881\uC740 \uD654\uBA74: \uADF8\uB8F9 \uBA38\uB9AC\uB294 \uC904\uBC14\uAFC8\uC744 \uD5C8\uC6A9\uD558\uACE0 \uC0C1\uD0DC \uBC30\uC9C0\uB294 \uB530\uB85C \uD55C \uC904\uC744 \uC4F4\uB2E4. \uADF8\uB7EC\uC9C0 \uC54A\uC73C\uBA74 \uCCAB \uBC30\uC9C0\uB9CC \uBCF4\uC778\uB2E4 */\n  .dshpp-group-h {\n    flex-wrap: wrap;\n    row-gap: 4px;\n  }\n  .dshpp-group-chips {\n    flex: 1 0 100%;\n    margin-left: 0;\n    justify-content: flex-start;\n  }\n  .dshpp-group-h {\n    justify-content: flex-start;\n    column-gap: 8px;\n  }\n  .dshpp-group-h .dshpp-count {\n    margin-left: auto;\n  }\n  /* 360px \uC5D0\uC11C 3\uC5F4 \uD45C\uAC00 \uCEE8\uD14C\uC774\uB108\uB97C \uB6AB\uB294\uB2E4. \uC5F4 \uB108\uBE44\uB97C \uACE0\uC815\uD558\uACE0 \uC0C1\uD0DC \uB0B1\uB9D0\uC758 \uC904\uBC14\uAFC8\uC744 \uD5C8\uC6A9\uD55C\uB2E4 */\n  .dshpp-page .dshpp-table {\n    width: 100%;\n    table-layout: fixed;\n  }\n  .dshpp-page .dshpp-table :is(th, td):first-child {\n    width: 44px;\n  }\n  .dshpp-page .dshpp-table :is(th, td):last-child {\n    width: 88px;\n  }\n  .dshpp-page .dshpp-table .dshpp-pill {\n    white-space: normal;\n    text-align: center;\n  }\n  .dshpp-sw-d,\n  .dshpp-sw-hint,\n  .dshpp-group-notes {\n    overflow-wrap: anywhere;\n  }\n}\n\n@container purge-page (max-width: 400px) {\n  .dshpp-tile-k {\n    white-space: normal;\n  }\n  .dshpp-fbtn {\n    padding: 4px 8px;\n    font-size: 12px;\n  }\n  .dshpp-sw {\n    padding: 11px 12px;\n  }\n  .dshpp-health {\n    padding: 12px;\n  }\n}\n\n/* \uD56D\uBAA9 \uC0C1\uC138\uB97C \uD56D\uC0C1 \uBCF4\uC774\uB294 \uBE14\uB85D\uC73C\uB85C \uBC14\uAFBC\uB2E4(\uB354 \uC774\uC0C1 \uC811\uB294 \uAECD\uB370\uAE30\uAC00 \uC544\uB2C8\uB2E4) */\n.dshpp-fold.is-open {\n  display: block;\n}\n.dshpp-fold-t {\n  display: flex;\n  align-items: baseline;\n  gap: 8px;\n  margin: 18px 0 6px;\n  font-size: 13px;\n  font-weight: 600;\n}\n.dshpp-fold-n {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 12px;\n  font-variant-numeric: tabular-nums;\n}\n\n/* \u2500\u2500 \uC2DC\uC548\uC5D0 \uB9DE\uCD98 \uC2DC\uAC01 \uC815\uB9AC(1.7.18): \uC22B\uC790, \uAC04\uACA9, \uBAA8\uC11C\uB9AC, \uC0C9\uC744 \uAC19\uC740 \uB208\uAE08\uC73C\uB85C \uD1B5\uC77C\uD55C\uB2E4 \u2500\u2500\u2500\u2500\u2500\u2500\n   DSH \uC790\uCCB4 brand \uC0C9\uC740 \uB2E8\uC0C9 \uD751\uBC31\uC774\uC9C0\uB9CC \uC2DC\uC548\uC740 \uBE0C\uB79C\uB4DC \uD30C\uB791/\uCD08\uB85D\uC744 \uC4F4\uB2E4. \uC5EC\uAE30\uC11C\uB294\n   \uC774 \uD398\uC774\uC9C0 \uC548\uC5D0\uC11C\uB9CC \uB36E\uC5B4\uC368 \uD328\uB110\uC758 \uB2E4\uB978 \uBE14\uB85D\uC5D0 \uC601\uD5A5\uC744 \uC8FC\uC9C0 \uC54A\uAC8C \uD55C\uB2E4. */\n.dshpp-page {\n  --pg-accent: #2563eb;\n  --pg-ok: #15803d;\n  --pg-warn: #b45309;\n}\n\n/* \uC81C\uBAA9 \uC904: \uD398\uC774\uC9C0 \uC774\uB984 + \uB3D9\uC791 \uBB36\uC74C + \uC2A4\uCE94 \uC2DC\uAC01 */\n.dshpp-status-head {\n  display: flex;\n  align-items: flex-end;\n  justify-content: space-between;\n  gap: 14px;\n  flex-wrap: wrap;\n  margin: 2px 0 16px;\n}\n.dshpp-status-title {\n  margin: 0;\n  font-size: 19px;\n  font-weight: 650;\n  letter-spacing: -0.2px;\n}\n.dshpp-status-ops {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-status-note {\n  margin: -8px 0 12px;\n  font-size: 12.5px;\n  color: var(--dshpp-mute);\n}\n\n/* \uBC84\uD2BC: \uC2DC\uC548\uC758 9px \uBAA8\uC11C\uB9AC / 13px \uAE00\uC790 / \uAE30\uBCF8 \uBC84\uD2BC\uC740 \uBC18\uC804 \uC0C9 */\n.dshpp-page .dshpp-btn {\n  font-size: 13px;\n  padding: 7px 13px;\n  border-radius: 9px;\n  line-height: 1.2;\n}\n.dshpp-page .dshpp-btn.dshpp-btn-apply {\n  background: var(--dshpp-fg);\n  border-color: var(--dshpp-fg);\n  color: var(--dshpp-bg, #fff);\n  font-weight: 560;\n}\n.dshpp-page .dshpp-btn.dshpp-btn-apply:not(:disabled):hover {\n  opacity: 0.88;\n}\n\n/* \uC0C1\uD0DC \uC694\uC57D: \uB300\uD45C \uC22B\uC790\uC640 \uB124 \uCE78 */\n.dshpp-health {\n  padding: 18px 20px;\n  border-radius: 12px;\n}\n.dshpp-health-big {\n  font-size: 30px;\n  font-weight: 680;\n}\n.dshpp-health-big small {\n  font-size: 15px;\n}\n.dshpp-tile {\n  padding: 10px 12px;\n}\n.dshpp-tile-k {\n  font-size: 11.5px;\n}\n.dshpp-tile-v {\n  font-size: 19px;\n  font-weight: 640;\n}\n\n/* \uC2A4\uC704\uCE58: \uB2E8\uC0C9 \uAC80\uC815\uC774 \uC544\uB2C8\uB77C \uBE0C\uB79C\uB4DC \uD30C\uB791 */\n.dshpp-sw {\n  padding: 15px 17px;\n  border-radius: 12px;\n}\n.dshpp-sw-t {\n  font-size: 14px;\n}\n.dshpp-sw-d {\n  font-size: 12.5px;\n}\n.dshpp-chip {\n  font-size: 11.5px;\n  padding: 2px 8px;\n}\n.dshpp-track.is-on {\n  background: var(--pg-accent);\n  border-color: var(--pg-accent);\n}\n\n/* \uD544\uD130 \uC904: \uC120\uD0DD \uC0C1\uD0DC\uB294 \uC2DC\uC548\uC758 \uD30C\uB780 \uD14C\uB450\uB9AC + \uC605\uC740 \uBC30\uACBD */\n.dshpp-fbtn {\n  font-size: 12.5px;\n}\n.dshpp-fbtn.is-cur {\n  color: var(--pg-accent);\n  border-color: var(--pg-accent);\n  background: color-mix(in srgb, var(--pg-accent) 10%, transparent);\n}\n\n/* \uC0C1\uC138 \uD45C: \uBCF8\uBB38 13px, \uC0C1\uD0DC \uBC30\uC9C0 11.5px */\n.dshpp-page .dshpp-table {\n  font-size: 13px;\n}\n.dshpp-page .dshpp-table th {\n  font-size: 11.5px;\n  letter-spacing: 0.03em;\n  padding: 7px 15px;\n}\n.dshpp-page .dshpp-table td {\n  padding: 7px 15px;\n}\n.dshpp-page .dshpp-pill {\n  font-size: 11.5px;\n  padding: 2px 8px;\n}\n.dshpp-caret {\n  font-size: 10px;\n}\n.dshpp-group-notes {\n  font-size: 11.5px;\n}\n\n/* \uAE30\uB85D \uC808\uCC28 */\n.dshpp-flow {\n  padding: 16px 18px;\n  border-radius: 12px;\n}\n.dshpp-flow h4 {\n  font-size: 13.5px;\n}\n.dshpp-step b {\n  font-size: 13px;\n}\n.dshpp-step span {\n  font-size: 12.5px;\n}\n\n/* \uC720\uC9C0\uBCF4\uC218 \uC601\uC5ED \uBA38\uB9AC\uC758 \uBC84\uC804 \uBC88\uD638 */\n.dshpp-maint-head {\n  display: flex;\n  align-items: baseline;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.dshpp-maint-head h3 {\n  margin: 0;\n}\n.dshpp-maint-ver {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 12px;\n  color: var(--dshpp-mute);\n}\n.dshpp-maint-ver b {\n  font-weight: 600;\n  color: var(--pg-ok);\n  border: 1px solid color-mix(in srgb, var(--pg-ok) 40%, transparent);\n  border-radius: 99px;\n  padding: 0 6px;\n  font-size: 11px;\n}\n\n/* \uC0C1\uC138 \uD45C \uB450 \uBC88\uC9F8 \uC904: \uC601\uBB38 \uC2DD\uBCC4\uC790(\uC2DC\uC548\uC758 \uB450 \uC904 \uAD6C\uC870\uC5D0 \uB9DE\uCD98\uB2E4) */\n.dshpp-row-en {\n  display: block;\n  margin-top: 1px;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n  letter-spacing: 0.01em;\n}\n';
 
 // src/shared/runtime-error.js
 function runtimeRepairDetails(report) {
@@ -9612,7 +9612,69 @@ var ko = {
   "updch.state.proxy": "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110 \uD504\uB85D\uC2DC:",
   "updch.state.direct": "\uC5C5\uB370\uC774\uD2B8 \uCC44\uB110: \uD658\uACBD \uB610\uB294 \uC2DC\uC2A4\uD15C \uD504\uB85D\uC2DC \uC0C1\uC18D",
   "updch.state.token.on": "GitHub \uD0A4 \uC124\uC815\uB428",
-  "updch.state.token.off": "GitHub \uD0A4 \uBBF8\uC124\uC815"
+  "updch.state.token.off": "GitHub \uD0A4 \uBBF8\uC124\uC815",
+  "metric.naShort": "\uC774 \uAE30\uAE30 \uD574\uB2F9 \uC5C6\uC74C {n}",
+  "health.applied": "\uC801\uC6A9\uB428",
+  "status.title": "Purge \uC0C1\uD0DC",
+  "scan.recent": "{time} \uAC80\uC0AC \xB7 \uB20C\uB7EC\uC11C \uC0C8\uB85C \uACE0\uCE68",
+  "scan.hint": "\uB20C\uB7EC\uC11C \uD638\uC2A4\uD2B8\uB97C \uB2E4\uC2DC \uAC80\uC0AC\uD569\uB2C8\uB2E4",
+  "health.pending": "\uC801\uC6A9 \uB300\uAE30",
+  "health.off": "\uC0AC\uC6A9 \uC548 \uD568",
+  "health.na": "\uC774 \uAE30\uAE30 \uD574\uB2F9 \uC5C6\uC74C",
+  "health.denomUnit": "\uAC1C \uD328\uCE58\uB97C \uD638\uC2A4\uD2B8\uC5D0 \uAE30\uB85D",
+  "health.hint.applied": "\uC575\uCEE4\uB97C \uAD50\uCCB4\uD588\uC2B5\uB2C8\uB2E4. \uC7AC\uC2DC\uC791\uD558\uBA74 \uC801\uC6A9\uB429\uB2C8\uB2E4.",
+  "health.hint.pending": "\uC2A4\uC704\uCE58\uB294 \uCF1C\uC84C\uC9C0\uB9CC \uC544\uC9C1 \uAE30\uB85D\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uC801\uC6A9\uC744 \uB204\uB974\uBA74 \uAE30\uB85D\uD558\uBA70, \uBA3C\uC800 \uBC31\uC5C5\uD569\uB2C8\uB2E4.",
+  "health.hint.off": "\uC2A4\uC704\uCE58\uAC00 \uAEBC\uC838 \uC788\uC5B4 \uAE30\uB85D\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uACE0\uC7A5\uC774 \uC544\uB2D9\uB2C8\uB2E4.",
+  "health.hint.na": "\uC774 \uD638\uC2A4\uD2B8\uC5D0\uB294 \uD574\uB2F9 \uAD6C\uC131\uC694\uC18C\uB098 \uD30C\uC77C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4. \uBD84\uBAA8\uC5D0\uC11C \uBE60\uC9C0\uBA70 \uC791\uC5C5\uB7C9\uC740 0\uC785\uB2C8\uB2E4.",
+  "health.verdict.pending": "{n}\uAC1C\uAC00 \uCF1C\uC84C\uC9C0\uB9CC \uC544\uC9C1 \uAE30\uB85D\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4",
+  "health.verdict.ok": "\uD638\uC2A4\uD2B8 \uD328\uCE58\uAC00 \uBAA8\uB450 \uC81C\uC790\uB9AC\uC5D0 \uC788\uC2B5\uB2C8\uB2E4",
+  "groups.unreadable": "\uC77D\uC9C0 \uBABB\uD574 \uD328\uCE58 \uC0C1\uC138\uB97C \uBCFC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uC0C8\uB85C \uACE0\uCE68\uD558\uBA74 \uB2E4\uC2DC \uC2DC\uB3C4\uD569\uB2C8\uB2E4.",
+  "filter.all": "\uC804\uCCB4",
+  "filter.pending": "\uC801\uC6A9 \uB300\uAE30",
+  "filter.off": "\uC0AC\uC6A9 \uC548 \uD568",
+  "filter.na": "\uC774 \uAE30\uAE30 \uD574\uB2F9 \uC5C6\uC74C",
+  "filter.hint": "\uADF8\uB8F9\uC744 \uC5F4\uBA74 \uD589\uC774 \uBCF4\uC774\uACE0, \uC0C1\uD0DC\uC5D0 \uB9C8\uC6B0\uC2A4\uB97C \uC62C\uB9AC\uBA74 \uC774\uC720\uAC00 \uB098\uC635\uB2C8\uB2E4",
+  "filter.empty": "\uC774 \uD544\uD130\uC5D0 \uB9DE\uB294 \uD328\uCE58\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.",
+  "sw.permission": "\uAD8C\uD55C \uD328\uCE58",
+  "sw.permission.desc": "\uD638\uC2A4\uD2B8\uAC00 \uC0CC\uB4DC\uBC15\uC2A4\uC640 \uC2B9\uC778 \uAC8C\uC774\uD2B8\uB85C \uB3C4\uAD6C \uD638\uCD9C\uC744 \uB9C9\uC9C0 \uC54A\uAC8C \uD569\uB2C8\uB2E4. \uAE30\uBCF8 \uCF1C\uC9D0\uC785\uB2C8\uB2E4.",
+  "sw.permission.hint": "\uD638\uC2A4\uD2B8\uC758 \uC0CC\uB4DC\uBC15\uC2A4 \xB7 \uC2B9\uC778 \xB7 \uC790\uB3D9 \uC2B9\uC778 \uCF54\uB4DC\uB97C \uB2E4\uC2DC \uC501\uB2C8\uB2E4(\uD328\uCE58 14\uAC74: #6 #7 #8 #9 #10 #13 #14 #15 #16 #35 #51 #59 #60 #62). \uC801\uC6A9\uC744 \uB204\uB974\uAE30 \uC804\uC5D0\uB294 \uC544\uBB34\uAC83\uB3C4 \uAE30\uB85D\uD558\uC9C0 \uC54A\uACE0, \uAE30\uB85D\uD560 \uB54C \uBA3C\uC800 \uBC31\uC5C5\uD569\uB2C8\uB2E4. DSH\uB294 \uC9C1\uC811 \uC885\uB8CC\uD558\uACE0 \uB2E4\uC2DC \uC5EC\uC138\uC694. \uB044\uB354\uB77C\uB3C4 \uC774\uBBF8 \uAE30\uB85D\uB41C \uB0B4\uC6A9\uC774 \uBC14\uB85C \uB418\uB3CC\uC544\uAC00\uC9C0\uB294 \uC54A\uACE0, \uB2E4\uC74C \uC801\uC6A9\uC5D0\uC11C \uB418\uB3CC\uB9BD\uB2C8\uB2E4.",
+  "sw.context": "\uCEE8\uD14D\uC2A4\uD2B8 \uAD00\uB9AC",
+  "sw.context.desc": "\uBC18\uBCF5 \uD638\uCD9C \uC54C\uB9BC\uACFC \uB3C4\uAD6C \uACB0\uACFC \uB2E4\uB4EC\uAE30\uB97C \uB055\uB2C8\uB2E4. \uAE30\uBCF8 \uAEBC\uC9D0\uC774\uBA70, \uCF1C\uBA74 \uD1A0\uD070\uC774 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.",
+  "sw.context.hint": "#18 \uBC18\uBCF5 \uB3C4\uAD6C \uC54C\uB9BC\uACFC #19 \uB3C4\uAD6C \uACB0\uACFC \uB2E4\uB4EC\uAE30\uC785\uB2C8\uB2E4. \uB044\uBA74 \uBAA8\uB378\uC774 \uBC18\uBCF5 \uD638\uCD9C \uC54C\uB9BC\uC744 \uBC1B\uC9C0 \uC54A\uACE0 \uAE34 \uB3C4\uAD6C \uCD9C\uB825\uB3C4 \uADF8\uB300\uB85C \uB0A8\uC2B5\uB2C8\uB2E4. \uB300\uC2E0 \uD1A0\uD070\uC774 \uACC4\uC18D \uB298\uC5B4\uB0A9\uB2C8\uB2E4. \uAE30\uBCF8 \uAEBC\uC9D0\uC785\uB2C8\uB2E4.",
+  "sw.chip.pending": "\uD328\uCE58 {n}\uAC74 \xB7 \uAE30\uB85D \uB300\uAE30",
+  "sw.chip.on": "\uD328\uCE58 {n}\uAC74 \xB7 {written}\uAC74 \uAE30\uB85D \xB7 {pending}\uAC74 \uB300\uAE30",
+  "sw.chip.written": "{n}\uAC74 \uAE30\uB85D",
+  "sw.chip.off": "\uD328\uCE58 {n}\uAC74 \xB7 \uC0AC\uC6A9 \uC548 \uD568",
+  "sw.saving": "\uC800\uC7A5 \uC911\u2026",
+  "sw.saved": "\uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4. \uC801\uC6A9\uC744 \uB204\uB974\uBA74 \uD638\uC2A4\uD2B8\uC5D0 \uAE30\uB85D\uD569\uB2C8\uB2E4",
+  "sw.fail": "\uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4: {error}",
+  "sw.applyHint": "\uC2A4\uC704\uCE58\uB294 \uD50C\uB7EC\uADF8\uC778 \uC124\uC815\uB9CC \uBC14\uAFC9\uB2C8\uB2E4. \uC704\uC758 \uC801\uC6A9\uC744 \uB204\uB974\uACE0 \uC7AC\uC2DC\uC791\uD574\uC57C \uD638\uC2A4\uD2B8\uC5D0 \uB2FF\uC2B5\uB2C8\uB2E4.",
+  "detail.title": "\uD328\uCE58 \uC0C1\uC138",
+  "detail.reading": "\uC77D\uB294 \uC911",
+  "detail.unknown": "\uC54C \uC218 \uC5C6\uC74C",
+  "detail.unlocated": "\uD638\uC2A4\uD2B8 \uC704\uCE58\uB97C \uCC3E\uC9C0 \uBABB\uD568",
+  "steps.title": "\uAE30\uB85D \uC808\uCC28",
+  "steps.1.t": "\uC801\uC6A9 \uB204\uB974\uAE30",
+  "steps.1.d": "\uACE0\uB978 \uD328\uCE58\uB97C \uD638\uC2A4\uD2B8 \uD30C\uC77C\uC5D0 \uAE30\uB85D\uD569\uB2C8\uB2E4. \uBA3C\uC800 \uBC31\uC5C5\uD569\uB2C8\uB2E4.",
+  "steps.2.t": "DSH \uC9C1\uC811 \uC885\uB8CC\uD558\uAE30",
+  "steps.2.d": "\uC9C1\uC811 \uB2EB\uACE0 \uB2E4\uC2DC \uC5EC\uC138\uC694. \uC774 \uD50C\uB7EC\uADF8\uC778\uC740 \uC571\uC744 \uC7AC\uC2DC\uC791\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
+  "steps.3.t": "\uB3CC\uC544\uC640\uC11C \uD655\uC778\uD558\uAE30",
+  "steps.3.d": "\uBAA8\uB450 \uCD08\uB85D\uC774\uC5B4\uC57C \uD569\uB2C8\uB2E4. \uB2E4\uC2DC \uB300\uAE30\uB85C \uBCF4\uC774\uBA74 \uD638\uC2A4\uD2B8 \uC5C5\uADF8\uB808\uC774\uB4DC\uAC00 \uB36E\uC5B4\uC4F4 \uAC83\uC774\uBBC0\uB85C \uD55C \uBC88 \uB354 \uC801\uC6A9\uD558\uC138\uC694.",
+  "steps.foot": "\uC774 \uAE30\uAE30 \uD574\uB2F9 \uC5C6\uC74C \uC740 \uBD84\uBAA8\uC5D0\uC11C\uB3C4 \uBE60\uC9C0\uACE0 \uC2E4\uD328 \uC9D1\uACC4\uC5D0\uB3C4 \uB4E4\uC5B4\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.",
+  "hint.applied": "\uC575\uCEE4\uB97C \uAD50\uCCB4\uD588\uC2B5\uB2C8\uB2E4. \uC7AC\uC2DC\uC791\uD558\uBA74 \uC801\uC6A9\uB429\uB2C8\uB2E4.",
+  "hint.pending": "\uC575\uCEE4\uAC00 \uC544\uC9C1 \uB0A8\uC544 \uC788\uC2B5\uB2C8\uB2E4. \uC801\uC6A9\uC744 \uB204\uB974\uBA74 \uAE30\uB85D\uD569\uB2C8\uB2E4.",
+  "hint.disabled": "\uADF8\uB8F9 \uC2A4\uC704\uCE58\uAC00 \uAEBC\uC838 \uC788\uC5B4 \uAE30\uB85D\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+  "hint.na": "\uC774 \uD638\uC2A4\uD2B8\uC5D0\uB294 \uD574\uB2F9 \uAD6C\uC131\uC694\uC18C\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.",
+  "hint.skipped": "\uC774 \uC124\uCE58\uC5D0\uB294 \uB300\uC0C1 \uD30C\uC77C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
+  "hint.missing_file": "\uC774 \uC124\uCE58\uC5D0\uB294 \uB300\uC0C1 \uD30C\uC77C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.",
+  "hint.drifted": "\uB4DC\uB9AC\uD504\uD2B8: \uD638\uC2A4\uD2B8\uAC00 \uC774 \uCF54\uB4DC\uB97C \uBC14\uAFD4 \uD328\uCE58\uB97C \uC190\uBD10\uC57C \uD569\uB2C8\uB2E4.",
+  "hint.unmatched": "\uC77C\uCE58 \uC5C6\uC74C: \uD638\uC2A4\uD2B8 \uBC84\uC804\uC774 \uB2E4\uB985\uB2C8\uB2E4.",
+  "hint.partial": "\uC77C\uBD80 \uB300\uC0C1\uC740 \uB9DE\uC558\uACE0, \uB2E4\uB978 \uB300\uC0C1\uC740 \uC788\uC5C8\uC9C0\uB9CC \uB9DE\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
+  "hint.off": "\uAEBC\uC9D0.",
+  "hint.unknown": "\uC54C \uC218 \uC5C6\uB294 \uC0C1\uD0DC.",
+  "rewind.settings": "\uB300\uD654 \uBAA8\uC591",
+  "rewind.show": "\uC785\uB825\uCC3D\uC5D0 \uB418\uAC10\uAE30 \uBC84\uD2BC \uD45C\uC2DC",
+  "rewind.readAgain": "\uB2E4\uC2DC \uC2DC\uB3C4"
 };
 var en = {
   nav: "Rules",
@@ -9993,7 +10055,69 @@ var en = {
   "updch.state.proxy": "Update channel proxy: ",
   "updch.state.direct": "Update channel: inherited environment or system proxy",
   "updch.state.token.on": "GitHub token configured",
-  "updch.state.token.off": "No GitHub token configured"
+  "updch.state.token.off": "No GitHub token configured",
+  "metric.naShort": "Not for this host {n}",
+  "health.applied": "Applied",
+  "status.title": "Purge status",
+  "scan.recent": "Scanned {time} \xB7 click to refresh",
+  "scan.hint": "Click to rescan the host",
+  "health.pending": "Pending",
+  "health.off": "Not enabled",
+  "health.na": "Not for this host",
+  "health.denomUnit": "patches written to the host",
+  "health.hint.applied": "Anchors replaced; effective after a restart.",
+  "health.hint.pending": "Switch is on but nothing is written yet. Apply to write; a backup is taken first.",
+  "health.hint.off": "Its switch is off, so nothing was written. Not a failure.",
+  "health.hint.na": "This host has no such component or file. Excluded from the denominator; zero work.",
+  "health.verdict.pending": "{n} enabled but not written yet",
+  "health.verdict.ok": "All host patches in place",
+  "groups.unreadable": "Read failed; patch detail is unavailable. Refresh to retry.",
+  "filter.all": "All",
+  "filter.pending": "Pending",
+  "filter.off": "Not enabled",
+  "filter.na": "Not for this host",
+  "filter.hint": "Open a group for rows; hover a status for the reason",
+  "filter.empty": "No patches match this filter.",
+  "sw.permission": "Permission patches",
+  "sw.permission.desc": "Stop the host from blocking tool calls behind sandbox and approval gates. On by default.",
+  "sw.permission.hint": "Rewrites the host sandbox / approval / auto-grant code: 14 patches (#6 #7 #8 #9 #10 #13 #14 #15 #16 #35 #51 #59 #60 #62). Nothing is written until you press Apply, and a backup is taken first; you must quit and reopen DSH yourself. Turning it off does not roll back what is already written; the next Apply does.",
+  "sw.context": "Context management",
+  "sw.context.desc": "Turn off the repeat-call reminder and tool-result pruning. Off by default; tokens grow when on.",
+  "sw.context.hint": "#18 repeat-tool reminder and #19 tool-result pruner. With them off the model no longer gets repeat-call reminders and long tool output is kept in full; the cost is steady token growth. Off by default.",
+  "sw.chip.pending": "{n} patches \xB7 to write",
+  "sw.chip.on": "{n} patches \xB7 {written} written \xB7 {pending} to write",
+  "sw.chip.written": "{n} written",
+  "sw.chip.off": "{n} patches \xB7 not enabled",
+  "sw.saving": "Saving\u2026",
+  "sw.saved": "Saved. Press Apply to write to the host",
+  "sw.fail": "Save failed: {error}",
+  "sw.applyHint": "The switch only changes the plugin setting. Press Apply above and restart to reach the host.",
+  "detail.title": "Patch detail",
+  "detail.reading": "Reading",
+  "detail.unknown": "Unknown",
+  "detail.unlocated": "Host not located",
+  "steps.title": "Write flow",
+  "steps.1.t": "Press Apply",
+  "steps.1.d": "Writes the selected patches into host files, with a backup first.",
+  "steps.2.t": "Quit DSH yourself",
+  "steps.2.d": "You close and reopen it; this plugin never restarts the app.",
+  "steps.3.t": "Come back and check",
+  "steps.3.d": "Everything should be green. Pending again means a host upgrade overwrote it; apply once more.",
+  "steps.foot": "Not for this host is excluded from the denominator and from any failure count.",
+  "hint.applied": "Anchors replaced; effective after restart.",
+  "hint.pending": "Anchor still present; press Apply to write.",
+  "hint.disabled": "Its group switch is off; nothing written.",
+  "hint.na": "This host has no such component.",
+  "hint.skipped": "Target file is not part of this install.",
+  "hint.missing_file": "Target file is not part of this install.",
+  "hint.drifted": "Drifted: the host changed this code; the patch needs an update.",
+  "hint.unmatched": "No match: host version mismatch.",
+  "hint.partial": "Some targets matched, another existed but did not match.",
+  "hint.off": "Off.",
+  "hint.unknown": "Unknown state.",
+  "rewind.settings": "Conversation appearance",
+  "rewind.show": "Show the rewind button in the composer",
+  "rewind.readAgain": "Try again"
 };
 
 // src/components/auth.js
@@ -10298,19 +10422,76 @@ var LAYER_GROUP = {
   "0.2.0 \uD638\uD658": "dsh20"
 };
 var GROUP_ORDER = ["prompt", "code", "tools", "compat", "dsh20"];
-function patchRowsOf(state) {
+var PERMISSION_PATCH_IDS = [
+  6,
+  7,
+  8,
+  9,
+  10,
+  13,
+  14,
+  15,
+  16,
+  35,
+  51,
+  59,
+  60,
+  62
+];
+var CONTEXT_PATCH_IDS = [18, 19];
+var PERMISSION_SET = new Set(PERMISSION_PATCH_IDS);
+var CONTEXT_SET = new Set(CONTEXT_PATCH_IDS);
+function patchGroupOf(id) {
+  const n = Number(id);
+  if (PERMISSION_SET.has(n)) return "permission";
+  if (CONTEXT_SET.has(n)) return "context";
+  return "normal";
+}
+function rowsFromState(state) {
   if (!state || !state.ai_base) return [];
-  const fromList = Array.isArray(state.patches) ? state.patches : null;
-  const rows = fromList ? fromList.map((p) => ({
+  const source = Array.isArray(state.patch_rows) ? state.patch_rows : null;
+  if (source) {
+    return source.map((p) => ({
+      id: Number(p.id),
+      st: p.status || "na",
+      layer: p.layer || "",
+      name: p.name || ""
+    })).filter((r) => r.st && Number.isFinite(r.id));
+  }
+  const names = state.patch_names || {};
+  const statusMap = state.patch_status || {};
+  if (Object.keys(statusMap).length) {
+    return Object.keys(statusMap).map((id) => ({
+      id: Number(id),
+      st: statusMap[id],
+      layer: "",
+      name: names[id] || ""
+    })).filter((r) => r.st && Number.isFinite(r.id));
+  }
+  return (Array.isArray(state.patches) ? state.patches : []).map((p) => ({
     id: Number(p.id),
-    st: p.status || "missing_file",
-    layer: p.layer || ""
-  })) : Object.keys(state.patch_status || {}).map((id) => ({
-    id: Number(id),
-    st: state.patch_status[id],
-    layer: ""
-  }));
-  return rows.filter((r) => r.st && r.st !== "na" && Number.isFinite(r.id));
+    st: p.status || "na",
+    layer: p.layer || "",
+    name: ""
+  })).filter((r) => r.st && Number.isFinite(r.id));
+}
+function patchRowsAll(state) {
+  return rowsFromState(state);
+}
+function isNaRow(row) {
+  return row.st === "na" || row.st === "skipped" || row.st === "missing_file";
+}
+function patchGroupCounts(rows) {
+  const out = { applied: 0, pending: 0, off: 0, na: 0, total: 0, denom: 0 };
+  for (const row of rows || []) {
+    out.total += 1;
+    if (isNaRow(row)) out.na += 1;
+    else if (row.st === "disabled") out.off += 1;
+    else if (row.st === "applied" || row.st === "already") out.applied += 1;
+    else out.pending += 1;
+  }
+  out.denom = out.total - out.na;
+  return out;
 }
 function tallyPatches(rows) {
   const out = {
@@ -10335,104 +10516,419 @@ function tallyPatches(rows) {
   }
   return out;
 }
-function PatchGroups({ state }) {
-  const t = useT();
-  const [open, setOpen] = useState({});
-  if (state?.ok === false)
-    return h(
-      "p",
-      { role: "status" },
-      "\uC77D\uAE30 \uC2E4\uD328. \uD328\uCE58 \uC0C1\uC138\uB97C \uC9C0\uAE08\uC740 \uC0AC\uC6A9\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uC0C8\uB85C\uACE0\uCE68 \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD558\uC138\uC694."
-    );
-  if (!state || !state.patch_status)
-    return h("div", { className: "dshpp-skel", style: { height: 120 } });
-  const located = !!state.ai_base;
-  if (!located) return null;
-  const grouped = /* @__PURE__ */ new Map();
-  for (const row of patchRowsOf(state)) {
-    const key = LAYER_GROUP[row.layer] || "code";
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(row);
-  }
-  return GROUP_ORDER.filter((key) => grouped.has(key)).map((key) => {
-    const rows = grouped.get(key).slice().sort((a, b) => a.id - b.id);
-    if (!rows.length) return null;
-    const tally = tallyPatches(rows);
-    const notes = [];
-    if (tally.pending)
-      notes.push(t("metric.pendingShort", { n: tally.pending }));
-    if (tally.unmatched)
-      notes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
-    if (tally.partial)
-      notes.push(t("metric.partialShort", { n: tally.partial }));
-    if (tally.drifted)
-      notes.push(t("metric.driftedShort", { n: tally.drifted }));
-    if (tally.disabled)
-      notes.push(t("metric.disabledShort", { n: tally.disabled }));
-    if (tally.skipped) notes.push(t("metric.skipShort", { n: tally.skipped }));
-    const expanded = !!open[key];
-    return h(
+function Tile({ kind, label, value, title, text }) {
+  return h(
+    "div",
+    { className: "dshpp-tile is-" + kind },
+    h(
       "div",
-      { key, className: "dshpp-group" },
+      { className: "dshpp-tile-k" },
+      label,
+      h(HelpTip, { title, label }, text)
+    ),
+    h("div", { className: "dshpp-tile-v" }, String(value))
+  );
+}
+function PatchHealth({ state }) {
+  const t = useT();
+  if (!state || !state.ai_base) return null;
+  const counts = patchGroupCounts(patchRowsAll(state));
+  const denom = Math.max(counts.denom, 1);
+  const pct = (n) => n / denom * 100;
+  const verdict = counts.pending ? t("health.verdict.pending", { n: counts.pending }) : t("health.verdict.ok");
+  return h(
+    "div",
+    { className: "dshpp-health" },
+    h(
+      "div",
+      { className: "dshpp-health-top" },
+      h(
+        "b",
+        { className: "dshpp-health-big" },
+        String(counts.applied),
+        h("small", null, " / " + counts.denom + " " + t("health.denomUnit"))
+      ),
+      h("span", { className: "dshpp-health-verdict" }, verdict)
+    ),
+    h(
+      "div",
+      { className: "dshpp-bar", "aria-hidden": "true" },
+      h("i", {
+        className: "is-ok",
+        style: { width: pct(counts.applied) + "%" }
+      }),
+      h("i", {
+        className: "is-wait",
+        style: { width: pct(counts.pending) + "%" }
+      }),
+      h("i", {
+        className: "is-off",
+        style: { width: pct(counts.off) + "%" }
+      })
+    ),
+    h(
+      "div",
+      { className: "dshpp-tiles" },
+      h(Tile, {
+        kind: "ok",
+        label: t("health.applied"),
+        value: counts.applied,
+        title: t("health.applied"),
+        text: t("health.hint.applied")
+      }),
+      h(Tile, {
+        kind: "wait",
+        label: t("health.pending"),
+        value: counts.pending,
+        title: t("health.pending"),
+        text: t("health.hint.pending")
+      }),
+      h(Tile, {
+        kind: "off",
+        label: t("health.off"),
+        value: counts.off,
+        title: t("health.off"),
+        text: t("health.hint.off")
+      }),
+      h(Tile, {
+        kind: "na",
+        label: t("health.na"),
+        value: counts.na,
+        title: t("health.na"),
+        text: t("health.hint.na")
+      })
+    )
+  );
+}
+function Switch({ on, busy, label, desc, hintTitle, hint, chip, onToggle }) {
+  const t = useT();
+  return h(
+    "div",
+    { className: "dshpp-sw" + (on ? " is-on" : "") },
+    h(
+      "div",
+      { className: "dshpp-sw-h" },
+      h(
+        "div",
+        { className: "dshpp-sw-t" },
+        label,
+        h(HelpTip, { title: hintTitle, label }, hint)
+      ),
       h(
         "button",
         {
           type: "button",
-          className: "dshpp-group-h",
-          "aria-expanded": expanded ? "true" : "false",
-          onClick: () => setOpen((prev) => Object.assign({}, prev, { [key]: !prev[key] }))
+          className: "dshpp-track" + (on ? " is-on" : ""),
+          role: "switch",
+          "aria-checked": on ? "true" : "false",
+          "aria-label": label,
+          disabled: busy,
+          onClick: onToggle
         },
-        h("strong", null, t("group." + key)),
-        h(
-          "span",
-          { className: "dshpp-count" },
-          tally.applied + "/" + tally.total + (notes.length ? " \xB7 " + notes.join(" \xB7 ") : "")
+        h("span", { className: "dshpp-knob" })
+      )
+    ),
+    h("p", { className: "dshpp-sw-d" }, desc),
+    h(
+      "div",
+      { className: "dshpp-sw-f" },
+      h("span", { className: "dshpp-chip" + (on ? " is-on" : "") }, chip),
+      busy ? h("span", { className: "dshpp-chip" }, t("sw.saving")) : null
+    )
+  );
+}
+function PatchGroupSwitches({ state, onSaved }) {
+  const t = useT();
+  const [flags, setFlags] = useState(null);
+  const [busy, setBusy] = useState("");
+  const [note, setNote] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    apiJson("/dsh-purge/boost").then((d) => {
+      if (!alive || !d || !d.ok) return;
+      setFlags({
+        permissionPatches: d.permissionPatches !== false,
+        contextManagement: d.contextManagement === true
+      });
+    }).catch(() => {
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const counts = patchGroupCounts(patchRowsAll(state));
+  const rows = patchRowsAll(state);
+  const permApplied = rows.filter(
+    (r) => patchGroupOf(r.id) === "permission" && r.st === "applied"
+  ).length;
+  const permPending = rows.filter(
+    (r) => patchGroupOf(r.id) === "permission" && r.st === "pending"
+  ).length;
+  const ctxApplied = rows.filter(
+    (r) => patchGroupOf(r.id) === "context" && r.st === "applied"
+  ).length;
+  const toggle = (key) => {
+    if (!flags || busy) return;
+    const next = !flags[key];
+    setBusy(key);
+    setNote(null);
+    apiJson("/dsh-purge/boost", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ [key]: next })
+    }).then((d) => {
+      if (!d || !d.ok) throw new Error(d && d.error || "save failed");
+      setFlags({
+        permissionPatches: d.permissionPatches !== false,
+        contextManagement: d.contextManagement === true
+      });
+      setNote({ kind: "ok", text: t("sw.saved") });
+      if (typeof onSaved === "function") onSaved();
+    }).catch(
+      (e) => setNote({ kind: "error", text: t("sw.fail", { error: String(e) }) })
+    ).then(() => setBusy(""));
+  };
+  const permOn = flags ? flags.permissionPatches : true;
+  const ctxOn = flags ? flags.contextManagement : false;
+  return h(
+    "div",
+    null,
+    h(
+      "div",
+      { className: "dshpp-switches" },
+      h(Switch, {
+        on: permOn,
+        busy: busy === "permissionPatches",
+        label: t("sw.permission"),
+        desc: t("sw.permission.desc"),
+        hintTitle: t("sw.permission"),
+        hint: t("sw.permission.hint"),
+        chip: permOn ? t("sw.chip.on", {
+          n: PERMISSION_PATCH_IDS.length,
+          written: permApplied,
+          pending: permPending
+        }) : t("sw.chip.off", { n: PERMISSION_PATCH_IDS.length }),
+        onToggle: () => toggle("permissionPatches")
+      }),
+      h(Switch, {
+        on: ctxOn,
+        busy: busy === "contextManagement",
+        label: t("sw.context"),
+        desc: t("sw.context.desc"),
+        hintTitle: t("sw.context"),
+        hint: t("sw.context.hint"),
+        chip: ctxOn ? t("sw.chip.on", {
+          n: CONTEXT_PATCH_IDS.length,
+          written: ctxApplied,
+          pending: CONTEXT_PATCH_IDS.length - ctxApplied
+        }) : t("sw.chip.off", { n: CONTEXT_PATCH_IDS.length }),
+        onToggle: () => toggle("contextManagement")
+      })
+    ),
+    note ? h(
+      "p",
+      {
+        className: "dshpp-sw-note" + (note.kind === "error" ? " is-bad" : ""),
+        role: "status"
+      },
+      note.text
+    ) : null,
+    h("p", { className: "dshpp-sw-hint" }, t("sw.applyHint"))
+  );
+}
+var FILTERS = ["all", "pending", "off", "na"];
+function PatchGroups({ state }) {
+  const t = useT();
+  const [open, setOpen] = useState({ code: true });
+  const [filter, setFilter] = useState("all");
+  if (state?.ok === false)
+    return h("p", { role: "status" }, t("groups.unreadable"));
+  if (!state || !state.patch_status)
+    return h("div", { className: "dshpp-skel", style: { height: 120 } });
+  const located = !!state.ai_base;
+  if (!located) return null;
+  const allRows = patchRowsAll(state);
+  const counts = patchGroupCounts(allRows);
+  const filterCount = {
+    all: counts.total,
+    pending: counts.pending,
+    off: counts.off,
+    na: counts.na
+  };
+  const kept = allRows.filter((row) => {
+    if (filter === "pending")
+      return !isNaRow(row) && row.st !== "disabled" && row.st !== "applied" && row.st !== "already";
+    if (filter === "off") return row.st === "disabled";
+    if (filter === "na") return isNaRow(row);
+    return true;
+  });
+  const grouped = /* @__PURE__ */ new Map();
+  for (const row of kept) {
+    const key = LAYER_GROUP[row.layer] || "code";
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(row);
+  }
+  return h(
+    "div",
+    null,
+    h(
+      "div",
+      { className: "dshpp-filter" },
+      FILTERS.map(
+        (f) => h(
+          "button",
+          {
+            key: f,
+            type: "button",
+            className: "dshpp-fbtn" + (filter === f ? " is-cur" : ""),
+            onClick: () => setFilter(f)
+          },
+          t("filter." + f),
+          h("span", { className: "dshpp-fbtn-n" }, String(filterCount[f]))
         )
       ),
-      expanded ? h(
-        "table",
-        { className: "dshpp-table" },
+      h("span", { className: "dshpp-filter-hint" }, t("filter.hint"))
+    ),
+    GROUP_ORDER.filter((key) => grouped.has(key)).map((key) => {
+      const rows = grouped.get(key).slice().sort((a, b) => a.id - b.id);
+      const tally = tallyPatches(rows);
+      const groupCounts = patchGroupCounts(rows);
+      const notes = [];
+      if (tally.pending)
+        notes.push(t("metric.pendingShort", { n: tally.pending }));
+      if (tally.unmatched)
+        notes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
+      if (tally.partial)
+        notes.push(t("metric.partialShort", { n: tally.partial }));
+      if (tally.drifted)
+        notes.push(t("metric.driftedShort", { n: tally.drifted }));
+      if (tally.disabled)
+        notes.push(t("metric.disabledShort", { n: tally.disabled }));
+      const expanded = !!open[key];
+      return h(
+        "div",
+        { key, className: "dshpp-group" },
         h(
-          "thead",
-          null,
+          "button",
+          {
+            type: "button",
+            className: "dshpp-group-h",
+            "aria-expanded": expanded ? "true" : "false",
+            onClick: () => setOpen((prev) => Object.assign({}, prev, { [key]: !prev[key] }))
+          },
+          h("span", { className: "dshpp-caret" }, expanded ? "\u25BE" : "\u25B8"),
+          h("strong", null, t("group." + key)),
           h(
-            "tr",
-            null,
-            h("th", null, "#"),
-            h("th", null, t("table.patch")),
-            h("th", null, t("table.status"))
+            "span",
+            { className: "dshpp-count" },
+            groupCounts.applied + " / " + (groupCounts.denom || 0)
+          ),
+          h(
+            "span",
+            { className: "dshpp-group-chips" },
+            groupCounts.applied ? h(
+              "span",
+              { className: "dshpp-pill is-ok" },
+              String(groupCounts.applied)
+            ) : null,
+            groupCounts.pending ? h(
+              "span",
+              { className: "dshpp-pill is-wait" },
+              String(groupCounts.pending)
+            ) : null,
+            groupCounts.off ? h(
+              "span",
+              { className: "dshpp-pill is-muted" },
+              String(groupCounts.off)
+            ) : null,
+            groupCounts.na ? h(
+              "span",
+              { className: "dshpp-pill is-miss" },
+              String(groupCounts.na)
+            ) : null
           )
         ),
-        h(
-          "tbody",
-          null,
-          rows.map(
-            (r) => h(
+        notes.length ? h("p", { className: "dshpp-group-notes" }, notes.join(" \xB7 ")) : null,
+        expanded ? h(
+          "table",
+          { className: "dshpp-table" },
+          h(
+            "thead",
+            null,
+            h(
               "tr",
-              { key: r.id },
-              h("td", { className: "dshpp-id" }, "#" + r.id),
-              h("td", null, t("patch." + r.id)),
-              h(
-                "td",
-                null,
-                h(Pill, { value: r.st }),
-                r.st === "partial" ? h(
-                  "span",
-                  { className: "dshpp-sub" },
-                  t("status.partialDetail", {
-                    done: (state.patch_files?.[r.id] || []).filter(
-                      (f) => f.status === "applied"
-                    ).length,
-                    total: (state.patch_files?.[r.id] || []).length
-                  })
-                ) : null
+              null,
+              h("th", null, "#"),
+              h("th", null, t("table.patch")),
+              h("th", null, t("table.status"))
+            )
+          ),
+          h(
+            "tbody",
+            null,
+            rows.map(
+              (r) => h(
+                "tr",
+                { key: r.id },
+                h("td", { className: "dshpp-id" }, "#" + r.id),
+                h(
+                  "td",
+                  null,
+                  (t("patch." + r.id) !== "patch." + r.id ? t("patch." + r.id) : r.name) || "patch." + r.id,
+                  // 시안은 두 줄 구성이다: 이름 + 영문 식별자. 영문은 따로 이름이 있을 때만 한 줄 덧붙인다.
+                  r.name && t("patch." + r.id) !== "patch." + r.id ? h("span", { className: "dshpp-row-en" }, r.name) : null,
+                  // 이미 적용된 행에는 이유를 다시 붙이지 않는다. 같은 글자가 60줄 반복되면 표만 길어진다.
+                  r.st === "applied" || r.st === "already" ? null : h(
+                    "span",
+                    { className: "dshpp-row-note" },
+                    t("hint." + (r.st || "unknown"))
+                  )
+                ),
+                h(
+                  "td",
+                  null,
+                  h(Pill, { value: r.st }),
+                  r.st === "partial" ? h(
+                    "span",
+                    { className: "dshpp-sub" },
+                    t("status.partialDetail", {
+                      done: (state.patch_files?.[r.id] || []).filter(
+                        (f) => f.status === "applied"
+                      ).length,
+                      total: (state.patch_files?.[r.id] || []).length
+                    })
+                  ) : null
+                )
               )
             )
           )
-        )
-      ) : null
-    );
-  });
+        ) : null
+      );
+    }),
+    !grouped.size ? h("p", { className: "dshpp-filter-hint" }, t("filter.empty")) : null
+  );
+}
+function PatchApplySteps() {
+  const t = useT();
+  const step = (n, title, desc) => h(
+    "div",
+    { className: "dshpp-step" },
+    h("span", { className: "dshpp-step-no" }, String(n)),
+    h("div", null, h("b", null, title), h("span", null, desc))
+  );
+  return h(
+    "div",
+    { className: "dshpp-flow" },
+    h("h4", null, t("steps.title")),
+    h(
+      "div",
+      { className: "dshpp-steps" },
+      step(1, t("steps.1.t"), t("steps.1.d")),
+      step(2, t("steps.2.t"), t("steps.2.d")),
+      step(3, t("steps.3.t"), t("steps.3.d"))
+    ),
+    h("p", { className: "dshpp-flow-foot" }, t("steps.foot"))
+  );
 }
 
 // src/components/primitives.js
@@ -10830,6 +11326,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   const tRef = useRef(t);
   tRef.current = t;
   const [state, setState] = useState(null);
+  const [scannedAt, setScannedAt] = useState(null);
   useEffect(() => {
     if (onStatus) onStatus(state);
   }, [state, onStatus]);
@@ -10885,7 +11382,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   };
   const updateErrorText = (tr, e) => {
     const msg = String(e && e.message || e || "");
-    if (msg === "timeout" || /aborted|abort|timeout|타임아웃|시간 ?초과/i.test(msg))
+    if (msg === "timeout" || /aborted|abort|타임아웃|시간 ?초과/i.test(msg))
       return tr("update.timeout");
     if (/\b404\b/.test(msg) || /non-json/.test(msg))
       return tr("update.needRestart");
@@ -11055,6 +11552,16 @@ function PurgifySection({ page = "status", onStatus } = {}) {
     apiJson("/dsh-purge/status").then((d) => {
       if (d && d.ok) {
         setState(d);
+        try {
+          setScannedAt(
+            (/* @__PURE__ */ new Date()).toLocaleTimeString("ko-KR", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false
+            })
+          );
+        } catch {
+        }
         setNotice(
           (previous) => previous?.source === "status" ? { kind: "idle", text: "" } : previous
         );
@@ -11397,9 +11904,20 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   const desktopLikely = hostSurface === "desktop" || clientGuessSurface() === "desktop";
   const sealedReady = !located && desktopLikely && !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
   const patchesLost = !located && !!(s && s.patches_lost);
-  const tally = located ? tallyPatches(patchRowsOf(s)) : { applied: 0, pending: 0, unmatched: 0, skipped: 0, total: 0 };
-  const total = tally.total;
-  const applied = tally.applied;
+  const allRows = located ? patchRowsAll(s) : [];
+  const tally = located ? tallyPatches(allRows) : {
+    applied: 0,
+    pending: 0,
+    unmatched: 0,
+    partial: 0,
+    drifted: 0,
+    disabled: 0,
+    skipped: 0,
+    total: 0
+  };
+  const counts = located ? patchGroupCounts(allRows) : { applied: 0, pending: 0, off: 0, na: 0, total: 0, denom: 0 };
+  const total = counts.denom;
+  const applied = counts.applied;
   const pct = located && total ? Math.round(applied / total * 100) : 0;
   const metricNotes = [];
   if (tally.pending)
@@ -11413,7 +11931,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   if (tally.disabled)
     metricNotes.push(t("metric.disabledShort", { n: tally.disabled }));
   if (tally.skipped)
-    metricNotes.push(t("metric.skipShort", { n: tally.skipped }));
+    metricNotes.push(t("metric.naShort", { n: tally.skipped }));
   const versions = updateInfo && updateInfo.versions || [];
   const channelNow = updateInfo && updateInfo.channel || channel || "stable";
   const localVer = s && s.plugin_version || updateInfo && updateInfo.localVersion || "";
@@ -11514,38 +12032,23 @@ function PurgifySection({ page = "status", onStatus } = {}) {
     h(
       "div",
       { hidden: page !== "status" },
+      // 제목 줄: 왼쪽은 페이지 이름, 오른쪽은 동작 묶음 + 스캔 시각(시안에 맞추고 hero 카드로 한 겹 더 감싸지 않는다)
       h(
         "div",
-        { className: "dshpp-hero" },
+        { className: "dshpp-status-head" },
+        h("h3", { className: "dshpp-status-title" }, t("status.title")),
         h(
           "div",
-          { className: "dshpp-hero-state" },
-          h("i", {
-            className: "dshpp-dot " + (!located ? "is-warn" : patchBusy ? "" : s?.asar_still_sealed || tally.pending ? "is-warn" : "is-ok")
-          }),
-          h(
-            "b",
-            null,
-            !s ? "\uD638\uC2A4\uD2B8 \uC0C1\uD0DC\uB97C \uC77D\uB294 \uC911\u2026" : s.ok === false ? "\uC0C1\uD0DC \uC77D\uAE30 \uC2E4\uD328. \uD638\uC2A4\uD2B8\uC640 \uD328\uCE58 \uC0C1\uD0DC\uB97C \uC54C \uC218 \uC5C6\uC2B5\uB2C8\uB2E4" : !located ? sealedReady ? "\uD638\uC2A4\uD2B8\uAC00 \uC544\uC9C1 \uD480\uB9AC\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. '\uC801\uC6A9'\uC744 \uB204\uB974\uC138\uC694" : "\uD638\uC2A4\uD2B8\uB97C \uCC3E\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. '\uC801\uC6A9'\uC744 \uB20C\uB7EC \uB2E4\uC2DC \uC2DC\uB3C4\uD558\uC138\uC694" : s?.asar_still_sealed ? `${applied}/${total}\uAC74 \uB514\uC2A4\uD06C \uD328\uCE58(\uC885\uB8CC \uD6C4 \uB2E4\uC2DC \uC5F4\uBA74 \uB85C\uB4DC\uB429\uB2C8\uB2E4)` : tally.pending ? `${tally.pending}\uAC74 \uB354 \uC801\uC6A9 \uB300\uAE30` : `${applied}/${total}\uAC74 \uD328\uCE58 \uC801\uC6A9\uB428`
-          ),
-          h(
-            "span",
-            { className: "dshpp-hero-sub" },
-            t("surface." + hostSurface)
-          )
-        ),
-        h(
-          "div",
-          { className: "dshpp-hero-actions" },
+          { className: "dshpp-status-ops" },
           h(
             Btn,
             {
               kind: "primary",
-              className: "dshpp-btn-lead",
+              className: "dshpp-btn-apply",
               disabled: patchBusy || uninstallBusy || !overrideLoaded,
               onClick: () => doAction("apply", "action.apply")
             },
-            patchBusy ? t("btn.apply.busy") : t("btn.apply")
+            patchBusy ? t("btn.apply.busy") : t("btn.apply") + (counts.pending ? " " + counts.pending : "")
           ),
           h(
             Btn,
@@ -11566,60 +12069,42 @@ function PurgifySection({ page = "status", onStatus } = {}) {
             uninstallBusy ? t("btn.uninstall.busy") : t("btn.uninstall")
           ),
           h(
-            Btn,
+            "button",
             {
-              tiny: true,
+              type: "button",
+              className: "dshpp-scan",
               onClick: loadAll,
-              disabled: patchBusy || uninstallBusy
+              disabled: patchBusy || uninstallBusy,
+              title: t("scan.hint")
             },
-            "\uC0C8\uB85C \uACE0\uCE68"
+            scannedAt ? t("scan.recent", { time: scannedAt }) : t("scan.hint")
           )
-        ),
-        h(
-          "p",
-          { className: "dshpp-hero-hint" },
-          "\uD50C\uB7EC\uADF8\uC778\uC744 \uC124\uCE58\uD588\uAC70\uB098, DSH \uB97C \uC5C5\uB370\uC774\uD2B8\uD588\uAC70\uB098, \uBAA8\uB378\uC774 \uB2E4\uC2DC \uD68C\uD53C\uD558\uAE30 \uC2DC\uC791\uD558\uBA74 '\uC801\uC6A9'\uC744 \uD55C \uBC88 \uB204\uB978 \uB4A4 DSH \uB97C \uC885\uB8CC\uD588\uB2E4\uAC00 \uB2E4\uC2DC \uC5F4\uBA74 \uBCF5\uAD6C\uB429\uB2C8\uB2E4."
-        ),
-        noticeNode(notice)
+        )
       ),
+      !located ? h(
+        "p",
+        { className: "dshpp-status-note" },
+        sealedReady ? "\uD638\uC2A4\uD2B8\uAC00 \uC544\uC9C1 \uD480\uB9AC\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. '\uC801\uC6A9'\uC744 \uB204\uB974\uC138\uC694" : t("metric.unlocated")
+      ) : null,
+      noticeNode(notice),
+      h(PatchHealth, { state: s }),
+      h(PatchGroupSwitches, { state: s, onSaved: loadAll }),
       h(
-        "div",
-        { className: "dshpp-rel" },
+        "section",
+        { className: "dshpp-fold is-open" },
         h(
-          "div",
-          { className: "dshpp-now" },
-          h("span", { className: "dshpp-now-label" }, t("channel.local")),
+          "h4",
+          { className: "dshpp-fold-t" },
+          t("detail.title"),
           h(
-            "b",
-            { className: "dshpp-now-ver" },
-            localVer ? "v" + localVer : "\u2014"
-          ),
-          h("em", { className: "dshpp-now-mark" }, t("update.current"))
-        ),
-        h(
-          "details",
-          { className: "dshpp-editions" },
-          h("summary", null, "\uBC84\uC804 \uAD00\uB9AC"),
-          renderEdition("stable"),
-          renderEdition("beta")
-        ),
-        noticeNode(updateNotice)
-      ),
-      h(
-        "details",
-        { className: "dshpp-fold" },
-        h(
-          "summary",
-          null,
-          "\uD328\uCE58 \uC0C1\uC138 ",
-          h(
-            "b",
-            null,
-            !s ? "\uC77D\uB294 \uC911" : s.ok === false ? "\uC0C1\uD0DC \uBBF8\uD655\uC778" : s.ai_base ? `${applied}/${total} \uC801\uC6A9\uB428` : "\uD638\uC2A4\uD2B8 \uBBF8\uD0D0\uC9C0"
+            "span",
+            { className: "dshpp-fold-n" },
+            !s ? t("detail.reading") : s.ok === false ? t("detail.unknown") : s.ai_base ? `${applied} / ${total}` : t("detail.unlocated")
           )
         ),
         h(PatchGroups, { state: s })
       ),
+      h(PatchApplySteps, null),
       h(
         "details",
         null,
@@ -13200,7 +13685,7 @@ var preferenceListeners = /* @__PURE__ */ new Set();
 function publishPreferences(next) {
   for (const receive of preferenceListeners) receive(next);
 }
-function CommunityMaintenance() {
+function CommunityMaintenance({ localVersion = "" } = {}) {
   const [value, setValue] = useState(null), [notice, setNotice] = useState(""), [busy, setBusy] = useState(false), [selected, setSelected] = useState(""), [releases, setReleases] = useState(null), [release, setRelease] = useState("");
   const [listState, setListState] = useState("loading"), [listError, setListError] = useState("");
   const [channelOpen, setChannelOpen] = useState(false);
@@ -13293,7 +13778,17 @@ function CommunityMaintenance() {
   return h(
     "section",
     { className: "dshpp-panel", "aria-label": "\uD55C\uAD6D\uC5B4\uD310 \uC720\uC9C0\uBCF4\uC218" },
-    h("h3", null, "\uC720\uC9C0\uBCF4\uC218: \uC5C5\uB370\uC774\uD2B8\uC640 \uC774 \uCEF4\uD4E8\uD130 \uBC31\uC5C5"),
+    h(
+      "div",
+      { className: "dshpp-maint-head" },
+      h("h3", null, "\uC720\uC9C0\uBCF4\uC218: \uC5C5\uB370\uC774\uD2B8\uC640 \uC774 \uCEF4\uD4E8\uD130 \uBC31\uC5C5"),
+      localVersion ? h(
+        "span",
+        { className: "dshpp-maint-ver" },
+        "\uC774 \uCEF4\uD4E8\uD130 v" + localVersion,
+        h("b", null, "\uD604\uC7AC")
+      ) : null
+    ),
     // 채널 현황 요약: 프록시가 직결인지, 키가 설정돼 있는지(키 평문은 절대 되풀이하지 않는다).
     // 진입 버튼은 여기 있지 않고 "자동 업데이트 확인"과 같은 줄에 있다.
     value ? h(
@@ -13334,9 +13829,7 @@ function CommunityMaintenance() {
                   )
                 )}`
               );
-              setNotice(
-                lines.length ? lines.join("\n") : "\uC544\uC9C1 \uAE30\uB85D\uB41C \uB3D9\uC791\uC774 \uC5C6\uC2B5\uB2C8\uB2E4"
-              );
+              setNotice(lines.length ? lines.join("\n") : "\uC544\uC9C1 \uAE30\uB85D\uB41C \uB3D9\uC791\uC774 \uC5C6\uC2B5\uB2C8\uB2E4");
             } catch (e) {
               setNotice(e.message);
             }
@@ -13514,7 +14007,7 @@ function StatusStrip({ info }) {
       "span",
       { className: "dshpp-strip-item" },
       "\uD50C\uB7EC\uADF8\uC778 ",
-      h("b", null, info?.plugin_version || "1.7.14")
+      h("b", null, info?.plugin_version || "1.7.18")
     )
   );
 }
@@ -13576,11 +14069,11 @@ function VersionNotice({ info }) {
     );
   }
   const backend = info?.plugin_version;
-  if (!backend || backend === "1.7.14") return null;
+  if (!backend || backend === "1.7.18") return null;
   return h(
     "p",
     { className: "dshpp-warn", role: "status" },
-    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.7.14"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
+    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.7.18"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
   );
 }
 function PurgePage() {
@@ -13630,7 +14123,7 @@ function PurgePage() {
           true ? h(
             "span",
             { className: "dshpp-page-ver" },
-            "\uD55C\uAD6D\uC5B4\uD310 1.7.14"
+            "\uD55C\uAD6D\uC5B4\uD310 1.7.18"
           ) : null
         )
       )
@@ -13664,7 +14157,7 @@ function PurgePage() {
         h(StatusStrip, { info }),
         h(PurgifySection, { page: "status", onStatus: mergeInfo }),
         h(StatusExtras),
-        h(CommunityMaintenance)
+        h(CommunityMaintenance, { localVersion: info?.plugin_version || "" })
       ),
       h(
         "div",
@@ -13720,6 +14213,9 @@ function PurgePage() {
     )
   );
 }
+
+// src/assets/sidebar-glyph.png
+var sidebar_glyph_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAIUUlEQVR42t1baWxVRRT+3uOxtNUWpAWLIkrFBRAlSsRYd0KVRUJ/uIQqVuqCUaNxQYMmRoQQYzRxCQTcFVSIwahEJURFRDEhGkVEDOK+YK0NINTSls8/303Gce599953b1s6yeTe9+bOnHO+OXPOLGcyJNFFqReAwQB2AujoKiaynUyvH4BxAGYD2ADgFz1n6/9+nQ1AJmUNyEio0QCuAlAHoDTg+90AXgLwLIBNANpTR4BkGnkgyVqSq0m28L9pD8nFJKeSPEbPxfrfTNenxNt/clIN9SJZRfIWkq/z/2mHhDyWZLFPG8UCrYVkG8mGAHrZ7gCAJ/TtJLc6hP6G5F0SOheyzQGq20yyvw/N50luIXmb6Bd1JgBFJM8Q8S0OobeRvJvkCDEbtf1HSXaQXO5TXuug2SztOjMOGPk+yEg1x/uMU5J8h+QlJMtjCN3PeK+U6pPkKMe3OZI/CqBPSb7p4GUPycdJni87FBuAw0hWy4i1WkSa9P9lYYlYgA4heQHJZeq9V0mOU3sdJL/3AfJy0f/VAK6C5DQJ3ewAZBHJsyRPaAAyJDc51OwRksNjqFkfkieTnENyA91pGskn9D49wDaQZH3A8PQM8a9W+5skVygABssS75Xajy9A6PkOZprU++eI4UEkT1XZdpK9He3Nl3b8HtKg9pOtWiQ5WiRXKACGGMyWRBC6jOQEkvPEqJl+JHkfyRMdAvYi+bO+u8fRbn/DNlwU4EZducTgYUgcAMry+OIyMbXSodbrSF5BcqRPr3q5Wt+3yZDa5Q+rfJ48DEmuEN2yPHOCskIBKHWUDyV5kyyxndZL6MF+Y85hb1ZLvec5yk9Sux0C8gVDG7z0qfgZ6qhfmjQAx1vEW0k+RfJs9V4moq04zmhrmAOcNRJ4ndHTJaq3xOGhTkgbgAliaIuMXEmBU9H71LtrHeCNNfg4KWCMT5TNaRN/kQCIuhxuBZADsB/A5wD2FrAOGwBgrpbkcwCYy9I+AFYDOADgIQCbfdrYC2ANgN/EV2va+wEZo16hewm3iumdDgFrAVQKgIUhZMha/HXbDREv5QBcqfc7pVFe6g3gYb0/DqCpJ+0IeWkSgGFS3ZetsnvV+z8AuL2nbYnZPfyK1fslAuCAdpLO7YkAHAmgSttdDziMWi2Av7VhuhbACwDO0rDpEQDU6vkPgMsBFFvlqwAcDuBBAH9qH/EDAF8DmJI0EF0BwAoA3wA4BMBj2hm+zgKiRa5xKIAG/VcF4A0An+XZWO32APwEYCSAGgBfAugPYLHcYYPF0z8AngJwhDRgt3aYyw92L9ChCcxYADcA+FYasRTARzKUZmrWxKkUwAIAOw52ALzUDmARgDE6D9gH4HR5A5PHjTKK3wG4vyfMA+y0D8DrsgNvA9hllN0hgABgepzp7sEAQBZAvfz/M8a6YJwxFb5G64/U3SDFCHzK0khHAZio9/f0HCj3BwDLATwd5qAralnWZ56eDZjDp5FmC/T18v0A8KJmgzsBXB/QKWH56xUWgD/kp+Eg+lcKQycH4Gq1uVg91QDgQpWfDGBPSE3+y/r/gHHoui8sAK0Atuu9r1X2tVGPCU6NvYnNmxJ4qX7PlAbkU/usxR8s/jc6wAnVk2f6fF+e4Fn+dG2ArNTvd9Rz6zQMECLmoNxHHo//tqheoMhHA9o0FR0kv5xEmmCsAear3d0ALg057geLny8cgnr8F0cFYLWeMxwTlw/F2KgEhD9aewP7Retm/X96CNX30ijx85YjoGKGJU9oAL5So65FxyeqV5MAAJcZvTxZz3sMIxwm1Ygfl5Clav+rqBEildpJ3eXYGR6ondzGPAce+XJfHVt1aEe3jeS7EWIJIPqNaqPCsSO8S3JU+rXhpwGNWrWVAqh2uML3ZHgmFND7lRqb7coHNO7bI9qPcvHzp1VWLf5/kjyRhkA7gOfE1CyH23lS7zcWAMBcPffLkp8XxKhP8ug/6XDLs8T/c4GgBqjXSCPo4FDH6at3AFoVU/2bjJOduTHaqFLd361AC4hfL5hjZNwIkd6GkFMc5fXGQWVU5quNo7VNEce9l1cExAtMUdnOfHYqH5FZMjDbHEz2FQGSHB2R+TnGkdWAGMKPNgTs6wil2Sa+6wuNERqkhkhysg9AQYENfnm8zhfHxhC+t+hR9O3yycbQLUoiSmyJXNR2R+xO1ginWRkjXiiO+1xphL1kHcEW28XvkqTC5IZYsTx2ebkMGknWpRzZWWeE2biCKablOw2OGyc43zBarqCJiQbhupSFp+i5Qmk8r3J/0oGSfYxxtzBEEGNdisLX+nzzmso/jjK8ojAxJkQgswnCjISEnxFC+IuNb8akGSq70CA0IgQIy31ifsPk/qqfT/gqY86/MO1Y4axUzLMHfrPAGsMw7iU5KSKdSarnGbwan++GG0FTy+JEkcfpmQpDuDYx4TeHWGdpw7EBTGZVvtwKtRsUQvgmkod0Zrh8WBAystiNhlAbSJ5mzCxz+m2G0TaqXiak8BVdcV/ABKElwCZ4i6eZxvckuVmRoZutMNqZjsWNmUcYt1AKEj6JGyMVllDXhYjhrTfWEDTm9PV5BIfaZ1LCJ3VlpoLk+wZjq0IscIrU04/qWRTiJskqg8b7SQif5J2hLMkFVgTp1JjLXHtlN9WKCF3QXe4MufIpxoyRuks0OQYQOdXbasUhn9Jdb43Z+wQN1hjfKt+eCyH4JMd9pFlJ9nraAHj5CC1JbSBqHEDk9L8t+FK10+3vDQblI409BfMe4V0kj9Jzh+URFqjeQXNxMkw+VEOj2efeUBPJawu9B9idATBdYL1xTeZn/S7qAl5SvzwdlIoVBdLkd3bfGelfIQ46gMinIh4AAAAASUVORK5CYII=";
 
 // src/state/preset-menu.js
 function bindPresetMenu(doc, listPresets) {
@@ -15123,11 +15619,25 @@ function PurgeIcon({ size = 20 } = {}) {
   );
 }
 function PurgeGlyphIcon({ size = 16 } = {}) {
-  return h(PurgeGlyph, { size });
+  const paint = {
+    width: size,
+    height: size,
+    display: "block",
+    backgroundColor: "currentColor",
+    maskImage: `url("${sidebar_glyph_default}")`,
+    WebkitMaskImage: `url("${sidebar_glyph_default}")`,
+    maskSize: "contain",
+    WebkitMaskSize: "contain",
+    maskRepeat: "no-repeat",
+    WebkitMaskRepeat: "no-repeat",
+    maskPosition: "center",
+    WebkitMaskPosition: "center"
+  };
+  return h("span", { "aria-hidden": true, style: paint });
 }
 function DetailSettings({ view } = {}) {
   if (view === "summary")
-    return h("span", null, "Purge \xB7 1.7.14");
+    return h("span", null, "Purge \xB7 1.7.18");
   return h("div", { className: "dshpp-detail-settings" }, h(PurgePage));
 }
 function PanelOverlays() {

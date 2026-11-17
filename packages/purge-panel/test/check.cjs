@@ -170,6 +170,11 @@ const test = async () => {
     root.findAllByType("button").find((x) => x.children.join("") === text);
   const area = (label) =>
     root.findAllByType("textarea").find((x) => x.props["aria-label"] === label);
+  // 1.7.18 부터 상태 페이지에는 '새로 고침' 버튼이 없고, 오른쪽 위 "마지막 스캔 · 눌러서 새로 고침" 텍스트 스위치로 바뀌었다.
+  const scan = () =>
+    root
+      .findAllByType("button")
+      .find((x) => String(x.props.className || "").includes("dshpp-scan"));
   assert.equal(area("프롬프트 내용").props.value, "Existing test prompt");
   await act(async () => btn("프롬프트").props.onClick());
   await act(async () =>
@@ -185,14 +190,14 @@ const test = async () => {
   );
   await act(async () => btn("상태").props.onClick());
   await act(async () => {
-    btn("새로 고침").props.onClick();
+    scan().props.onClick();
     await new Promise((r) => setTimeout(r, 10));
   });
   assert.equal(area("프롬프트 내용").props.value, "UNSAVED prompt");
   assert.equal(area("서버 목록").props.value, "unsaved.example.test");
   responses["/dsh-purge/status"].plugin_version = "2.0.0";
   await act(async () => {
-    btn("새로 고침").props.onClick();
+    scan().props.onClick();
     await new Promise((r) => setTimeout(r, 10));
   });
   assert(

@@ -62,6 +62,47 @@ test("mixed diagnostic states retain exact finite counts without counting drift 
   for (const value of Object.values(h.tallyPatches([]))) assert.equal(value, 0);
   for (const value of Object.values(tally)) assert(Number.isFinite(value));
 });
+test("status counts come from per-patch rows, never from display groups", async () => {
+  const h = harness();
+  // 실제 페이로드: patch_rows 는 88개 패치의 개별 값이고, patches 에는 표시 그룹 3개뿐이다.
+  const rows = [
+    ...Array.from({ length: 73 }, (_, i) => ({
+      id: i + 1,
+      layer: "코드",
+      name: "a",
+      status: "applied",
+    })),
+    ...Array.from({ length: 2 }, (_, i) => ({
+      id: 80 + i,
+      layer: "코드",
+      name: "b",
+      status: "disabled",
+    })),
+    ...Array.from({ length: 13 }, (_, i) => ({
+      id: 90 + i,
+      layer: "도구",
+      name: "c",
+      status: "skipped",
+    })),
+  ];
+  const state = {
+    ok: true,
+    ai_base: "/fixture",
+    patch_status: {},
+    patch_rows: rows,
+    patches: [
+      { id: 1, ids: [1, 2, 3], layer: "코드", status: "applied" },
+      { id: 80, ids: [80, 81], layer: "코드", status: "disabled" },
+      { id: 90, ids: [90, 91, 92], layer: "도구", status: "skipped" },
+    ],
+  };
+  const markup = renderToStaticMarkup(
+    React.createElement(h.PatchGroups, { state }),
+  );
+  assert.match(markup, /73 \/ 75/, "그룹 표가 88개를 3개로 압축해서는 안 된다");
+  assert.doesNotMatch(markup, /3 \/ 3/, "그룹 수를 분모로 쓸 수 없다");
+});
+
 test("summary and group headings explain drift, partial results and opt-in choices", async () => {
   const patches = [
     "applied",
@@ -179,18 +220,18 @@ test("failed status can retry and does not fabricate zero patch counts or a miss
   assert.match(markup, /\?\/\?/);
   assert.doesNotMatch(markup, /0\/0|호스트 미탐지/);
   const text = JSON.stringify(view.toJSON());
-  assert.match(text, /상태 미확인/);
-  assert.doesNotMatch(text, /찾지 못.*호스트|호스트 미탐지/);
+  assert.match(text, /알 수 없음/);
+  assert.doesNotMatch(text, /호스트 미탐지|호스트 위치를 찾지 못함/);
   fail = false;
   const refresh = view.root
     .findAllByType("button")
-    .find((b) => b.children.includes("새로 고침"));
+    .find((b) => String(b.props.className || "").includes("dshpp-scan"));
   await act(async () => {
     refresh.props.onClick();
   });
   assert.equal(states.at(-1).ai_base, "/fixture");
   assert.equal(states.at(-1).patches_applied, 2);
-  assert.doesNotMatch(JSON.stringify(view.toJSON()), /timeout|상태 미확인/);
+  assert.doesNotMatch(JSON.stringify(view.toJSON()), /timeout|알 수 없음/);
   await act(async () => view.unmount());
 });
 test("a confirmed missing host remains a visible diagnostic, not a read failure", () => {
