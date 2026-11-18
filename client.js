@@ -9627,6 +9627,8 @@ var ko = {
   "health.hint.off": "\uC2A4\uC704\uCE58\uAC00 \uAEBC\uC838 \uC788\uC5B4 \uAE30\uB85D\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. \uACE0\uC7A5\uC774 \uC544\uB2D9\uB2C8\uB2E4.",
   "health.hint.na": "\uC774 \uD638\uC2A4\uD2B8\uC5D0\uB294 \uD574\uB2F9 \uAD6C\uC131\uC694\uC18C\uB098 \uD30C\uC77C\uC774 \uC5C6\uC2B5\uB2C8\uB2E4. \uBD84\uBAA8\uC5D0\uC11C \uBE60\uC9C0\uBA70 \uC791\uC5C5\uB7C9\uC740 0\uC785\uB2C8\uB2E4.",
   "health.verdict.pending": "{n}\uAC1C\uAC00 \uCF1C\uC84C\uC9C0\uB9CC \uC544\uC9C1 \uAE30\uB85D\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4",
+  "evidence.summary": "\uADF8\uB8F9 \uC694\uC57D\uB9CC \uC788\uC74C",
+  "evidence.unknown": "\uD655\uC778\uD560 \uC218 \uC5C6\uC74C",
   "health.verdict.ok": "\uD638\uC2A4\uD2B8 \uD328\uCE58\uAC00 \uBAA8\uB450 \uC81C\uC790\uB9AC\uC5D0 \uC788\uC2B5\uB2C8\uB2E4",
   "groups.unreadable": "\uC77D\uC9C0 \uBABB\uD574 \uD328\uCE58 \uC0C1\uC138\uB97C \uBCFC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uC0C8\uB85C \uACE0\uCE68\uD558\uBA74 \uB2E4\uC2DC \uC2DC\uB3C4\uD569\uB2C8\uB2E4.",
   "filter.all": "\uC804\uCCB4",
@@ -9671,6 +9673,10 @@ var ko = {
   "hint.unmatched": "\uC77C\uCE58 \uC5C6\uC74C: \uD638\uC2A4\uD2B8 \uBC84\uC804\uC774 \uB2E4\uB985\uB2C8\uB2E4.",
   "hint.partial": "\uC77C\uBD80 \uB300\uC0C1\uC740 \uB9DE\uC558\uACE0, \uB2E4\uB978 \uB300\uC0C1\uC740 \uC788\uC5C8\uC9C0\uB9CC \uB9DE\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.",
   "hint.off": "\uAEBC\uC9D0.",
+  "metric.unverifiedShort": "{n}\uAC74 \uD655\uC778 \uC548 \uB428",
+  "file.missing_file": "\uD504\uB9AC\uC14B \uD30C\uC77C \uB204\uB77D",
+  "file.unreadable": "\uC77D\uC9C0 \uBABB\uD568",
+  "file.unknown": "\uC815\uC801\uC73C\uB85C \uD655\uC778\uD560 \uC218 \uC5C6\uC74C",
   "hint.unknown": "\uC54C \uC218 \uC5C6\uB294 \uC0C1\uD0DC.",
   "rewind.settings": "\uB300\uD654 \uBAA8\uC591",
   "rewind.show": "\uC785\uB825\uCC3D\uC5D0 \uB418\uAC10\uAE30 \uBC84\uD2BC \uD45C\uC2DC",
@@ -10070,6 +10076,8 @@ var en = {
   "health.hint.off": "Its switch is off, so nothing was written. Not a failure.",
   "health.hint.na": "This host has no such component or file. Excluded from the denominator; zero work.",
   "health.verdict.pending": "{n} enabled but not written yet",
+  "evidence.summary": "Group summary only",
+  "evidence.unknown": "Cannot verify",
   "health.verdict.ok": "All host patches in place",
   "groups.unreadable": "Read failed; patch detail is unavailable. Refresh to retry.",
   "filter.all": "All",
@@ -10114,6 +10122,10 @@ var en = {
   "hint.unmatched": "No match: host version mismatch.",
   "hint.partial": "Some targets matched, another existed but did not match.",
   "hint.off": "Off.",
+  "metric.unverifiedShort": "{n} unverified",
+  "file.missing_file": "Missing preset file",
+  "file.unreadable": "Unreadable",
+  "file.unknown": "Cannot verify statically",
   "hint.unknown": "Unknown state.",
   "rewind.settings": "Conversation appearance",
   "rewind.show": "Show the rewind button in the composer",
@@ -10387,6 +10399,50 @@ function RewindSetting() {
   );
 }
 
+// ../../lib/patch-state.mjs
+function patchNotApplicable(patch, status) {
+  return status === "na" || status === "off" || status === "disabled" || status === "not_needed" && patch?.id === 76 || status === "missing_file" && patch?.optional === true || status === "skipped" && patch?.settleWhenAbsent === true;
+}
+function patchStateCategory(patch, status) {
+  if (patchNotApplicable(patch, status)) return "inactive";
+  if (status === "applied" || status === "already") return "applied";
+  if (status === "pending") return "pending";
+  if (!status || ["unknown", "unreadable", "unlocated"].includes(status)) return "unknown";
+  return "broken";
+}
+function summarizePatchRows(rows) {
+  const out = {
+    all: 0,
+    total: 0,
+    applied: 0,
+    pending: 0,
+    broken: 0,
+    unknown: 0,
+    not_applicable: 0,
+    partial: 0,
+    missing_file: 0,
+    skipped: 0,
+    na: 0,
+    off: 0,
+    disabled: 0,
+    unmatched: 0,
+    drifted: 0
+  };
+  for (const row of rows || []) {
+    const status = row.status ?? row.st;
+    const category = patchStateCategory(row, status);
+    out.all++;
+    if (["partial", "missing_file", "skipped", "na", "off", "disabled", "unmatched", "drifted"].includes(status))
+      out[status]++;
+    if (category === "inactive") out.not_applicable++;
+    else {
+      out.total++;
+      out[category]++;
+    }
+  }
+  return out;
+}
+
 // src/components/patch-status.js
 function statusKind(st) {
   if (st === "applied" || st === "already") return "ok";
@@ -10408,8 +10464,9 @@ function statusLabel(st, t) {
   if (st === "partial") return t("status.partial");
   if (st === "drifted") return t("status.drifted");
   if (st === "disabled") return t("status.disabled");
-  if (st === "skipped") return t("status.skipped");
-  if (st === "missing_file") return t("skip");
+  if (st === "skipped") return t("health.na");
+  if (st === "missing_file") return t("file.missing_file");
+  if (st === "unknown" || st === "unreadable") return t("file." + st);
   if (st === "unlocated") return t("status.unlocated");
   if (st === "na") return t("status.na");
   return st || t("unknown");
@@ -10447,74 +10504,65 @@ function patchGroupOf(id) {
   if (CONTEXT_SET.has(n)) return "context";
   return "normal";
 }
-function rowsFromState(state) {
-  if (!state || !state.ai_base) return [];
-  const source = Array.isArray(state.patch_rows) ? state.patch_rows : null;
-  if (source) {
-    return source.map((p) => ({
-      id: Number(p.id),
-      st: p.status || "na",
-      layer: p.layer || "",
-      name: p.name || ""
-    })).filter((r) => r.st && Number.isFinite(r.id));
-  }
-  const names = state.patch_names || {};
-  const statusMap = state.patch_status || {};
-  if (Object.keys(statusMap).length) {
-    return Object.keys(statusMap).map((id) => ({
-      id: Number(id),
-      st: statusMap[id],
-      layer: "",
-      name: names[id] || ""
-    })).filter((r) => r.st && Number.isFinite(r.id));
-  }
-  return (Array.isArray(state.patches) ? state.patches : []).map((p) => ({
-    id: Number(p.id),
-    st: p.status || "na",
-    layer: p.layer || "",
-    name: ""
-  })).filter((r) => r.st && Number.isFinite(r.id));
-}
-function patchRowsAll(state) {
-  return rowsFromState(state);
+function patchEvidence(state) {
+  const empty = { kind: "unknown", rows: [], groups: [] };
+  if (!state?.ai_base || state.ok === false) return empty;
+  const validId = (id) => (typeof id === "number" || typeof id === "string" && /^\d+$/.test(id)) && Number.isSafeInteger(Number(id)) && Number(id) >= 0;
+  const status = (st) => typeof st === "string" && st ? st : "unknown";
+  const rows = Array.isArray(state.patch_rows) ? state.patch_rows : [];
+  const map = state.patch_status;
+  const source = rows.length ? rows : map && typeof map === "object" && !Array.isArray(map) ? Object.entries(map).map(([id, st]) => ({
+    id,
+    status: st,
+    name: state.patch_names?.[id]
+  })) : [];
+  if (source.length && source.every((p) => validId(p?.id)) && new Set(source.map((p) => Number(p.id))).size === source.length)
+    return {
+      kind: "detail",
+      groups: [],
+      rows: source.map((p) => ({
+        id: Number(p.id),
+        st: status(p.status),
+        layer: p.layer || "",
+        name: p.name || "",
+        optional: p.optional === true,
+        settleWhenAbsent: p.settleWhenAbsent === true
+      }))
+    };
+  const groups = Array.isArray(state.patches) ? state.patches.filter(
+    (p) => p && typeof p === "object" && !Array.isArray(p)
+  ) : [];
+  return groups.length ? { kind: "summary", rows: [], groups } : empty;
 }
 function isNaRow(row) {
-  return row.st === "na" || row.st === "skipped" || row.st === "missing_file";
+  return row.st !== "disabled" && row.st !== "off" && patchNotApplicable(row, row.st);
 }
 function patchGroupCounts(rows) {
-  const out = { applied: 0, pending: 0, off: 0, na: 0, total: 0, denom: 0 };
-  for (const row of rows || []) {
-    out.total += 1;
-    if (isNaRow(row)) out.na += 1;
-    else if (row.st === "disabled") out.off += 1;
-    else if (row.st === "applied" || row.st === "already") out.applied += 1;
-    else out.pending += 1;
-  }
-  out.denom = out.total - out.na;
-  return out;
+  const counts = summarizePatchRows(rows);
+  return {
+    applied: counts.applied,
+    pending: counts.pending + counts.broken + counts.unknown,
+    off: counts.disabled + counts.off,
+    na: counts.not_applicable - counts.disabled - counts.off,
+    total: counts.all,
+    denom: counts.total
+  };
 }
 function tallyPatches(rows) {
-  const out = {
-    applied: 0,
-    pending: 0,
-    unmatched: 0,
-    partial: 0,
-    drifted: 0,
-    disabled: 0,
-    skipped: 0,
-    total: 0
+  const counts = summarizePatchRows(rows);
+  return {
+    applied: counts.applied,
+    pending: counts.pending,
+    unmatched: counts.unmatched,
+    partial: counts.partial,
+    drifted: counts.drifted,
+    disabled: counts.disabled + counts.off,
+    skipped: counts.skipped,
+    unverified: counts.unknown + (rows || []).filter(
+      (row) => row.st === "missing_file" && !patchNotApplicable(row, row.st)
+    ).length,
+    total: counts.all
   };
-  for (const row of rows || []) {
-    out.total += 1;
-    if (row.st === "applied" || row.st === "already") out.applied += 1;
-    else if (row.st === "pending") out.pending += 1;
-    else if (row.st === "unmatched") out.unmatched += 1;
-    else if (row.st === "partial") out.partial += 1;
-    else if (row.st === "drifted") out.drifted += 1;
-    else if (row.st === "disabled") out.disabled += 1;
-    else out.skipped += 1;
-  }
-  return out;
 }
 function Tile({ kind, label, value, title, text }) {
   return h(
@@ -10532,7 +10580,10 @@ function Tile({ kind, label, value, title, text }) {
 function PatchHealth({ state }) {
   const t = useT();
   if (!state || !state.ai_base) return null;
-  const counts = patchGroupCounts(patchRowsAll(state));
+  const evidence = patchEvidence(state);
+  if (evidence.kind !== "detail")
+    return h("p", { role: "status" }, t("evidence." + evidence.kind));
+  const counts = patchGroupCounts(evidence.rows);
   const denom = Math.max(counts.denom, 1);
   const pct = (n) => n / denom * 100;
   const verdict = counts.pending ? t("health.verdict.pending", { n: counts.pending }) : t("health.verdict.ok");
@@ -10656,8 +10707,7 @@ function PatchGroupSwitches({ state, onSaved }) {
       alive = false;
     };
   }, []);
-  const counts = patchGroupCounts(patchRowsAll(state));
-  const rows = patchRowsAll(state);
+  const { kind, rows } = patchEvidence(state);
   const permApplied = rows.filter(
     (r) => patchGroupOf(r.id) === "permission" && r.st === "applied"
   ).length;
@@ -10703,7 +10753,7 @@ function PatchGroupSwitches({ state, onSaved }) {
         desc: t("sw.permission.desc"),
         hintTitle: t("sw.permission"),
         hint: t("sw.permission.hint"),
-        chip: permOn ? t("sw.chip.on", {
+        chip: kind !== "detail" ? t("evidence." + kind) : permOn ? t("sw.chip.on", {
           n: PERMISSION_PATCH_IDS.length,
           written: permApplied,
           pending: permPending
@@ -10717,7 +10767,7 @@ function PatchGroupSwitches({ state, onSaved }) {
         desc: t("sw.context.desc"),
         hintTitle: t("sw.context"),
         hint: t("sw.context.hint"),
-        chip: ctxOn ? t("sw.chip.on", {
+        chip: kind !== "detail" ? t("evidence." + kind) : ctxOn ? t("sw.chip.on", {
           n: CONTEXT_PATCH_IDS.length,
           written: ctxApplied,
           pending: CONTEXT_PATCH_IDS.length - ctxApplied
@@ -10743,11 +10793,42 @@ function PatchGroups({ state }) {
   const [filter, setFilter] = useState("all");
   if (state?.ok === false)
     return h("p", { role: "status" }, t("groups.unreadable"));
-  if (!state || !state.patch_status)
+  if (!state)
     return h("div", { className: "dshpp-skel", style: { height: 120 } });
   const located = !!state.ai_base;
   if (!located) return null;
-  const allRows = patchRowsAll(state);
+  const { kind, rows: allRows, groups } = patchEvidence(state);
+  if (kind === "unknown")
+    return h("p", { role: "status" }, t("evidence.unknown"));
+  if (kind === "summary")
+    return h(
+      "ul",
+      { "aria-label": t("evidence.summary") },
+      groups.map(
+        (g, i) => h(
+          "li",
+          { key: i },
+          [
+            g.layer,
+            g.name,
+            Array.isArray(g.ids) ? g.ids.map((id) => "#" + id).join(", ") : g.id != null ? "#" + g.id : ""
+          ].filter(Boolean).join(" \xB7 "),
+          ": ",
+          statusLabel(typeof g.status === "string" ? g.status : "unknown", t),
+          Array.isArray(g.members) && h(
+            "ul",
+            null,
+            g.members.filter((m) => m && typeof m.status === "string").map(
+              (m, j) => h(
+                "li",
+                { key: j },
+                "#" + m.id + ": " + statusLabel(m.status, t)
+              )
+            )
+          )
+        )
+      )
+    );
   const counts = patchGroupCounts(allRows);
   const filterCount = {
     all: counts.total,
@@ -10757,8 +10838,10 @@ function PatchGroups({ state }) {
   };
   const kept = allRows.filter((row) => {
     if (filter === "pending")
-      return !isNaRow(row) && row.st !== "disabled" && row.st !== "applied" && row.st !== "already";
-    if (filter === "off") return row.st === "disabled";
+      return ["pending", "unknown", "broken"].includes(
+        patchStateCategory(row, row.st)
+      );
+    if (filter === "off") return row.st === "disabled" || row.st === "off";
     if (filter === "na") return isNaRow(row);
     return true;
   });
@@ -10800,6 +10883,8 @@ function PatchGroups({ state }) {
         notes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
       if (tally.partial)
         notes.push(t("metric.partialShort", { n: tally.partial }));
+      if (tally.unverified)
+        notes.push(t("metric.unverifiedShort", { n: tally.unverified }));
       if (tally.drifted)
         notes.push(t("metric.driftedShort", { n: tally.drifted }));
       if (tally.disabled)
@@ -10881,13 +10966,29 @@ function PatchGroups({ state }) {
                   r.st === "applied" || r.st === "already" ? null : h(
                     "span",
                     { className: "dshpp-row-note" },
-                    t("hint." + (r.st || "unknown"))
+                    r.st === "missing_file" && !isNaRow(r) ? t("file.missing_file") : t("hint." + (r.st || "unknown"))
                   )
                 ),
                 h(
                   "td",
                   null,
-                  h(Pill, { value: r.st }),
+                  r.st === "missing_file" && !isNaRow(r) ? h(Pill, {
+                    value: "unmatched",
+                    label: t("file.missing_file")
+                  }) : h(Pill, { value: r.st }),
+                  (r.id === 71 || !["applied", "already"].includes(r.st)) && (state.patch_files?.[r.id] || []).map(
+                    (file) => h(
+                      "div",
+                      {
+                        key: file.path,
+                        className: "dshpp-row-note",
+                        style: { overflowWrap: "anywhere" }
+                      },
+                      (["missing_file", "unreadable", "unknown"].includes(
+                        file.status
+                      ) ? t("file." + file.status) : statusLabel(file.status, t)) + " \xB7 " + file.path
+                    )
+                  ),
                   r.st === "partial" ? h(
                     "span",
                     { className: "dshpp-sub" },
@@ -11903,35 +12004,8 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   const hostSurface = hostSurfaceOf(s);
   const desktopLikely = hostSurface === "desktop" || clientGuessSurface() === "desktop";
   const sealedReady = !located && desktopLikely && !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
-  const patchesLost = !located && !!(s && s.patches_lost);
-  const allRows = located ? patchRowsAll(s) : [];
-  const tally = located ? tallyPatches(allRows) : {
-    applied: 0,
-    pending: 0,
-    unmatched: 0,
-    partial: 0,
-    drifted: 0,
-    disabled: 0,
-    skipped: 0,
-    total: 0
-  };
-  const counts = located ? patchGroupCounts(allRows) : { applied: 0, pending: 0, off: 0, na: 0, total: 0, denom: 0 };
-  const total = counts.denom;
-  const applied = counts.applied;
-  const pct = located && total ? Math.round(applied / total * 100) : 0;
-  const metricNotes = [];
-  if (tally.pending)
-    metricNotes.push(t("metric.pendingShort", { n: tally.pending }));
-  if (tally.unmatched)
-    metricNotes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
-  if (tally.partial)
-    metricNotes.push(t("metric.partialShort", { n: tally.partial }));
-  if (tally.drifted)
-    metricNotes.push(t("metric.driftedShort", { n: tally.drifted }));
-  if (tally.disabled)
-    metricNotes.push(t("metric.disabledShort", { n: tally.disabled }));
-  if (tally.skipped)
-    metricNotes.push(t("metric.naShort", { n: tally.skipped }));
+  const evidence = patchEvidence(s);
+  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const versions = updateInfo && updateInfo.versions || [];
   const channelNow = updateInfo && updateInfo.channel || channel || "stable";
   const localVer = s && s.plugin_version || updateInfo && updateInfo.localVersion || "";
@@ -12048,7 +12122,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
               disabled: patchBusy || uninstallBusy || !overrideLoaded,
               onClick: () => doAction("apply", "action.apply")
             },
-            patchBusy ? t("btn.apply.busy") : t("btn.apply") + (counts.pending ? " " + counts.pending : "")
+            patchBusy ? t("btn.apply.busy") : t("btn.apply") + (counts?.pending ? " " + counts.pending : "")
           ),
           h(
             Btn,
@@ -12099,7 +12173,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
           h(
             "span",
             { className: "dshpp-fold-n" },
-            !s ? t("detail.reading") : s.ok === false ? t("detail.unknown") : s.ai_base ? `${applied} / ${total}` : t("detail.unlocated")
+            !s ? t("detail.reading") : s.ok === false ? t("detail.unknown") : s.ai_base ? counts ? `${counts.applied} / ${counts.denom}` : t("evidence." + evidence.kind) : t("detail.unlocated")
           )
         ),
         h(PatchGroups, { state: s })
@@ -13959,6 +14033,8 @@ function PurgeGlyph({ size = 18 } = {}) {
 }
 function StatusStrip({ info }) {
   const t = useT();
+  const evidence = patchEvidence(info);
+  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const compat = info?.compatibility || {};
   const level = compat.level || "";
   const ok = level === "qualified";
@@ -13996,20 +14072,20 @@ function StatusStrip({ info }) {
       h(
         "b",
         null,
-        `${info?.patches_applied ?? "?"}/${info?.patches_total ?? "?"}`,
-        info?.patches_na > 0 ? ` \xB7 ${info.patches_na}\uAC74 \uC774 \uCEF4\uD4E8\uD130\uC5D0 \uD574\uB2F9 \uC5C6\uC74C` : ""
+        counts ? `${counts.applied}/${counts.denom}` : t("evidence." + evidence.kind),
+        counts?.na > 0 ? ` \xB7 ${counts.na}\uAC74 \uC774 \uAE30\uAE30 \uD574\uB2F9 \uC5C6\uC74C` : ""
       ),
       h(
         HelpTip,
         { title: "\uD638\uC2A4\uD2B8 \uD328\uCE58" },
-        `\uC2E4\uC81C\uB85C DSH \uD638\uC2A4\uD2B8 \uCF54\uB4DC\uC5D0 \uAE30\uB85D\uB41C \uD328\uCE58 \uC218(\uBD84\uBAA8\uB294 \uC774 \uCEF4\uD4E8\uD130\uC5D0 \uD574\uB2F9\uD558\uB294 \uD56D\uBAA9\uB9CC). \uC804\uCCB4 \uD328\uCE58 ${info?.patches_total_all ?? "?"}\uAC74 \uC911 ${info?.patches_na ?? 0}\uAC74\uC740 \uB300\uC0C1 \uD50C\uB7EC\uADF8\uC778/\uD504\uB9AC\uC14B\uC774 \uC124\uCE58\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. '\uC801\uC6A9 \uB300\uAE30'\uB294 \uC575\uCEE4\uAC00 \uB0A8\uC544 \uC788\uACE0 \uC544\uC9C1 \uC4F0\uC9C0 \uC54A\uC558\uB2E4\uB294 \uB73B\uC774\uACE0, '\uBD88\uC77C\uCE58'\uB294 \uD638\uC2A4\uD2B8 \uC18C\uC2A4\uAC00 \uBC14\uB00C\uC5B4 \uC575\uCEE4\uB97C \uB2E4\uC2DC \uCC3E\uC544\uC57C \uD55C\uB2E4\uB294 \uB73B\uC785\uB2C8\uB2E4.`
+        "\uD56D\uBAA9\uBCC4 \uC0C1\uC138\uAC00 \uC788\uC744 \uB54C\uB9CC \uC2E4\uC81C\uB85C \uAE30\uB85D\uB41C \uC218\uB97C \uC149\uB2C8\uB2E4. \uC77C\uBD80\uB9CC \uC801\uC6A9\uB410\uAC70\uB098, \uBE60\uC84C\uAC70\uB098, \uC77D\uC9C0 \uBABB\uD55C \uD56D\uBAA9\uC740 \uAE30\uB85D\uB41C \uAC83\uC73C\uB85C \uC138\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
       )
     ),
     h(
       "span",
       { className: "dshpp-strip-item" },
       "\uD50C\uB7EC\uADF8\uC778 ",
-      h("b", null, info?.plugin_version || "1.7.18")
+      h("b", null, info?.plugin_version || "1.7.20")
     )
   );
 }
@@ -14071,11 +14147,11 @@ function VersionNotice({ info }) {
     );
   }
   const backend = info?.plugin_version;
-  if (!backend || backend === "1.7.18") return null;
+  if (!backend || backend === "1.7.20") return null;
   return h(
     "p",
     { className: "dshpp-warn", role: "status" },
-    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.7.18"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
+    `\uACF5\uC2DD \uBC84\uC804 ${backend}, UI ${"1.7.20"}. \uB458\uC774 \uB2E4\uB974\uBA74 \uC124\uC815\uC774 \uC801\uC6A9\uB418\uC9C0 \uC54A\uC744 \uC218 \uC788\uC73C\uB2C8, \uAC19\uC740 \uBC84\uC804\uC73C\uB85C \uC5C5\uB370\uC774\uD2B8\uD55C \uB4A4 DSH \uB97C \uC7AC\uC2DC\uC791\uD558\uC138\uC694.`
   );
 }
 function PurgePage() {
@@ -14125,7 +14201,7 @@ function PurgePage() {
           true ? h(
             "span",
             { className: "dshpp-page-ver" },
-            "\uD55C\uAD6D\uC5B4\uD310 1.7.18"
+            "\uD55C\uAD6D\uC5B4\uD310 1.7.20"
           ) : null
         )
       )
@@ -15639,7 +15715,7 @@ function PurgeGlyphIcon({ size = 16 } = {}) {
 }
 function DetailSettings({ view } = {}) {
   if (view === "summary")
-    return h("span", null, "Purge \xB7 1.7.18");
+    return h("span", null, "Purge \xB7 1.7.20");
   return h("div", { className: "dshpp-detail-settings" }, h(PurgePage));
 }
 function PanelOverlays() {
