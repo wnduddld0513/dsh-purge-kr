@@ -99,8 +99,16 @@ test("status counts come from per-patch rows, never from display groups", async 
   const markup = renderToStaticMarkup(
     React.createElement(h.PatchGroups, { state }),
   );
-  assert.match(markup, /73 \/ 73/, "명시적으로 사용 안 함인 항목은 코드 그룹 분모에서 뺀다");
-  assert.match(markup, /0 \/ 13/, "확인하지 못한 skipped 는 도구 그룹 분모에 그대로 넣는다");
+  assert.match(
+    markup,
+    /73 \/ 73/,
+    "명시적으로 사용 안 함인 항목은 코드 그룹 분모에서 뺀다",
+  );
+  assert.match(
+    markup,
+    /0 \/ 13/,
+    "확인하지 못한 skipped 는 도구 그룹 분모에 그대로 넣는다",
+  );
   assert.equal(h.patchGroupCounts(h.patchRowsAll(state)).denom, 86);
   assert.doesNotMatch(markup, /3 \/ 3/, "그룹 수를 분모로 쓸 수 없다");
 });
@@ -460,13 +468,17 @@ test("same two patches: details count once, legacy summaries keep errors without
       assert.match(markup, /1 \/ 2/);
       assert.match(markup, /앵커 드리프트/);
     } else {
-      assert.match(markup, kind === "summary" ? /그룹 요약만 있음/ : /확인할 수 없음/);
+      assert.match(
+        markup,
+        kind === "summary" ? /그룹 요약만 있음/ : /확인할 수 없음/,
+      );
       assert.doesNotMatch(
         markup,
         /\d\s*\/\s*\d|호스트 패치가 모두 제자리에 있습니다|dshpp-fbtn|dshpp-skel/,
       );
       if (kind === "summary") assert.match(markup, /부분 적중/);
-      if (payload.patches?.[0]?.members) assert.match(markup, /#42: 앵커 드리프트/);
+      if (payload.patches?.[0]?.members)
+        assert.match(markup, /#42: 앵커 드리프트/);
     }
   }
 });

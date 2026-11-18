@@ -698,7 +698,8 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
     desktopLikely &&
     !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
   const evidence = patchEvidence(s);
-  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
+  const counts =
+    evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const versions = (updateInfo && updateInfo.versions) || [];
   const channelNow = (updateInfo && updateInfo.channel) || channel || "stable";
   const localVer =
