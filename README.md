@@ -9,11 +9,13 @@ DeepSeek Harness용 자체 호스팅 제어 도구(흔히 "탈옥" 플러그인�
 [![Release](https://img.shields.io/github/v/release/wnduddld0513/dsh-purge-kr?label=release)](https://github.com/wnduddld0513/dsh-purge-kr/releases)
 [![Checks](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml/badge.svg)](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml)
 
-현재 버전 **1.7.18** · **DSH Desktop 0.2.2-rc.3** 대응 (0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 같은 방식으로 통과합니다) · [English](docs/README.en.md)
+현재 버전 **1.7.20** · **DSH Desktop 0.2.2-rc.3** 대응 (0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 같은 방식으로 통과합니다) · [English](docs/README.en.md)
 
-1.7.18은 권한 패치를 기본 켜짐으로 바꾸고 그룹 스위치 하나로 묶었으며, 상태 페이지를 적용됨·적용 대기·사용 안 함·해당 없음 네 가지로 다시 세웁니다. 1.7.17의 추론 구간 거부 감지, 1.7.16의 dsh-go·NEXT·데스크톱 레드팀 수정, 1.7.15의 세션 권한 승계와 서명 sidecar 검증을 함께 담았습니다. [릴리스 노트](docs/releases/1.7.18.md)
+1.7.20은 감사 라벨이 사실을 말하게 합니다. `partial_refused`(앞부분은 주고 본문에서 거절)와 `empty_after_retry`(재시도했지만 거의 비어 있음)를 더 이상 성공으로 세지 않고, 기본 꺼짐인 seed 프리필 단계를 추가했습니다. [릴리스 노트](docs/releases/1.7.20.md)
 
 **원본 프로젝트와 작성자**: [샤오양(xiaoyang) / YuJunZhiXue의 dsh-purge](https://github.com/YuJunZhiXue/dsh-purge)를 기반으로 독립적으로 유지보수합니다. 원본 저장소는 복구되었습니다. 원작자의 서명, 저작권, MIT 라이선스는 그대로 보존합니다. 이 저장소는 한국어판을 유지하며, 원작자의 공식 배포판이 아닙니다.
+
+[AI에게 설치를 맡기거나 직접 설치하기](#설치)
 
 </div>
 
@@ -95,12 +97,18 @@ dsh plugin --profile <profile> add "https://github.com/wnduddld0513/dsh-purge-kr
 
 UI와 설치 프로토콜은 DSH가 제공하고, 인덱스와 플러그인은 커뮤니티가 유지합니다. 진입점 문구는 DSH 버전마다 다를 수 있고, 서드파티 `dsh-market`에는 필터와 마이그레이션 제한이 더 있을 수 있습니다. 패키지가 이미 있으면 방법 3을 사용하세요. [공식 마켓 안내](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/plugin-market.zh.md)
 
+**「설치 소스」는 보통 기본값 그대로 두면 됩니다.** 이 필드는 `yaml` 같은 npm 의존성을 내려받는 데 씁니다. 상세 화면에 `GET https://github.com/…/yaml`과 404가 보이면 "플러그인 → 플러그인 추가 → 설치 소스"에서 "npm 공식 소스"나 평소 쓰는 사설 npm 소스를 고른 뒤 다시 시도하세요. [세 주소를 각각 어디에 넣는지](docs/INSTALLATION.md#install-addresses)
+
+**이미 옛 버전 Purge나 독립 패널을 설치했나요?** 아래 방법 3으로 백업하고 그 자리에서 마이그레이션하세요. 소스 ZIP을 직접 내려받은 사용자는 [소스 디렉터리에서 설치](docs/INSTALLATION.md)를 보세요.
+
+마켓 관리자는 [인덱스와 설치 버튼 연결 안내](docs/MARKET-MIGRATION.md)에 따라 안정 릴리스로 동기화할 수 있습니다.
+
 ### 방법 2: DSH 공식 CLI (최초 설치)
 
 아래 명령은 **`dsh` 명령이 설치되어 있고 `web` profile을 사용하는 CLI/Web 사용자**를 위한 것입니다. macOS/Linux 터미널이나 Windows PowerShell에서 실행하세요. 데스크톱 사용자는 위 UI를 먼저 사용하시기 바랍니다. 플러그인을 설치하려고 `npx`로 다른 호스트를 내려받지 마세요.
 
 ```sh
-dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.7.18/dsh-purge-community-1.7.18.tgz"
+dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.7.20/dsh-purge-community-1.7.20.tgz"
 ```
 
 `web`은 실제로 기동한 profile과 일치해야 하고, 사용자 지정 데이터 디렉터리는 그 인스턴스의 `DSH_HOME`을 따릅니다. 이 명령은 이번 릴리스의 고정 버전 URL을 사용하며, `npm install -g`도 아니고 순수 npm 패키지 이름 설치도 아닙니다. 이 프로젝트는 GitHub 릴리스로 배포하므로 **`add dsh-purge`나 `add dsh-purge-community`로 바꾸지 마세요.** 공식 CLI 설치에는 우리 설치기의 릴리스 SHA256 대조나 마이그레이션 스냅샷이 없습니다. 그것이 필요하면 방법 3을 선택하세요. [공식 CLI 설치 안내](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/develop/basic/publish.zh.md)
@@ -202,7 +210,7 @@ sh "$PURGE_INSTALL_DIR/install.sh" --dry-run
 
 | 구성 요소 | 값 |
 | --- | --- |
-| 플러그인 | `dsh-purge-community` 1.7.18 |
+| 플러그인 | `dsh-purge-community` 1.7.20 |
 | 검증된 호스트 | DSH Desktop 0.2.2-rc.3 / 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
 | 기타 호스트 | 설치해도 됩니다. 자체 점검이 "미검증"으로 표시하니 `diagnose`를 먼저 보세요 |
 | Node | ≥18(데스크톱 빌드에 포함된 런타임이면 충분합니다). 레드팀 도구는 ≥22.5가 필요합니다(`node:sqlite`) |

@@ -9,9 +9,9 @@ Self-hosted controls for DeepSeek Harness (usually called a "jailbreak" plugin) 
 [![Release](https://img.shields.io/github/v/release/wnduddld0513/dsh-purge-kr?label=release)](https://github.com/wnduddld0513/dsh-purge-kr/releases)
 [![Checks](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml/badge.svg)](https://github.com/wnduddld0513/dsh-purge-kr/actions/workflows/community.yml)
 
-Current version **1.7.18** · Matches **DSH Desktop 0.2.2-rc.3** (0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 pass in the same way) · [한국어](../README.md)
+Current version **1.7.20** · Matches **DSH Desktop 0.2.2-rc.3** (0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 pass in the same way) · [한국어](../README.md)
 
-1.7.18 turns the permission patches on by default behind a single group switch and rebuilds the status page around applied, pending, disabled and not-applicable counts. It keeps the 1.7.17 refusal detection across reasoning deltas, the 1.7.16 dsh-go, NEXT and desktop red-team fixes, and the 1.7.15 session permission inheritance with signed sidecar verification. [Release notes](docs/releases/1.7.18.md).
+1.7.20 makes the audit labels honest: partial_refused (an answer that hands over background then declines) and empty_after_retry (a retry that returned almost nothing) no longer count as success, plus an opt-in seed prefill arm. [Release notes](docs/releases/1.7.20.md).
 
 **Original project and author**: Maintained independently on top of [xiaoyang / YuJunZhiXue's dsh-purge](https://github.com/YuJunZhiXue/dsh-purge). The original repository has been restored. The original author's signature, copyright, and MIT license are preserved as they were. This repository maintains the community edition, and it is not an official release by the original author.
 
@@ -88,18 +88,30 @@ If you need a reproducible version, install a pinned release tarball instead (Me
 
 ### Method 1: DSH official UI (first install)
 
+**Ask your agent** by copying this request:
+
+> Install the latest stable release of https://github.com/wnduddld0513/dsh-purge-kr into the DSH instance I use. Read the installation section in AGENTS.md first. If an older Purge is installed, migrate it in place and keep my settings. Report the installed version and profile. Leave the restart to me.
+
+**Install by hand:**
+
 1. Open DSH first and finish initialization. Following the current official docs, go to "Plugins", click "More" next to "Experimental plugins", and switch on "Custom plugin market". Then go to "Discover → Add index source".
 2. This project's **community index**: `https://wnduddld0513.github.io/dsh-purge-kr/index.json`.
 3. Select dsh-purge Community, confirm the origin is `wnduddld0513/dsh-purge-kr` and the package name is `dsh-purge-community`, then install.
 
 DSH provides the UI and the install protocol; the community maintains the index and the plugin. Entry wording can differ between DSH versions, and the third-party `dsh-market` may have extra filters and migration limits. If a package already exists, use method 3. [Official market guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/plugin-market.zh.md)
 
+**Leave the install source (npm registry) at its working value.** That field downloads dependencies such as `yaml`. If pnpm requests `github.com/…/yaml` and gets a 404, open Add plugin, paste the versioned TGZ link from the [latest stable release](https://github.com/wnduddld0513/dsh-purge-kr/releases/latest) into the package field, select the official npm registry (or your working private registry), and retry. [Where each of the three addresses goes](INSTALLATION.md#install-addresses)
+
+**Already running an older Purge or the standalone panel?** Use method 3 below to back up and migrate in place.
+
+Catalog maintainers can synchronize versioned install targets from the [community index](https://wnduddld0513.github.io/dsh-purge-kr/index.json). Match the package name and repository, and keep the version and commit from the same entry. [Listing guide](MARKET-MIGRATION.md)
+
 ### Method 2: DSH official CLI (first install)
 
 The command below is for **CLI/Web users who have the `dsh` command installed and use the `web` profile**. Run it in a macOS/Linux terminal or in Windows PowerShell. Desktop users should use the UI above first. Do not download another host with `npx` just to install the plugin.
 
 ```sh
-dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.7.18/dsh-purge-community-1.7.18.tgz"
+dsh plugin --profile web add "https://github.com/wnduddld0513/dsh-purge-kr/releases/download/v1.7.20/dsh-purge-community-1.7.20.tgz"
 ```
 
 `web` must match the profile you actually started, and a custom data directory follows that instance's `DSH_HOME`. This command uses this release's pinned-version URL; it is neither `npm install -g` nor a bare npm package-name install. This project ships through GitHub releases, so **do not change it to `add dsh-purge` or `add dsh-purge-community`**. An official CLI install does not run our installer's Release SHA256 comparison or migration snapshot. If you need those, choose method 3. [Official CLI install guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/develop/basic/publish.zh.md)
@@ -201,7 +213,7 @@ Set "auto-check" and "auto-install" separately on the maintenance page. The defa
 
 | Component | Value |
 | --- | --- |
-| Plugin | `dsh-purge-community` 1.7.18 |
+| Plugin | `dsh-purge-community` 1.7.20 |
 | Verified hosts | DSH Desktop 0.2.2-rc.3 / 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
 | Other hosts | Installation is allowed. The self-check marks them "unverified"; look at `diagnose` first |
 | Node | ≥18 (the runtime bundled with the desktop build is enough); the red-team tools need ≥22.5 (`node:sqlite`) |

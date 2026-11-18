@@ -498,6 +498,8 @@ export const ko = {
   "health.hint.na":
     "이 호스트에는 해당 구성요소나 파일이 없습니다. 분모에서 빠지며 작업량은 0입니다.",
   "health.verdict.pending": "{n}개가 켜졌지만 아직 기록하지 않았습니다",
+  "evidence.summary": "그룹 요약만 있음",
+  "evidence.unknown": "확인할 수 없음",
   "health.verdict.ok": "호스트 패치가 모두 제자리에 있습니다",
   "groups.unreadable":
     "읽지 못해 패치 상세를 볼 수 없습니다. 새로 고침하면 다시 시도합니다.",
@@ -551,6 +553,10 @@ export const ko = {
   "hint.unmatched": "일치 없음: 호스트 버전이 다릅니다.",
   "hint.partial": "일부 대상은 맞았고, 다른 대상은 있었지만 맞지 않았습니다.",
   "hint.off": "꺼짐.",
+  "metric.unverifiedShort": "{n}건 확인 안 됨",
+  "file.missing_file": "프리셋 파일 누락",
+  "file.unreadable": "읽지 못함",
+  "file.unknown": "정적으로 확인할 수 없음",
   "hint.unknown": "알 수 없는 상태.",
   "rewind.settings": "대화 모양",
   "rewind.show": "입력창에 되감기 버튼 표시",
@@ -1019,6 +1025,8 @@ export const en = {
   "health.hint.na":
     "This host has no such component or file. Excluded from the denominator; zero work.",
   "health.verdict.pending": "{n} enabled but not written yet",
+  "evidence.summary": "Group summary only",
+  "evidence.unknown": "Cannot verify",
   "health.verdict.ok": "All host patches in place",
   "groups.unreadable":
     "Read failed; patch detail is unavailable. Refresh to retry.",
@@ -1073,6 +1081,10 @@ export const en = {
   "hint.unmatched": "No match: host version mismatch.",
   "hint.partial": "Some targets matched, another existed but did not match.",
   "hint.off": "Off.",
+  "metric.unverifiedShort": "{n} unverified",
+  "file.missing_file": "Missing preset file",
+  "file.unreadable": "Unreadable",
+  "file.unknown": "Cannot verify statically",
   "hint.unknown": "Unknown state.",
   "rewind.settings": "Conversation appearance",
   "rewind.show": "Show the rewind button in the composer",

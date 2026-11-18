@@ -1,10 +1,12 @@
 # AGENTS.md — AI agent 를 위한 Purge 사용 설명서
 
 > 이 파일은 **DSH 안에서 일하는 agent** 를 위해 쓴 것이며, 마케팅 문서가 아니다.
-> 현재 버전 **1.7.18** · DSH Desktop **0.2.2-rc.3** 대응(0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 동일하게 통과)
+> 현재 버전 **1.7.20** · DSH Desktop **0.2.2-rc.3** 대응(0.2.2-rc.2 / rc.1 / 0.2.1-rc.1 / rc.2 / rc.3 / rc.5 도 동일하게 통과)
 > 버전 번호는 `npm run check:docs` 와 `package.json` 이 검증하며, 릴리스 때 반드시 동기화한다.
 
 ---
+
+사용자가 설치나 업그레이드를 요청하면 [설치 / 업데이트 경계](#installation) 부터 시작한다.
 
 ## 0. 30초 요약
 
@@ -133,7 +135,7 @@ purge-community probe new
 
 | 구성 요소 | 값 |
 | --- | --- |
-| 플러그인 | `dsh-purge-community` 1.7.18 |
+| 플러그인 | `dsh-purge-community` 1.7.20 |
 | 검증된 호스트 | DSH Desktop 0.2.2-rc.3 / 0.2.2-rc.2 / 0.2.2-rc.1 / 0.2.1-rc.1 / 0.2.1-rc.2 / 0.2.1-rc.3 / 0.2.1-rc.5 |
 | 기타 호스트 | 적용은 허용되지만 `selfcheck` 가 "미검증"으로 표시한다; 먼저 `diagnose` 를 본다 |
 | Node | ≥18(데스크톱 버전 내장 런타임이면 충분); **레드팀 도구는 ≥22.5**(`node:sqlite` 에 의존하므로 낮은 버전에서는 레드팀 도구를 로드할 때 실패한다) |
@@ -158,6 +160,10 @@ Electron 의 app.asar 본체는 반드시 `diskFs()` 로 읽는다; 일반 Node 
 
 <a id="installation"></a>
 ## 12. 설치 / 업데이트 실패: Agent 필독(1.6.47)
+
+- 저장소 링크를 받으면 그것으로 프로젝트 신원을 확인하고 최신 안정 릴리스를 찾는다. 마켓 도구가 Git 대상을 돌려줄 때는 고정 커밋 `spec` 을 그대로 넘기고, 항목이 `registry` 를 돌려주지 않으면 그 인자를 생략한다. CLI 를 쓸 때는 그 안정 릴리스에 업로드된 버전 고정 TGZ 를 고른다. 대상 profile 의 기존 npm 설정을 그대로 쓴다.
+- 로그에서 pnpm 이 GitHub 저장소 경로 아래 `/yaml` 을 요청하면 이번 설치의 registry, DSH 가 기억하는 "설치 소스", 호스트의 우선 소스를 대조한다. 잘못된 npm 주소만 바로잡고, 유효한 사설 소스·프록시·전역 설정은 유지한다. [필드 대조와 재시도 단계](docs/INSTALLATION.md#install-addresses)를 본다.
+- 마켓 카드에 옛 버전이 보이면 [커뮤니티 인덱스](https://wnduddld0513.github.io/dsh-purge-kr/index.json)의 패키지 이름·저장소·고정 커밋을 먼저 확인한다. 사용자가 버전을 지정했으면 그 버전을 쓴다. 마켓용 설치 버튼을 만들 때는 [수록 안내](docs/MARKET-MIGRATION.md)를 따르고 목표 버전과 설치 소스를 함께 갱신한다.
 
 1. **먼저 진입점을 고르고, 커뮤니티 스크립트를 공식 방법이라 부르지 않는다**. 최초 설치: DSH 공식 플러그인 인터페이스/마켓 확인 대화상자, 또는 해당 인스턴스의 `dsh plugin --profile <실제 이름> add <고정 버전TGZ URL>`. 공식 관리자는 `dsh.bundle` 을 관리한다; 우리의 인덱스, TGZ, `scripts/install.sh` / `scripts/install.ps1` 은 커뮤니티 산출물이다. 이 프로젝트에는 이 흐름에 쓸 bare npm 패키지 이름이 없으므로 `add dsh-purge`, `add dsh-purge-community`, 전역 npm 설치를 실행하지 않는다. 이미 `dsh-purge`/독립 패널이 있으면 커뮤니티 설치기로 마이그레이션하며, 먼저 기존 패키지를 제거해서는 안 된다. 복사 가능한 전체 명령은 [README](README.md#installation) 와 [설치 안내](docs/INSTALLATION.md) 에 있다.
 2. 대상 DSH 버전, 실행 파일, `DSH_HOME`, profile 을 읽고 이미 초기화되었는지 먼저 확인한다. 옛 Desktop CLI 기본은 `desktop`, 독립 dsh CLI 가 붙은 새 셸과 CLI/Web 기본은 `web` 이며 섞어 쓸 수 없다; 다른 npx 호스트를 내려받아 현재 데스크톱 인스턴스에 설치하지 않는다. 먼저 스크립트를 별도 임시 경로에 내려받고, 검토한 뒤 dry-run 하고, 이미 받은 권한 범위에서 실행한다. dry-run 은 사전 조건, 다운로드, SHA256 만 검증하며 의존성을 설치하지 않고 전체 기동도 검증하지 않는다. 정식 설치 는 백업하고, 공식 CLI 를 호출하고, 옛 패키지 참조를 마이그레이션하고, 디스크 버전을 검증한다; 언팩된 데스크톱의 `app/runtime` 링크를 고칠 수 있고, Linux 에서는 사용자 호스트 사본을 준비할 수 있어 호스트 디렉터리에 전혀 쓰지 않는 것은 아니다. 스크립트와 bootstrap 은 master 에서 오며, SHA256 검증 대상은 릴리스 TGZ 이므로 스크립트까지 별도 서명 검증을 거쳤다고 주장하지 않는다. 프롬프트, 권한, 프록시, 업데이트 선호, 다른 플러그인은 바꾸지 않는다; 설치 후 자동 apply/restart 금지.

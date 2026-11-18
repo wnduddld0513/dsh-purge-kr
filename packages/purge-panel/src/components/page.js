@@ -7,6 +7,7 @@ import { compatibilityLevelText, useT } from "../shared/locale.js";
 import { RewindSetting } from "./rewind-setting.js";
 import { apiJson, unavailableStatus } from "../api/client.js";
 import { Btn, HelpTip } from "./primitives.js";
+import { patchEvidence, patchGroupCounts } from "./patch-status.js";
 import { PurgifySection } from "./settings-form.js";
 import { RulesSection } from "./rules.js";
 import { SkillsSection } from "./skills.js";
@@ -42,6 +43,9 @@ function PurgeGlyph({ size = 18 } = {}) {
 
 export function StatusStrip({ info }) {
   const t = useT();
+  const evidence = patchEvidence(info);
+  const counts =
+    evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const compat = info?.compatibility || {};
   const level = compat.level || "";
   const ok = level === "qualified";
@@ -84,15 +88,15 @@ export function StatusStrip({ info }) {
       h(
         "b",
         null,
-        `${info?.patches_applied ?? "?"}/${info?.patches_total ?? "?"}`,
-        info?.patches_na > 0
-          ? ` · ${info.patches_na}건 이 컴퓨터에 해당 없음`
-          : "",
+        counts
+          ? `${counts.applied}/${counts.denom}`
+          : t("evidence." + evidence.kind),
+        counts?.na > 0 ? ` · ${counts.na}건 이 기기 해당 없음` : "",
       ),
       h(
         HelpTip,
         { title: "호스트 패치" },
-        `실제로 DSH 호스트 코드에 기록된 패치 수(분모는 이 컴퓨터에 해당하는 항목만). 전체 패치 ${info?.patches_total_all ?? "?"}건 중 ${info?.patches_na ?? 0}건은 대상 플러그인/프리셋이 설치되지 않았습니다. '적용 대기'는 앵커가 남아 있고 아직 쓰지 않았다는 뜻이고, '불일치'는 호스트 소스가 바뀌어 앵커를 다시 찾아야 한다는 뜻입니다.`,
+        "항목별 상세가 있을 때만 실제로 기록된 수를 셉니다. 일부만 적용됐거나, 빠졌거나, 읽지 못한 항목은 기록된 것으로 세지 않습니다.",
       ),
     ),
     h(

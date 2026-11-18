@@ -9,7 +9,7 @@ const { buildSync } = require("esbuild");
 const code = buildSync({
   stdin: {
     contents:
-      'export * from "./src/api/client.js"; export {setTranslate,ko} from "./src/shared/locale.js"; export { StatusStrip, VersionNotice } from "./src/components/page.js"; export { PurgifySection } from "./src/components/settings-form.js"; export {tallyPatches,PatchGroups} from "./src/components/patch-status.js";',
+      'export * from "./src/api/client.js"; export {setTranslate,zh} from "./src/shared/locale.js"; export { StatusStrip, VersionNotice } from "./src/components/page.js"; export { PurgifySection } from "./src/components/settings-form.js"; export {tallyPatches,patchGroupCounts,patchRowsAll,PatchGroups,PatchHealth} from "./src/components/patch-status.js";',
     resolveDir: path.join(__dirname, ".."),
   },
   bundle: true,
@@ -99,7 +99,9 @@ test("status counts come from per-patch rows, never from display groups", async 
   const markup = renderToStaticMarkup(
     React.createElement(h.PatchGroups, { state }),
   );
-  assert.match(markup, /73 \/ 75/, "그룹 표가 88개를 3개로 압축해서는 안 된다");
+  assert.match(markup, /73 \/ 73/, "명시적으로 사용 안 함인 항목은 코드 그룹 분모에서 뺀다");
+  assert.match(markup, /0 \/ 13/, "확인하지 못한 skipped 는 도구 그룹 분모에 그대로 넣는다");
+  assert.equal(h.patchGroupCounts(h.patchRowsAll(state)).denom, 86);
   assert.doesNotMatch(markup, /3 \/ 3/, "그룹 수를 분모로 쓸 수 없다");
 });
 
@@ -113,7 +115,12 @@ test("summary and group headings explain drift, partial results and opt-in choic
     "pending",
     "unmatched",
   ].map((status, id) => ({ id, status, layer: "코드" }));
-  const state = { ok: true, ai_base: "/fixture", patches, patch_status: {} };
+  const state = {
+    ok: true,
+    ai_base: "/fixture",
+    patch_rows: patches,
+    patch_status: {},
+  };
   const h = harness(async (url) =>
     reply(
       String(url).endsWith("/status")
@@ -217,7 +224,7 @@ test("failed status can retry and does not fabricate zero patch counts or a miss
     );
   assert.match(markup, /읽기 실패/);
   assert.match(markup, /timeout/);
-  assert.match(markup, /\?\/\?/);
+  assert.match(markup, /확인할 수 없음/);
   assert.doesNotMatch(markup, /0\/0|호스트 미탐지/);
   const text = JSON.stringify(view.toJSON());
   assert.match(text, /알 수 없음/);
@@ -271,5 +278,195 @@ test("the compatibility strip distinguishes archived, kernel-only and unknown fu
     );
     assert.ok(html.includes(label), level);
     assert.equal(html.includes("is-ok"), level === "qualified");
+  }
+});
+
+test("#71 missing and unreadable files remain visible in patch detail", () => {
+  const h = harness();
+  const state = {
+    ai_base: "/fixture",
+    patch_status: { 71: "missing_file" },
+    patch_files: {
+      71: [{ path: "/fixture/local/agent.cordis.yml", status: "missing_file" }],
+    },
+  };
+  const render = () =>
+    renderToStaticMarkup(React.createElement(h.PatchGroups, { state }));
+  assert.match(render(), /0 \/ 1/);
+  assert.match(render(), /缺少预设文件/);
+  assert.match(render(), /fixture\/local\/agent.cordis.yml/);
+  state.patch_status[71] = "unknown";
+  state.patch_files[71][0].status = "unreadable";
+  assert.match(render(), /无法读取/);
+});
+
+test("panel uses shared counts for required, optional and unknown states", async () => {
+  const { summarizePatchRows } = await import("../../../lib/patch-state.mjs");
+  const ui = harness();
+  for (const metadata of [
+    { id: 90 },
+    { id: 71 },
+    { id: 3, optional: true },
+    { id: 4, settleWhenAbsent: true },
+    { id: 76 },
+  ]) {
+    for (const status of [
+      "applied",
+      "already",
+      "partial",
+      "pending",
+      "missing_file",
+      "unreadable",
+      "unknown",
+      "skipped",
+      "disabled",
+      "off",
+      "na",
+      "not_needed",
+      "future_error",
+      undefined,
+    ]) {
+      const rows = [{ ...metadata, status }];
+      const self = summarizePatchRows(rows);
+      const panelRows = ui.patchRowsAll({
+        ai_base: "/fixture",
+        patch_rows: rows,
+      });
+      const panel = ui.patchGroupCounts(panelRows);
+      assert.equal(panel.denom, self.total, JSON.stringify(rows));
+      assert.equal(panel.applied, self.applied);
+    }
+  }
+  const legacy = ui.patchGroupCounts(
+    ui.patchRowsAll({
+      ai_base: "/fixture",
+      patch_status: { 90: "missing_file" },
+    }),
+  );
+  assert.equal(
+    legacy.denom,
+    1,
+    "old responses without optional metadata are conservative",
+  );
+  assert.equal(legacy.applied, 0);
+});
+test("required missing paths and partial results stay visible in rendered panel", () => {
+  const ui = harness();
+  for (const status of ["partial", "missing_file", "unknown"]) {
+    const html = renderToStaticMarkup(
+      React.createElement(ui.PatchGroups, {
+        state: {
+          ai_base: "/fixture",
+          patch_status: { 90: status },
+          patch_rows: [{ id: 90, layer: "代码", status }],
+          patch_files: {
+            90: [
+              {
+                path: "/fixture/agent-loop/lib/index.js",
+                status: "unreadable",
+              },
+            ],
+          },
+        },
+      }),
+    );
+    assert.match(html, /0 \/ 1/);
+    assert.match(html, /agent-loop\/lib\/index.js/);
+    assert.match(html, /无法读取|无法核实/);
+  }
+});
+
+test("filter membership matches inactive and required counts", async () => {
+  const ui = harness();
+  const rows = [
+    { id: 1, status: "disabled" },
+    { id: 2, status: "off" },
+    { id: 3, status: "na" },
+    { id: 4, status: "missing_file" },
+    { id: 5, status: "missing_file", optional: true },
+    { id: 6, status: "skipped" },
+    { id: 7, status: "skipped", settleWhenAbsent: true },
+    { id: 8, status: "unknown" },
+  ].map((row) => ({ ...row, layer: "代码" }));
+  const state = {
+    ai_base: "/fixture",
+    patch_rows: rows,
+    patch_status: Object.fromEntries(rows.map((r) => [r.id, r.status])),
+  };
+  let view;
+  await act(async () => {
+    view = create(React.createElement(ui.PatchGroups, { state }));
+  });
+  try {
+    for (const [tab, ids] of [
+      [2, ["#1", "#2"]],
+      [3, ["#3", "#5", "#7"]],
+      [1, ["#4", "#6", "#8"]],
+    ]) {
+      await act(async () => {
+        view.root
+          .findAllByType("button")
+          .filter((b) => b.props.className?.includes("dshpp-fbtn"))
+          [tab].props.onClick();
+      });
+      assert.deepEqual(
+        view.root
+          .findAllByType("td")
+          .filter((td) => td.props.className === "dshpp-id")
+          .map((td) => td.children[0]),
+        ids,
+      );
+    }
+  } finally {
+    await act(async () => view.unmount());
+  }
+});
+
+test("same two patches: details count once, legacy summaries keep errors without counts, absent evidence stays unknown", () => {
+  const api = harness();
+  const rows = [
+    { id: 41, status: "applied" },
+    { id: 42, status: "drifted" },
+  ];
+  const groups = [
+    { id: 41, ids: [41, 42], status: "partial", layer: "代码", members: rows },
+  ];
+  for (const [kind, payload] of [
+    ["detail", { patch_rows: rows, patches: groups }],
+    [
+      "detail",
+      { patch_status: { 41: "applied", 42: "drifted" }, patches: groups },
+    ],
+    ["summary", { patches: groups }],
+    ["summary", { patch_rows: [], patch_status: {}, patches: groups }],
+    ["summary", { patches: groups.map(({ members, ...g }) => g) }],
+    ["unknown", {}],
+    ["unknown", { patch_rows: [], patch_status: {}, patches: [] }],
+  ]) {
+    const state = {
+      ok: true,
+      ai_base: "fixture",
+      patches_applied: 1,
+      patches_total: 1,
+      ...payload,
+    };
+    const render = (component, prop) =>
+      renderToStaticMarkup(React.createElement(component, { [prop]: state }));
+    const markup =
+      render(api.PatchGroups, "state") +
+      render(api.StatusStrip, "info") +
+      render(api.PatchHealth, "state");
+    if (kind === "detail") {
+      assert.match(markup, /1 \/ 2/);
+      assert.match(markup, /锚点漂移/);
+    } else {
+      assert.match(markup, kind === "summary" ? /仅有分组摘要/ : /无法核实/);
+      assert.doesNotMatch(
+        markup,
+        /\d\s*\/\s*\d|宿主补丁全部就位|dshpp-fbtn|dshpp-skel/,
+      );
+      if (kind === "summary") assert.match(markup, /部分命中/);
+      if (payload.patches?.[0]?.members) assert.match(markup, /#42：锚点漂移/);
+    }
   }
 });

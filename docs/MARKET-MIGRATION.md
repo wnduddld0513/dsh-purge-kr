@@ -1,6 +1,12 @@
 # 플러그인 마켓에서 Purge 설치 또는 마이그레이션
 
-최초 설치 시 dsh-market 에서 `wnduddld0513/dsh-purge-kr` 를 검색할 수 있다. 저장소 작성자와 패키지명 `dsh-purge-community` 를 확인한다. 같은 이름의 미러는 같은 배포 출처가 아니다. `dsh plugin add dsh-purge` 나 맨 패키지명 `dsh-purge-community` 를 실행하지 않는다: 이 프로젝트는 GitHub Releases 로 배포하며 그 두 npm 이름에 의존하지 않는다.
+최초 설치 시 DSH 의 「플러그인 → 탐색 → 인덱스 소스 추가」에 `https://wnduddld0513.github.io/dsh-purge-kr/index.json` 을 넣고 `dsh-purge-community` 를 검색한 뒤 작성자가 `wnduddld0513` 인지 확인한다. 서드파티 마켓을 통해 들어왔다면 카드가 제시한 버전과 설치 소스를 먼저 확인한다. 카드가 낡았거나 검색되지 않으면 위 인덱스를 직접 추가하면 된다. [설치 창 입력 예시](INSTALLATION.md#install-addresses)
+
+## 서드파티 마켓이 안정 릴리스를 따라가는 방법
+
+- **DSH 인덱스에 연동**: 갱신할 때마다 위 인덱스의 `plugins` 에서 전체 패키지 이름 `dsh-purge-community` 와 `repository.url` 로 일치하는 항목을 찾는다. 대상 호스트와 호환되는 안정 버전을 고르고, **같은** 버전 레코드의 `source.url`, 전체 `source.commit`, `engines` 를 유지한다. 디렉터리에 다른 플러그인도 있으므로 첫 항목을 한국어판으로 쓰면 안 된다.
+- **TGZ 설치 버튼 표시**: 갱신할 때 [GitHub 최신 안정 릴리스](https://github.com/wnduddld0513/dsh-purge-kr/releases/latest) 에서 tag 를 읽고, 그 릴리스에서 같은 버전 번호가 붙은 TGZ 를 골라 전체 내려받기 주소를 DSH 에 넘긴다. 사용자가 버전을 지정하면 해당 tag 를 쓴다. 오래 수록할 때는 릴리스 페이지를 링크하거나 갱신 시점에 다시 해석한다; README 의 특정 버전 명령을 영구 항목으로 복사하면 옛 패키지가 설치된다.
+- **재현 가능한 설치 소스 유지**: 고정 버전 TGZ 나 고정 커밋을 DSH 에 넘긴다. `releases/latest/download/…` 를 profile 에 직접 적으면 떠 있는 의존성이 남고, 나중에 다른 플러그인을 오프라인 설치할 때 pnpm 이 그것을 다시 요청할 수 있다. [떠 있는 의존성이 있는 옛 profile 의 마이그레이션 안내](INSTALLATION.md)
 
 ## 옛 버전이 설치된 경우: 먼저 제거하지 않고 바로 마이그레이션
 

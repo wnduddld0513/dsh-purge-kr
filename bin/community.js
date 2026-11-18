@@ -3,7 +3,7 @@ import path from "node:path";
 import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import { Maintenance, compatibility, ROOT, PACKAGE } from "../lib/community.js";
-import { findDshHome, patchDrift } from "../lib/core.js";
+import { findDshHome, liangshenStatusForHost, patchDrift } from "../lib/core.js";
 import { currentHost, diagnosticHost, hostSurface } from "../lib/instance.js";
 import { readOverrides, writeOverride, clearOverride } from "../lib/anchors.js";
 import { logAudit, readAudit } from "../lib/audit.js";
@@ -229,6 +229,8 @@ if (LEGACY[op]) {
           || (layer.broken.length ? JSON.stringify(layer.broken) : "")
           || (layer.pending && layer.pending.length ? `적용 대기 #${layer.pending.join("/#")}` : "");
         lines.push(`  ${mark} ${layer.title}  ${layer.applied}/${layer.required ?? layer.total}${tail ? "  " + tail : ""}`);
+        for (const file of layer.patch_evidence?.[71]?.files || [])
+          lines.push(`    #71 ${file.status}  ${file.path}`);
       }
       const pendingCount = (report.summary && report.summary.pending && report.summary.pending.patches) || 0;
       lines.push(
@@ -263,6 +265,7 @@ if (LEGACY[op]) {
       name: "Purge Community",
       package: PACKAGE,
       compatibility: compatibility(target),
+      ...(target ? {patch_evidence:{71:await liangshenStatusForHost(home, hostSurface(target))}} : {}),
       host_selection: target ? "explicit-or-running" : "unresolved",
       ...(target ? {} : { hint: "현재 인스턴스 진입점을 확인하지 못했습니다. DSH_BASE / PURGE_DSH_CLI 를 지정하거나 실행 중인 호스트의 패널 진단을 보세요. 이것은 플러그인 미설치의 증거가 아닙니다." }),
       backups: (() => { try { return maintenance().list(); } catch { return []; } })(),

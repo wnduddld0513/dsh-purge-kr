@@ -22,10 +22,8 @@ import {
 } from "../api/client.js";
 import {
   shimKind,
-  patchRowsOf,
-  patchRowsAll,
+  patchEvidence,
   patchGroupCounts,
-  tallyPatches,
   PatchGroups,
   PatchHealth,
   PatchGroupSwitches,
@@ -699,41 +697,8 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
     !located &&
     desktopLikely &&
     !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
-  const patchesLost = !located && !!(s && s.patches_lost);
-  // 상태 페이지의 모든 숫자는 같은 출처를 쓴다: 항목별 실제값. 예전 기준은 "표시 그룹"으로 세서 몇십 건이 모자랐다.
-  const allRows = located ? patchRowsAll(s) : [];
-  const tally = located
-    ? tallyPatches(allRows)
-    : {
-        applied: 0,
-        pending: 0,
-        unmatched: 0,
-        partial: 0,
-        drifted: 0,
-        disabled: 0,
-        skipped: 0,
-        total: 0,
-      };
-  const counts = located
-    ? patchGroupCounts(allRows)
-    : { applied: 0, pending: 0, off: 0, na: 0, total: 0, denom: 0 };
-  const total = counts.denom;
-  const applied = counts.applied;
-  const pct = located && total ? Math.round((applied / total) * 100) : 0;
-  const metricNotes = [];
-  if (tally.pending)
-    metricNotes.push(t("metric.pendingShort", { n: tally.pending }));
-  if (tally.unmatched)
-    metricNotes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
-  if (tally.partial)
-    metricNotes.push(t("metric.partialShort", { n: tally.partial }));
-  if (tally.drifted)
-    metricNotes.push(t("metric.driftedShort", { n: tally.drifted }));
-  if (tally.disabled)
-    metricNotes.push(t("metric.disabledShort", { n: tally.disabled }));
-  if (tally.skipped)
-    metricNotes.push(t("metric.naShort", { n: tally.skipped }));
-
+  const evidence = patchEvidence(s);
+  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const versions = (updateInfo && updateInfo.versions) || [];
   const channelNow = (updateInfo && updateInfo.channel) || channel || "stable";
   const localVer =
@@ -863,7 +828,7 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
             },
             patchBusy
               ? t("btn.apply.busy")
-              : t("btn.apply") + (counts.pending ? " " + counts.pending : ""),
+              : t("btn.apply") + (counts?.pending ? " " + counts.pending : ""),
           ),
           h(
             Btn,
@@ -923,7 +888,9 @@ export function PurgifySection({ page = "status", onStatus } = {}) {
               : s.ok === false
                 ? t("detail.unknown")
                 : s.ai_base
-                  ? `${applied} / ${total}`
+                  ? counts
+                    ? `${counts.applied} / ${counts.denom}`
+                    : t("evidence." + evidence.kind)
                   : t("detail.unlocated"),
           ),
         ),
