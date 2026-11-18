@@ -446,14 +446,14 @@ export function PatchGroups({ state }) {
             g.layer,
             g.name,
             Array.isArray(g.ids)
-              ? g.ids.map((id) => "#" + id).join("、")
+              ? g.ids.map((id) => "#" + id).join(", ")
               : g.id != null
                 ? "#" + g.id
                 : "",
           ]
             .filter(Boolean)
             .join(" · "),
-          "：",
+          ": ",
           statusLabel(typeof g.status === "string" ? g.status : "unknown", t),
           Array.isArray(g.members) &&
             h(
@@ -465,7 +465,7 @@ export function PatchGroups({ state }) {
                   h(
                     "li",
                     { key: j },
-                    "#" + m.id + "：" + statusLabel(m.status, t),
+                    "#" + m.id + ": " + statusLabel(m.status, t),
                   ),
                 ),
             ),

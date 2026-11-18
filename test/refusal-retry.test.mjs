@@ -282,7 +282,7 @@ test("seed-prim appends the skeleton to the last user message, keeping message s
   assert.equal(out.messages.length, 2, "不新增消息（assistant 伪消息会让 DSH 组装崩）");
   assert.equal(out.messages[1].role, "user");
   assert.match(out.messages[1].content[0].text, /写一个加密模块/);
-  assert.match(out.messages[1].content[0].text, /实现如下/);
+  assert.match(out.messages[1].content[0].text, /Here is the implementation/);
 });
 
 test("seed-prim never fabricates an assistant message", () => {
@@ -297,14 +297,14 @@ test("seed arm is reached only after nudge and fiction both refuse", async () =>
     n += 1;
     const last = options.messages[options.messages.length - 1];
     const tailText = JSON.stringify(last.content);
-    seen.push({ attempt: n, tailRole: last.role, hasSkeleton: /实现如下/.test(tailText), bytes: JSON.stringify(options).length });
+    seen.push({ attempt: n, tailRole: last.role, hasSkeleton: /Here is the implementation/.test(tailText), bytes: JSON.stringify(options).length });
     return (async function* () {
       if (n <= 3) {
         yield delta("这个我不做。");
         yield finish();
         return;
       }
-      yield delta("实现如下：1) 入口 2) 核心 3) 验证");
+      yield delta("Here is the implementation: 1) entry 2) core 3) verification");
       yield finish();
     })();
   };
@@ -312,9 +312,9 @@ test("seed arm is reached only after nudge and fiction both refuse", async () =>
     streamWithRefusalRetry(factory, { messages: [sys("base"), { role: "user", content: "x" }] }, { seed: true }),
   );
   assert.equal(n, 4, "nudge → fiction 都拒了才轮到 seed（第 4 次调用）");
-  assert.equal(seen[3].tailRole, "user", "seed 臂不新增 assistant 消息");
-  assert.equal(seen[3].hasSkeleton, true, "seed 臂要把骨架并进 user 文本");
-  assert.equal(chunks.filter((c) => c.type === "text-delta").at(-1).text.includes("实现如下"), true);
+  assert.equal(seen[3].tailRole, "user", "seed 단계는 assistant 메시지를 추가하지 않는다");
+  assert.equal(seen[3].hasSkeleton, true, "seed 단계는 골격을 user 텍스트에 합친다");
+  assert.equal(chunks.filter((c) => c.type === "text-delta").at(-1).text.includes("Here is the implementation"), true);
   assert.ok(SEED_PRIM_TEXT.length > 10);
 });
 

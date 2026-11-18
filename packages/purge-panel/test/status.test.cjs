@@ -9,7 +9,7 @@ const { buildSync } = require("esbuild");
 const code = buildSync({
   stdin: {
     contents:
-      'export * from "./src/api/client.js"; export {setTranslate,zh} from "./src/shared/locale.js"; export { StatusStrip, VersionNotice } from "./src/components/page.js"; export { PurgifySection } from "./src/components/settings-form.js"; export {tallyPatches,patchGroupCounts,patchRowsAll,PatchGroups,PatchHealth} from "./src/components/patch-status.js";',
+      'export * from "./src/api/client.js"; export {setTranslate,ko} from "./src/shared/locale.js"; export { StatusStrip, VersionNotice } from "./src/components/page.js"; export { PurgifySection } from "./src/components/settings-form.js"; export {tallyPatches,patchGroupCounts,patchRowsAll,PatchGroups,PatchHealth} from "./src/components/patch-status.js";',
     resolveDir: path.join(__dirname, ".."),
   },
   bundle: true,
@@ -293,11 +293,11 @@ test("#71 missing and unreadable files remain visible in patch detail", () => {
   const render = () =>
     renderToStaticMarkup(React.createElement(h.PatchGroups, { state }));
   assert.match(render(), /0 \/ 1/);
-  assert.match(render(), /缺少预设文件/);
+  assert.match(render(), /프리셋 파일 누락/);
   assert.match(render(), /fixture\/local\/agent.cordis.yml/);
   state.patch_status[71] = "unknown";
   state.patch_files[71][0].status = "unreadable";
-  assert.match(render(), /无法读取/);
+  assert.match(render(), /읽지 못함/);
 });
 
 test("panel uses shared counts for required, optional and unknown states", async () => {
@@ -358,7 +358,7 @@ test("required missing paths and partial results stay visible in rendered panel"
         state: {
           ai_base: "/fixture",
           patch_status: { 90: status },
-          patch_rows: [{ id: 90, layer: "代码", status }],
+          patch_rows: [{ id: 90, layer: "코드", status }],
           patch_files: {
             90: [
               {
@@ -372,7 +372,7 @@ test("required missing paths and partial results stay visible in rendered panel"
     );
     assert.match(html, /0 \/ 1/);
     assert.match(html, /agent-loop\/lib\/index.js/);
-    assert.match(html, /无法读取|无法核实/);
+    assert.match(html, /읽지 못함|확인할 수 없음/);
   }
 });
 
@@ -387,7 +387,7 @@ test("filter membership matches inactive and required counts", async () => {
     { id: 6, status: "skipped" },
     { id: 7, status: "skipped", settleWhenAbsent: true },
     { id: 8, status: "unknown" },
-  ].map((row) => ({ ...row, layer: "代码" }));
+  ].map((row) => ({ ...row, layer: "코드" }));
   const state = {
     ai_base: "/fixture",
     patch_rows: rows,
@@ -429,7 +429,7 @@ test("same two patches: details count once, legacy summaries keep errors without
     { id: 42, status: "drifted" },
   ];
   const groups = [
-    { id: 41, ids: [41, 42], status: "partial", layer: "代码", members: rows },
+    { id: 41, ids: [41, 42], status: "partial", layer: "코드", members: rows },
   ];
   for (const [kind, payload] of [
     ["detail", { patch_rows: rows, patches: groups }],
@@ -458,15 +458,15 @@ test("same two patches: details count once, legacy summaries keep errors without
       render(api.PatchHealth, "state");
     if (kind === "detail") {
       assert.match(markup, /1 \/ 2/);
-      assert.match(markup, /锚点漂移/);
+      assert.match(markup, /앵커 드리프트/);
     } else {
-      assert.match(markup, kind === "summary" ? /仅有分组摘要/ : /无法核实/);
+      assert.match(markup, kind === "summary" ? /그룹 요약만 있음/ : /확인할 수 없음/);
       assert.doesNotMatch(
         markup,
-        /\d\s*\/\s*\d|宿主补丁全部就位|dshpp-fbtn|dshpp-skel/,
+        /\d\s*\/\s*\d|호스트 패치가 모두 제자리에 있습니다|dshpp-fbtn|dshpp-skel/,
       );
-      if (kind === "summary") assert.match(markup, /部分命中/);
-      if (payload.patches?.[0]?.members) assert.match(markup, /#42：锚点漂移/);
+      if (kind === "summary") assert.match(markup, /부분 적중/);
+      if (payload.patches?.[0]?.members) assert.match(markup, /#42: 앵커 드리프트/);
     }
   }
 });
